@@ -18,29 +18,49 @@ return [
                     'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
                     'body' => $entry->body,
                     'heroText' => $entry->text,
-                    'heroImage' => $entry->image->first()['filename'],
-                    'heroLink' => $entry->herolink->first(),
+                    'heroImage' => $entry->image->one()['filename'],
+                    'heroLink' => $entry->herolink->one(),
                 ];
             },
         ],
-        'welsh/news.json' => [
+        'content/<locale:en|cy>/<uri:.*>.json' => function($locale, $uri) {
+
+            $siteId = ($locale === 'en' || !$locale) ? 1 : 2;
+
+            return [
                 'elementType' => Entry::class,
                 'criteria' => [
-                    'section' => 'funding',
-                    'site' => 'blfWelsh'
+                    'uri' => $uri,
+                    'siteId' => $siteId
                 ],
                 'transformer' => function(Entry $entry) {
                     return [
                         'title' => $entry->title,
                         'url' => $entry->url,
                         'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
-                        'body' => $entry->body,
-                        'heroText' => $entry->text,
-                        'heroImage' => $entry->image->first()['filename'],
-                        'heroLink' => $entry->herolink->first(),
+                        'body' => $entry->body
                     ];
-                },
+                }
+            ];
+        },
+        'welsh/news.json' => [
+            'elementType' => Entry::class,
+            'criteria' => [
+                'section' => 'funding',
+                'site' => 'blfWelsh'
             ],
+            'transformer' => function(Entry $entry) {
+                return [
+                    'title' => $entry->title,
+                    'url' => $entry->url,
+                    'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
+                    'body' => $entry->body,
+                    'heroText' => $entry->text,
+                    'heroImage' => $entry->image->one()['filename'],
+                    'heroLink' => $entry->herolink->one(),
+                ];
+            },
+        ],
         'news/<entryId:\d+>.json' => function($entryId) {
             return [
                 'elementType' => Entry::class,
