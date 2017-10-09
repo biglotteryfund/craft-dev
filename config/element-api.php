@@ -34,11 +34,48 @@ return [
                     'siteId' => $siteId
                 ],
                 'transformer' => function(Entry $entry) {
+
+                    // Create an array of all the "Body" Matrix field's blocks
+                    $bodyBlocks = [];
+                    if ($entry->fundingProgramme) {
+                        foreach ($entry->fundingProgramme as $block) {
+                            switch ($block->type->handle) {
+                                case 'fundingProgrammeBlock':
+
+                                    $photos = [];
+                                    foreach ($block->photo as $photo) {
+                                        $photos[] = $photo->url;
+                                    }
+
+                                    $orgTypes = [];
+                                    foreach ($block->organisationType as $o) {
+                                        $orgTypes[] = $o->label;
+                                    }
+
+                                    $bodyBlocks[] = [
+                                        'title' => $block->programmeTitle,
+                                        'description' => $block->description,
+                                        'photo' => $photos,
+                                        'area' => $block->area->label,
+                                        'organisationTypes' => $orgTypes,
+                                        'fundingSize' => [
+                                            'minimum' => $block->minimumFundingSize,
+                                            'maximum' => $block->maximumFundingSize
+                                        ],
+                                        'totalAvailable' => $block->totalAvailable,
+                                        'applicationDeadline' => $block->applicationDeadline,
+                                    ];
+                                    break;
+                            }
+                        }
+                    }
+
                     return [
                         'title' => $entry->title,
                         'url' => $entry->url,
-                        'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
-                        'body' => $entry->body
+                        // 'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
+                        // 'body' => $entry->body,
+                        'fundingProgramme' => $bodyBlocks                        
                     ];
                 }
             ];
