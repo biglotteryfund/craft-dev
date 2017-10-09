@@ -1,10 +1,96 @@
 <?php
+// namespace Craft;
 
 use craft\elements\Entry;
 use craft\helpers\UrlHelper;
 
+
+
+function getFundingProgramMatrix($entry) {
+    $bodyBlocks = [];
+    if ($entry->fundingProgramme) {
+        foreach ($entry->fundingProgramme as $block) {
+            switch ($block->type->handle) {
+                case 'fundingProgrammeBlock':
+
+                    $fundingData = [
+                        'title' => $block->programmeTitle
+                    ];
+
+                    $photos = [];
+                    foreach ($block->photo as $photo) {
+                        $photos[] = $photo->url;
+                    }
+                    if ($photos) {
+                        $fundingData['photo'] = $photos[0];
+                    }
+
+                    $orgTypes = [];
+                    foreach ($block->organisationType as $o) {
+                        $orgTypes[] = $o->label;
+                    }
+                    if ($orgTypes) {
+                        $fundingData['organisationTypes'] = $orgTypes;
+                    }
+
+                    if ($block->description) {
+                        $fundingData['description'] = $block->description;
+                    }
+
+                    if ($block->area) {
+                        $fundingData['area'] = $block->area->label;
+                    }
+
+                    if ($block->minimumFundingSize && $block->maximumFundingSize) {
+                        $fundingData['fundingSize'] = [
+                            'minimum' => (int)$block->minimumFundingSize,
+                            'maximum' => (int)$block->maximumFundingSize
+                        ];
+                    }
+
+                    if ($block->totalAvailable) {
+                        $fundingData['totalAvailable'] = $block->totalAvailable;
+                    }
+
+                    if ($block->applicationDeadline) {
+                        $fundingData['applicationDeadline'] = $block->applicationDeadline;
+                    }
+
+
+                    $bodyBlocks[] = $fundingData;
+                    break;
+            }
+        }
+    }
+    return $bodyBlocks;
+}
+
 return [
     'endpoints' => [
+        'content/<locale:en|cy>/programs.json' => function($locale) {
+
+            $siteId = ($locale === 'en' || !$locale) ? 1 : 2;
+            
+            return [
+                'elementType' => Entry::class,
+                'criteria' => [
+                    'section' => 'fundingProgrammes',
+                    'siteId' => $siteId
+                ],
+                'transformer' => function(Entry $entry) {
+                    $request = Craft::$app->getRequest();
+
+                    $location = $request->getParam('l');
+                    return [
+                        'title' => $entry->title,
+                        'url' => $entry->url,
+                        'content' => getFundingProgramMatrix($entry),
+                        'location' => $location,
+                        'test' => $entry->fundingProgramme[0]->area->label
+                    ];
+                },
+            ];
+        },
         'news.json' => [
             'elementType' => Entry::class,
             'criteria' => [
@@ -34,48 +120,11 @@ return [
                     'siteId' => $siteId
                 ],
                 'transformer' => function(Entry $entry) {
-
-                    // Create an array of all the "Body" Matrix field's blocks
-                    $bodyBlocks = [];
-                    if ($entry->fundingProgramme) {
-                        foreach ($entry->fundingProgramme as $block) {
-                            switch ($block->type->handle) {
-                                case 'fundingProgrammeBlock':
-
-                                    $photos = [];
-                                    foreach ($block->photo as $photo) {
-                                        $photos[] = $photo->url;
-                                    }
-
-                                    $orgTypes = [];
-                                    foreach ($block->organisationType as $o) {
-                                        $orgTypes[] = $o->label;
-                                    }
-
-                                    $bodyBlocks[] = [
-                                        'title' => $block->programmeTitle,
-                                        'description' => $block->description,
-                                        'photo' => $photos,
-                                        'area' => $block->area->label,
-                                        'organisationTypes' => $orgTypes,
-                                        'fundingSize' => [
-                                            'minimum' => $block->minimumFundingSize,
-                                            'maximum' => $block->maximumFundingSize
-                                        ],
-                                        'totalAvailable' => $block->totalAvailable,
-                                        'applicationDeadline' => $block->applicationDeadline,
-                                    ];
-                                    break;
-                            }
-                        }
-                    }
-
                     return [
                         'title' => $entry->title,
                         'url' => $entry->url,
-                        // 'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
-                        // 'body' => $entry->body,
-                        'fundingProgramme' => $bodyBlocks                        
+                        'jsonUrl' => UrlHelper::url("news/{$entry->id}.json"),
+                        'body' => $entry->body
                     ];
                 }
             ];
