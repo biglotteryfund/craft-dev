@@ -79,7 +79,6 @@ return [
                 ],
                 'transformer' => function(Entry $entry) {
                     $request = Craft::$app->getRequest();
-
                     $location = $request->getParam('l');
                     return [
                         'title' => $entry->title,
