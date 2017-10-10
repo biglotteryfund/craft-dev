@@ -38,7 +38,10 @@ function getFundingProgramMatrix($entry) {
                     }
 
                     if ($block->area) {
-                        $fundingData['area'] = $block->area->label;
+                        $fundingData['area'] = [
+                            'label' => $block->area->label,
+                            'value' => $block->area->value
+                        ];
                     }
 
                     if ($block->minimumFundingSize && $block->maximumFundingSize) {
@@ -57,7 +60,7 @@ function getFundingProgramMatrix($entry) {
                     }
 
 
-                    $bodyBlocks[] = $fundingData;
+                    $bodyBlocks = $fundingData;
                     break;
             }
         }
