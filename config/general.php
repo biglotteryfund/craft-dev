@@ -20,6 +20,8 @@ return [
 
         // Control Panel trigger word
         'cpTrigger' => 'admin',
+
+        'securityKey' => 'DugP0KMpm7-KvS9ID8vDmL3dPXs8S0uN'
     ],
 
     // Dev environment settings
