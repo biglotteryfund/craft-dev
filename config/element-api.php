@@ -9,7 +9,7 @@ use craft\helpers\UrlHelper;
 function getFundingProgramMatrix($entry) {
     $bodyBlocks = [];
     if ($entry->fundingProgramme) {
-        foreach ($entry->fundingProgramme as $block) {
+        foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
                 case 'fundingProgrammeBlock':
 
@@ -18,7 +18,7 @@ function getFundingProgramMatrix($entry) {
                     ];
 
                     $photos = [];
-                    foreach ($block->photo as $photo) {
+                    foreach ($block->photo->all() as $photo) {
                         $photos[] = $photo->url;
                     }
                     if ($photos) {
@@ -73,7 +73,7 @@ return [
         'content/<locale:en|cy>/programs.json' => function($locale) {
 
             $siteId = ($locale === 'en' || !$locale) ? 1 : 2;
-            
+
             return [
                 'elementType' => Entry::class,
                 'criteria' => [
