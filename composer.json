@@ -25,7 +25,8 @@
     "vlucas/phpdotenv": "^2.4.0",
     "roave/security-advisories": "dev-master",
     "craftcms/element-api": "^2.4",
-    "craftcms/aws-s3": "^1.0"
+    "craftcms/aws-s3": "^1.0",
+    "borucreative/craft3-ses": "^1.0"
   },
   "config": {
     "optimize-autoloader": true
