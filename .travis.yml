@@ -1,6 +1,8 @@
 language: php
 php:
 - 7.1.9
+script:
+- echo 0
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAJZTC5ZT5S4AQTASQ
