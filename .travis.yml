@@ -11,5 +11,6 @@ deploy:
   region: eu-west-1
   app: craft-test
   env: e-sezmabwnrr
+  bucket_name: elasticbeanstalk-eu-west-1-868515886436
   on:
     repo: biglotteryfund/craft-dev
