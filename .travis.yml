@@ -9,7 +9,7 @@ deploy:
   secret_access_key:
     secure: AOsSGMwiKd1Hf+Q5US4wIW2tsIYZsUt6PmKgfH/+kJQH5iRWbEDhSUTGnpv/w0bF+aFdZ3BjP1ucuJ47/r6SUTlQH4wWlL0qUJIjFlJKgLBHupH7W9yU7xOlpsr5eDtApkHjC3gGqf8I9DTjYHoNMcqeG4OfbwozIv8g0i1TmUzOiJk8mHzIBqemTNSS8gLFfS702CRNcJ8dSj5CdD0X2qwHkV3E3azewqiZMQvYpO9c9MY3J1bEZVyLazXXSbe2T+qMloU3AqV+ZgY1yGdX/or7HtOv1gCq4gS+od32E9MpJf+NCcDHIXjKq0DZfJ47Cy0WVtU9tOc4Po4twjea7RtmGai2kzE7H3N9VA6t/AiabSjRg4I5Ky/AiT2hdLUApX+mgci2HnfFsZ6olctG1iR0g1oDgVN0ua4Bl3yohvhhb7FrFQrcNXGHvKrcjgOAApSZ44qrmRCdC5zCJv7I81IukTGVKeg8iCokAD2KJEffQYVOnT6Sk+k4EbLsH6V49cEDrNplnkJHDpHQDAD6W/ZQQNCYLPd5KhmHVr64vhBtLBwpyJEEztkoFtl3v3NCruMgYV004tVzZQieQAG8rCWW2pC96d3kYGcr4mgDxg0x/fNWNbKFKm5Q6+z5Z6GW4963P9vACnqdoZeD0aN+PRqzbiw2KCNgi4rMDDQGJpA=
   region: eu-west-1
-  app: craft-test
+  app: "Craft CMS (Test)"
   env: e-sezmabwnrr
   bucket_name: elasticbeanstalk-eu-west-1-868515886436
   on:
