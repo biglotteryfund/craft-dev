@@ -98,31 +98,7 @@ function getFundingProgrammes($locale) {
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'content' => getFundingProgramMatrix($entry),
-                'test' => $entry->fundingProgramme[0]->area->label
-            ];
-        }
-    ];
-}
-
-function getFundingProgrammesV0($locale) {
-    $siteId = ($locale === 'en' || !$locale) ? 1 : 2;
-
-    return [
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'fundingProgrammes',
-            'siteId' => $siteId
-        ],
-        'transformer' => function(Entry $entry) {
-            $request = Craft::$app->getRequest();
-            $location = $request->getParam('l');
-            return [
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'content' => getFundingProgramMatrix($entry),
-                'location' => $location,
-                'test' => $entry->fundingProgramme[0]->area->label
+                'content' => getFundingProgramMatrix($entry)
             ];
         }
     ];
@@ -131,7 +107,6 @@ function getFundingProgrammesV0($locale) {
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/news' => getNews,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'content/<locale:en|cy>/programs.json' => getFundingProgrammesV0
+        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes
     ]
 ];
