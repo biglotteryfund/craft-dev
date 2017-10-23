@@ -38,7 +38,7 @@ function getFundingProgramMatrix($entry, $locale) {
 
                     if ($block->area) {
                         $fundingData['area'] = [
-                            'label' => Craft::t('site', $block->area->value, array(), $locale),
+                            'label' => Craft::t('site', $block->area->label, array(), $locale),
                             'value' => $block->area->value
                         ];
                     }

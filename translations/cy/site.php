@@ -1,9 +1,9 @@
 <?php
 
 return array(
-    "england" => "Lloegr",
-    "wales" => "Cymru",
-    "scotland" => "Yr Alban",
-    "northernIreland" => "Gogledd Iwerddon",
-    "ukWide" => "Ledled y DU"
+    "England" => "Lloegr",
+    "Wales" => "Cymru",
+    "Scotland" => "Yr Alban",
+    "Northern Ireland" => "Gogledd Iwerddon",
+    "UK-wide" => "Ledled y DU"
 );

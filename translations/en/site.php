@@ -1,9 +1,9 @@
 <?php
 
 return array(
-    "england" => "England",
-    "wales" => "Wales",
-    "scotland" => "Scotland",
-    "northernIreland" => "Northern Ireland",
-    "ukWide" => "UK-wide"
+    "England" => "England",
+    "Wales" => "Wales",
+    "Scotland" => "Scotland",
+    "Northern Ireland" => "Northern Ireland",
+    "UK-wide" => "UK-wide"
 );
