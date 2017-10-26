@@ -4,8 +4,9 @@
 use craft\elements\Entry;
 use craft\helpers\UrlHelper;
 
-function getFundingProgramMatrix($entry) {
+function getFundingProgramMatrix($entry, $locale) {
     $bodyBlocks = [];
+
     if ($entry->fundingProgramme) {
         foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
@@ -37,7 +38,7 @@ function getFundingProgramMatrix($entry) {
 
                     if ($block->area) {
                         $fundingData['area'] = [
-                            'label' => $block->area->label,
+                            'label' => Craft::t('site', $block->area->label, array(), $locale),
                             'value' => $block->area->value
                         ];
                     }
@@ -93,12 +94,12 @@ function getFundingProgrammes($locale) {
             'section' => 'fundingProgrammes',
             'site' => $locale
         ],
-        'transformer' => function(Entry $entry) {
+        'transformer' => function(Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'content' => getFundingProgramMatrix($entry)
+                'content' => getFundingProgramMatrix($entry, $locale)
             ];
         }
     ];
