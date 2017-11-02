@@ -26,7 +26,7 @@ function getFundingProgramMatrix($entry, $locale) {
 
                     $orgTypes = [];
                     foreach ($block->organisationType as $o) {
-                        $orgTypes[] = $o->label;
+                        $orgTypes[] = Craft::t('site', $o->label, array(), $locale);
                     }
                     if ($orgTypes) {
                         $fundingData['organisationTypes'] = $orgTypes;
