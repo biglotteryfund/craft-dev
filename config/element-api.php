@@ -4,6 +4,10 @@
 use craft\elements\Entry;
 use craft\helpers\UrlHelper;
 
+function translate($locale, $message, $variables = array()) {
+    return Craft::t('site', $message, $variables, $locale);
+}
+
 function getFundingProgramMatrix($entry, $locale) {
     $bodyBlocks = [];
 
@@ -26,7 +30,7 @@ function getFundingProgramMatrix($entry, $locale) {
 
                     $orgTypes = [];
                     foreach ($block->organisationType as $o) {
-                        $orgTypes[] = Craft::t('site', $o->label, array(), $locale);
+                        $orgTypes[] = translate($locale, $o->label);
                     }
                     if ($orgTypes) {
                         $fundingData['organisationTypes'] = $orgTypes;
@@ -38,7 +42,7 @@ function getFundingProgramMatrix($entry, $locale) {
 
                     if ($block->area) {
                         $fundingData['area'] = [
-                            'label' => Craft::t('site', $block->area->label, array(), $locale),
+                            'label' => translate($locale, $block->area->label),
                             'value' => $block->area->value
                         ];
                     }
