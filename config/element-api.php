@@ -17,7 +17,8 @@ function getFundingProgramMatrix($entry, $locale) {
                 case 'fundingProgrammeBlock':
 
                     $fundingData = [
-                        'title' => $block->programmeTitle
+                        'title' => $block->programmeTitle,
+                        'linkUrl' => $block->linkUrl
                     ];
 
                     $photos = [];
