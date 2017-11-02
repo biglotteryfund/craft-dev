@@ -7,6 +7,7 @@ return array(
     "Scotland" => "Scotland",
     "Northern Ireland" => "Northern Ireland",
     "UK-wide" => "UK-wide",
+    "Countries outside the UK" => "Countries outside the UK",
 
     // Organisation types
     "Voluntary or community organisation" => "Voluntary or community organisation",
