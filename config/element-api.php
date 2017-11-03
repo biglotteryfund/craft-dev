@@ -72,12 +72,13 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
-function getNews($locale) {
+function getPromotedNews($locale) {
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'news',
+            'articlePromoted' => true,
             'site' => $locale
         ],
         'transformer' => function(Entry $entry) {
@@ -85,7 +86,7 @@ function getNews($locale) {
                 'id' => $entry->id,
                 'title' => $entry->articleTitle,
                 'summary' => $entry->articleSummary,
-                'url' => $entry->url
+                'link' => $entry->articleLink
             ];
         },
     ];
@@ -112,7 +113,7 @@ function getFundingProgrammes($locale) {
 
 return [
     'endpoints' => [
-        'api/v1/<locale:en|cy>/news' => getNews,
+        'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes
     ]
 ];
