@@ -8,6 +8,15 @@ function translate($locale, $message, $variables = array()) {
     return Craft::t('site', $message, $variables, $locale);
 }
 
+function normaliseCacheHeaders($maxAge) {
+    $headers = \Craft::$app->response->headers;
+
+    $headers->set('access-control-allow-origin', '*');
+    $headers->set('cache-control', 'public, max-age=' . $maxAge);
+    header_remove('Expires');
+    header_remove('Pragma');
+}
+
 function getFundingProgramMatrix($entry, $locale) {
     $bodyBlocks = [];
 
@@ -73,6 +82,8 @@ function getFundingProgramMatrix($entry, $locale) {
 }
 
 function getPromotedNews($locale) {
+    normaliseCacheHeaders(300);
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
@@ -93,6 +104,8 @@ function getPromotedNews($locale) {
 }
 
 function getFundingProgrammes($locale) {
+    normaliseCacheHeaders(300);
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
