@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3670bf1d488bf642ec752db35c358303",
+    "content-hash": "a3161ad09335a41616f13cd67cde986f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.36.36",
+            "version": "3.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "26ed9d51a11ca88ce919d7b0884b4b47232997b4"
+                "reference": "65bc3aec387a2cfb997ec60bce3febdac8b30701"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/26ed9d51a11ca88ce919d7b0884b4b47232997b4",
-                "reference": "26ed9d51a11ca88ce919d7b0884b4b47232997b4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/65bc3aec387a2cfb997ec60bce3febdac8b30701",
+                "reference": "65bc3aec387a2cfb997ec60bce3febdac8b30701",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-11-02T23:56:51+00:00"
+            "time": "2017-11-08T23:17:54+00:00"
         },
         {
             "name": "borucreative/craft3-ses",
@@ -508,16 +508,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.0-beta.30",
+            "version": "3.0.0-beta.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "757ce0db6d1729fb51178afd824b60d086db5252"
+                "reference": "4690d8faa9f095c7410a39230b92e464885d7167"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/757ce0db6d1729fb51178afd824b60d086db5252",
-                "reference": "757ce0db6d1729fb51178afd824b60d086db5252",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/4690d8faa9f095c7410a39230b92e464885d7167",
+                "reference": "4690d8faa9f095c7410a39230b92e464885d7167",
                 "shasum": ""
             },
             "require": {
@@ -539,10 +539,10 @@
                 "league/flysystem": "~1.0.35",
                 "mikehaertl/php-shellcommand": "~1.2.5",
                 "php": ">=7.0.0",
-                "pixelandtonic/imagine": "0.7.1.3",
+                "pixelandtonic/imagine": "~0.7.1.2",
                 "seld/cli-prompt": "^1.0",
                 "twig/twig": "~2.3.0",
-                "yiisoft/yii2": "~2.0.12.0",
+                "yiisoft/yii2": "~2.0.13.0",
                 "yiisoft/yii2-debug": "~2.0.10",
                 "yiisoft/yii2-queue": "~2.0.0",
                 "yiisoft/yii2-swiftmailer": "~2.0.6",
@@ -550,8 +550,8 @@
             },
             "provide": {
                 "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
-                "bower-asset/jquery": "2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
-                "bower-asset/jquery.inputmask": "~3.2.2 | ~3.3.5",
+                "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
+                "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1"
             },
@@ -583,7 +583,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2017-10-31T21:35:07+00:00"
+            "time": "2017-11-09T01:54:54+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -1953,16 +1953,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.4.0-BETA2",
+            "version": "v3.4.0-BETA3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3"
+                "reference": "379744aa3f7ccc56d0b767d0a27edc44b3bef8d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3",
-                "reference": "8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3",
+                "url": "https://api.github.com/repos/symfony/console/zipball/379744aa3f7ccc56d0b767d0a27edc44b3bef8d9",
+                "reference": "379744aa3f7ccc56d0b767d0a27edc44b3bef8d9",
                 "shasum": ""
             },
             "require": {
@@ -2018,11 +2018,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-24T14:40:29+00:00"
+            "time": "2017-11-05T16:10:10+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v4.0.0-BETA2",
+            "version": "v4.0.0-BETA3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -2078,16 +2078,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.0-BETA2",
+            "version": "v3.4.0-BETA3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "113da0323f3409ebf8ddf394e9596ffeaf2723dc"
+                "reference": "dc207346812fcb31e3f91edcf9837512a82e6a1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/113da0323f3409ebf8ddf394e9596ffeaf2723dc",
-                "reference": "113da0323f3409ebf8ddf394e9596ffeaf2723dc",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/dc207346812fcb31e3f91edcf9837512a82e6a1e",
+                "reference": "dc207346812fcb31e3f91edcf9837512a82e6a1e",
                 "shasum": ""
             },
             "require": {
@@ -2123,20 +2123,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-03T13:54:22+00:00"
+            "time": "2017-11-05T16:10:10+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.0-BETA2",
+            "version": "v3.4.0-BETA3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "29422c4e871dd668ecac0e8075cf64dccdabff46"
+                "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/29422c4e871dd668ecac0e8075cf64dccdabff46",
-                "reference": "29422c4e871dd668ecac0e8075cf64dccdabff46",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/dac8d7db537bac7ad8143eb11360a8c2231f251a",
+                "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a",
                 "shasum": ""
             },
             "require": {
@@ -2172,7 +2172,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-24T14:12:06+00:00"
+            "time": "2017-11-05T16:10:10+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2235,16 +2235,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.0-BETA2",
+            "version": "v3.4.0-BETA3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "ae1f0fe7202afcdd0ea905fe88b14c05e1be5a46"
+                "reference": "dce0aaed6962844b680b9a98a163e2f5f768752b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/ae1f0fe7202afcdd0ea905fe88b14c05e1be5a46",
-                "reference": "ae1f0fe7202afcdd0ea905fe88b14c05e1be5a46",
+                "url": "https://api.github.com/repos/symfony/process/zipball/dce0aaed6962844b680b9a98a163e2f5f768752b",
+                "reference": "dce0aaed6962844b680b9a98a163e2f5f768752b",
                 "shasum": ""
             },
             "require": {
@@ -2280,7 +2280,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-24T14:12:06+00:00"
+            "time": "2017-11-05T16:10:10+00:00"
         },
         {
             "name": "twig/twig",
@@ -2397,21 +2397,21 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "70acbecc75cb26b6cd66d16be0b06e4b73db190d"
+                "reference": "9f82b8f0df9adb4b8a410be5aaa97818153689d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/70acbecc75cb26b6cd66d16be0b06e4b73db190d",
-                "reference": "70acbecc75cb26b6cd66d16be0b06e4b73db190d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/9f82b8f0df9adb4b8a410be5aaa97818153689d9",
+                "reference": "9f82b8f0df9adb4b8a410be5aaa97818153689d9",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": "2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
-                "bower-asset/jquery.inputmask": "~3.2.2 | ~3.3.5",
+                "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
+                "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
                 "cebe/markdown": "~1.0.0 | ~1.1.0",
@@ -2493,7 +2493,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-06-05T14:33:41+00:00"
+            "time": "2017-11-02T22:09:29+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
