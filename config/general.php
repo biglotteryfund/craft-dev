@@ -23,8 +23,7 @@ return [
 
         'securityKey' => 'DugP0KMpm7-KvS9ID8vDmL3dPXs8S0uN',
 
-        'allowAutoUpdates' => false,
-        'backupOnUpdate' => false
+        'allowAutoUpdates' => false
     ],
 
     // Dev environment settings
@@ -45,6 +44,6 @@ return [
     // Production environment settings
     'production' => [
         // Base site URL
-        'siteUrl' => null
+        'siteUrl' => null,
     ],
 ];
