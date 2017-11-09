@@ -45,5 +45,8 @@ return [
     'production' => [
         // Base site URL
         'siteUrl' => null,
+        
+        // avoid breaking HTTPS
+        'baseCpUrl' => getenv('BASE_CP_URL')
     ],
 ];
