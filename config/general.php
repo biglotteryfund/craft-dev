@@ -32,20 +32,21 @@ return [
         'siteUrl' => null,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true,
+        'devMode' => true
     ],
 
     // Staging environment settings
-    'staging' => [
+    'test' => [
         // Base site URL
         'siteUrl' => null,
+        // avoid breaking HTTPS
+        'baseCpUrl' => getenv('BASE_CP_URL')
     ],
 
     // Production environment settings
     'production' => [
         // Base site URL
         'siteUrl' => null,
-        
         // avoid breaking HTTPS
         'baseCpUrl' => getenv('BASE_CP_URL')
     ],
