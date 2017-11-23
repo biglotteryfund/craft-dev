@@ -64,6 +64,10 @@ function getFundingProgramMatrix($entry, $locale) {
                         ];
                     }
 
+                    if ($block->fundingSizeDescription) {
+                        $fundingData['fundingSizeDescription'] = $block->fundingSizeDescription;
+                    }
+
                     if ($block->totalAvailable) {
                         $fundingData['totalAvailable'] = $block->totalAvailable;
                     }
