@@ -81,7 +81,7 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
-function getPromotedNews($locale) {
+function getPromotedNews($siteId) {
     normaliseCacheHeaders(300);
 
     return [
@@ -90,7 +90,7 @@ function getPromotedNews($locale) {
         'criteria' => [
             'section' => 'news',
             'articlePromoted' => true,
-            'site' => $locale
+            'site' => $siteId
         ],
         'transformer' => function(Entry $entry) {
             return [
@@ -103,7 +103,7 @@ function getPromotedNews($locale) {
     ];
 }
 
-function getFundingProgrammes($locale) {
+function getFundingProgrammes($siteId) {
     normaliseCacheHeaders(300);
 
     return [
@@ -111,14 +111,14 @@ function getFundingProgrammes($locale) {
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
-            'site' => $locale
+            'site' => $siteId
         ],
-        'transformer' => function(Entry $entry) use ($locale) {
+        'transformer' => function(Entry $entry) use ($siteId) {
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'content' => getFundingProgramMatrix($entry, $locale)
+                'content' => getFundingProgramMatrix($entry, $siteId)
             ];
         }
     ];
@@ -126,7 +126,7 @@ function getFundingProgrammes($locale) {
 
 return [
     'endpoints' => [
-        'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes
+        'api/v1/<siteId:en|cy>/promoted-news' => getPromotedNews,
+        'api/v1/<siteId:en|cy>/funding-programmes' => getFundingProgrammes
     ]
 ];
