@@ -85,22 +85,22 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
-function getFundingProgrammeContentMatrix($entry, $locale) {
-    $bodyBlocks = [];
-    if ($entry->programmeContentSections) {
-        foreach ($entry->programmeContentSections->all() as $block) {
+function getFundingProgrammeRegionsMatrix($entry, $locale) {
+    $regions = [];
+    if ($entry->programmeRegions) {
+        foreach ($entry->programmeRegions->all() as $block) {
             switch ($block->type->handle) {
-                case 'fundingProgrammeContentArea':
-                    $fundingData = [
-                        'title' => $block->programmeContentAreaTitle,
-                        'body' => $block->programmeContentAreaBody
+                case 'programmeRegion':
+                    $region = [
+                        'title' => $block->programmeRegionTitle,
+                        'body' => $block->programmeRegionBody
                     ];
-                    array_push($bodyBlocks, $fundingData);
+                    array_push($regions, $region);
                     break;
             }
         }
     }
-    return $bodyBlocks;
+    return $regions;
 }
 
 function getPromotedNews($locale) {
@@ -168,7 +168,7 @@ function getFundingProgramme($locale, $slug) {
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeContentMatrix($entry, $locale)
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
             ];
         }
     ];
