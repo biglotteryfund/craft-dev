@@ -27,7 +27,8 @@
     "craftcms/element-api": "^2.5",
     "craftcms/aws-s3": "^1.0",
     "borucreative/craft3-ses": "^1.0",
-    "craftcms/redactor": "1.0.0"
+    "craftcms/redactor": "1.0.0",
+    "doublesecretagency/craft-cpcss": "v2.0.0"
   },
   "config": {
     "optimize-autoloader": true
