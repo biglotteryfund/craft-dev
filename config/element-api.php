@@ -141,6 +141,7 @@ function getFundingProgrammes($locale) {
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
+                'useNewContent' => (bool) $entry->useNewContent,
                 'content' => getFundingProgramMatrix($entry, $locale)
             ];
         }
