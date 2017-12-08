@@ -167,6 +167,7 @@ function getFundingProgramme($locale, $slug) {
                 'url' => $entry->url,
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
+                'intro' => $entry->programmeIntro,
                 'contentSections' => getFundingProgrammeContentMatrix($entry, $locale)
             ];
         }
