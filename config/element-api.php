@@ -85,6 +85,24 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
+function getFundingProgrammeContentMatrix($entry, $locale) {
+    $bodyBlocks = [];
+    if ($entry->programmeContentSections) {
+        foreach ($entry->programmeContentSections->all() as $block) {
+            switch ($block->type->handle) {
+                case 'fundingProgrammeContentArea':
+                    $fundingData = [
+                        'title' => $block->programmeContentAreaTitle,
+                        'body' => $block->programmeContentAreaBody
+                    ];
+                    array_push($bodyBlocks, $fundingData);
+                    break;
+            }
+        }
+    }
+    return $bodyBlocks;
+}
+
 function getPromotedNews($locale) {
     normaliseCacheHeaders(300);
 
@@ -122,7 +140,33 @@ function getFundingProgrammes($locale) {
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
+                'path' => $entry->uri,
                 'content' => getFundingProgramMatrix($entry, $locale)
+            ];
+        }
+    ];
+}
+
+function getFundingProgramme($locale, $slug) {
+    normaliseCacheHeaders(300);
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'fundingProgrammes',
+            'slug' => $slug
+        ],
+        'one' => true,
+        'transformer' => function(Entry $entry) use ($locale) {
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'url' => $entry->url,
+                'path' => $entry->uri,
+                'summary' => getFundingProgramMatrix($entry, $locale),
+                'contentSections' => getFundingProgrammeContentMatrix($entry, $locale)
             ];
         }
     ];
@@ -131,6 +175,7 @@ function getFundingProgrammes($locale) {
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes
+        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme
     ]
 ];
