@@ -1,5 +1,4 @@
 <?php
-// namespace Craft;
 
 use craft\elements\Entry;
 use craft\helpers\UrlHelper;
@@ -17,18 +16,21 @@ function normaliseCacheHeaders($maxAge) {
     header_remove('Pragma');
 }
 
-function getFundingProgramMatrix($entry, $locale) {
+function getFundingProgramMatrix($entry, $locale, $useNewContent) {
     $bodyBlocks = [];
 
     if ($entry->fundingProgramme) {
         foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
                 case 'fundingProgrammeBlock':
+                    $fundingData = [];
+                    $fundingData['title'] = $block->programmeTitle;
 
-                    $fundingData = [
-                        'title' => $block->programmeTitle,
-                        'linkUrl' => $block->linkUrl
-                    ];
+                    /**
+                     * If useNewContent switch is enabled set linkUrl to the
+                     * cannonical uri rather than the custom linkUrl field.
+                     */
+                    $fundingData['linkUrl'] = $useNewContent ? $entry->uri : $block->linkUrl;
 
                     $photos = [];
                     foreach ($block->photo->all() as $photo) {
@@ -136,13 +138,13 @@ function getFundingProgrammes($locale) {
             'site' => $locale
         ],
         'transformer' => function(Entry $entry) use ($locale) {
+            $useNewContent = (bool)$entry->useNewContent;
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'path' => $entry->uri,
-                'useNewContent' => (bool) $entry->useNewContent,
-                'content' => getFundingProgramMatrix($entry, $locale)
+                'urlPath' => $entry->uri,
+                'content' => getFundingProgramMatrix($entry, $locale, $useNewContent)
             ];
         }
     ];
