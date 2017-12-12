@@ -85,6 +85,24 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
+function getFundingProgrammeRegionsMatrix($entry, $locale) {
+    $regions = [];
+    if ($entry->programmeRegions) {
+        foreach ($entry->programmeRegions->all() as $block) {
+            switch ($block->type->handle) {
+                case 'programmeRegion':
+                    $region = [
+                        'title' => $block->programmeRegionTitle,
+                        'body' => $block->programmeRegionBody
+                    ];
+                    array_push($regions, $region);
+                    break;
+            }
+        }
+    }
+    return $regions;
+}
+
 function getPromotedNews($locale) {
     normaliseCacheHeaders(300);
 
@@ -122,7 +140,35 @@ function getFundingProgrammes($locale) {
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
+                'path' => $entry->uri,
+                'useNewContent' => (bool) $entry->useNewContent,
                 'content' => getFundingProgramMatrix($entry, $locale)
+            ];
+        }
+    ];
+}
+
+function getFundingProgramme($locale, $slug) {
+    normaliseCacheHeaders(300);
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'fundingProgrammes',
+            'slug' => $slug
+        ],
+        'one' => true,
+        'transformer' => function(Entry $entry) use ($locale) {
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'url' => $entry->url,
+                'path' => $entry->uri,
+                'summary' => getFundingProgramMatrix($entry, $locale),
+                'intro' => $entry->programmeIntro,
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
             ];
         }
     ];
@@ -131,6 +177,7 @@ function getFundingProgrammes($locale) {
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes
+        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme
     ]
 ];

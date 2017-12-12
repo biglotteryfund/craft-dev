@@ -1,0 +1,6 @@
+{
+    "HTML.SafeIframe": true,
+    "URI.SafeIframeRegexp": "%//(www.youtube.com/embed/|player.vimeo.com/video/)%",
+    "Attr.AllowedFrameTargets": ["_blank"],
+    "HTML.AllowedComments": ["pagebreak"]
+}

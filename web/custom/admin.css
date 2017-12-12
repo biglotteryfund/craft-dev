@@ -1,0 +1,34 @@
+/**
+ * Default redactor heading sizes are very big,
+ * so let's make 'em smaller.
+ */
+.redactor-styles.redactor-styles h1,
+.redactor-styles.redactor-styles h2,
+.redactor-styles.redactor-styles h3,
+.redactor-styles.redactor-styles h4,
+.redactor-styles.redactor-styles h5,
+.redactor-styles.redactor-styles h6 {
+    line-height: 1.2;
+    font-weight: bold;
+    text-transform: none;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.redactor-styles.redactor-styles h1 {
+    font-size: 22px;
+}
+.redactor-styles.redactor-styles h2 {
+    font-size: 21px;
+}
+.redactor-styles.redactor-styles h3 {
+    font-size: 19px;
+}
+.redactor-styles.redactor-styles h4 {
+    font-size: 18px;
+}
+.redactor-styles.redactor-styles h5 {
+    font-size: 16px;
+}
+.redactor-styles.redactor-styles h6 {
+    font-size: 15px;
+}
