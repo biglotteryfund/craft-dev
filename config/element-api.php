@@ -17,10 +17,10 @@ function normaliseCacheHeaders($maxAge)
     header_remove('Pragma');
 }
 
-function getFundingProgramMatrix($entry, $locale, $useNewContent)
+function getFundingProgramMatrix($entry, $locale)
 {
     $bodyBlocks = [];
-
+    $useNewContent = (bool) $entry->useNewContent;
     if ($entry->fundingProgramme) {
         foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
@@ -142,13 +142,12 @@ function getFundingProgrammes($locale)
             'site' => $locale,
         ],
         'transformer' => function (Entry $entry) use ($locale) {
-            $useNewContent = (bool) $entry->useNewContent;
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale, $useNewContent),
+                'content' => getFundingProgramMatrix($entry, $locale),
             ];
         },
     ];
