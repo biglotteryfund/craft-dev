@@ -1,14 +1,14 @@
 <?php
-// namespace Craft;
 
 use craft\elements\Entry;
-use craft\helpers\UrlHelper;
 
-function translate($locale, $message, $variables = array()) {
+function translate($locale, $message, $variables = array())
+{
     return Craft::t('site', $message, $variables, $locale);
 }
 
-function normaliseCacheHeaders($maxAge) {
+function normaliseCacheHeaders($maxAge)
+{
     $headers = \Craft::$app->response->headers;
 
     $headers->set('access-control-allow-origin', '*');
@@ -17,18 +17,22 @@ function normaliseCacheHeaders($maxAge) {
     header_remove('Pragma');
 }
 
-function getFundingProgramMatrix($entry, $locale) {
+function getFundingProgramMatrix($entry, $locale, $useNewContent)
+{
     $bodyBlocks = [];
 
     if ($entry->fundingProgramme) {
         foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
                 case 'fundingProgrammeBlock':
+                    $fundingData = [];
+                    $fundingData['title'] = $block->programmeTitle;
 
-                    $fundingData = [
-                        'title' => $block->programmeTitle,
-                        'linkUrl' => $block->linkUrl
-                    ];
+                    /**
+                     * If useNewContent switch is enabled set linkUrl to the
+                     * cannonical uri rather than the custom linkUrl field.
+                     */
+                    $fundingData['linkUrl'] = $useNewContent ? $entry->uri : $block->linkUrl;
 
                     $photos = [];
                     foreach ($block->photo->all() as $photo) {
@@ -53,14 +57,14 @@ function getFundingProgramMatrix($entry, $locale) {
                     if ($block->area) {
                         $fundingData['area'] = [
                             'label' => translate($locale, $block->area->label),
-                            'value' => $block->area->value
+                            'value' => $block->area->value,
                         ];
                     }
 
                     if ($block->minimumFundingSize && $block->maximumFundingSize) {
                         $fundingData['fundingSize'] = [
-                            'minimum' => (int)$block->minimumFundingSize,
-                            'maximum' => (int)$block->maximumFundingSize
+                            'minimum' => (int) $block->minimumFundingSize,
+                            'maximum' => (int) $block->maximumFundingSize,
                         ];
                     }
 
@@ -76,7 +80,6 @@ function getFundingProgramMatrix($entry, $locale) {
                         $fundingData['applicationDeadline'] = $block->applicationDeadline;
                     }
 
-
                     $bodyBlocks = $fundingData;
                     break;
             }
@@ -85,7 +88,8 @@ function getFundingProgramMatrix($entry, $locale) {
     return $bodyBlocks;
 }
 
-function getFundingProgrammeRegionsMatrix($entry, $locale) {
+function getFundingProgrammeRegionsMatrix($entry, $locale)
+{
     $regions = [];
     if ($entry->programmeRegions) {
         foreach ($entry->programmeRegions->all() as $block) {
@@ -93,7 +97,7 @@ function getFundingProgrammeRegionsMatrix($entry, $locale) {
                 case 'programmeRegion':
                     $region = [
                         'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody
+                        'body' => $block->programmeRegionBody,
                     ];
                     array_push($regions, $region);
                     break;
@@ -103,7 +107,8 @@ function getFundingProgrammeRegionsMatrix($entry, $locale) {
     return $regions;
 }
 
-function getPromotedNews($locale) {
+function getPromotedNews($locale)
+{
     normaliseCacheHeaders(300);
 
     return [
@@ -112,20 +117,21 @@ function getPromotedNews($locale) {
         'criteria' => [
             'section' => 'news',
             'articlePromoted' => true,
-            'site' => $locale
+            'site' => $locale,
         ],
-        'transformer' => function(Entry $entry) {
+        'transformer' => function (Entry $entry) {
             return [
                 'id' => $entry->id,
                 'title' => $entry->articleTitle,
                 'summary' => $entry->articleSummary,
-                'link' => $entry->articleLink
+                'link' => $entry->articleLink,
             ];
         },
     ];
 }
 
-function getFundingProgrammes($locale) {
+function getFundingProgrammes($locale)
+{
     normaliseCacheHeaders(300);
 
     return [
@@ -133,22 +139,23 @@ function getFundingProgrammes($locale) {
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
-            'site' => $locale
+            'site' => $locale,
         ],
-        'transformer' => function(Entry $entry) use ($locale) {
+        'transformer' => function (Entry $entry) use ($locale) {
+            $useNewContent = (bool) $entry->useNewContent;
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'path' => $entry->uri,
-                'useNewContent' => (bool) $entry->useNewContent,
-                'content' => getFundingProgramMatrix($entry, $locale)
+                'urlPath' => $entry->uri,
+                'content' => getFundingProgramMatrix($entry, $locale, $useNewContent),
             ];
-        }
+        },
     ];
 }
 
-function getFundingProgramme($locale, $slug) {
+function getFundingProgramme($locale, $slug)
+{
     normaliseCacheHeaders(300);
 
     return [
@@ -157,10 +164,10 @@ function getFundingProgramme($locale, $slug) {
         'criteria' => [
             'site' => $locale,
             'section' => 'fundingProgrammes',
-            'slug' => $slug
+            'slug' => $slug,
         ],
         'one' => true,
-        'transformer' => function(Entry $entry) use ($locale) {
+        'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
@@ -168,9 +175,9 @@ function getFundingProgramme($locale, $slug) {
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
-        }
+        },
     ];
 }
 
@@ -178,6 +185,6 @@ return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme
-    ]
+        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
+    ],
 ];
