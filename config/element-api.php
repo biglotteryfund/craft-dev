@@ -32,7 +32,8 @@ function getFundingProgramMatrix($entry, $locale)
                      * If useNewContent switch is enabled set linkUrl to the
                      * cannonical uri rather than the custom linkUrl field.
                      */
-                    $fundingData['linkUrl'] = $useNewContent ? "/$entry->uri" : $block->linkUrl;
+                    $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
+                    $fundingData['linkUrl'] = $useNewContent ? $pathLinkUrl : $block->linkUrl;
 
                     $photos = [];
                     foreach ($block->photo->all() as $photo) {
