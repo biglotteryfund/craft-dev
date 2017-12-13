@@ -141,10 +141,12 @@ function getFundingProgrammes($locale)
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
+            'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
+                'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
@@ -165,11 +167,18 @@ function getFundingProgramme($locale, $slug)
             'site' => $locale,
             'section' => 'fundingProgrammes',
             'slug' => $slug,
+            /**
+             * Include expired entries
+             * Allows expiry date to be used to drop items of the listing,
+             * but still maintain the details page for historical purposes
+             */
+            'status' => ['live', 'expired'],
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
+                'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
@@ -186,14 +195,13 @@ function getLegacyPage($locale)
     normaliseCacheHeaders(300);
 
     $pagePath = \Craft::$app->request->getParam('path');
-    
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
-            'legacyPath' => $pagePath
+            'legacyPath' => $pagePath,
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
