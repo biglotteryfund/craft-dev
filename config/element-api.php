@@ -181,10 +181,39 @@ function getFundingProgramme($locale, $slug)
     ];
 }
 
+function getLegacyPage($locale)
+{
+    normaliseCacheHeaders(300);
+
+    $pagePath = \Craft::$app->request->getParam('path');
+    
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'legacyPath' => $pagePath
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) use ($locale) {
+            return [
+                'id' => $entry->id,
+                'path' => $entry->uri,
+                'url' => $entry->url,
+                'title' => $entry->title,
+                'subtitle' => $entry->legacySubtitle,
+                'body' => $entry->legacyContent,
+            ];
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
+        'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
     ],
 ];
