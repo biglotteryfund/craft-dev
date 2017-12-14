@@ -12,9 +12,22 @@ function normaliseCacheHeaders($maxAge)
     $headers = \Craft::$app->response->headers;
 
     $headers->set('access-control-allow-origin', '*');
-    $headers->set('cache-control', 'public, max-age=' . $maxAge);
+
+    if ($maxAge > 0) {
+        $headers->set('cache-control', 'public, max-age=' . $maxAge);
+    } else {
+        $headers->set('cache-control', 'no-store,no-cache,max-age=0');
+    }
+
     header_remove('Expires');
     header_remove('Pragma');
+}
+
+function addCorsAuthHeaders() {
+    $headers = \Craft::$app->response->headers;
+
+    $headers->set('access-control-allow-origin', 'http://www.biglotteryfund.local');
+    $headers->set('access-control-allow-credentials', 'true');
 }
 
 function getFundingProgramMatrix($entry, $locale)
@@ -146,6 +159,7 @@ function getFundingProgrammes($locale)
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
+                'contentId' => $entry->id,
                 'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
@@ -178,6 +192,7 @@ function getFundingProgramme($locale, $slug)
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
+                'contentId' => $entry->id,
                 'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
@@ -217,11 +232,40 @@ function getLegacyPage($locale)
     ];
 }
 
+function getAdminLinks($locale, $entryId)
+{
+    normaliseCacheHeaders(0);
+    addCorsAuthHeaders();
+
+    $user = Craft::$app->user->getIdentity();
+    if (!$user || (!$user->admin && !$user->isInGroup('authors'))) {
+        throw new \yii\web\ForbiddenHttpException('Not authenticated');
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'id' => $entryId,
+            'site' => $locale,
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) {
+            return [
+                'id' => $entry->id,
+                'url' => $entry->url,
+                'editUrl' => $entry->cpEditUrl,
+            ];
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
+        'api/v1/<locale:en|cy>/admin-links/<entryId:\d+>' => getAdminLinks,
     ],
 ];
