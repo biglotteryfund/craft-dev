@@ -32,7 +32,8 @@ return [
         'siteUrl' => null,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true
+        'devMode' => true,
+        'defaultCookieDomain' => getenv('CUSTOM_COOKIE_DOMAIN')
     ],
 
     // Staging environment settings
