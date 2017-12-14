@@ -9,14 +9,14 @@ function translate($locale, $message, $variables = array())
 
 function normaliseCacheHeaders($maxAge)
 {
-    $headers = \Craft::$app->response->headers;
+    $responseHeaders = \Craft::$app->response->headers;
 
-    $headers->set('access-control-allow-origin', '*');
+    $responseHeaders->set('access-control-allow-origin', '*');
 
     if ($maxAge > 0) {
-        $headers->set('cache-control', 'public, max-age=' . $maxAge);
+        $responseHeaders->set('cache-control', 'public, max-age=' . $maxAge);
     } else {
-        $headers->set('cache-control', 'no-store,no-cache,max-age=0');
+        $responseHeaders->set('cache-control', 'no-store,no-cache,max-age=0');
     }
 
     header_remove('Expires');
@@ -24,10 +24,14 @@ function normaliseCacheHeaders($maxAge)
 }
 
 function addCorsAuthHeaders() {
-    $headers = \Craft::$app->response->headers;
+    $requestHeaders = \Craft::$app->request->headers;
+    $responseHeaders = \Craft::$app->response->headers;
+    $origin = $requestHeaders['origin'];
 
-    $headers->set('access-control-allow-origin', 'http://www.biglotteryfund.local');
-    $headers->set('access-control-allow-credentials', 'true');
+    if (isset($origin) && strpos($origin, getenv('CUSTOM_COOKIE_DOMAIN')) !== false) {
+        $responseHeaders->set('access-control-allow-origin', $origin);
+        $responseHeaders->set('access-control-allow-credentials', 'true');
+    }
 }
 
 function getFundingProgramMatrix($entry, $locale)
