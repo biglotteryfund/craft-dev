@@ -244,7 +244,7 @@ function getRelatedEntries($entry, $relationType) {
 
 function getFundingGuidance($locale, $category = false, $slug = false)
 {
-    // normaliseCacheHeaders(300);
+    normaliseCacheHeaders(300);
 
     $searchCriteria = [
         'section' => 'fundingGuidance',
