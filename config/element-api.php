@@ -217,35 +217,78 @@ function getLegacyPage($locale)
     ];
 }
 
-function getFundingGuidance($locale)
+function getBasicEntryData($entry) {
+    return [
+        'id' => $entry->id,
+        'path' => $entry->uri,
+        'url' => $entry->url,
+        'title' => $entry->title
+    ];
+}
+
+function getRelatedEntries($entry, $relationType) {
+    $relatedEntries = [];
+    if ($relationType == 'children') {
+        $relatedSearch = $entry->getChildren()->find();
+    } else if ($relationType == 'siblings') {
+        $relatedSearch = $entry->getSiblings()->find();
+    }
+    foreach ($relatedSearch as $relatedItem) {
+        $relatedEntry = getBasicEntryData($relatedItem);
+        // see https://craftcms.stackexchange.com/a/3013/6844 for `lft` param
+        $relatedEntry['order'] = $relatedItem->lft;
+        $relatedEntries[] = $relatedEntry;
+    }
+    return $relatedEntries;
+}
+
+function getFundingGuidance($locale, $category = false, $slug = false)
 {
     // normaliseCacheHeaders(300);
+
+    $searchCriteria = [
+        'section' => 'fundingGuidance',
+        'level' => 1
+    ];
     
+    if ($slug) {
+        $searchCriteria['slug'] = $slug;
+    }
+
+    if ($category) {
+        $searchCriteria['level'] = 2;
+    }
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'fundingGuidance'
-        ],
-        'one' => true,
-        'transformer' => function (Entry $entry) use ($locale) {
-            $children = [];
-            foreach ($entry->getChildren()->find() as $child) {
-                $children[] = [
-                    'id' => $child->id,
-                    'path' => $child->uri,
-                    'url' => $child->url,
-                    'title' => $child->title,
-                ];
+        'criteria' => $searchCriteria,
+        'transformer' => function (Entry $entry) use ($locale, $category, $slug) {
+            
+            $entryData = getBasicEntryData($entry);
+            $thisEntry = $entryData; // used to clone later
+            $thisEntry['isCurrent'] = true;
+            $thisEntry['order'] = $entry->lft;
+
+            if (!$category || !$slug) {
+                $children = getRelatedEntries($entry, 'children');
+                if (count($children) > 0) {
+                    $entryData['children'] = $children;
+                }
+                
+            } else {
+                $siblings = getRelatedEntries($entry, 'siblings');
+                if (count($siblings) > 0) {
+                    $entryData['siblings'] = $siblings;
+                    $entryData['siblings'][] = $thisEntry;
+                    // reorder the siblings now we've appended the current page
+                    usort($entryData['siblings'], function($a, $b) {
+                        return $a['order'] <=> $b['order'];
+                    });
+                }
             }
-            return [
-                'id' => $entry->id,
-                'path' => $entry->uri,
-                'url' => $entry->url,
-                'title' => $entry->title,
-                'pages' => $children
-            ];
+
+            return $entryData;
         },
     ];
 }
@@ -256,6 +299,8 @@ return [
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
-        'api/v1/<locale:en|cy>/funding/funding-guidance' => getFundingGuidance
+        'api/v1/<locale:en|cy>/funding/funding-guidance' => getFundingGuidance,
+        'api/v1/<locale:en|cy>/funding/funding-guidance/<slug>' => getFundingGuidance,
+        'api/v1/<locale:en|cy>/funding/funding-guidance/<category>/<slug>' => getFundingGuidance
     ],
 ];
