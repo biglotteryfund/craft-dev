@@ -218,12 +218,29 @@ function getLegacyPage($locale)
 }
 
 function getBasicEntryData($entry) {
-    return [
+    $basicData = [
         'id' => $entry->id,
         'path' => $entry->uri,
         'url' => $entry->url,
         'title' => $entry->title
     ];
+
+    // @TODO this is duplicated below
+    if ($entry->mainHeading) {
+        $basicData['mainHeading'] = $entry->mainHeading;
+    }
+
+    if ($entry->photo) {
+        $photos = [];
+        foreach ($entry->photo->all() as $photo) {
+            $photos[] = $photo->url;
+        }
+        if ($photos) {
+            $basicData['photo'] = $photos[0];
+        }
+    }
+
+    return $basicData;
 }
 
 function getRelatedEntries($entry, $relationType) {
@@ -240,6 +257,22 @@ function getRelatedEntries($entry, $relationType) {
         $relatedEntries[] = $relatedEntry;
     }
     return $relatedEntries;
+}
+
+function parseSegmentMatrix($entry, $locale)
+{
+    $segments = [];
+    if ($entry->segment) {
+        
+        foreach ($entry->segment->all() as $block) {
+            $segment = [];
+            $segment['title'] = $block->segmentTitle;
+            $segment['content'] = $block->segmentContent;
+            $segment['photo'] = $block->segmentImage->find()[0]->url;
+            array_push($segments, $segment);
+        }
+    }
+    return $segments;
 }
 
 function getFundingGuidancePage($locale)
@@ -265,6 +298,38 @@ function getFundingGuidancePage($locale)
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             
             $entryData = getBasicEntryData($entry);
+            // make a copy of this entry before augmenting it
+            //  so we can add it as a sibling
+            $thisEntry = $entryData;
+
+            if ($entry->mainHeading) {
+                $entryData['mainHeading'] = $entry->mainHeading;
+            }
+
+            if ($entry->photo) {
+                $photos = [];
+                foreach ($entry->photo->all() as $photo) {
+                    $photos[] = $photo->url;
+                }
+                if ($photos) {
+                    $entryData['photo'] = $photos[0];
+                }
+            }
+            
+            if ($entry->introductionText) {
+                $entryData['introduction'] = $entry->introductionText;
+            }
+
+            // @TODO this still returns true if the field is empty
+            if ($entry->outroText) {
+                $entryData['outro'] = $entry->outroText;
+            }
+
+            $segments = parseSegmentMatrix($entry, $locale);
+            if ($segments) {
+                $entryData['segments'] = $segments;
+            }
+            
 
             $children = getRelatedEntries($entry, 'children');
             if (count($children) > 0) {
@@ -273,8 +338,6 @@ function getFundingGuidancePage($locale)
             
             $siblings = getRelatedEntries($entry, 'siblings');
             if (count($siblings) > 0) {
-                // make a copy of this entry so we can add it as a sibling
-                $thisEntry = $entryData;
                 $thisEntry['isCurrent'] = true;
                 $thisEntry['order'] = $entry->lft;
                 $entryData['siblings'] = $siblings;
