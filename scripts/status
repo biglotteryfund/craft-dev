@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'json'
+
+environment, *the_rest = ARGV
+
+status = `eb status "#{environment}"`
+
+status_map = status.lines.inject({}) { |hash, line|
+    raw_key, raw_val = line.split(':')
+    key = raw_key.strip
+    val = raw_val.strip
+
+    case key
+    when "Application name"
+        hash.merge!( { "APPLICATION_NAME" => val } )
+    when "Deployed Version"
+        hash.merge!( { "DEPLOY_ID" => val } )
+    when "Updated"
+        hash.merge!( { "UPDATED_TIME" => val } )
+    when "Status"
+        hash.merge!( { "STATUS" => val } )
+    when "Health"
+        hash.merge!( { "HEALTH" => val } )
+    end
+
+    hash
+}
+
+puts JSON.pretty_generate(status_map)
+open('web/status.json', 'w') { |f|
+  f.puts JSON.pretty_generate(status_map)
+}
