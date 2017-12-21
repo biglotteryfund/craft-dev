@@ -1,9 +1,10 @@
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.DS_Store
+.elasticbeanstalk/*
 /.env
 /.idea
 /vendor
-.DS_Store
-license.key
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+license.key
+web/status.json
