@@ -242,52 +242,49 @@ function getRelatedEntries($entry, $relationType) {
     return $relatedEntries;
 }
 
-function getFundingGuidance($locale, $category = false, $slug = false)
+function getFundingGuidancePage($locale)
 {
     normaliseCacheHeaders(300);
 
+    $pagePath = \Craft::$app->request->getParam('path');
+
     $searchCriteria = [
-        'section' => 'fundingGuidance',
-        'level' => 1
+        'section' => 'fundingGuidance'
     ];
+
+    if ($pagePath) {
+        $searchCriteria['uri'] = $pagePath;
+    } else {
+        $searchCriteria['level'] = 1;
+    }
     
-    if ($slug) {
-        $searchCriteria['slug'] = $slug;
-    }
-
-    if ($category) {
-        $searchCriteria['level'] = 2;
-    }
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
-        'transformer' => function (Entry $entry) use ($locale, $category, $slug) {
+        'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             
             $entryData = getBasicEntryData($entry);
-            $thisEntry = $entryData; // used to clone later
-            $thisEntry['isCurrent'] = true;
-            $thisEntry['order'] = $entry->lft;
 
-            if (!$category || !$slug) {
-                $children = getRelatedEntries($entry, 'children');
-                if (count($children) > 0) {
-                    $entryData['children'] = $children;
-                }
-                
-            } else {
-                $siblings = getRelatedEntries($entry, 'siblings');
-                if (count($siblings) > 0) {
-                    $entryData['siblings'] = $siblings;
-                    $entryData['siblings'][] = $thisEntry;
-                    // reorder the siblings now we've appended the current page
-                    usort($entryData['siblings'], function($a, $b) {
-                        return $a['order'] <=> $b['order'];
-                    });
-                }
+            $children = getRelatedEntries($entry, 'children');
+            if (count($children) > 0) {
+                $entryData['children'] = $children;
             }
-
+            
+            $siblings = getRelatedEntries($entry, 'siblings');
+            if (count($siblings) > 0) {
+                // make a copy of this entry so we can add it as a sibling
+                $thisEntry = $entryData;
+                $thisEntry['isCurrent'] = true;
+                $thisEntry['order'] = $entry->lft;
+                $entryData['siblings'] = $siblings;
+                $entryData['siblings'][] = $thisEntry;
+                // reorder the siblings now we've appended the current page
+                usort($entryData['siblings'], function($a, $b) {
+                    return $a['order'] <=> $b['order'];
+                });
+            }
+            
             return $entryData;
         },
     ];
@@ -299,8 +296,6 @@ return [
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
-        'api/v1/<locale:en|cy>/funding/funding-guidance' => getFundingGuidance,
-        'api/v1/<locale:en|cy>/funding/funding-guidance/<slug>' => getFundingGuidance,
-        'api/v1/<locale:en|cy>/funding/funding-guidance/<category>/<slug>' => getFundingGuidance
+        'api/v1/<locale:en|cy>/funding/funding-guidance' => getFundingGuidancePage
     ],
 ];
