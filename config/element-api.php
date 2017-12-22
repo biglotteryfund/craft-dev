@@ -245,17 +245,24 @@ function getBasicEntryData($entry) {
 
 function getRelatedEntries($entry, $relationType) {
     $relatedEntries = [];
+    $relatedSearch = [];
+
     if ($relationType == 'children') {
-        $relatedSearch = $entry->getChildren()->find();
+        $relatedSearch = $entry->getChildren()->all();
     } else if ($relationType == 'siblings') {
-        $relatedSearch = $entry->getSiblings()->find();
+        // get parent first to allow including self as a sibling
+        $parent = $entry->getParent();
+        if ($parent) {
+            $relatedSearch = $parent->getDescendants(1)->all();
+        }
     }
+    
     foreach ($relatedSearch as $relatedItem) {
-        $relatedEntry = getBasicEntryData($relatedItem);
-        // see https://craftcms.stackexchange.com/a/3013/6844 for `lft` param
-        $relatedEntry['order'] = $relatedItem->lft;
-        $relatedEntries[] = $relatedEntry;
+        $relatedData = getBasicEntryData($relatedItem);
+        $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+        $relatedEntries[] = $relatedData;
     }
+    
     return $relatedEntries;
 }
 
@@ -268,7 +275,7 @@ function parseSegmentMatrix($entry, $locale)
             $segment = [];
             $segment['title'] = $block->segmentTitle;
             $segment['content'] = $block->segmentContent;
-            $segment['photo'] = $block->segmentImage->find()[0]->url;
+            $segment['photo'] = $block->segmentImage->all()[0]->url;
             array_push($segments, $segment);
         }
     }
@@ -302,9 +309,6 @@ function getListing($locale)
             
             $entryData = getBasicEntryData($entry);
 
-            // make a copy of this entry before augmenting it
-            //  so we can add it as a sibling
-            $thisEntry = $entryData;
 
             if ($entry->mainHeading) {
                 $entryData['mainHeading'] = $entry->mainHeading;
@@ -333,7 +337,6 @@ function getListing($locale)
             if ($segments) {
                 $entryData['segments'] = $segments;
             }
-            
 
             $children = getRelatedEntries($entry, 'children');
             if (count($children) > 0) {
@@ -342,14 +345,7 @@ function getListing($locale)
             
             $siblings = getRelatedEntries($entry, 'siblings');
             if (count($siblings) > 0) {
-                $thisEntry['isCurrent'] = true;
-                $thisEntry['order'] = $entry->lft;
                 $entryData['siblings'] = $siblings;
-                $entryData['siblings'][] = $thisEntry;
-                // reorder the siblings now we've appended the current page to them
-                usort($entryData['siblings'], function($a, $b) {
-                    return $a['order'] <=> $b['order'];
-                });
             }
             
             return $entryData;
