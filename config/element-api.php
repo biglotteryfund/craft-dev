@@ -275,12 +275,15 @@ function parseSegmentMatrix($entry, $locale)
     return $segments;
 }
 
-function getFundingGuidancePage($locale)
+function getListing($locale)
 {
     normaliseCacheHeaders(300);
 
     $pagePath = \Craft::$app->request->getParam('path');
 
+    // @TODO if we want to make this generic,
+    // we need to extract this and make it 
+    // a URL parameter (ideally matching site URL scheme)
     $searchCriteria = [
         'section' => 'fundingGuidance'
     ];
@@ -298,6 +301,7 @@ function getFundingGuidancePage($locale)
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             
             $entryData = getBasicEntryData($entry);
+
             // make a copy of this entry before augmenting it
             //  so we can add it as a sibling
             $thisEntry = $entryData;
@@ -320,8 +324,8 @@ function getFundingGuidancePage($locale)
                 $entryData['introduction'] = $entry->introductionText;
             }
 
-            // @TODO this still returns true if the field is empty
-            if ($entry->outroText) {
+            // casting to string prevents empty fields
+            if ((string) $entry->outroText) {
                 $entryData['outro'] = $entry->outroText;
             }
 
@@ -342,7 +346,7 @@ function getFundingGuidancePage($locale)
                 $thisEntry['order'] = $entry->lft;
                 $entryData['siblings'] = $siblings;
                 $entryData['siblings'][] = $thisEntry;
-                // reorder the siblings now we've appended the current page
+                // reorder the siblings now we've appended the current page to them
                 usort($entryData['siblings'], function($a, $b) {
                     return $a['order'] <=> $b['order'];
                 });
@@ -359,6 +363,6 @@ return [
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
-        'api/v1/<locale:en|cy>/funding/funding-guidance' => getFundingGuidancePage
+        'api/v1/<locale:en|cy>/listing' => getListing
     ],
 ];
