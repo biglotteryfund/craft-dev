@@ -217,11 +217,148 @@ function getLegacyPage($locale)
     ];
 }
 
+function getBasicEntryData($entry) {
+    $basicData = [
+        'id' => $entry->id,
+        'path' => $entry->uri,
+        'url' => $entry->url,
+        'title' => $entry->title
+    ];
+
+    // @TODO this is duplicated below
+    if ($entry->mainHeading) {
+        $basicData['mainHeading'] = $entry->mainHeading;
+    }
+
+    if ($entry->photo) {
+        $photos = [];
+        foreach ($entry->photo->all() as $photo) {
+            $photos[] = $photo->url;
+        }
+        if ($photos) {
+            $basicData['photo'] = $photos[0];
+        }
+    }
+
+    return $basicData;
+}
+
+function getRelatedEntries($entry, $relationType) {
+    $relatedEntries = [];
+    $relatedSearch = [];
+
+    if ($relationType == 'children') {
+        $relatedSearch = $entry->getChildren()->all();
+    } else if ($relationType == 'siblings') {
+        // get parent first to allow including self as a sibling
+        $parent = $entry->getParent();
+        if ($parent) {
+            $relatedSearch = $parent->getDescendants(1)->all();
+        }
+    }
+    
+    foreach ($relatedSearch as $relatedItem) {
+        $relatedData = getBasicEntryData($relatedItem);
+        $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+        $relatedEntries[] = $relatedData;
+    }
+    
+    return $relatedEntries;
+}
+
+function parseSegmentMatrix($entry, $locale)
+{
+    $segments = [];
+    if ($entry->segment) {
+        
+        foreach ($entry->segment->all() as $block) {
+            $segment = [];
+            $segment['title'] = $block->segmentTitle;
+            $segment['content'] = $block->segmentContent;
+            $segment['photo'] = $block->segmentImage->all()[0]->url;
+            array_push($segments, $segment);
+        }
+    }
+    return $segments;
+}
+
+function getListing($locale)
+{
+    normaliseCacheHeaders(300);
+
+    $pagePath = \Craft::$app->request->getParam('path');
+
+    // @TODO if we want to make this generic,
+    // we need to extract this and make it 
+    // a URL parameter (ideally matching site URL scheme)
+    $searchCriteria = [
+        'section' => 'fundingGuidance'
+    ];
+
+    if ($pagePath) {
+        $searchCriteria['uri'] = $pagePath;
+    } else {
+        $searchCriteria['level'] = 1;
+    }
+    
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $searchCriteria,
+        'transformer' => function (Entry $entry) use ($locale, $pagePath) {
+            
+            $entryData = getBasicEntryData($entry);
+
+
+            if ($entry->mainHeading) {
+                $entryData['mainHeading'] = $entry->mainHeading;
+            }
+
+            if ($entry->photo) {
+                $photos = [];
+                foreach ($entry->photo->all() as $photo) {
+                    $photos[] = $photo->url;
+                }
+                if ($photos) {
+                    $entryData['photo'] = $photos[0];
+                }
+            }
+            
+            if ($entry->introductionText) {
+                $entryData['introduction'] = $entry->introductionText;
+            }
+
+            // casting to string prevents empty fields
+            if ((string) $entry->outroText) {
+                $entryData['outro'] = $entry->outroText;
+            }
+
+            $segments = parseSegmentMatrix($entry, $locale);
+            if ($segments) {
+                $entryData['segments'] = $segments;
+            }
+
+            $children = getRelatedEntries($entry, 'children');
+            if (count($children) > 0) {
+                $entryData['children'] = $children;
+            }
+            
+            $siblings = getRelatedEntries($entry, 'siblings');
+            if (count($siblings) > 0) {
+                $entryData['siblings'] = $siblings;
+            }
+            
+            return $entryData;
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
+        'api/v1/<locale:en|cy>/listing' => getListing
     ],
 ];
