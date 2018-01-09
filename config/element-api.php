@@ -188,14 +188,14 @@ function getFundingProgramme($locale, $slug)
             ];
 
             if ($entry->heroImage->all()) {
-                $hero = $entry->heroImage->first();
+                $hero = $entry->heroImage->one();
                 $data['hero'] = [
                     'title' => $hero->title,
                     'caption' => $hero->caption,
-                    'default' => $hero->imageMedium->first()->url,
-                    'small' => $hero->imageSmall->first()->url,
-                    'medium' => $hero->imageMedium->first()->url,
-                    'large' => $hero->imageLarge->first()->url
+                    'default' => $hero->imageMedium->one()->url,
+                    'small' => $hero->imageSmall->one()->url,
+                    'medium' => $hero->imageMedium->one()->url,
+                    'large' => $hero->imageLarge->one()->url
                 ];
 
                 if ($hero->captionFootnote) {
