@@ -176,7 +176,7 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            return [
+            $data = [
                 'id' => $entry->id,
                 'status' => $entry->status,
                 'title' => $entry->title,
@@ -186,6 +186,24 @@ function getFundingProgramme($locale, $slug)
                 'intro' => $entry->programmeIntro,
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
+
+            if ($entry->heroImage->all()) {
+                $hero = $entry->heroImage->first();
+                $data['hero'] = [
+                    'title' => $hero->title,
+                    'caption' => $hero->caption,
+                    'default' => $hero->imageMedium->first()->url,
+                    'small' => $hero->imageSmall->first()->url,
+                    'medium' => $hero->imageMedium->first()->url,
+                    'large' => $hero->imageLarge->first()->url
+                ];
+
+                if ($hero->captionFootnote) {
+                    $data['hero']['captionFootnote'] = $hero->captionFootnote;
+                }
+            }
+
+            return $data;
         },
     ];
 }
