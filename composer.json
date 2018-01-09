@@ -21,14 +21,14 @@
   "minimum-stability": "beta",
   "require": {
     "php": ">=7.0.0",
-    "craftcms/cms": "3.0.0-RC1",
+    "craftcms/cms": "3.0.0-RC4",
     "vlucas/phpdotenv": "^2.4.0",
     "roave/security-advisories": "dev-master",
     "craftcms/element-api": "^2.5",
     "craftcms/aws-s3": "^1.0",
     "borucreative/craft3-ses": "^1.0",
-    "craftcms/redactor": "1.0.0",
-    "doublesecretagency/craft-cpcss": "v2.0.0"
+    "craftcms/redactor": "^1.0",
+    "doublesecretagency/craft-cpcss": "^2.0"
   },
   "config": {
     "optimize-autoloader": true
