@@ -306,12 +306,8 @@ function getListing($locale)
 
     $pagePath = \Craft::$app->request->getParam('path');
 
-    // @TODO if we want to make this generic,
-    // we need to extract this and make it 
-    // a URL parameter (ideally matching site URL scheme)
-    $searchCriteria = [
-        'section' => 'fundingGuidance'
-    ];
+
+    $searchCriteria = [];
 
     if ($pagePath) {
         $searchCriteria['uri'] = $pagePath;
