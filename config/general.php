@@ -23,7 +23,7 @@ return [
 
         'securityKey' => 'DugP0KMpm7-KvS9ID8vDmL3dPXs8S0uN',
 
-        'allowAutoUpdates' => false
+        'allowUpdates' => false
     ],
 
     // Dev environment settings
