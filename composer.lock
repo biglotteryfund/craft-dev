@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f83a9c6f8203fce98b469c87499283bb",
+    "content-hash": "95fd0eda70c493c0fef4a15913b75f36",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.48.9",
+            "version": "3.48.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "98394ea71d03080aaef6a47e413178ef88f17839"
+                "reference": "4159562ee5c2b2d322cfcccd2401d90bfaceaf1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/98394ea71d03080aaef6a47e413178ef88f17839",
-                "reference": "98394ea71d03080aaef6a47e413178ef88f17839",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4159562ee5c2b2d322cfcccd2401d90bfaceaf1d",
+                "reference": "4159562ee5c2b2d322cfcccd2401d90bfaceaf1d",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-01-08T23:52:14+00:00"
+            "time": "2018-01-09T22:01:13+00:00"
         },
         {
             "name": "borucreative/craft3-ses",
@@ -505,16 +505,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.0-RC4",
+            "version": "3.0.0-RC5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "c8fd183b7eb21d4d4c2584dd687e056a2c58510b"
+                "reference": "d3ee52019f3c772fd2d69017f0e2071308e5be85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/c8fd183b7eb21d4d4c2584dd687e056a2c58510b",
-                "reference": "c8fd183b7eb21d4d4c2584dd687e056a2c58510b",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/d3ee52019f3c772fd2d69017f0e2071308e5be85",
+                "reference": "d3ee52019f3c772fd2d69017f0e2071308e5be85",
                 "shasum": ""
             },
             "require": {
@@ -582,7 +582,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2018-01-02T18:31:00+00:00"
+            "time": "2018-01-09T19:21:35+00:00"
         },
         {
             "name": "craftcms/element-api",
