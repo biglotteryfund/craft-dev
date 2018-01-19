@@ -176,6 +176,10 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
+            if (!$entry->useNewContent) {
+                throw new \yii\web\NotFoundHttpException('Programme not found');
+            }
+
             $data = [
                 'id' => $entry->id,
                 'status' => $entry->status,
@@ -274,13 +278,13 @@ function getRelatedEntries($entry, $relationType) {
             $relatedSearch = $parent->getDescendants(1)->all();
         }
     }
-    
+
     foreach ($relatedSearch as $relatedItem) {
         $relatedData = getBasicEntryData($relatedItem);
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
         $relatedEntries[] = $relatedData;
     }
-    
+
     return $relatedEntries;
 }
 
@@ -288,7 +292,7 @@ function parseSegmentMatrix($entry, $locale)
 {
     $segments = [];
     if ($entry->segment) {
-        
+
         foreach ($entry->segment->all() as $block) {
             $segment = [];
             $segment['title'] = $block->segmentTitle;
@@ -314,13 +318,13 @@ function getListing($locale)
     } else {
         $searchCriteria['level'] = 1;
     }
-    
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
-            
+
             $entryData = getBasicEntryData($entry);
 
 
@@ -337,7 +341,7 @@ function getListing($locale)
                     $entryData['photo'] = $photos[0];
                 }
             }
-            
+
             if ($entry->introductionText) {
                 $entryData['introduction'] = $entry->introductionText;
             }
@@ -356,12 +360,12 @@ function getListing($locale)
             if (count($children) > 0) {
                 $entryData['children'] = $children;
             }
-            
+
             $siblings = getRelatedEntries($entry, 'siblings');
             if (count($siblings) > 0) {
                 $entryData['siblings'] = $siblings;
             }
-            
+
             return $entryData;
         },
     ];
