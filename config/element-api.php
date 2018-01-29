@@ -247,9 +247,8 @@ function getBasicEntryData($entry) {
         'title' => $entry->title
     ];
 
-    // @TODO this is duplicated below
-    if ($entry->mainHeading) {
-        $basicData['mainHeading'] = $entry->mainHeading;
+    if ($entry->trailText) {
+        $basicData['trailText'] = $entry->trailText;
     }
 
     if ($entry->photo) {
@@ -326,21 +325,6 @@ function getListing($locale)
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
 
             $entryData = getBasicEntryData($entry);
-
-
-            if ($entry->mainHeading) {
-                $entryData['mainHeading'] = $entry->mainHeading;
-            }
-
-            if ($entry->photo) {
-                $photos = [];
-                foreach ($entry->photo->all() as $photo) {
-                    $photos[] = $photo->url;
-                }
-                if ($photos) {
-                    $entryData['photo'] = $photos[0];
-                }
-            }
 
             if ($entry->introductionText) {
                 $entryData['introduction'] = $entry->introductionText;
