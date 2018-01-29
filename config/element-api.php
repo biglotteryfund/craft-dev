@@ -340,6 +340,10 @@ function getListing($locale)
                 $entryData['segments'] = $segments;
             }
 
+            if ($entry->relatedContent) {
+                $entryData['relatedContent'] = $entry->relatedContent;
+            }
+
             $children = getRelatedEntries($entry, 'children');
             if (count($children) > 0) {
                 $entryData['children'] = $children;
