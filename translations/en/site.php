@@ -10,7 +10,7 @@ return array(
     "Countries outside the UK" => "Countries outside the UK",
 
     // Organisation types
-    "Voluntary or community organisation" => "Voluntary or community organisation",
-    "Public sector organisation" => "Public sector organisation",
-    "Private sector organisation" => "Private sector organisation",
+    "Voluntary or community organisation" => "Voluntary or community organisations",
+    "Public sector organisation" => "Public sector organisations",
+    "Private sector organisation" => "Private sector organisations",
 );

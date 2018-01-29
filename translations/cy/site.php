@@ -10,7 +10,7 @@ return array(
     "Countries outside the UK" => "Gwledydd y tu allan i'r DU",
 
     // Organisation types
-    "Voluntary or community organisation" => "Mudiad gwirfoddol neu gymunedol",
-    "Public sector organisation" => "Mudiad sector cyhoeddus",
-    "Private sector organisation" => "Mudiad sector preifat",
+    "Voluntary or community organisation" => "Mudiadau gwirfoddol neu gymunedol",
+    "Public sector organisation" => "Mudiadau sector cyhoeddus",
+    "Private sector organisation" => "Mudiadau sector preifat",
 );
