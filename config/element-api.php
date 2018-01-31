@@ -17,6 +17,27 @@ function normaliseCacheHeaders($maxAge)
     header_remove('Pragma');
 }
 
+function getHeroImage($entry) {
+    $result = false;
+    if ($entry->heroImage->all()) {
+        $hero = $entry->heroImage->one();
+        $result = [
+            'title' => $hero->title,
+            'caption' => $hero->caption,
+            'default' => $hero->imageMedium->one()->url,
+            'small' => $hero->imageSmall->one()->url,
+            'medium' => $hero->imageMedium->one()->url,
+            'large' => $hero->imageLarge->one()->url
+        ];
+
+        if ($hero->captionFootnote) {
+            $result['captionFootnote'] = $hero->captionFootnote;
+        }
+    }
+
+    return $result;
+}
+
 function getFundingProgramMatrix($entry, $locale)
 {
     $bodyBlocks = [];
@@ -191,20 +212,8 @@ function getFundingProgramme($locale, $slug)
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
 
-            if ($entry->heroImage->all()) {
-                $hero = $entry->heroImage->one();
-                $data['hero'] = [
-                    'title' => $hero->title,
-                    'caption' => $hero->caption,
-                    'default' => $hero->imageMedium->one()->url,
-                    'small' => $hero->imageSmall->one()->url,
-                    'medium' => $hero->imageMedium->one()->url,
-                    'large' => $hero->imageLarge->one()->url
-                ];
-
-                if ($hero->captionFootnote) {
-                    $data['hero']['captionFootnote'] = $hero->captionFootnote;
-                }
+            if ($hero = getHeroImage($entry)) {
+                $data['hero'] = $hero;
             }
 
             return $data;
@@ -325,6 +334,10 @@ function getListing($locale)
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
 
             $entryData = getBasicEntryData($entry);
+
+            if ($hero = getHeroImage($entry)) {
+                $entryData['hero'] = $hero;
+            }
 
             if ($entry->introductionText) {
                 $entryData['introduction'] = $entry->introductionText;
