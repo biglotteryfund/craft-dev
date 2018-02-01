@@ -260,9 +260,9 @@ function getBasicEntryData($entry) {
         $basicData['trailText'] = $entry->trailText;
     }
 
-    if ($entry->photo) {
+    if ($entry->trailPhoto) {
         $photos = [];
-        foreach ($entry->photo->all() as $photo) {
+        foreach ($entry->trailPhoto->all() as $photo) {
             $photos[] = $photo->url;
         }
         if ($photos) {
@@ -299,9 +299,8 @@ function getRelatedEntries($entry, $relationType) {
 function parseSegmentMatrix($entry, $locale)
 {
     $segments = [];
-    if ($entry->segment) {
-
-        foreach ($entry->segment->all() as $block) {
+    if ($entry->contentSegment) {
+        foreach ($entry->contentSegment->all() as $block) {
             $segment = [];
             $segment['title'] = $block->segmentTitle;
             $segment['content'] = $block->segmentContent;
