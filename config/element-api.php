@@ -318,7 +318,9 @@ function getListing($locale)
     $pagePath = \Craft::$app->request->getParam('path');
 
 
-    $searchCriteria = [];
+    $searchCriteria = [
+        'site' => $locale
+    ];
 
     if ($pagePath) {
         $searchCriteria['uri'] = $pagePath;
