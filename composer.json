@@ -28,7 +28,8 @@
     "craftcms/aws-s3": "^1.0",
     "craftcms/redactor": "^1.0",
     "doublesecretagency/craft-cpcss": "^2.0",
-    "verbb/field-manager": "^2.0.1"
+    "verbb/field-manager": "^2.0.1",
+    "verbb/super-table": "^2.0.2"
   },
   "config": {
     "optimize-autoloader": true
