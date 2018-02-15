@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "61a98b93a9a98a080ec1c9606d9a7fbb",
+    "content-hash": "30382cbe822631942bfe4811c017343c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.52.7",
+            "version": "3.52.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4abee976c5884b1bc376b8388dd1ac53b4643bb6"
+                "reference": "0deaf5d0bdb6d50cba51e22838f2a99ad1195954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4abee976c5884b1bc376b8388dd1ac53b4643bb6",
-                "reference": "4abee976c5884b1bc376b8388dd1ac53b4643bb6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0deaf5d0bdb6d50cba51e22838f2a99ad1195954",
+                "reference": "0deaf5d0bdb6d50cba51e22838f2a99ad1195954",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,160 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-02-12T21:48:20+00:00"
+            "time": "2018-02-14T23:26:04+00:00"
+        },
+        {
+            "name": "biglotteryfund/preview-button",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/biglotteryfund/craft-preview-button.git",
+                "reference": "938e2cdcf0b554751cb8cebc39e9cefcda45447b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/biglotteryfund/craft-preview-button/zipball/938e2cdcf0b554751cb8cebc39e9cefcda45447b",
+                "reference": "938e2cdcf0b554751cb8cebc39e9cefcda45447b",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Preview Button",
+                "handle": "preview-button",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": true,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/biglotteryfund/craft-preview-button/master/CHANGELOG.md",
+                "class": "biglotteryfund\\previewbutton\\PreviewButton"
+            },
+            "autoload": {
+                "psr-4": {
+                    "biglotteryfund\\previewbutton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Big Lottery Fund",
+                    "homepage": "https://www.github.com/biglotteryfund"
+                }
+            ],
+            "description": "Adds a preview button to the entry editor screen to allow previewing of draft/revision entries",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "preview button"
+            ],
+            "time": "2018-02-06T11:38:02+00:00"
+        },
+        {
+            "name": "bower-asset/bootstrap",
+            "version": "v3.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+                "reference": "0b9c4a4007c44201dce9a6cc1a38407005c26c86",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.9.1,<4.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/inputmask",
+            "version": "3.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "http://opensource.org/licenses/mit-license.php"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-dist.git",
+                "reference": "77d2a51d0520d2ee44173afdf4e40a9201f5964e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/77d2a51d0520d2ee44173afdf4e40a9201f5964e",
+                "reference": "77d2a51d0520d2ee44173afdf4e40a9201f5964e",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/punycode",
+            "version": "v1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestiejs/punycode.js.git",
+                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "shasum": null
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/yii2-pjax",
+            "version": "2.0.7.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:yiisoft/jquery-pjax.git",
+                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
+                "reference": "aef7b953107264f00234902a3880eb50dafc48be",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -1323,16 +1476,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.6",
+            "version": "5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "d283e11b6e14c6f4664cf080415c4341293e5bbd"
+                "reference": "8560d4314577199ba51bf2032f02cd1315587c23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/d283e11b6e14c6f4664cf080415c4341293e5bbd",
-                "reference": "d283e11b6e14c6f4664cf080415c4341293e5bbd",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/8560d4314577199ba51bf2032f02cd1315587c23",
+                "reference": "8560d4314577199ba51bf2032f02cd1315587c23",
                 "shasum": ""
             },
             "require": {
@@ -1341,7 +1494,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.1",
                 "json-schema/json-schema-test-suite": "1.2.0",
-                "phpunit/phpunit": "^4.8.22"
+                "phpunit/phpunit": "^4.8.35"
             },
             "bin": [
                 "bin/validate-json"
@@ -1385,7 +1538,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2017-10-21T13:15:38+00:00"
+            "time": "2018-02-14T22:26:30+00:00"
         },
         {
             "name": "league/flysystem",

@@ -166,17 +166,72 @@ function getFundingProgrammes($locale)
             'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
+            
+            
+
             return [
                 'id' => $entry->id,
                 'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale),
+                'content' => getFundingProgramMatrix($entry, $locale)
             ];
         },
     ];
 }
+
+
+function getDraftOrVersionOfEntry($entryId, $typeOfRevision) {
+    $status = 'live';
+    
+    if ($typeOfRevision == 'draft') {
+        $param = 'draft';
+        $revisionMethod = 'getDraftsByEntryId';
+        $entryRevisionMethod = 'getDraftById';
+        $revisionIdParam = 'draftId';
+    } else {
+        $param = 'version';
+        $revisionMethod = 'getVersionsByEntryId';
+        $entryRevisionMethod = 'getVersionById';
+        $revisionIdParam = 'versionId';
+    }
+            
+    // is this a request for the latest draft?
+    $revisionId = \Craft::$app->request->getParam($param);
+
+    if ($revisionId) {
+
+        // check they're allowed to access this content
+        $user = Craft::$app->user->getIdentity();
+        if (!$user || (!$user->admin && !$user->isInGroup('authors'))) {
+            throw new \yii\web\ForbiddenHttpException('You are not authorised to access non-live content.');
+        }
+        
+        // get all drafts/revisions of this post
+        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entryId);
+
+        // filter drafts for the requested ID
+        $revisions = array_filter($revisions, function($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
+            return $revision->{$revisionIdParam} == $revisionId;
+        });
+
+        // is this draft valid for this post?
+        if (count($revisions) > 0) {
+            // look up the revision itself
+            $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
+            if ($revision) {
+                $entry = $revision;
+                $status = $param;
+            }
+        }
+    }
+    return [
+        'status' => $status,
+        'entry' => $entry,
+    ];
+}
+
 
 function getFundingProgramme($locale, $slug)
 {
@@ -202,6 +257,10 @@ function getFundingProgramme($locale, $slug)
                 throw new \yii\web\NotFoundHttpException('Programme not found');
             }
 
+            $status = 'live';
+            $todo = getDraftOrVersionOfEntry($entry->id, 'draft');
+
+            
             $data = [
                 'id' => $entry->id,
                 'status' => $entry->status,
@@ -210,7 +269,7 @@ function getFundingProgramme($locale, $slug)
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
             ];
 
             if ($hero = getHeroImage($entry)) {
