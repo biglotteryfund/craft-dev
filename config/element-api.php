@@ -17,7 +17,8 @@ function normaliseCacheHeaders($maxAge)
     header_remove('Pragma');
 }
 
-function getHeroImage($entry) {
+function getHeroImage($entry)
+{
     $result = false;
     if ($entry->heroImage->all()) {
         $hero = $entry->heroImage->one();
@@ -27,7 +28,7 @@ function getHeroImage($entry) {
             'default' => $hero->imageMedium->one()->url,
             'small' => $hero->imageSmall->one()->url,
             'medium' => $hero->imageMedium->one()->url,
-            'large' => $hero->imageLarge->one()->url
+            'large' => $hero->imageLarge->one()->url,
         ];
 
         if ($hero->captionFootnote) {
@@ -248,12 +249,13 @@ function getLegacyPage($locale)
     ];
 }
 
-function getBasicEntryData($entry) {
+function getBasicEntryData($entry)
+{
     $basicData = [
         'id' => $entry->id,
         'path' => $entry->uri,
         'url' => $entry->url,
-        'title' => $entry->title
+        'title' => $entry->title,
     ];
 
     if ($entry->trailText) {
@@ -273,7 +275,8 @@ function getBasicEntryData($entry) {
     return $basicData;
 }
 
-function getRelatedEntries($entry, $relationType) {
+function getRelatedEntries($entry, $relationType)
+{
     $relatedEntries = [];
     $relatedSearch = [];
 
@@ -317,9 +320,8 @@ function getListing($locale)
 
     $pagePath = \Craft::$app->request->getParam('path');
 
-
     $searchCriteria = [
-        'site' => $locale
+        'site' => $locale,
     ];
 
     if ($pagePath) {
@@ -373,12 +375,40 @@ function getListing($locale)
     ];
 }
 
+function getRoutes()
+{
+    normaliseCacheHeaders(300);
+
+    $pagePath = \Craft::$app->request->getParam('path');
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'elementsPerPage' => 1000,
+        'criteria' => [
+            'section' => ['fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
+            'status' => ['live', 'pending', 'expired'],
+            'orderBy' => 'uri'
+        ],
+        'transformer' => function (craft\elements\Entry $entry) {
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'path' => '/' . $entry->uri,
+                'live' => $entry->status === 'live',
+                'isFromCms' => true
+            ];
+        },
+    ];
+}
+
 return [
     'endpoints' => [
+        'api/v1/list-routes' => getRoutes,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
-        'api/v1/<locale:en|cy>/listing' => getListing
+        'api/v1/<locale:en|cy>/listing' => getListing,
     ],
 ];
