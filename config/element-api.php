@@ -307,7 +307,12 @@ function parseSegmentMatrix($entry, $locale)
             $segment = [];
             $segment['title'] = $block->segmentTitle;
             $segment['content'] = $block->segmentContent;
-            $segment['photo'] = $block->segmentImage->all()[0]->url;
+
+            $segmentImage = $block->segmentImage->one();
+            if ($segmentImage) {
+                $segment['photo'] = $segmentImage->url;
+            }
+
             array_push($segments, $segment);
         }
     }
