@@ -182,54 +182,65 @@ function getFundingProgrammes($locale)
 }
 
 
-function getDraftOrVersionOfEntry($entryId, $typeOfRevision) {
+function getDraftOrVersionOfEntry($entry) {
     $status = 'live';
+
+    $isDraft = \Craft::$app->request->getParam('draft');
+    $isVersion = \Craft::$app->request->getParam('version');
+
+    if (!$isDraft && !$isVersion) {
+        return false;
+    }
     
-    if ($typeOfRevision == 'draft') {
-        $param = 'draft';
+    if ($isDraft) {
+        $status = 'draft';
+        $revisionId = $isDraft;
         $revisionMethod = 'getDraftsByEntryId';
         $entryRevisionMethod = 'getDraftById';
         $revisionIdParam = 'draftId';
-    } else {
-        $param = 'version';
+    } else if ($isVersion) {
+        $status = 'version';
+        $revisionId = $isVersion;
         $revisionMethod = 'getVersionsByEntryId';
         $entryRevisionMethod = 'getVersionById';
         $revisionIdParam = 'versionId';
     }
-            
-    // is this a request for the latest draft?
-    $revisionId = \Craft::$app->request->getParam($param);
 
     if ($revisionId) {
 
-        // check they're allowed to access this content
+        // Check they're allowed to access this content
         $user = Craft::$app->user->getIdentity();
         if (!$user || (!$user->admin && !$user->isInGroup('authors'))) {
-            throw new \yii\web\ForbiddenHttpException('You are not authorised to access non-live content.');
+            // @TODO
+            // throw new \yii\web\ForbiddenHttpException('You are not authorised to access non-live content.');
         }
         
-        // get all drafts/revisions of this post
-        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entryId);
+        // Get all drafts/revisions of this post
+        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id);
 
-        // filter drafts for the requested ID
+        // Filter drafts/revisions for the requested ID
         $revisions = array_filter($revisions, function($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
             return $revision->{$revisionIdParam} == $revisionId;
         });
 
-        // is this draft valid for this post?
+        // Is this draft/revision ID valid for this post?
         if (count($revisions) > 0) {
-            // look up the revision itself
+            
+            // Look up the revision itself
             $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
+
+            // Non-live content has a null URI in Craft,
+            // so restore it to its base entry's URI
+            $revision->uri = $entry->uri;
+
             if ($revision) {
-                $entry = $revision;
-                $status = $param;
+                return [
+                    'status' => $status,
+                    'entry' => $revision,
+                ];
             }
         }
     }
-    return [
-        'status' => $status,
-        'entry' => $entry,
-    ];
 }
 
 
@@ -258,8 +269,6 @@ function getFundingProgramme($locale, $slug)
             }
 
             $status = 'live';
-            $todo = getDraftOrVersionOfEntry($entry->id, 'draft');
-
             
             $data = [
                 'id' => $entry->id,
@@ -395,7 +404,15 @@ function getListing($locale)
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
 
+            $status = 'live';
+            $revision = getDraftOrVersionOfEntry($entry);
+            if ($revision) {
+                $entry = $revision['entry'];
+                $status = $revision['status'];
+            }
+
             $entryData = getBasicEntryData($entry);
+            $entryData['status'] = $status;
 
             if ($hero = getHeroImage($entry)) {
                 $entryData['hero'] = $hero;
