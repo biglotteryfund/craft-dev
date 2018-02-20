@@ -438,7 +438,9 @@ function getListing($locale)
                 $entryData['siblings'] = $siblings;
             }
 
-            $entryData['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
+            if ($entry->relatedCaseStudies) {
+                $entryData['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
+            }
 
             return $entryData;
         },
