@@ -208,9 +208,11 @@ function extractCaseStudySummary($entry)
 {
     return [
         'title' => $entry->title,
-        // // 'thumbnail' => $entry->caseStudyThumbnailImage->one()
-        // 'thumbnail' => 'https://via.placeholder.com/600x339/cccccc/969696.jpg?text=Placeholder',
-        // 'trailText' => $entry->caseStudyTrailText ? $entry->caseStudyTrailText : null,
+        'linkUrl' => $entry->uri,
+        'trailText' => $entry->caseStudyTrailText,
+        'trailTextMore' => $entry->caseStudyTrailTextMore,
+        'grantAmount' => $entry->caseStudyGrantAmount,
+        'thumbnailUrl' => $entry->caseStudyThumbnailImage->one()->url,
     ];
 }
 
@@ -435,6 +437,8 @@ function getListing($locale)
             if (count($siblings) > 0) {
                 $entryData['siblings'] = $siblings;
             }
+
+            $entryData['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
 
             return $entryData;
         },
