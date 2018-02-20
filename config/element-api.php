@@ -26,6 +26,10 @@ function getBasicEntryData($entry)
         'title' => $entry->title,
     ];
 
+    if ($entry->themeColour) {
+        $basicData['themeColour'] = $entry->themeColour->value;
+    }
+
     if ($entry->trailText) {
         $basicData['trailText'] = $entry->trailText;
     }
