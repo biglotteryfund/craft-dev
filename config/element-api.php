@@ -24,6 +24,7 @@ function getBasicEntryData($entry)
         'path' => $entry->uri,
         'url' => $entry->url,
         'title' => $entry->title,
+        'dateUpdated' => $entry->dateUpdated
     ];
 
     if ($entry->themeColour) {
@@ -299,8 +300,6 @@ function getFundingProgrammes($locale)
             'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
-            
-            
 
             return [
                 'id' => $entry->id,
@@ -403,11 +402,12 @@ function getFundingProgramme($locale, $slug)
                 throw new \yii\web\NotFoundHttpException('Programme not found');
             }
 
-            $status = 'live';
+            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
             
             $data = [
                 'id' => $entry->id,
-                'status' => $entry->status,
+                'status' => $status,
+                'dateUpdated' => $entry->dateUpdated,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
