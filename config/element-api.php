@@ -7,12 +7,12 @@ function translate($locale, $message, $variables = array())
     return Craft::t('site', $message, $variables, $locale);
 }
 
-function normaliseCacheHeaders($maxAge)
+function normaliseCacheHeaders()
 {
     $headers = \Craft::$app->response->headers;
 
     $headers->set('access-control-allow-origin', '*');
-    $headers->set('cache-control', 'public, max-age=' . $maxAge);
+    $headers->set('cache-control', 'public, max-age=0');
     header_remove('Expires');
     header_remove('Pragma');
 }
@@ -24,6 +24,7 @@ function getBasicEntryData($entry)
         'path' => $entry->uri,
         'url' => $entry->url,
         'title' => $entry->title,
+        'dateUpdated' => $entry->dateUpdated
     ];
 
     if ($entry->themeColour) {
@@ -230,7 +231,7 @@ function extractCaseStudySummary($entry)
  */
 function getRoutes()
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
@@ -261,7 +262,7 @@ function getRoutes()
  */
 function getPromotedNews($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -288,7 +289,7 @@ function getPromotedNews($locale)
  */
 function getFundingProgrammes($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -299,17 +300,79 @@ function getFundingProgrammes($locale)
             'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
+
             return [
                 'id' => $entry->id,
                 'status' => $entry->status,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale),
+                'content' => getFundingProgramMatrix($entry, $locale)
             ];
         },
     ];
 }
+
+// Looks up an old version or draft of an entry
+// Usage: 
+// list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+function getDraftOrVersionOfEntry($entry) {
+
+    $status = 'live';
+    
+    $isDraft = \Craft::$app->request->getParam('draft');
+    $isVersion = \Craft::$app->request->getParam('version');
+    
+    if ($isDraft) {
+        $status = 'draft';
+        $revisionId = $isDraft;
+        $revisionMethod = 'getDraftsByEntryId';
+        $entryRevisionMethod = 'getDraftById';
+        $revisionIdParam = 'draftId';
+    } else if ($isVersion) {
+        $status = 'version';
+        $revisionId = $isVersion;
+        $revisionMethod = 'getVersionsByEntryId';
+        $entryRevisionMethod = 'getVersionById';
+        $revisionIdParam = 'versionId';
+    }
+
+    if (($isDraft || $isVersion) && $revisionId) {
+        
+        // Get all drafts/revisions of this post
+        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id);
+
+        // Filter drafts/revisions for the requested ID
+        $revisions = array_filter($revisions, function($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
+            return $revision->{$revisionIdParam} == $revisionId;
+        });
+
+        // Is this draft/revision ID valid for this post?
+        if (count($revisions) > 0) {
+            
+            // Look up the revision itself
+            $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
+
+            if ($revision) {
+                // Non-live content has a null URI in Craft,
+                // so restore it to its base entry's URI
+                $revision->uri = $entry->uri;
+                return [
+                    'entry' => $revision,
+                    'status' => $status
+                ];
+            }
+        }
+    }
+
+
+    // default to the original, unmodified entry
+    return [
+        'entry' => $entry,
+        'status' => $status
+    ];
+}
+
 
 /**
  * API Endpoint: Get Funding Programme
@@ -317,7 +380,7 @@ function getFundingProgrammes($locale)
  */
 function getFundingProgramme($locale, $slug)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -339,15 +402,18 @@ function getFundingProgramme($locale, $slug)
                 throw new \yii\web\NotFoundHttpException('Programme not found');
             }
 
+            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+            
             $data = [
                 'id' => $entry->id,
-                'status' => $entry->status,
+                'status' => $status,
+                'dateUpdated' => $entry->dateUpdated,
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
             ];
 
             if ($hero = getHeroImage($entry)) {
@@ -361,7 +427,7 @@ function getFundingProgramme($locale, $slug)
 
 function getLegacyPage($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
@@ -388,7 +454,7 @@ function getLegacyPage($locale)
 
 function getListing($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
@@ -408,7 +474,10 @@ function getListing($locale)
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
 
+            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+
             $entryData = getBasicEntryData($entry);
+            $entryData['status'] = $status;
 
             if ($hero = getHeroImage($entry)) {
                 $entryData['hero'] = $hero;
