@@ -317,6 +317,7 @@ function getFundingProgrammes($locale)
 // Usage: 
 // list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 function getDraftOrVersionOfEntry($entry) {
+
     
     $isDraft = \Craft::$app->request->getParam('draft');
     $isVersion = \Craft::$app->request->getParam('version');
@@ -338,7 +339,7 @@ function getDraftOrVersionOfEntry($entry) {
     if (($isDraft || $isVersion) && $revisionId) {
         
         // Get all drafts/revisions of this post
-        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id);
+        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id, $entry->siteId);
 
         // Filter drafts/revisions for the requested ID
         $revisions = array_filter($revisions, function($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
