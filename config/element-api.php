@@ -317,8 +317,6 @@ function getFundingProgrammes($locale)
 // Usage: 
 // list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 function getDraftOrVersionOfEntry($entry) {
-
-    $status = 'live';
     
     $isDraft = \Craft::$app->request->getParam('draft');
     $isVersion = \Craft::$app->request->getParam('version');
@@ -369,7 +367,7 @@ function getDraftOrVersionOfEntry($entry) {
     // default to the original, unmodified entry
     return [
         'entry' => $entry,
-        'status' => $status
+        'status' => $entry->status
     ];
 }
 
