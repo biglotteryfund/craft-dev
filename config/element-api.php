@@ -314,16 +314,15 @@ function getFundingProgrammes($locale)
     ];
 }
 
-
+// Looks up an old version or draft of an entry
+// Usage: 
+// list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 function getDraftOrVersionOfEntry($entry) {
-    $status = 'live';
 
+    $status = 'live';
+    
     $isDraft = \Craft::$app->request->getParam('draft');
     $isVersion = \Craft::$app->request->getParam('version');
-
-    if (!$isDraft && !$isVersion) {
-        return false;
-    }
     
     if ($isDraft) {
         $status = 'draft';
@@ -339,14 +338,7 @@ function getDraftOrVersionOfEntry($entry) {
         $revisionIdParam = 'versionId';
     }
 
-    if ($revisionId) {
-
-        // Check they're allowed to access this content
-        $user = Craft::$app->user->getIdentity();
-        if (!$user || (!$user->admin && !$user->isInGroup('authors'))) {
-            // @TODO
-            // throw new \yii\web\ForbiddenHttpException('You are not authorised to access non-live content.');
-        }
+    if (($isDraft || $isVersion) && $revisionId) {
         
         // Get all drafts/revisions of this post
         $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id);
@@ -362,18 +354,24 @@ function getDraftOrVersionOfEntry($entry) {
             // Look up the revision itself
             $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
 
-            // Non-live content has a null URI in Craft,
-            // so restore it to its base entry's URI
-            $revision->uri = $entry->uri;
-
             if ($revision) {
+                // Non-live content has a null URI in Craft,
+                // so restore it to its base entry's URI
+                $revision->uri = $entry->uri;
                 return [
-                    'status' => $status,
                     'entry' => $revision,
+                    'status' => $status
                 ];
             }
         }
     }
+
+
+    // default to the original, unmodified entry
+    return [
+        'entry' => $entry,
+        'status' => $status
+    ];
 }
 
 
@@ -476,12 +474,7 @@ function getListing($locale)
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
 
-            $status = 'live';
-            $revision = getDraftOrVersionOfEntry($entry);
-            if ($revision) {
-                $entry = $revision['entry'];
-                $status = $revision['status'];
-            }
+            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 
             $entryData = getBasicEntryData($entry);
             $entryData['status'] = $status;
