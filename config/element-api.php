@@ -212,7 +212,7 @@ function extractCaseStudySummary($entry)
 {
     return [
         'title' => $entry->title,
-        'linkUrl' => $entry->uri,
+        'linkUrl' => $entry->caseStudyLinkUrl,
         'trailText' => $entry->caseStudyTrailText,
         'trailTextMore' => $entry->caseStudyTrailTextMore,
         'grantAmount' => $entry->caseStudyGrantAmount,
