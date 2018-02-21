@@ -17,6 +17,80 @@ function normaliseCacheHeaders($maxAge)
     header_remove('Pragma');
 }
 
+function getBasicEntryData($entry)
+{
+    $basicData = [
+        'id' => $entry->id,
+        'path' => $entry->uri,
+        'url' => $entry->url,
+        'title' => $entry->title,
+    ];
+
+    if ($entry->themeColour) {
+        $basicData['themeColour'] = $entry->themeColour->value;
+    }
+
+    if ($entry->trailText) {
+        $basicData['trailText'] = $entry->trailText;
+    }
+
+    if ($entry->trailPhoto) {
+        $photos = [];
+        foreach ($entry->trailPhoto->all() as $photo) {
+            $photos[] = $photo->url;
+        }
+        if ($photos) {
+            $basicData['photo'] = $photos[0];
+        }
+    }
+
+    return $basicData;
+}
+
+function getRelatedEntries($entry, $relationType)
+{
+    $relatedEntries = [];
+    $relatedSearch = [];
+
+    if ($relationType == 'children') {
+        $relatedSearch = $entry->getChildren()->all();
+    } else if ($relationType == 'siblings') {
+        // get parent first to allow including self as a sibling
+        $parent = $entry->getParent();
+        if ($parent) {
+            $relatedSearch = $parent->getDescendants(1)->all();
+        }
+    }
+
+    foreach ($relatedSearch as $relatedItem) {
+        $relatedData = getBasicEntryData($relatedItem);
+        $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+        $relatedEntries[] = $relatedData;
+    }
+
+    return $relatedEntries;
+}
+
+function parseSegmentMatrix($entry, $locale)
+{
+    $segments = [];
+    if ($entry->contentSegment) {
+        foreach ($entry->contentSegment->all() as $block) {
+            $segment = [];
+            $segment['title'] = $block->segmentTitle;
+            $segment['content'] = $block->segmentContent;
+
+            $segmentImage = $block->segmentImage->one();
+            if ($segmentImage) {
+                $segment['photo'] = $segmentImage->url;
+            }
+
+            array_push($segments, $segment);
+        }
+    }
+    return $segments;
+}
+
 function getHeroImage($entry)
 {
     $result = false;
@@ -130,6 +204,61 @@ function getFundingProgrammeRegionsMatrix($entry, $locale)
     return $regions;
 }
 
+/**
+ * extractCaseStudySummary
+ * Extract a summary object from a case study entry
+ */
+function extractCaseStudySummary($entry)
+{
+    return [
+        'title' => $entry->title,
+        'linkUrl' => $entry->uri,
+        'trailText' => $entry->caseStudyTrailText,
+        'trailTextMore' => $entry->caseStudyTrailTextMore,
+        'grantAmount' => $entry->caseStudyGrantAmount,
+        'thumbnailUrl' => $entry->caseStudyThumbnailImage->one()->url,
+    ];
+}
+
+/**********************************************************
+ * API ENDPOINTS
+ **********************************************************/
+
+/**
+ * API Endpoint: Get Routes
+ * Get a list of all canonical URLs from the CMS
+ */
+function getRoutes()
+{
+    normaliseCacheHeaders(300);
+
+    $pagePath = \Craft::$app->request->getParam('path');
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'elementsPerPage' => 1000,
+        'criteria' => [
+            'section' => ['fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
+            'status' => ['live', 'pending', 'expired'],
+            'orderBy' => 'uri',
+        ],
+        'transformer' => function (craft\elements\Entry $entry) {
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'path' => '/' . $entry->uri,
+                'live' => $entry->status === 'live',
+                'isFromCms' => true,
+            ];
+        },
+    ];
+}
+
+/**
+ * API Endpoint: Get Promoted News
+ * Get a list of all promoted news articles
+ */
 function getPromotedNews($locale)
 {
     normaliseCacheHeaders(300);
@@ -153,6 +282,10 @@ function getPromotedNews($locale)
     ];
 }
 
+/**
+ * API Endpoint: Get Funding Programmes
+ * Get a list of all active funding programmes
+ */
 function getFundingProgrammes($locale)
 {
     normaliseCacheHeaders(300);
@@ -244,6 +377,10 @@ function getDraftOrVersionOfEntry($entry) {
 }
 
 
+/**
+ * API Endpoint: Get Funding Programme
+ * Get full details of a single funding programme
+ */
 function getFundingProgramme($locale, $slug)
 {
     normaliseCacheHeaders(300);
@@ -317,71 +454,6 @@ function getLegacyPage($locale)
     ];
 }
 
-function getBasicEntryData($entry)
-{
-    $basicData = [
-        'id' => $entry->id,
-        'path' => $entry->uri,
-        'url' => $entry->url,
-        'title' => $entry->title,
-    ];
-
-    if ($entry->trailText) {
-        $basicData['trailText'] = $entry->trailText;
-    }
-
-    if ($entry->trailPhoto) {
-        $photos = [];
-        foreach ($entry->trailPhoto->all() as $photo) {
-            $photos[] = $photo->url;
-        }
-        if ($photos) {
-            $basicData['photo'] = $photos[0];
-        }
-    }
-
-    return $basicData;
-}
-
-function getRelatedEntries($entry, $relationType)
-{
-    $relatedEntries = [];
-    $relatedSearch = [];
-
-    if ($relationType == 'children') {
-        $relatedSearch = $entry->getChildren()->all();
-    } else if ($relationType == 'siblings') {
-        // get parent first to allow including self as a sibling
-        $parent = $entry->getParent();
-        if ($parent) {
-            $relatedSearch = $parent->getDescendants(1)->all();
-        }
-    }
-
-    foreach ($relatedSearch as $relatedItem) {
-        $relatedData = getBasicEntryData($relatedItem);
-        $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
-        $relatedEntries[] = $relatedData;
-    }
-
-    return $relatedEntries;
-}
-
-function parseSegmentMatrix($entry, $locale)
-{
-    $segments = [];
-    if ($entry->contentSegment) {
-        foreach ($entry->contentSegment->all() as $block) {
-            $segment = [];
-            $segment['title'] = $block->segmentTitle;
-            $segment['content'] = $block->segmentContent;
-            $segment['photo'] = $block->segmentImage->all()[0]->url;
-            array_push($segments, $segment);
-        }
-    }
-    return $segments;
-}
-
 function getListing($locale)
 {
     normaliseCacheHeaders(300);
@@ -446,34 +518,11 @@ function getListing($locale)
                 $entryData['siblings'] = $siblings;
             }
 
+            if ($entry->relatedCaseStudies) {
+                $entryData['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
+            }
+
             return $entryData;
-        },
-    ];
-}
-
-function getRoutes()
-{
-    normaliseCacheHeaders(300);
-
-    $pagePath = \Craft::$app->request->getParam('path');
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'elementsPerPage' => 1000,
-        'criteria' => [
-            'section' => ['fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
-            'status' => ['live', 'pending', 'expired'],
-            'orderBy' => 'uri'
-        ],
-        'transformer' => function (craft\elements\Entry $entry) {
-            return [
-                'id' => $entry->id,
-                'title' => $entry->title,
-                'path' => '/' . $entry->uri,
-                'live' => $entry->status === 'live',
-                'isFromCms' => true
-            ];
         },
     ];
 }
