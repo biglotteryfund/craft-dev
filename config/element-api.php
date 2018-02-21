@@ -24,7 +24,7 @@ function getBasicEntryData($entry)
         'path' => $entry->uri,
         'url' => $entry->url,
         'title' => $entry->title,
-        'dateUpdated' => $entry->dateUpdated
+        'dateUpdated' => $entry->dateUpdated,
     ];
 
     if ($entry->themeColour) {
@@ -307,21 +307,21 @@ function getFundingProgrammes($locale)
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale)
+                'content' => getFundingProgramMatrix($entry, $locale),
             ];
         },
     ];
 }
 
 // Looks up an old version or draft of an entry
-// Usage: 
+// Usage:
 // list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
-function getDraftOrVersionOfEntry($entry) {
+function getDraftOrVersionOfEntry($entry)
+{
 
-    
     $isDraft = \Craft::$app->request->getParam('draft');
     $isVersion = \Craft::$app->request->getParam('version');
-    
+
     if ($isDraft) {
         $status = 'draft';
         $revisionId = $isDraft;
@@ -337,18 +337,18 @@ function getDraftOrVersionOfEntry($entry) {
     }
 
     if (($isDraft || $isVersion) && $revisionId) {
-        
+
         // Get all drafts/revisions of this post
         $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id, $entry->siteId);
 
         // Filter drafts/revisions for the requested ID
-        $revisions = array_filter($revisions, function($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
+        $revisions = array_filter($revisions, function ($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
             return $revision->{$revisionIdParam} == $revisionId;
         });
 
         // Is this draft/revision ID valid for this post?
         if (count($revisions) > 0) {
-            
+
             // Look up the revision itself
             $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
 
@@ -358,20 +358,18 @@ function getDraftOrVersionOfEntry($entry) {
                 $revision->uri = $entry->uri;
                 return [
                     'entry' => $revision,
-                    'status' => $status
+                    'status' => $status,
                 ];
             }
         }
     }
 
-
     // default to the original, unmodified entry
     return [
         'entry' => $entry,
-        'status' => $entry->status
+        'status' => $entry->status,
     ];
 }
-
 
 /**
  * API Endpoint: Get Funding Programme
@@ -402,7 +400,7 @@ function getFundingProgramme($locale, $slug)
             }
 
             list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
-            
+
             $data = [
                 'id' => $entry->id,
                 'status' => $status,
@@ -412,7 +410,7 @@ function getFundingProgramme($locale, $slug)
                 'path' => $entry->uri,
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale)
+                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
 
             if ($hero = getHeroImage($entry)) {
