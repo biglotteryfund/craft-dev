@@ -7,12 +7,12 @@ function translate($locale, $message, $variables = array())
     return Craft::t('site', $message, $variables, $locale);
 }
 
-function normaliseCacheHeaders($maxAge)
+function normaliseCacheHeaders()
 {
     $headers = \Craft::$app->response->headers;
 
     $headers->set('access-control-allow-origin', '*');
-    $headers->set('cache-control', 'public, max-age=' . $maxAge);
+    $headers->set('cache-control', 'public, max-age=0');
     header_remove('Expires');
     header_remove('Pragma');
 }
@@ -230,7 +230,7 @@ function extractCaseStudySummary($entry)
  */
 function getRoutes()
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
@@ -261,7 +261,7 @@ function getRoutes()
  */
 function getPromotedNews($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -288,7 +288,7 @@ function getPromotedNews($locale)
  */
 function getFundingProgrammes($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -381,7 +381,7 @@ function getDraftOrVersionOfEntry($entry) {
  */
 function getFundingProgramme($locale, $slug)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     return [
         'serializer' => 'jsonApi',
@@ -427,7 +427,7 @@ function getFundingProgramme($locale, $slug)
 
 function getLegacyPage($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
@@ -454,7 +454,7 @@ function getLegacyPage($locale)
 
 function getListing($locale)
 {
-    normaliseCacheHeaders(300);
+    normaliseCacheHeaders();
 
     $pagePath = \Craft::$app->request->getParam('path');
 
