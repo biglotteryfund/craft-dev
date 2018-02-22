@@ -517,6 +517,39 @@ function getListing($locale)
     ];
 }
 
+function getSurveys($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => 'surveys',
+            'site' => $locale,
+        ],
+        'transformer' => function (Entry $entry) use ($locale) {
+
+            $choices = array_map(function($choice) {
+                return [
+                    'id' => (int)$choice->id,
+                    'title' => $choice->choiceTitle,
+                    'allowMessage' => $choice->allowMessage,
+                ];
+            }, $entry->choices->all());
+
+            return [
+                'id' => $entry->id,
+                'surveyPath' => $entry->path,
+                'title' => $entry->title,
+                'question' => $entry->question,
+                'choices' => $choices,
+                'global' => $entry->global,
+            ];
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/list-routes' => getRoutes,
@@ -525,5 +558,6 @@ return [
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/legacy' => getLegacyPage,
         'api/v1/<locale:en|cy>/listing' => getListing,
+        'api/v1/<locale:en|cy>/surveys' => getSurveys,
     ],
 ];
