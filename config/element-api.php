@@ -550,6 +550,7 @@ function getSurveys($locale)
                 'id' => $entry->id,
                 'status' => $entry->status,
                 'surveyPath' => $entry->path,
+                'dateCreated' => $entry->dateCreated,
                 'title' => $entry->title,
                 'question' => $entry->question,
                 'choices' => $choices,
