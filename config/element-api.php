@@ -521,13 +521,21 @@ function getSurveys($locale)
 {
     normaliseCacheHeaders();
 
+    $showAll = \Craft::$app->request->getParam('all');
+
+    $searchCriteria = [
+        'section' => 'surveys'
+    ];
+
+    if ($showAll) {
+        // fetches everything
+        $searchCriteria['status'] = null;
+    }
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'surveys',
-            'site' => $locale,
-        ],
+        'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale) {
 
             $choices = array_map(function($choice) {
@@ -540,6 +548,7 @@ function getSurveys($locale)
 
             return [
                 'id' => $entry->id,
+                'status' => $entry->status,
                 'surveyPath' => $entry->path,
                 'title' => $entry->title,
                 'question' => $entry->question,
