@@ -521,14 +521,14 @@ function getSurveys($locale)
 {
     normaliseCacheHeaders();
 
-    $showAll = \Craft::$app->request->getParam('all');
-
     $searchCriteria = [
-        'section' => 'surveys'
+        'section' => 'surveys',
+        'locale' => $locale
     ];
 
+    // Fetch everything, including closed surveys, if ?all=true is set
+    $showAll = \Craft::$app->request->getParam('all');
     if ($showAll) {
-        // fetches everything
         $searchCriteria['status'] = null;
     }
 
