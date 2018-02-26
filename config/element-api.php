@@ -523,7 +523,7 @@ function getSurveys($locale)
 
     $searchCriteria = [
         'section' => 'surveys',
-        'locale' => $locale
+        'site' => $locale
     ];
 
     // Fetch everything, including closed surveys, if ?all=true is set
