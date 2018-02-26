@@ -279,19 +279,18 @@ function getDraftOrVersionOfEntry($entry)
     ];
 }
 
-function getAvailableLanguages($locale, $section, $slug)
+function getAvailableLanguages($entryId, $currentLanguage)
 {
-    $alternateSite = $locale === 'en' ? 'cy' : $locale;
+    $alternateLanguage = $currentLanguage === 'en' ? 'cy' : $currentLanguage;
 
     $altEntry = Entry::find()
-        ->section($section)
-        ->slug($slug)
-        ->site($alternateSite)
+        ->id($entryId)
+        ->site($alternateLanguage)
         ->one();
 
-    $availableLanguages = [$locale];
+    $availableLanguages = [$currentLanguage];
     if ($altEntry) {
-        array_push($availableLanguages, $alternateSite);
+        array_push($availableLanguages, $alternateLanguage);
     }
 
     return $availableLanguages;
@@ -423,7 +422,7 @@ function getFundingProgramme($locale, $slug)
 
             $data = [
                 'id' => $entry->id,
-                'availableLanguages' => getAvailableLanguages($locale, $section, $slug),
+                'availableLanguages' => getAvailableLanguages($entry->id, $locale),
                 'status' => $status,
                 'dateUpdated' => $entry->dateUpdated,
                 'title' => $entry->title,
@@ -468,6 +467,9 @@ function getListing($locale)
             list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 
             $entryData = getBasicEntryData($entry);
+
+            $entryData['availableLanguages'] = getAvailableLanguages($entry->id, $locale);
+
             $entryData['status'] = $status;
 
             if ($hero = getHeroImage($entry)) {
