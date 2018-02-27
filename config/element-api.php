@@ -308,8 +308,6 @@ function getRoutes()
 {
     normaliseCacheHeaders();
 
-    $pagePath = \Craft::$app->request->getParam('path');
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
