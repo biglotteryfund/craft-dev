@@ -315,7 +315,7 @@ function getRoutes()
         'elementType' => Entry::class,
         'elementsPerPage' => 1000,
         'criteria' => [
-            'section' => ['fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
+            'section' => ['about', 'fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
             'status' => ['live', 'pending', 'expired'],
             'orderBy' => 'uri',
         ],
@@ -375,7 +375,6 @@ function getFundingProgrammes($locale)
             'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
-
             return [
                 'id' => $entry->id,
                 'status' => $entry->status,
