@@ -510,6 +510,33 @@ function getListing($locale)
     ];
 }
 
+function getProfiles($locale, $section)
+{
+    normaliseCacheHeaders();
+
+    if (!in_array($section, ['seniorManagementTeam'])) {
+        throw new Error('Invalid section');
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => $section,
+            'site' => $locale,
+        ],
+        'transformer' => function (Entry $entry) {
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'role' => $entry->profileRole,
+                'image' => 'https://via.placeholder.com/600x400.jpg?text=Placeholder',
+                'bio' => $entry->profileBio,
+            ];
+        }
+    ];
+}
+
 function getSurveys($locale)
 {
     normaliseCacheHeaders();
@@ -560,6 +587,7 @@ return [
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/listing' => getListing,
+        'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/surveys' => getSurveys,
     ],
 ];
