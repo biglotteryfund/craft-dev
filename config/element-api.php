@@ -92,6 +92,11 @@ function parseSegmentMatrix($entry, $locale)
     return $segments;
 }
 
+function extractImage($imageField) {
+    $image = $imageField->one();
+    return $image ? $image->url : null;
+}
+
 function getHeroImage($entry)
 {
     $result = false;
@@ -530,7 +535,7 @@ function getProfiles($locale, $section)
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'role' => $entry->profileRole,
-                'image' => 'https://via.placeholder.com/600x400.jpg?text=Placeholder',
+                'image' => extractImage($entry->profilePhoto),
                 'bio' => $entry->profileBio,
             ];
         }
