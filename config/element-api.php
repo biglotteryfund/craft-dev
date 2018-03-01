@@ -533,6 +533,7 @@ function getProfiles($locale, $section)
         'transformer' => function (Entry $entry) {
             return [
                 'id' => $entry->id,
+                'slug' => $entry->slug,
                 'title' => $entry->title,
                 'role' => $entry->profileRole,
                 'image' => extractImage($entry->profilePhoto),
