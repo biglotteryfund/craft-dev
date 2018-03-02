@@ -519,7 +519,7 @@ function getProfiles($locale, $section)
 {
     normaliseCacheHeaders();
 
-    if (!in_array($section, ['seniorManagementTeam'])) {
+    if (!in_array($section, ['seniorManagementTeam', 'boardMembers'])) {
         throw new Error('Invalid section');
     }
 
