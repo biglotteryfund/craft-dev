@@ -99,7 +99,7 @@ function extractImage($imageField) {
 
 function getHeroImage($entry)
 {
-    $result = false;
+    $result = null;
     if ($entry->heroImage->all()) {
         $hero = $entry->heroImage->one();
         $result = [
@@ -430,13 +430,14 @@ function getFundingProgramme($locale, $slug)
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
+                'hero' => getHeroImage($entry),
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
 
-            if ($hero = getHeroImage($entry)) {
-                $data['hero'] = $hero;
+            if ($entry->relatedCaseStudies) {
+                $data['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
             }
 
             return $data;
