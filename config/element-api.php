@@ -217,6 +217,8 @@ function getFundingProgrammeRegionsMatrix($entry, $locale)
 function extractCaseStudySummary($entry)
 {
     return [
+        'id' => $entry->id,
+        'slug' => $entry->slug,
         'title' => $entry->title,
         'linkUrl' => $entry->caseStudyLinkUrl,
         'trailText' => $entry->caseStudyTrailText,
@@ -516,6 +518,29 @@ function getListing($locale)
     ];
 }
 
+/**
+ * API Endpoint: Get case studies
+ * Get a list of summaries for all case studies
+ */
+function getCaseStudies($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => 'caseStudies',
+            'site' => $locale,
+            'status' => 'live',
+        ],
+        'transformer' => function (Entry $entry) {
+            return extractCaseStudySummary($entry);
+        },
+    ];
+}
+
+
 function getProfiles($locale, $section)
 {
     normaliseCacheHeaders();
@@ -594,6 +619,7 @@ return [
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/listing' => getListing,
+        'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/surveys' => getSurveys,
     ],
