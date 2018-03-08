@@ -416,11 +416,11 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
-            if (!$entry->useNewContent) {
+            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+
+            if ($entry->useNewContent === false) {
                 throw new \yii\web\NotFoundHttpException('Programme not found');
             }
-
-            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
 
             $data = [
                 'id' => $entry->id,
