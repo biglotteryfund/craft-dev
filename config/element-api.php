@@ -1,5 +1,6 @@
 <?php
 
+use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 
 function translate($locale, $message, $variables = array())
@@ -92,33 +93,6 @@ function parseSegmentMatrix($entry, $locale)
     return $segments;
 }
 
-function extractImage($imageField) {
-    $image = $imageField->one();
-    return $image ? $image->url : null;
-}
-
-function getHeroImage($entry)
-{
-    $result = null;
-    if ($entry->heroImage->all()) {
-        $hero = $entry->heroImage->one();
-        $result = [
-            'title' => $hero->title,
-            'caption' => $hero->caption,
-            'default' => $hero->imageMedium->one()->url,
-            'small' => $hero->imageSmall->one()->url,
-            'medium' => $hero->imageMedium->one()->url,
-            'large' => $hero->imageLarge->one()->url,
-        ];
-
-        if ($hero->captionFootnote) {
-            $result['captionFootnote'] = $hero->captionFootnote;
-        }
-    }
-
-    return $result;
-}
-
 function getFundingProgramMatrix($entry, $locale)
 {
     $bodyBlocks = [];
@@ -137,12 +111,14 @@ function getFundingProgramMatrix($entry, $locale)
                     $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
                     $fundingData['linkUrl'] = $useNewContent ? $pathLinkUrl : $block->linkUrl;
 
-                    $photos = [];
-                    foreach ($block->photo->all() as $photo) {
-                        $photos[] = $photo->url;
-                    }
-                    if ($photos) {
-                        $fundingData['photo'] = $photos[0];
+                    $heroImage = Images::extractImage($entry->heroImage);
+                    if ($heroImage) {
+                        $fundingData['photo'] = Images::imgixUrl($heroImage->imageMedium->one()->url, [
+                            'fit' => 'crop',
+                            'crop' => 'faces',
+                            'w' => 80,
+                            'h' => 80
+                        ]);
                     }
 
                     $orgTypes = [];
@@ -432,7 +408,7 @@ function getFundingProgramme($locale, $slug)
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'path' => $entry->uri,
-                'hero' => getHeroImage($entry),
+                'hero' => Images::extractHeroImage($entry->heroImage),
                 'summary' => getFundingProgramMatrix($entry, $locale),
                 'intro' => $entry->programmeIntro,
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
@@ -477,9 +453,7 @@ function getListing($locale)
 
             $entryData['status'] = $status;
 
-            if ($hero = getHeroImage($entry)) {
-                $entryData['hero'] = $hero;
-            }
+            $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
 
             if ($entry->introductionText) {
                 $entryData['introduction'] = $entry->introductionText;
@@ -540,7 +514,6 @@ function getCaseStudies($locale)
     ];
 }
 
-
 function getProfiles($locale, $section)
 {
     normaliseCacheHeaders();
@@ -562,10 +535,10 @@ function getProfiles($locale, $section)
                 'slug' => $entry->slug,
                 'title' => $entry->title,
                 'role' => $entry->profileRole,
-                'image' => extractImage($entry->profilePhoto),
+                'image' => Images::extractImageUrl($entry->profilePhoto),
                 'bio' => $entry->profileBio,
             ];
-        }
+        },
     ];
 }
 
