@@ -19,7 +19,8 @@ class Images
         return $image ? $image->url : null;
     }
 
-    public static function extractHeroImage($imageField){
+    public static function extractHeroImage($imageField)
+    {
         $result = null;
         $hero = self::extractImage($imageField);
         if ($hero) {
@@ -55,7 +56,7 @@ class Images
             $builder = new UrlBuilder($imgixDomain);
             $builder->setUseHttps(true);
 
-            $defaults = array('auto' => "compress,format", 'crop' => 'faces', 'fill' => 'crop');
+            $defaults = array('auto' => "compress,format", 'crop' => 'entropy', 'fit' => 'crop');
             $params = array_replace_recursive($defaults, $options);
             return $builder->createURL($parsedUri['path'], $params);
         } else {

@@ -1,5 +1,6 @@
 <?php
 
+use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 
@@ -114,10 +115,8 @@ function getFundingProgramMatrix($entry, $locale)
                     $heroImage = Images::extractImage($entry->heroImage);
                     if ($heroImage) {
                         $fundingData['photo'] = Images::imgixUrl($heroImage->imageMedium->one()->url, [
-                            'fit' => 'crop',
-                            'crop' => 'faces',
                             'w' => 80,
-                            'h' => 80
+                            'h' => 80,
                         ]);
                     }
 
@@ -184,24 +183,6 @@ function getFundingProgrammeRegionsMatrix($entry, $locale)
         }
     }
     return $regions;
-}
-
-/**
- * extractCaseStudySummary
- * Extract a summary object from a case study entry
- */
-function extractCaseStudySummary($entry)
-{
-    return [
-        'id' => $entry->id,
-        'slug' => $entry->slug,
-        'title' => $entry->title,
-        'linkUrl' => $entry->caseStudyLinkUrl,
-        'trailText' => $entry->caseStudyTrailText,
-        'trailTextMore' => $entry->caseStudyTrailTextMore,
-        'grantAmount' => $entry->caseStudyGrantAmount,
-        'thumbnailUrl' => $entry->caseStudyThumbnailImage->one()->url,
-    ];
 }
 
 /**
@@ -414,9 +395,7 @@ function getFundingProgramme($locale, $slug)
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
 
-            if ($entry->relatedCaseStudies) {
-                $data['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
-            }
+            $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
 
             return $data;
         },
@@ -483,9 +462,7 @@ function getListing($locale)
                 $entryData['siblings'] = $siblings;
             }
 
-            if ($entry->relatedCaseStudies) {
-                $entryData['caseStudies'] = array_map('extractCaseStudySummary', $entry->relatedCaseStudies->all());
-            }
+            $entryData['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
 
             return $entryData;
         },
@@ -509,7 +486,7 @@ function getCaseStudies($locale)
             'status' => 'live',
         ],
         'transformer' => function (Entry $entry) {
-            return extractCaseStudySummary($entry);
+            return EntryHelpers::extractCaseStudySummary($entry);
         },
     ];
 }
