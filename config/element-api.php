@@ -395,7 +395,9 @@ function getFundingProgramme($locale, $slug)
                 'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
             ];
 
-            $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
+            if ($entry->relatedCaseStudies) {
+                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($caseStudies);
+            }
 
             return $data;
         },
