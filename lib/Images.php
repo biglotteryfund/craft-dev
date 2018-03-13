@@ -2,6 +2,7 @@
 
 namespace biglotteryfund\utils;
 
+use Imgix\ShardStrategy;
 use Imgix\UrlBuilder;
 use League\Uri\Parser;
 
@@ -53,8 +54,9 @@ class Images
             $parser = new Parser();
             $parsedUri = $parser($originalUrl);
 
-            $builder = new UrlBuilder($imgixDomain);
-            $builder->setUseHttps(true);
+            // PHP doesn't have named parameters, so…
+            // UrlBuilder($domain, $useHttps, $signKey, $shardStrategy, $includeLibraryParam = true)
+            $builder = new UrlBuilder($imgixDomain, true, "", ShardStrategy::CRC, false);
 
             $defaults = array('auto' => "compress,format", 'crop' => 'entropy', 'fit' => 'crop');
             $params = array_replace_recursive($defaults, $options);
