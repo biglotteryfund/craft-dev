@@ -396,7 +396,7 @@ function getFundingProgramme($locale, $slug)
             ];
 
             if ($entry->relatedCaseStudies) {
-                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($caseStudies);
+                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
             }
 
             return $data;
@@ -464,7 +464,9 @@ function getListing($locale)
                 $entryData['siblings'] = $siblings;
             }
 
-            $entryData['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
+            if ($entry->relatedCaseStudies) {
+                $entryData['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
+            }
 
             return $entryData;
         },
