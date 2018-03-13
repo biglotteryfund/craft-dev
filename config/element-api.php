@@ -4,11 +4,6 @@ use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 
-function translate($locale, $message, $variables = array())
-{
-    return Craft::t('site', $message, $variables, $locale);
-}
-
 function normaliseCacheHeaders()
 {
     $headers = \Craft::$app->response->headers;
@@ -19,7 +14,7 @@ function normaliseCacheHeaders()
     header_remove('Pragma');
 }
 
-function getBasicEntryData($entry)
+function getBasicEntryData(Entry $entry)
 {
     $basicData = [
         'id' => $entry->id,
@@ -122,7 +117,7 @@ function getFundingProgramMatrix($entry, $locale)
 
                     $orgTypes = [];
                     foreach ($block->organisationType as $o) {
-                        $orgTypes[] = translate($locale, $o->label);
+                        $orgTypes[] = EntryHelpers::translate($locale, $o->label);
                     }
                     if ($orgTypes) {
                         $fundingData['organisationTypes'] = $orgTypes;
@@ -134,7 +129,7 @@ function getFundingProgramMatrix($entry, $locale)
 
                     if ($block->area) {
                         $fundingData['area'] = [
-                            'label' => translate($locale, $block->area->label),
+                            'label' => EntryHelpers::translate($locale, $block->area->label),
                             'value' => $block->area->value,
                         ];
                     }
@@ -183,81 +178,6 @@ function getFundingProgrammeRegionsMatrix($entry, $locale)
         }
     }
     return $regions;
-}
-
-/**
- * Looks up an old version or draft of an entry
- * @usage: `list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);`
- */
-function getDraftOrVersionOfEntry($entry)
-{
-    $isDraft = \Craft::$app->request->getParam('draft');
-    $isVersion = \Craft::$app->request->getParam('version');
-
-    if ($isDraft) {
-        $status = 'draft';
-        $revisionId = $isDraft;
-        $revisionMethod = 'getDraftsByEntryId';
-        $entryRevisionMethod = 'getDraftById';
-        $revisionIdParam = 'draftId';
-    } else if ($isVersion) {
-        $status = 'version';
-        $revisionId = $isVersion;
-        $revisionMethod = 'getVersionsByEntryId';
-        $entryRevisionMethod = 'getVersionById';
-        $revisionIdParam = 'versionId';
-    }
-
-    if (($isDraft || $isVersion) && $revisionId) {
-
-        // Get all drafts/revisions of this post
-        $revisions = \Craft::$app->entryRevisions->{$revisionMethod}($entry->id, $entry->siteId);
-
-        // Filter drafts/revisions for the requested ID
-        $revisions = array_filter($revisions, function ($revision) use ($revisionId, $revisionIdParam, $entryRevisionMethod) {
-            return $revision->{$revisionIdParam} == $revisionId;
-        });
-
-        // Is this draft/revision ID valid for this post?
-        if (count($revisions) > 0) {
-
-            // Look up the revision itself
-            $revision = \Craft::$app->entryRevisions->{$entryRevisionMethod}($revisionId);
-
-            if ($revision) {
-                // Non-live content has a null URI in Craft,
-                // so restore it to its base entry's URI
-                $revision->uri = $entry->uri;
-                return [
-                    'entry' => $revision,
-                    'status' => $status,
-                ];
-            }
-        }
-    }
-
-    // default to the original, unmodified entry
-    return [
-        'entry' => $entry,
-        'status' => $entry->status,
-    ];
-}
-
-function getAvailableLanguages($entryId, $currentLanguage)
-{
-    $alternateLanguage = $currentLanguage === 'en' ? 'cy' : $currentLanguage;
-
-    $altEntry = Entry::find()
-        ->id($entryId)
-        ->site($alternateLanguage)
-        ->one();
-
-    $availableLanguages = [$currentLanguage];
-    if ($altEntry) {
-        array_push($availableLanguages, $alternateLanguage);
-    }
-
-    return $availableLanguages;
 }
 
 /**********************************************************
@@ -375,7 +295,7 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
-            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
             if ($entry->useNewContent === false) {
                 throw new \yii\web\NotFoundHttpException('Programme not found');
@@ -383,7 +303,7 @@ function getFundingProgramme($locale, $slug)
 
             $data = [
                 'id' => $entry->id,
-                'availableLanguages' => getAvailableLanguages($entry->id, $locale),
+                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
                 'status' => $status,
                 'dateUpdated' => $entry->dateUpdated,
                 'title' => $entry->title,
@@ -425,12 +345,11 @@ function getListing($locale)
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
-
-            list('entry' => $entry, 'status' => $status) = getDraftOrVersionOfEntry($entry);
+            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
             $entryData = getBasicEntryData($entry);
 
-            $entryData['availableLanguages'] = getAvailableLanguages($entry->id, $locale);
+            $entryData['availableLanguages'] = EntryHelpers::getAvailableLanguages($entry->id, $locale);
 
             $entryData['status'] = $status;
 
