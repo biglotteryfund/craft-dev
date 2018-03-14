@@ -1,27 +1,6 @@
 {
-    "buttons": [
-        "formatting",
-        "bold",
-        "italic",
-        "unorderedlist",
-        "orderedlist",
-        "link",
-        "image",
-        "video"
-    ],
-    "formatting": [
-        "p",
-        "blockquote",
-        "h2",
-        "h3",
-        "h4",
-        "h5"
-    ],
-    "plugins": [
-        "source",
-        "fullscreen",
-        "video",
-        "linkButton"
-    ],
-    "toolbarFixed": true
+  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video", "file"],
+  "formatting": ["p", "blockquote", "h2", "h3", "h4", "h5"],
+  "plugins": ["source", "fullscreen", "video", "linkButton"],
+  "toolbarFixed": true
 }
