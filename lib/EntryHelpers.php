@@ -88,6 +88,42 @@ class EntryHelpers
         ];
     }
 
+    public static function queryPromotedNews()
+    {
+        $newsQuery = Entry::find();
+        return \Craft::configure($newsQuery, [
+            'section' => 'news',
+            'limit' => 3,
+            'articlePromoted' => true,
+        ]);
+    }
+
+    /**
+     * extractNewsSummary
+     * Extract a summary object from a news entry
+     */
+    public static function extractNewsSummary(Entry $entry)
+    {
+        return [
+            'id' => $entry->id,
+            'title' => $entry->articleTitle,
+            'summary' => $entry->articleSummary,
+            'link' => $entry->articleLink,
+        ];
+    }
+
+    /**
+     * Wrapper around `extractNewsSummary`
+     * for extracting an array of summaries from a list of news articles
+     */
+    public static function extractNewsSummaries($newsArticles)
+    {
+        return $newsArticles ? array_map(
+            'self::extractNewsSummary',
+            $newsArticles
+        ) : [];
+    }
+
     /**
      * extractCaseStudySummary
      * Extract a summary object from a case study entry

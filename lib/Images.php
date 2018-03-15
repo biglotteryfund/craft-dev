@@ -46,6 +46,39 @@ class Images
         return $result;
     }
 
+    public static function extractHomepageHeroImage($hero)
+    {
+        $imageSmall = self::imgixUrl($hero->imageSmall->one()->url, ['w' => '644', 'h' => '573']);
+        $imageMedium = self::imgixUrl($hero->imageMedium->one()->url, ['w' => '1280', 'h' => '720']);
+        $imageLarge = self::imgixUrl($hero->imageLarge->one()->url, ['w' => '1373', 'h' => '503']);
+
+        $result = [
+            'caption' => $hero->caption,
+            'default' => $imageMedium,
+            'small' => $imageSmall,
+            'medium' => $imageMedium,
+            'large' => $imageLarge,
+        ];
+
+        if ($hero->captionFootnote) {
+            $result['captionFootnote'] = $hero->captionFootnote;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Wrapper around `extractHomepageHeroImage`
+     * for extracting an array of summaries from a list of hero images
+     */
+    public static function extractHomepageHeroImages($homepageHeroImages)
+    {
+        return array_map(
+            'self::extractHomepageHeroImage',
+            $homepageHeroImages
+        );
+    }
+
     public static function imgixUrl($originalUrl, $options = [])
     {
         $imgixDomain = getenv('CUSTOM_IMGIX_DOMAIN');

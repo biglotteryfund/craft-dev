@@ -216,6 +216,38 @@ function getRoutes()
 }
 
 /**
+ * API Endpoint: Homepage
+ */
+function getHomepage($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => 'homepage',
+            'site' => $locale,
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) use ($locale) {
+            $newsQuery = EntryHelpers::queryPromotedNews();
+
+            $data = [
+                'id' => $entry->id,
+                'heroImages' => [
+                    'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->first()),
+                    'candidates' => Images::extractHomepageHeroImages($entry->homepageHeroImages->all()),
+                ],
+                'newsArticles' => EntryHelpers::extractNewsSummaries($newsQuery->all()),
+            ];
+
+            return $data;
+        },
+    ];
+}
+
+/**
  * API Endpoint: Get Promoted News
  * Get a list of all promoted news articles
  */
@@ -232,12 +264,7 @@ function getPromotedNews($locale)
             'site' => $locale,
         ],
         'transformer' => function (Entry $entry) {
-            return [
-                'id' => $entry->id,
-                'title' => $entry->articleTitle,
-                'summary' => $entry->articleSummary,
-                'link' => $entry->articleLink,
-            ];
+            return EntryHelpers::extractNewsSummary($entry);
         },
     ];
 }
@@ -490,6 +517,7 @@ function getSurveys($locale)
 return [
     'endpoints' => [
         'api/v1/list-routes' => getRoutes,
+        'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,

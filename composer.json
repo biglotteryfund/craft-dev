@@ -32,7 +32,8 @@
     "verbb/super-table": "^2.0.2",
     "biglotteryfund/preview-button": "^1.0",
     "league/uri": "^5.2",
-    "imgix/imgix-php": "^2.1"
+    "imgix/imgix-php": "^2.1",
+    "verbb/expanded-singles": "^1.0"
   },
   "autoload" : {
     "psr-4" : {
