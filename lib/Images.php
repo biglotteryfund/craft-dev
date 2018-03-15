@@ -7,6 +7,18 @@ use League\Uri\Parser;
 
 class Images
 {
+    private static function _getImgixConfig() {
+        $imgixDomain = getenv('CUSTOM_IMGIX_DOMAIN');
+        $imgixSignKey = getenv('CUSTOM_IMGIX_SIGN_KEY');
+
+        if ($imgixDomain && $imgixSignKey) {
+            return [
+                'domain' => $imgixDomain,
+                'signKey' => $imgixSignKey
+            ];
+        }
+    }
+
     public static function extractImage($imageField)
     {
         $image = $imageField->one();
@@ -48,12 +60,14 @@ class Images
 
     public static function imgixUrl($originalUrl, $options = [])
     {
-        $imgixDomain = getenv('CUSTOM_IMGIX_DOMAIN');
-        if ($imgixDomain) {
+        $imgixConfig = self::_getImgixConfig();
+
+        if ($imgixConfig) {
             $parser = new Parser();
             $parsedUri = $parser($originalUrl);
 
-            $builder = new UrlBuilder($imgixDomain);
+            $builder = new UrlBuilder($imgixConfig['domain']);
+            $builder->setSignKey($imgixConfig['signKey']);
             $builder->setUseHttps(true);
             $builder->setIncludeLibraryParam(false);
 
