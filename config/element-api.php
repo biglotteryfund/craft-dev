@@ -107,13 +107,15 @@ function getFundingProgramMatrix($entry, $locale)
                     $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
                     $fundingData['linkUrl'] = $useNewContent ? $pathLinkUrl : $block->linkUrl;
 
+                    // Use custom thumbnail if one is set, otherwise default to hero image.
                     $heroImage = Images::extractImage($entry->heroImage);
-                    if ($heroImage) {
-                        $fundingData['photo'] = Images::imgixUrl($heroImage->imageMedium->one()->url, [
-                            'w' => 80,
-                            'h' => 80,
-                        ]);
-                    }
+                    $thumbnailSrc = Images::extractImage($block->photo) ?? $heroImage->imageMedium->one();
+
+                    $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
+                        'w' => 100,
+                        'h' => 100,
+                        'crop' => 'faces'
+                    ]);
 
                     $orgTypes = [];
                     foreach ($block->organisationType as $o) {
