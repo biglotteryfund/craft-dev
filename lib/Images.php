@@ -60,9 +60,22 @@ class Images
 
     public static function extractHomepageHeroImage($hero)
     {
-        $imageSmall = self::imgixUrl($hero->imageSmall->one()->url, ['w' => '644', 'h' => '573']);
-        $imageMedium = self::imgixUrl($hero->imageMedium->one()->url, ['w' => '1280', 'h' => '720']);
-        $imageLarge = self::imgixUrl($hero->imageLarge->one()->url, ['w' => '1373', 'h' => '505']);
+        $defaults = ['lossless' => true, 'q' => 90];
+
+        $imageSmall = self::imgixUrl(
+            $hero->imageSmall->one()->url,
+            array_replace_recursive($defaults, ['w' => '644', 'h' => '573'])
+        );
+
+        $imageMedium = self::imgixUrl(
+            $hero->imageMedium->one()->url,
+            array_replace_recursive($defaults, ['w' => '1280', 'h' => '720'])
+        );
+
+        $imageLarge = self::imgixUrl(
+            $hero->imageLarge->one()->url,
+            array_replace_recursive($defaults, ['w' => '1373', 'h' => '505'])
+        );
 
         $result = [
             'caption' => $hero->caption,
