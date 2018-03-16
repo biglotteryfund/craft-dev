@@ -1,8 +1,13 @@
 language: php
 php:
-- 7.1.9
+- 7.1.13
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+before_script:
+- composer install
 script:
-- echo 0
+- ./vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAJZTC5ZT5S4AQTASQ
