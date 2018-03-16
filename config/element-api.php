@@ -262,7 +262,7 @@ function getHomepage($locale)
             $data = [
                 'id' => $entry->id,
                 'heroImages' => [
-                    'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->first()),
+                    'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->one()),
                     'candidates' => Images::extractHomepageHeroImages($entry->homepageHeroImages->all()),
                 ],
                 'newsArticles' => EntryHelpers::extractNewsSummaries($newsQuery->all()),
