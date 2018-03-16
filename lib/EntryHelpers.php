@@ -105,7 +105,6 @@ class EntryHelpers
     public static function extractNewsSummary(Entry $entry)
     {
         return [
-            'id' => $entry->id,
             'title' => $entry->articleTitle,
             'summary' => $entry->articleSummary,
             'link' => $entry->articleLink,
