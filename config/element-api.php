@@ -290,7 +290,9 @@ function getPromotedNews($locale)
             'site' => $locale,
         ],
         'transformer' => function (Entry $entry) {
-            return EntryHelpers::extractNewsSummary($entry);
+            return array_replace_recursive([
+                'id' => $entry->id
+            ], EntryHelpers::extractNewsSummary($entry));
         },
     ];
 }

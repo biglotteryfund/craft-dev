@@ -107,7 +107,6 @@ class Images
         );
 
         $result = [
-            'title' => $hero->title,
             'caption' => $hero->caption,
             'default' => $imageMedium,
             'small' => $imageSmall,
