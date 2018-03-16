@@ -114,7 +114,7 @@ function getFundingProgramMatrix($entry, $locale)
                     $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
                         'w' => 100,
                         'h' => 100,
-                        'crop' => 'faces'
+                        'crop' => 'faces',
                     ]);
 
                     $orgTypes = [];
@@ -211,6 +211,32 @@ function getRoutes()
                 'live' => $entry->status === 'live',
                 'isFromCms' => true,
             ];
+        },
+    ];
+}
+
+/**
+ * API Endpoint: Get Hero Image
+ * Get a given hero image by slug
+ */
+function getHeroImage($locale, $slug)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'heroImage',
+            'slug' => $slug,
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) {
+            return array_replace_recursive([
+                'id' => $entry->id,
+                'slug' => $entry->slug,
+            ], Images::buildHeroImage($entry));
         },
     ];
 }
@@ -516,14 +542,15 @@ function getSurveys($locale)
 
 return [
     'endpoints' => [
-        'api/v1/list-routes' => getRoutes,
-        'api/v1/<locale:en|cy>/homepage' => getHomepage,
-        'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
-        'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
+        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
+        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
+        'api/v1/<locale:en|cy>/homepage' => getHomepage,
+        'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
+        'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/surveys' => getSurveys,
+        'api/v1/list-routes' => getRoutes,
     ],
 ];
