@@ -62,7 +62,7 @@ class Images
     {
         $imageSmall = self::imgixUrl($hero->imageSmall->one()->url, ['w' => '644', 'h' => '573']);
         $imageMedium = self::imgixUrl($hero->imageMedium->one()->url, ['w' => '1280', 'h' => '720']);
-        $imageLarge = self::imgixUrl($hero->imageLarge->one()->url, ['w' => '1373', 'h' => '503']);
+        $imageLarge = self::imgixUrl($hero->imageLarge->one()->url, ['w' => '1373', 'h' => '505']);
 
         $result = [
             'caption' => $hero->caption,
