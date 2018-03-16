@@ -172,7 +172,7 @@ function getFundingProgrammeRegionsMatrix($entry, $locale)
                 case 'programmeRegion':
                     $region = [
                         'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody,
+                        'body' => Images::replaceInlineImgixUrls($block->programmeRegionBody),
                     ];
                     array_push($regions, $region);
                     break;
