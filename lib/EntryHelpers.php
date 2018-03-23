@@ -14,7 +14,7 @@ class EntryHelpers
 
     public static function getAvailableLanguages($entryId, $currentLanguage)
     {
-        $alternateLanguage = $currentLanguage === 'en' ? 'cy' : $currentLanguage;
+        $alternateLanguage = $currentLanguage === 'en' ? 'cy' : 'en';
 
         $altEntry = Entry::find()
             ->id($entryId)
@@ -23,7 +23,7 @@ class EntryHelpers
 
         $availableLanguages = [$currentLanguage];
         if ($altEntry) {
-            array_push($availableLanguages, $alternateLanguage);
+            $availableLanguages[] = $alternateLanguage;
         }
 
         return $availableLanguages;

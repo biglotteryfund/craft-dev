@@ -1,6 +1,8 @@
 <?php
 
 use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\FundingProgrammesTransformer;
+use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 
@@ -87,99 +89,6 @@ function parseSegmentMatrix($entry, $locale)
         }
     }
     return $segments;
-}
-
-function getFundingProgramMatrix($entry, $locale)
-{
-    $bodyBlocks = [];
-    $useNewContent = (bool) $entry->useNewContent;
-    if ($entry->fundingProgramme) {
-        foreach ($entry->fundingProgramme->all() as $block) {
-            switch ($block->type->handle) {
-                case 'fundingProgrammeBlock':
-                    $fundingData = [];
-                    $fundingData['title'] = $block->programmeTitle;
-
-                    /**
-                     * If useNewContent switch is enabled set linkUrl to the
-                     * cannonical uri rather than the custom linkUrl field.
-                     */
-                    $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
-                    $fundingData['linkUrl'] = $useNewContent ? $pathLinkUrl : $block->linkUrl;
-
-                    // Use custom thumbnail if one is set, otherwise default to hero image.
-                    $heroImage = Images::extractImage($entry->heroImage);
-                    $thumbnailSrc = Images::extractImage($block->photo) ?? $heroImage->imageMedium->one();
-
-                    $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
-                        'w' => 100,
-                        'h' => 100,
-                        'crop' => 'faces',
-                    ]);
-
-                    $orgTypes = [];
-                    foreach ($block->organisationType as $o) {
-                        $orgTypes[] = EntryHelpers::translate($locale, $o->label);
-                    }
-                    if ($orgTypes) {
-                        $fundingData['organisationTypes'] = $orgTypes;
-                    }
-
-                    if ($block->description) {
-                        $fundingData['description'] = $block->description;
-                    }
-
-                    if ($block->area) {
-                        $fundingData['area'] = [
-                            'label' => EntryHelpers::translate($locale, $block->area->label),
-                            'value' => $block->area->value,
-                        ];
-                    }
-
-                    if ($block->minimumFundingSize && $block->maximumFundingSize) {
-                        $fundingData['fundingSize'] = [
-                            'minimum' => (int) $block->minimumFundingSize,
-                            'maximum' => (int) $block->maximumFundingSize,
-                        ];
-                    }
-
-                    if ($block->fundingSizeDescription) {
-                        $fundingData['fundingSizeDescription'] = $block->fundingSizeDescription;
-                    }
-
-                    if ($block->totalAvailable) {
-                        $fundingData['totalAvailable'] = $block->totalAvailable;
-                    }
-
-                    if ($block->applicationDeadline) {
-                        $fundingData['applicationDeadline'] = $block->applicationDeadline;
-                    }
-
-                    $bodyBlocks = $fundingData;
-                    break;
-            }
-        }
-    }
-    return $bodyBlocks;
-}
-
-function getFundingProgrammeRegionsMatrix($entry, $locale)
-{
-    $regions = [];
-    if ($entry->programmeRegions) {
-        foreach ($entry->programmeRegions->all() as $block) {
-            switch ($block->type->handle) {
-                case 'programmeRegion':
-                    $region = [
-                        'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody,
-                    ];
-                    array_push($regions, $region);
-                    break;
-            }
-        }
-    }
-    return $regions;
 }
 
 /**********************************************************
@@ -291,7 +200,7 @@ function getPromotedNews($locale)
         ],
         'transformer' => function (Entry $entry) {
             return array_replace_recursive([
-                'id' => $entry->id
+                'id' => $entry->id,
             ], EntryHelpers::extractNewsSummary($entry));
         },
     ];
@@ -313,16 +222,7 @@ function getFundingProgrammes($locale)
             'site' => $locale,
             'status' => 'live',
         ],
-        'transformer' => function (Entry $entry) use ($locale) {
-            return [
-                'id' => $entry->id,
-                'status' => $entry->status,
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale),
-            ];
-        },
+        'transformer' => new FundingProgrammesTransformer($locale),
     ];
 }
 
@@ -351,33 +251,7 @@ function getFundingProgramme($locale, $slug)
             'status' => ['live', 'expired'],
         ],
         'one' => true,
-        'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            if ($entry->useNewContent === false) {
-                throw new \yii\web\NotFoundHttpException('Programme not found');
-            }
-
-            $data = [
-                'id' => $entry->id,
-                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
-                'status' => $status,
-                'dateUpdated' => $entry->dateUpdated,
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'path' => $entry->uri,
-                'hero' => Images::extractHeroImage($entry->heroImage),
-                'summary' => getFundingProgramMatrix($entry, $locale),
-                'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
-            ];
-
-            if ($entry->relatedCaseStudies) {
-                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
-            }
-
-            return $data;
-        },
+        'transformer' => new FundingProgrammeTransformer($locale),
     ];
 }
 
