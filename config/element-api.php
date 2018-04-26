@@ -583,15 +583,17 @@ function getBlogposts($locale, $type = 'blog', $customCriteria = []) {
         'meta' => [
             'pageType' => $type
         ],
-        'transformer' => function (Entry $entry) use ($type) {
+        'transformer' => function (Entry $entry) use ($locale, $type) {
             return [
                 'id' => $entry->id,
                 'slug' => $entry->slug,
-                'url' => $entry->url,
+                'link' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                'postDate' => $entry->postDate,
                 'title' => $entry->title,
+                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
                 'category' => [
                     'title' => $entry->category->last()->title,
-                    'url' => $entry->category->last()->url,
+                    'link' => EntryHelpers::uriForLocale($entry->category->last()->uri, $locale),
                     'slug' => $entry->category->last()->slug,
                 ],
                 'author' => EntryHelpers::getTags($entry->authors->all()),

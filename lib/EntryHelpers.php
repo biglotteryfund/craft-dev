@@ -29,6 +29,11 @@ class EntryHelpers
         return $availableLanguages;
     }
 
+    public static function uriForLocale($uri, $locale) {
+        // @TODO: Can craft construct this for us?
+        return $locale === 'cy' ? "/welsh/$uri" : "/$uri";
+    }
+
     /**
      * getDraftOrVersionOfEntry
      * Looks up an old version or draft of an entry
@@ -162,7 +167,7 @@ class EntryHelpers
             return [
                 'id' => (int) $tag->id,
                 'title' => $tag->title,
-                'slug' => $tag->slug,
+                'slug' => $tag->slug
             ];
         }, $tagField);
     }
