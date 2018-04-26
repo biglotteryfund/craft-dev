@@ -156,4 +156,15 @@ class EntryHelpers
         ) : [];
     }
 
+    public static function getTags($tagField)
+    {
+        return array_map(function ($tag) {
+            return [
+                'id' => (int) $tag->id,
+                'title' => $tag->title,
+                'slug' => $tag->slug,
+            ];
+        }, $tagField);
+    }
+
 }
