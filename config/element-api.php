@@ -3,6 +3,8 @@
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
+use craft\elements\Category;
+use craft\elements\Tag;
 
 function normaliseCacheHeaders()
 {
@@ -542,6 +544,68 @@ function getSurveys($locale)
     ];
 }
 
+function getBlogpostsByCategory($locale, $categorySlug, $subCategorySlug = false) {
+    // get the (sub)category object by its slug so we can query on it
+    $slugToUse = ($subCategorySlug) ? $subCategorySlug : $categorySlug;
+    $category = Category::find()->slug($slugToUse)->one();
+    return getBlogposts($locale, 'category', ['relatedTo' => ['targetElement' => $category]]);
+}
+
+function getBlogpostsByTag($locale, $tagType, $tagSlug) {
+    return getBlogposts($locale,
+        $tagType,
+        [
+            'relatedTo' => [
+                'targetElement' => Tag::find()->slug($tagSlug)->one(),
+                'field' => ($tagType === 'tag') ? 'tags' : 'authors'
+            ]
+        ]
+    );
+}
+
+function getBlogpostsBySlug($locale, $slug) {
+    return getBlogposts($locale, 'blogpost', ['slug' => $slug]);
+}
+
+function getBlogposts($locale, $type = 'blog', $customCriteria = []) {
+    normaliseCacheHeaders();
+
+    $criteria = array_merge([
+        'site' => $locale,
+        'section' => 'blog'
+    ], $customCriteria);
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'one' => $type === 'blogpost',
+        'meta' => [
+            'pageType' => $type
+        ],
+        'transformer' => function (Entry $entry) use ($locale, $type) {
+            $primaryCategory = $entry->category->inReverse()->one();
+            return [
+                'id' => $entry->id,
+                'slug' => $entry->slug,
+                'link' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                'postDate' => $entry->postDate,
+                'title' => $entry->title,
+                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+                'category' => [
+                    'title' => $primaryCategory->title,
+                    'link' => EntryHelpers::uriForLocale($primaryCategory->uri, $locale),
+                    'slug' => $primaryCategory->slug,
+                ],
+                'author' => EntryHelpers::getTags($entry->authors->all()),
+                'intro' => $entry->introduction,
+                'body' => $entry->body,
+                'tags' => EntryHelpers::getTags($entry->tags->all())
+            ];
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
@@ -553,6 +617,13 @@ return [
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/surveys' => getSurveys,
+        'api/v1/<locale:en|cy>/blog' => getBlogposts,
+        // more specific routes (blogpost, tag/authors) take precedence and come first here
+        'api/v1/<locale:en|cy>/blog/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getBlogpostsBySlug,
+        'api/v1/<locale:en|cy>/blog/<tagType:tag>/<tagSlug:{slug}>' => getBlogpostsByTag,
+        'api/v1/<locale:en|cy>/blog/<tagType:author>/<tagSlug:{slug}>' => getBlogpostsByTag,
+        'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
+        'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/list-routes' => getRoutes,
     ],
 ];
