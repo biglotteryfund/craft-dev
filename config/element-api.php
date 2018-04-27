@@ -584,6 +584,7 @@ function getBlogposts($locale, $type = 'blog', $customCriteria = []) {
             'pageType' => $type
         ],
         'transformer' => function (Entry $entry) use ($locale, $type) {
+            $primaryCategory = $entry->category->inReverse()->one();
             return [
                 'id' => $entry->id,
                 'slug' => $entry->slug,
@@ -592,9 +593,9 @@ function getBlogposts($locale, $type = 'blog', $customCriteria = []) {
                 'title' => $entry->title,
                 'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
                 'category' => [
-                    'title' => $entry->category->last()->title,
-                    'link' => EntryHelpers::uriForLocale($entry->category->last()->uri, $locale),
-                    'slug' => $entry->category->last()->slug,
+                    'title' => $primaryCategory->title,
+                    'link' => EntryHelpers::uriForLocale($primaryCategory->uri, $locale),
+                    'slug' => $primaryCategory->slug,
                 ],
                 'author' => EntryHelpers::getTags($entry->authors->all()),
                 'intro' => $entry->introduction,
