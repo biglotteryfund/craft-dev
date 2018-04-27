@@ -4,6 +4,8 @@ namespace biglotteryfund\utils;
 
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
+use craft\helpers\UrlHelper;
+
 
 class EntryHelpers
 {
@@ -160,16 +162,4 @@ class EntryHelpers
             $caseStudies
         ) : [];
     }
-
-    public static function getTags($tagField)
-    {
-        return array_map(function ($tag) {
-            return [
-                'id' => (int) $tag->id,
-                'title' => $tag->title,
-                'slug' => $tag->slug
-            ];
-        }, $tagField);
-    }
-
 }
