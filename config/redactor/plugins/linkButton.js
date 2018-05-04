@@ -1,19 +1,24 @@
-(function ($) {
-    $.Redactor.prototype.linkButton = function () {
-        return {
-            langs: {
-                en: {
-                    "linkButton": "Link button"
-                }
-            },
-            init: function () {
-                var button = this.button.add('toggle-button', 'Toggle Button');
-                this.button.setIcon(button, '<i class="plugin-linkbutton-toolbar-icon"></i>');
-                this.button.addCallback(button, function () {
-                    this.link.get().toggleClass('btn');
-                    this.code.sync();
-                });
-            },
-        };
-    };
-})(jQuery);
+(function ($R) {
+    $R.add('plugin', 'linkButton', {
+        init: function (app) {
+            this.app = app;
+            this.toolbar = app.toolbar;
+            this.selection = app.selection;
+        },
+        start: function () {
+            var $button = this.toolbar.addButton('link-button', {
+                title: 'Button',
+                api: 'plugin.linkButton.toggle'
+            });
+
+            $button.setIcon('<i class="re-icon-plugin-linkbutton"></i>');
+        },
+        toggle: function () {
+            var element = this.selection.getElement();
+            if (element.nodeName === 'A') {
+                var $node = $R.dom(element);
+                $node.toggleClass('btn');
+            }
+        }
+    });
+})(Redactor);
