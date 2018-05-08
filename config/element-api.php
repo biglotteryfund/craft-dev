@@ -685,6 +685,61 @@ function getBlogpostsBySlug($locale, $slug)
     ];
 }
 
+function getStatBlocks($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => 'statBlock',
+            'site' => $locale,
+        ],
+        'transformer' => function (Entry $entry) {
+            $data = [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'value' => $entry->statValue,
+                'showNumberBeforeTitle' => $entry->showNumberBeforeTitle
+            ];
+            if ($entry->suffix) {
+                $data['suffix'] = $entry->suffix;
+            }
+            if ($entry->prefix) {
+                $data['prefix'] = $entry->prefix;
+            }
+            return $data;
+        },
+    ];
+}
+
+function getStatRegions($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Category::class,
+        'criteria' => [
+            'group' => 'region',
+            'site' => $locale,
+        ],
+        'transformer' => function (Category $category) {
+            $data = [
+                'id' => $category->id,
+                'slug' => $category->slug,
+                'title' => $category->title,
+                'beneficiaries' => $category->beneficiaries,
+                'population' => $category->population,
+                'totalAwarded' => $category->totalAwarded,
+            ];
+
+            return $data;
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
@@ -703,6 +758,8 @@ return [
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
+        'api/v1/<locale:en|cy>/stat-blocks/' => getStatBlocks,
+        'api/v1/<locale:en|cy>/stat-regions/' => getStatRegions,
         'api/v1/list-routes' => getRoutes,
     ],
 ];
