@@ -70,7 +70,7 @@ function getRelatedEntries($entry, $relationType)
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
 
         $heroImage = Images::extractImage($relatedItem->heroImage);
-        $relatedData['photo'] = Images::imgixUrl($heroImage->url, [
+        $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
             'w' => 500,
             'h' => 333,
             'crop' => 'faces',
