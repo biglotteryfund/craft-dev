@@ -228,6 +228,35 @@ function getRoutes()
     ];
 }
 
+
+/**
+ * API Endpoint: Get Aliases
+ * Get a list of all aliases/vanity URLs from the CMS
+ */
+function getAliases($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'elementsPerPage' => 1000,
+        'criteria' => [
+            'site' => $locale,
+            'status' => ['live'],
+            'section' => ['aliases']
+        ],
+        'transformer' => function (craft\elements\Entry $alias) use ($locale) {
+            $relatedEntry = $alias->relatedEntry->status(['live', 'expired'])->one();
+            return [
+                'id' => $alias->id,
+                'from' => '/' . $alias->uri,
+                'to' => EntryHelpers::uriForLocale($relatedEntry->uri, $locale)
+            ];
+        },
+    ];
+}
+
 /**
  * API Endpoint: Get Hero Image
  * Get a given hero image by slug
@@ -711,6 +740,7 @@ return [
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
+        'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/list-routes' => getRoutes,
     ],
 ];
