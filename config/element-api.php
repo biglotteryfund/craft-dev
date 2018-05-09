@@ -68,6 +68,14 @@ function getRelatedEntries($entry, $relationType)
     foreach ($relatedSearch as $relatedItem) {
         $relatedData = getBasicEntryData($relatedItem);
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+
+        $heroImage = Images::extractImage($relatedItem->heroImage);
+        $relatedData['photo'] = Images::imgixUrl($heroImage->url, [
+            'w' => 500,
+            'h' => 333,
+            'crop' => 'faces',
+        ]);
+
         $relatedEntries[] = $relatedData;
     }
 
