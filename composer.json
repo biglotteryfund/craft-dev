@@ -26,7 +26,7 @@
     "roave/security-advisories": "dev-master",
     "craftcms/element-api": "^2.5",
     "craftcms/aws-s3": "^1.0",
-    "craftcms/redactor": "^1.0",
+    "craftcms/redactor": "^2.0",
     "doublesecretagency/craft-cpcss": "^2.0",
     "verbb/field-manager": "^2.0.1",
     "verbb/super-table": "^2.0.2",
