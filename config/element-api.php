@@ -68,6 +68,14 @@ function getRelatedEntries($entry, $relationType)
     foreach ($relatedSearch as $relatedItem) {
         $relatedData = getBasicEntryData($relatedItem);
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+
+        $heroImage = Images::extractImage($relatedItem->heroImage);
+        $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
+            'w' => 500,
+            'h' => 333,
+            'crop' => 'faces',
+        ]);
+
         $relatedEntries[] = $relatedData;
     }
 
@@ -215,6 +223,35 @@ function getRoutes()
                 'path' => '/' . $entry->uri,
                 'live' => $entry->status === 'live',
                 'isFromCms' => true,
+            ];
+        },
+    ];
+}
+
+
+/**
+ * API Endpoint: Get Aliases
+ * Get a list of all aliases/vanity URLs from the CMS
+ */
+function getAliases($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'elementsPerPage' => 1000,
+        'criteria' => [
+            'site' => $locale,
+            'status' => ['live'],
+            'section' => ['aliases']
+        ],
+        'transformer' => function (craft\elements\Entry $alias) use ($locale) {
+            $relatedEntry = $alias->relatedEntry->status(['live', 'expired'])->one();
+            return [
+                'id' => $alias->id,
+                'from' => '/' . $alias->uri,
+                'to' => EntryHelpers::uriForLocale($relatedEntry->uri, $locale)
             ];
         },
     ];
@@ -760,6 +797,7 @@ return [
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/stat-blocks/' => getStatBlocks,
         'api/v1/<locale:en|cy>/stat-regions/' => getStatRegions,
+        'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/list-routes' => getRoutes,
     ],
 ];
