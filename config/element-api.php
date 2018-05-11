@@ -55,9 +55,11 @@ function getRelatedEntries($entry, $relationType)
     $relatedEntries = [];
     $relatedSearch = [];
 
-    if ($relationType == 'children') {
+    if ($relationType === 'ancestors') {
+        $relatedSearch = $entry->getAncestors()->all();
+    } else if ($relationType === 'children') {
         $relatedSearch = $entry->getChildren()->all();
-    } else if ($relationType == 'siblings') {
+    } else if ($relationType === 'siblings') {
         // get parent first to allow including self as a sibling
         $parent = $entry->getParent();
         if ($parent) {
@@ -470,6 +472,11 @@ function getListing($locale)
 
             if ($entry->relatedContent) {
                 $entryData['relatedContent'] = $entry->relatedContent;
+            }
+
+            $ancestors = getRelatedEntries($entry, 'ancestors');
+            if (count($ancestors) > 0) {
+                $entryData['ancestors'] = $ancestors;
             }
 
             $children = getRelatedEntries($entry, 'children');
