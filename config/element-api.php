@@ -26,6 +26,7 @@ function getBasicEntryData(Entry $entry)
         'path' => $entry->uri,
         'url' => $entry->url,
         'title' => $entry->title,
+        'displayTitle' => $entry->displayTitle,
         'dateUpdated' => $entry->dateUpdated,
     ];
 
