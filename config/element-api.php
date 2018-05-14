@@ -785,6 +785,67 @@ function getStatRegions($locale)
     ];
 }
 
+function getMerchandise($locale)
+{
+    normaliseCacheHeaders();
+
+    $searchCriteria = [
+        'section' => 'merchandise',
+        'site' => $locale,
+    ];
+
+    // Fetch everything, including inactive products, if ?all=true is set
+    $showAll = \Craft::$app->request->getParam('all');
+    if ($showAll) {
+        $searchCriteria['status'] = null;
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $searchCriteria,
+        'transformer' => function (Entry $entry) {
+
+            $products = [];
+            foreach ($entry->products->all() as $block) {
+                $product = [];
+                $product['id'] = (int) $block->id;
+                $product['code'] = $block->productCode;
+                $product['language'] = $block->productLanguage->value;
+                $product['image'] = Images::extractImageUrl($block->productPhoto);
+                if ($block->productName) {
+                    $product['name'] = $block->productName;
+                }
+                array_push($products, $product);
+            }
+
+            $data = [
+                'id' => $entry->id,
+                'itemId' => (int) $entry->id,
+                'title' => $entry->title,
+                'maximum' => (int) $entry->maximumAllowed,
+                'products' => $products
+            ];
+
+            if ($entry->description) {
+                $data['description'] = $entry->description;
+            }
+
+            if ($entry->notAllowedWithTheseItems) {
+                $items = [];
+                foreach ($entry->notAllowedWithTheseItems->all() as $item) {
+                    array_push($items, (int) $item->id);
+                }
+                if (count($items) > 0) {
+                    $data['notAllowedWith'] = $items;
+                }
+            }
+
+            return $data;
+        },
+    ];
+}
+
 return [
     'endpoints' => [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
@@ -806,6 +867,7 @@ return [
         'api/v1/<locale:en|cy>/stat-blocks/' => getStatBlocks,
         'api/v1/<locale:en|cy>/stat-regions/' => getStatRegions,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
+        'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
         'api/v1/list-routes' => getRoutes,
     ],
 ];
