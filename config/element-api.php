@@ -781,13 +781,21 @@ function getMerchandise($locale)
 {
     normaliseCacheHeaders();
 
+    $searchCriteria = [
+        'section' => 'merchandise',
+        'site' => $locale,
+    ];
+
+    // Fetch everything, including inactive products, if ?all=true is set
+    $showAll = \Craft::$app->request->getParam('all');
+    if ($showAll) {
+        $searchCriteria['status'] = null;
+    }
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'merchandise',
-            'site' => $locale,
-        ],
+        'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) {
 
             $products = [];
