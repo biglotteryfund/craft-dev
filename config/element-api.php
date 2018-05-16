@@ -90,16 +90,41 @@ function parseSegmentMatrix($entry, $locale)
     $segments = [];
     if ($entry->contentSegment) {
         foreach ($entry->contentSegment->all() as $block) {
-            $segment = [];
-            $segment['title'] = $block->segmentTitle;
-            $segment['content'] = $block->segmentContent;
+            switch ($block->type->handle) {
+                case 'segment':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'title' => $block->segmentTitle,
+                        'content' => $block->segmentContent,
+                        'anchor' => $block->anchor
+                    ];
 
-            $segmentImage = $block->segmentImage->one();
-            if ($segmentImage) {
-                $segment['photo'] = $segmentImage->url;
+                    $image = $block->segmentImage->one();
+                    if ($image) {
+                        $data['photo'] = $segmentImage->url;
+                    }
+
+                    array_push($segments, $data);
+
+                    break;
+                case 'pullQuote':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'quoteText' => $block->quoteText,
+                        'linkText' => $block->linkText,
+                        'linkUrl' => $block->linkUrl
+                    ];
+
+                    $quoteImage = $block->quoteImage->one();
+                    if ($quoteImage) {
+                        $data['quoteImage'] = $quoteImage->url;
+                        $data['quoteImageCaption'] = $block->quoteImageCaption;
+                    }
+
+                    array_push($segments, $data);
+
+                    break;
             }
-
-            array_push($segments, $segment);
         }
     }
     return $segments;
