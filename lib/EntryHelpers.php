@@ -139,6 +139,17 @@ class EntryHelpers
 
                     array_push($parts, $data);
                     break;
+                case 'inlineFigure':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'photo' => Images::imgixUrl(
+                            Images::extractImageUrl($block->photo),
+                            ['fit' => 'crop', 'crop' => 'entropy', 'max-w' => 2000]
+                        ),
+                        'photoCaption' => $block->photoCaption ?? null,
+                    ];
+                    array_push($parts, $data);
+                    break;
                 case 'mediaAside':
                     $data = [
                         'type' => $block->type->handle,
