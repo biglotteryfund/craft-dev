@@ -1,13 +1,12 @@
 <?php
 
+use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
-use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\Images;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
-use craft\helpers\UrlHelper;
 
 function normaliseCacheHeaders()
 {
@@ -17,38 +16,6 @@ function normaliseCacheHeaders()
     $headers->set('cache-control', 'public, max-age=0');
     header_remove('Expires');
     header_remove('Pragma');
-}
-
-function getBasicEntryData(Entry $entry)
-{
-    $basicData = [
-        'id' => $entry->id,
-        'path' => $entry->uri,
-        'url' => $entry->url,
-        'title' => $entry->title,
-        'displayTitle' => $entry->displayTitle,
-        'dateUpdated' => $entry->dateUpdated,
-    ];
-
-    if ($entry->themeColour) {
-        $basicData['themeColour'] = $entry->themeColour->value;
-    }
-
-    if ($entry->trailText) {
-        $basicData['trailText'] = $entry->trailText;
-    }
-
-    if ($entry->trailPhoto) {
-        $photos = [];
-        foreach ($entry->trailPhoto->all() as $photo) {
-            $photos[] = $photo->url;
-        }
-        if ($photos) {
-            $basicData['photo'] = $photos[0];
-        }
-    }
-
-    return $basicData;
 }
 
 function getRelatedEntries($entry, $relationType)
@@ -69,7 +36,7 @@ function getRelatedEntries($entry, $relationType)
     }
 
     foreach ($relatedSearch as $relatedItem) {
-        $relatedData = getBasicEntryData($relatedItem);
+        $relatedData = EntryHelpers::extractBasicEntryData($relatedItem);
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
 
         $heroImage = Images::extractImage($relatedItem->heroImage);
@@ -93,12 +60,10 @@ function parseSegmentMatrix($entry, $locale)
             $segment = [];
             $segment['title'] = $block->segmentTitle;
             $segment['content'] = $block->segmentContent;
-
             $segmentImage = $block->segmentImage->one();
             if ($segmentImage) {
                 $segment['photo'] = $segmentImage->url;
             }
-
             array_push($segments, $segment);
         }
     }
@@ -231,7 +196,6 @@ function getRoutes()
     ];
 }
 
-
 /**
  * API Endpoint: Get Aliases
  * Get a list of all aliases/vanity URLs from the CMS
@@ -247,14 +211,14 @@ function getAliases($locale)
         'criteria' => [
             'site' => $locale,
             'status' => ['live'],
-            'section' => ['aliases']
+            'section' => ['aliases'],
         ],
         'transformer' => function (craft\elements\Entry $alias) use ($locale) {
             $relatedEntry = $alias->relatedEntry->status(['live', 'expired'])->one();
             return [
                 'id' => $alias->id,
                 'from' => '/' . $alias->uri,
-                'to' => EntryHelpers::uriForLocale($relatedEntry->uri, $locale)
+                'to' => EntryHelpers::uriForLocale($relatedEntry->uri, $locale),
             ];
         },
     ];
@@ -449,7 +413,7 @@ function getListing($locale)
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
-            $entryData = getBasicEntryData($entry);
+            $entryData = EntryHelpers::extractBasicEntryData($entry);
 
             $entryData['availableLanguages'] = EntryHelpers::getAvailableLanguages($entry->id, $locale);
 
@@ -493,6 +457,41 @@ function getListing($locale)
             if ($entry->relatedCaseStudies) {
                 $entryData['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
             }
+
+            return $entryData;
+        },
+    ];
+}
+
+/**
+ * API Endpoint: Get flexible content
+ * Get a page using the flexible content field model
+ */
+function getFlexibleContent($locale)
+{
+    normaliseCacheHeaders();
+
+    $pagePath = \Craft::$app->request->getParam('path');
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'one' => true,
+        'criteria' => [
+            'site' => $locale,
+            'uri' => $pagePath,
+            // Limited to certain sections using flexible content
+            'section' => ['aboutLandingPage'],
+        ],
+        'transformer' => function (Entry $entry) use ($locale, $pagePath) {
+            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
+            $entryData = EntryHelpers::extractBasicEntryData($entry);
+            $entryData['availableLanguages'] = EntryHelpers::getAvailableLanguages($entry->id, $locale);
+            $entryData['status'] = $status;
+            $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
+
+            $entryData['flexibleContent'] = EntryHelpers::extractFlexibleContent($entry, $locale);
 
             return $entryData;
         },
@@ -671,7 +670,7 @@ function getBlogpostsByAuthor($locale, $author)
         ],
         'meta' => [
             'pageType' => 'authors',
-            'activeAuthor' => BlogHelpers::tagSummary($activeAuthor, $locale)
+            'activeAuthor' => BlogHelpers::tagSummary($activeAuthor, $locale),
         ],
         'transformer' => new BlogTransformer($locale),
     ];
@@ -704,7 +703,7 @@ function getBlogpostsByTag($locale, $tag)
         ],
         'meta' => [
             'pageType' => 'tags',
-            'activeTag' => BlogHelpers::tagSummary($activeTag, $locale)
+            'activeTag' => BlogHelpers::tagSummary($activeTag, $locale),
         ],
         'transformer' => new BlogTransformer($locale),
     ];
@@ -720,7 +719,7 @@ function getBlogpostsBySlug($locale, $slug)
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
-            'slug' => $slug
+            'slug' => $slug,
         ],
         'one' => true,
         'meta' => [
@@ -746,7 +745,7 @@ function getStatBlocks($locale)
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'value' => $entry->statValue,
-                'showNumberBeforeTitle' => $entry->showNumberBeforeTitle
+                'showNumberBeforeTitle' => $entry->showNumberBeforeTitle,
             ];
             if ($entry->suffix) {
                 $data['suffix'] = $entry->suffix;
@@ -824,7 +823,7 @@ function getMerchandise($locale)
                 'itemId' => (int) $entry->id,
                 'title' => $entry->title,
                 'maximum' => (int) $entry->maximumAllowed,
-                'products' => $products
+                'products' => $products,
             ];
 
             if ($entry->description) {
@@ -854,6 +853,7 @@ return [
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
+        'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/surveys' => getSurveys,

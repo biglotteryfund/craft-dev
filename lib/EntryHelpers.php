@@ -4,8 +4,6 @@ namespace biglotteryfund\utils;
 
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
-use craft\helpers\UrlHelper;
-
 
 class EntryHelpers
 {
@@ -31,7 +29,8 @@ class EntryHelpers
         return $availableLanguages;
     }
 
-    public static function uriForLocale($uri, $locale) {
+    public static function uriForLocale($uri, $locale)
+    {
         // @TODO: Can craft construct this for us?
         return $locale === 'cy' ? "/welsh/$uri" : "/$uri";
     }
@@ -93,6 +92,71 @@ class EntryHelpers
             'entry' => $entry,
             'status' => $entry->status,
         ];
+    }
+
+    public static function extractBasicEntryData(Entry $entry)
+    {
+        $basicData = [
+            'id' => $entry->id,
+            'path' => $entry->uri,
+            'url' => $entry->url,
+            'title' => $entry->title,
+            'displayTitle' => $entry->displayTitle ?? null,
+            'dateUpdated' => $entry->dateUpdated,
+        ];
+
+        if ($entry->themeColour) {
+            $basicData['themeColour'] = $entry->themeColour->value;
+        }
+
+        if ($entry->trailText) {
+            $basicData['trailText'] = $entry->trailText;
+        }
+
+        if ($entry->trailPhoto) {
+            $photos = [];
+            foreach ($entry->trailPhoto->all() as $photo) {
+                $photos[] = $photo->url;
+            }
+            if ($photos) {
+                $basicData['photo'] = $photos[0];
+            }
+        }
+
+        return $basicData;
+    }
+
+    public static function extractFlexibleContent(Entry $entry)
+    {
+        $parts = [];
+        foreach ($entry->flexibleContent->all() as $block) {
+            switch ($block->type->handle) {
+                case 'contentArea':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'content' => $block->contentBody,
+                    ];
+
+                    array_push($parts, $data);
+                    break;
+                case 'mediaAside':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'quoteText' => $block->quoteText,
+                        'linkText' => $block->linkText ?? null,
+                        'linkUrl' => $block->linkUrl ?? null,
+                        'photo' => Images::imgixUrl(
+                            Images::extractImageUrl($block->photo),
+                            ['w' => '460', 'h' => '280']
+                        ),
+                        'photoCaption' => $block->photoCaption ?? null,
+                    ];
+
+                    array_push($parts, $data);
+                    break;
+            }
+        }
+        return $parts;
     }
 
     public static function queryPromotedNews()
