@@ -60,7 +60,7 @@ class BlogTransformer extends TransformerAbstract
             'authors' => BlogHelpers::getTags($entry->authors->all(), $this->locale),
             'tags' => BlogHelpers::getTags($entry->tags->all(), $this->locale),
             'intro' => $entry->introduction,
-            'body' => $entry->body,
+            'body' => $entry->body ?? null,
             'flexibleContent' => EntryHelpers::extractFlexibleContent($entry)
         ];
     }
