@@ -29,11 +29,9 @@
     "craftcms/redactor": "^2.0",
     "doublesecretagency/craft-cpcss": "^2.0",
     "verbb/field-manager": "^2.0.1",
-    "verbb/super-table": "^2.0.2",
     "biglotteryfund/preview-button": "^1.0",
     "league/uri": "^5.2",
-    "imgix/imgix-php": "^2.1",
-    "verbb/expanded-singles": "^1.0"
+    "imgix/imgix-php": "^2.1"
   },
   "autoload" : {
     "psr-4" : {
