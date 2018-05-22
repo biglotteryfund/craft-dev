@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "557b892aaa980bb199c2aa4b91c396c1",
+    "content-hash": "26d57da9cdc95f2b82e38f2e1d113272",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.55.12",
+            "version": "3.56.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5177cbe73c96d25ff759e406ac81b8e25557482c"
+                "reference": "d5b8f10a6e51174fab6a0222e1f0dfae2323e75d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5177cbe73c96d25ff759e406ac81b8e25557482c",
-                "reference": "5177cbe73c96d25ff759e406ac81b8e25557482c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d5b8f10a6e51174fab6a0222e1f0dfae2323e75d",
+                "reference": "d5b8f10a6e51174fab6a0222e1f0dfae2323e75d",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-05-10T23:23:00+00:00"
+            "time": "2018-05-21T20:15:18+00:00"
         },
         {
             "name": "biglotteryfund/preview-button",
@@ -608,16 +608,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "4b041728306579aec5badab7df7d4bf42440305b"
+                "reference": "d443e51ce496620abd56a711f7484da7ce366422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/4b041728306579aec5badab7df7d4bf42440305b",
-                "reference": "4b041728306579aec5badab7df7d4bf42440305b",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/d443e51ce496620abd56a711f7484da7ce366422",
+                "reference": "d443e51ce496620abd56a711f7484da7ce366422",
                 "shasum": ""
             },
             "require": {
@@ -686,7 +686,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2018-05-10T18:26:07+00:00"
+            "time": "2018-05-15T23:56:55+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -832,16 +832,16 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "4d83ac07bf91236db163a46a92fede6ecf1503e4"
+                "reference": "7d72a873e12ea7c92a8a6d00e025e303089d504e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/4d83ac07bf91236db163a46a92fede6ecf1503e4",
-                "reference": "4d83ac07bf91236db163a46a92fede6ecf1503e4",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/7d72a873e12ea7c92a8a6d00e025e303089d504e",
+                "reference": "7d72a873e12ea7c92a8a6d00e025e303089d504e",
                 "shasum": ""
             },
             "require": {
@@ -877,7 +877,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2018-05-07T17:50:01+00:00"
+            "time": "2018-05-15T21:58:54+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -2658,12 +2658,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "6fe712594835e5b70de30aec5fc244a7bd8464cd"
+                "reference": "79ef6566b9c7fe6c1b6f6d12e5729d5cb545ac69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6fe712594835e5b70de30aec5fc244a7bd8464cd",
-                "reference": "6fe712594835e5b70de30aec5fc244a7bd8464cd",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/79ef6566b9c7fe6c1b6f6d12e5729d5cb545ac69",
+                "reference": "79ef6566b9c7fe6c1b6f6d12e5729d5cb545ac69",
                 "shasum": ""
             },
             "conflict": {
@@ -2674,7 +2674,7 @@
                 "asymmetricrypt/asymmetricrypt": ">=0,<9.9.99",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
-                "cakephp/cakephp": ">=1.3,<1.3.18|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=2.7,<2.7.6|>=3,<3.0.15|>=3.1,<3.1.4",
+                "cakephp/cakephp": ">=1.3,<1.3.18|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=2.7,<2.7.6|>=3,<3.0.15|>=3.1,<3.1.4|>=3.4,<3.4.14|>=3.5,<3.5.17|>=3.6,<3.6.4",
                 "cart2quote/module-quotation": ">=4.1.6,<=4.4.5|>=5,<5.4.4",
                 "cartalyst/sentry": "<=2.1.6",
                 "codeigniter/framework": "<=3.0.6",
@@ -2762,7 +2762,7 @@
                 "symfony/web-profiler-bundle": ">=2,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-                "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
+                "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
                 "titon/framework": ">=0,<9.9.99",
                 "twig/twig": "<1.20",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.22|>=8,<8.7.5",
@@ -2814,7 +2814,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2018-05-11T06:55:15+00:00"
+            "time": "2018-05-21T07:43:38+00:00"
         },
         {
             "name": "seld/cli-prompt",
@@ -3014,16 +3014,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.1.0-BETA1",
+            "version": "v4.1.0-BETA2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "00f24b3c437c902becd39a74670bd7fc253e50c5"
+                "reference": "694be1112b8fc9d86020207add0d8af5ccc6127a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/00f24b3c437c902becd39a74670bd7fc253e50c5",
-                "reference": "00f24b3c437c902becd39a74670bd7fc253e50c5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/694be1112b8fc9d86020207add0d8af5ccc6127a",
+                "reference": "694be1112b8fc9d86020207add0d8af5ccc6127a",
                 "shasum": ""
             },
             "require": {
@@ -3078,20 +3078,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-04T00:03:52+00:00"
+            "time": "2018-05-16T14:33:22+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.1.0-BETA1",
+            "version": "v4.1.0-BETA2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "331138284c7472ba72ea7be5102ba97774fa063e"
+                "reference": "af9ad3520d652d6952b5d65ad568be2e9129a17d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/331138284c7472ba72ea7be5102ba97774fa063e",
-                "reference": "331138284c7472ba72ea7be5102ba97774fa063e",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/af9ad3520d652d6952b5d65ad568be2e9129a17d",
+                "reference": "af9ad3520d652d6952b5d65ad568be2e9129a17d",
                 "shasum": ""
             },
             "require": {
@@ -3128,20 +3128,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-01T23:02:13+00:00"
+            "time": "2018-05-16T14:33:22+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.1.0-BETA1",
+            "version": "v4.1.0-BETA2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "d78fff5c545a7ecb13f17efa8212ba13ef312fd8"
+                "reference": "087e2ee0d74464a4c6baac4e90417db7477dc238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/d78fff5c545a7ecb13f17efa8212ba13ef312fd8",
-                "reference": "d78fff5c545a7ecb13f17efa8212ba13ef312fd8",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/087e2ee0d74464a4c6baac4e90417db7477dc238",
+                "reference": "087e2ee0d74464a4c6baac4e90417db7477dc238",
                 "shasum": ""
             },
             "require": {
@@ -3177,7 +3177,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-04T05:11:41+00:00"
+            "time": "2018-05-16T14:33:22+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3295,16 +3295,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.1.0-BETA1",
+            "version": "v4.1.0-BETA2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "1ed51bf4c85f20da02500e50696ef547beea019d"
+                "reference": "aed55abfecb23d19697c196d02ca503399f11c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/1ed51bf4c85f20da02500e50696ef547beea019d",
-                "reference": "1ed51bf4c85f20da02500e50696ef547beea019d",
+                "url": "https://api.github.com/repos/symfony/process/zipball/aed55abfecb23d19697c196d02ca503399f11c9c",
+                "reference": "aed55abfecb23d19697c196d02ca503399f11c9c",
                 "shasum": ""
             },
             "require": {
@@ -3340,7 +3340,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-03T05:25:17+00:00"
+            "time": "2018-05-16T14:33:22+00:00"
         },
         {
             "name": "twig/twig",
@@ -3409,60 +3409,6 @@
             "time": "2018-04-02T09:24:19+00:00"
         },
         {
-            "name": "verbb/expanded-singles",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/verbb/expanded-singles.git",
-                "reference": "699d66d3ce1c7ce4244bd2173b1c21913d6df0c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/verbb/expanded-singles/zipball/699d66d3ce1c7ce4244bd2173b1c21913d6df0c1",
-                "reference": "699d66d3ce1c7ce4244bd2173b1c21913d6df0c1",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^3.0.0-RC1"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "Expanded Singles",
-                "handle": "expanded-singles",
-                "description": "Alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
-                "schemaVersion": "1.0.0",
-                "hasCpSettings": true,
-                "hasCpSection": false,
-                "documentationUrl": "https://github.com/verbb/expanded-singles",
-                "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-3/CHANGELOG.md",
-                "class": "verbb\\expandedsingles\\ExpandedSingles"
-            },
-            "autoload": {
-                "psr-4": {
-                    "verbb\\expandedsingles\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Verbb",
-                    "homepage": "https://verbb.io"
-                }
-            ],
-            "description": "A simple plugin for Craft CMS that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
-            "keywords": [
-                "Craft",
-                "cms",
-                "craft-plugin",
-                "craftcms",
-                "expanded singles"
-            ],
-            "time": "2018-02-20T10:35:41+00:00"
-        },
-        {
             "name": "verbb/field-manager",
             "version": "2.0.2",
             "source": {
@@ -3515,60 +3461,6 @@
                 "field manager"
             ],
             "time": "2018-02-24T22:45:12+00:00"
-        },
-        {
-            "name": "verbb/super-table",
-            "version": "2.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/verbb/super-table.git",
-                "reference": "7dc680810b65c6d60c25c8cc3263ad65cb6c7771"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/7dc680810b65c6d60c25c8cc3263ad65cb6c7771",
-                "reference": "7dc680810b65c6d60c25c8cc3263ad65cb6c7771",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^3.0.0"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "Super Table",
-                "handle": "super-table",
-                "description": "Super-charge your Craft workflow with Super Table. Use it to group fields together or build complex Matrix-in-Matrix solutions.",
-                "schemaVersion": "2.0.4",
-                "hasCpSettings": false,
-                "hasCpSection": false,
-                "documentationUrl": "https://github.com/verbb/super-table",
-                "changelogUrl": "https://raw.githubusercontent.com/verbb/super-table/craft-3/CHANGELOG.md",
-                "class": "verbb\\supertable\\SuperTable"
-            },
-            "autoload": {
-                "psr-4": {
-                    "verbb\\supertable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Verbb",
-                    "homepage": "https://verbb.io"
-                }
-            ],
-            "description": "Super-charge your Craft workflow with Super Table. Use it to group fields together or build complex Matrix-in-Matrix solutions.",
-            "keywords": [
-                "Craft",
-                "cms",
-                "craft-plugin",
-                "craftcms",
-                "super table"
-            ],
-            "time": "2018-05-08T08:32:51+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
