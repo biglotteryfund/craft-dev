@@ -266,7 +266,7 @@ function getHomepage($locale)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            $newsQuery = EntryHelpers::queryPromotedNews();
+            $newsQuery = EntryHelpers::queryPromotedNews($locale);
 
             $data = [
                 'id' => $entry->id,
@@ -667,6 +667,7 @@ function getBlogpostsByAuthor($locale, $author)
                 'targetElement' => $activeAuthor,
                 'field' => 'authors',
             ],
+
         ],
         'meta' => [
             'pageType' => 'authors',

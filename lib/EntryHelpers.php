@@ -170,13 +170,14 @@ class EntryHelpers
         return $parts;
     }
 
-    public static function queryPromotedNews()
+    public static function queryPromotedNews($locale)
     {
         $newsQuery = Entry::find();
         return \Craft::configure($newsQuery, [
             'section' => 'news',
             'limit' => 3,
             'articlePromoted' => true,
+            'site' => $locale,
         ]);
     }
 
