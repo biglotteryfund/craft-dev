@@ -3,7 +3,9 @@
 use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
+use biglotteryfund\utils\VersionHelpers;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -142,25 +144,6 @@ function getFundingProgramMatrix($entry, $locale)
         }
     }
     return $bodyBlocks;
-}
-
-function getFundingProgrammeRegionsMatrix($entry, $locale)
-{
-    $regions = [];
-    if ($entry->programmeRegions) {
-        foreach ($entry->programmeRegions->all() as $block) {
-            switch ($block->type->handle) {
-                case 'programmeRegion':
-                    $region = [
-                        'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody,
-                    ];
-                    array_push($regions, $region);
-                    break;
-            }
-        }
-    }
-    return $regions;
 }
 
 /**********************************************************
@@ -343,51 +326,19 @@ function getFundingProgramme($locale, $slug)
 {
     normaliseCacheHeaders();
 
-    $section = 'fundingProgrammes';
+    $transformer = new FundingProgrammeTransformer($locale, $slug);
 
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => $section,
-            'slug' => $slug,
-            /**
-             * Include expired entries
-             * Allows expiry date to be used to drop items of the listing,
-             * but still maintain the details page for historical purposes
-             */
-            'status' => ['live', 'expired'],
-        ],
-        'one' => true,
-        'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            if ($entry->useNewContent === false) {
-                throw new \yii\web\NotFoundHttpException('Programme not found');
-            }
-
-            $data = [
-                'id' => $entry->id,
-                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
-                'status' => $status,
-                'dateUpdated' => $entry->dateUpdated,
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'path' => $entry->uri,
-                'hero' => Images::extractHeroImage($entry->heroImage),
-                'summary' => getFundingProgramMatrix($entry, $locale),
-                'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
-            ];
-
-            if ($entry->relatedCaseStudies) {
-                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
-            }
-
-            return $data;
-        },
-    ];
+    return VersionHelpers::withDraftOrVersion($transformer, [
+        'site' => $locale,
+        'section' => 'fundingProgrammes',
+        'slug' => $slug,
+        /**
+         * Include expired entries
+         * Allows expiry date to be used to drop items of the listing,
+         * but still maintain the details page for historical purposes
+         */
+        'status' => ['live', 'expired'],
+    ]);
 }
 
 function getListing($locale)
