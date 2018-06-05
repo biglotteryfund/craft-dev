@@ -35,6 +35,14 @@ class EntryHelpers
         return $locale === 'cy' ? "/welsh/$uri" : "/$uri";
     }
 
+    public static function isDraftOrVersion()
+    {
+        $isDraft = \Craft::$app->request->getParam('draft');
+        $isVersion = \Craft::$app->request->getParam('version');
+
+        return $isDraft || $isVersion;
+    }
+
     /**
      * getDraftOrVersionOfEntry
      * Looks up an old version or draft of an entry

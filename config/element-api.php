@@ -345,6 +345,21 @@ function getFundingProgramme($locale, $slug)
 
     $section = 'fundingProgrammes';
 
+    /**
+     * Include expired entries
+     * Allows expiry date to be used to drop items of the listing,
+     * but still maintain the details page for historical purposes
+     */
+    $statuses = ['live', 'expired'];
+
+    /**
+     * Allow disabled versions when requesting drafts
+     * to support previews of brand new or disabled pages.
+     */
+    if (EntryHelpers::isDraftOrVersion()) {
+        $statuses[] = 'disabled';
+    }
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
@@ -352,12 +367,7 @@ function getFundingProgramme($locale, $slug)
             'site' => $locale,
             'section' => $section,
             'slug' => $slug,
-            /**
-             * Include expired entries
-             * Allows expiry date to be used to drop items of the listing,
-             * but still maintain the details page for historical purposes
-             */
-            'status' => ['live', 'expired'],
+            'status' => $statuses,
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
