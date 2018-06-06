@@ -23,7 +23,10 @@ return [
 
         'securityKey' => 'DugP0KMpm7-KvS9ID8vDmL3dPXs8S0uN',
 
-        'allowUpdates' => false
+        'allowUpdates' => false,
+
+        // Disable transforms for animated gifs
+        'transformGifs' => false
     ],
 
     // Dev environment settings
