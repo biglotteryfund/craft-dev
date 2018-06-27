@@ -715,18 +715,6 @@
         }
     },
     {
-        "name": "Use new content?",
-        "handle": "useNewContent",
-        "instructions": "Enable this to enable the new funding programme template using the copy entered here",
-        "required": null,
-        "translationMethod": "none",
-        "translationKeyFormat": null,
-        "type": "craft\\fields\\Lightswitch",
-        "settings": {
-            "default": ""
-        }
-    },
-    {
         "name": "Hero Image",
         "handle": "heroImage",
         "instructions": "",

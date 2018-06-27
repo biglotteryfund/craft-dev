@@ -73,7 +73,6 @@ function parseSegmentMatrix($entry, $locale)
 function getFundingProgramMatrix($entry, $locale)
 {
     $bodyBlocks = [];
-    $useNewContent = (bool) $entry->useNewContent;
     if ($entry->fundingProgramme) {
         foreach ($entry->fundingProgramme->all() as $block) {
             switch ($block->type->handle) {
@@ -81,12 +80,8 @@ function getFundingProgramMatrix($entry, $locale)
                     $fundingData = [];
                     $fundingData['title'] = $block->programmeTitle;
 
-                    /**
-                     * If useNewContent switch is enabled set linkUrl to the
-                     * cannonical uri rather than the custom linkUrl field.
-                     */
                     $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
-                    $fundingData['linkUrl'] = $useNewContent ? $pathLinkUrl : $block->linkUrl;
+                    $fundingData['linkUrl'] = $pathLinkUrl;
 
                     // Use custom thumbnail if one is set, otherwise default to hero image.
                     $heroImage = Images::extractImage($entry->heroImage);
@@ -372,10 +367,6 @@ function getFundingProgramme($locale, $slug)
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            if ($entry->useNewContent === false) {
-                throw new \yii\web\NotFoundHttpException('Programme not found');
-            }
 
             $data = [
                 'id' => $entry->id,
