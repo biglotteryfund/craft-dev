@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "26d57da9cdc95f2b82e38f2e1d113272",
@@ -608,16 +608,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.10",
+            "version": "3.0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "b8ea38aebeec3bfa13acb2d38da4f2cef84d861e"
+                "reference": "bcfb3f074743a229c1db4d7986fc3dc5fb9da73b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/b8ea38aebeec3bfa13acb2d38da4f2cef84d861e",
-                "reference": "b8ea38aebeec3bfa13acb2d38da4f2cef84d861e",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/bcfb3f074743a229c1db4d7986fc3dc5fb9da73b",
+                "reference": "bcfb3f074743a229c1db4d7986fc3dc5fb9da73b",
                 "shasum": ""
             },
             "require": {
@@ -626,7 +626,7 @@
                 "craftcms/plugin-installer": "~1.5.0",
                 "craftcms/server-check": "~1.1.0",
                 "creocoder/yii2-nested-sets": "~0.9.0",
-                "danielstjules/stringy": "~3.1.0",
+                "danielstjules/stringy": "^3.1.0",
                 "elvanto/litemoji": "^1.3.1",
                 "enshrined/svg-sanitize": "~0.8.2",
                 "ext-curl": "*",
@@ -637,19 +637,19 @@
                 "ext-pcre": "*",
                 "ext-pdo": "*",
                 "ext-zip": "*",
-                "guzzlehttp/guzzle": "~6.3.0",
-                "league/flysystem": "~1.0.35",
-                "league/oauth2-client": "~2.2.1",
-                "mikehaertl/php-shellcommand": "~1.2.5",
+                "guzzlehttp/guzzle": "^6.3.0",
+                "league/flysystem": "^1.0.35",
+                "league/oauth2-client": "^2.2.1",
+                "mikehaertl/php-shellcommand": "^1.2.5",
                 "php": ">=7.0.0",
                 "pixelandtonic/imagine": "~0.7.1.2",
-                "seld/cli-prompt": "~1.0.3",
-                "twig/twig": "~2.4.4",
+                "seld/cli-prompt": "^1.0.3",
+                "twig/twig": "^2.4.4",
                 "yiisoft/yii2": "~2.0.15.1",
-                "yiisoft/yii2-debug": "~2.0.10",
-                "yiisoft/yii2-queue": "~2.0.1",
-                "yiisoft/yii2-swiftmailer": "~2.1.0",
-                "zendframework/zend-feed": "~2.8.0"
+                "yiisoft/yii2-debug": "^2.0.10",
+                "yiisoft/yii2-queue": "^2.0.1",
+                "yiisoft/yii2-swiftmailer": "^2.1.0",
+                "zendframework/zend-feed": "^2.8.0"
             },
             "provide": {
                 "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
@@ -686,7 +686,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2018-06-05T23:09:51+00:00"
+            "time": "2018-06-26T20:20:09+00:00"
         },
         {
             "name": "craftcms/element-api",
