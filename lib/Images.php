@@ -76,8 +76,7 @@ class Images
             'default' => $imageMedium,
             'small' => $imageSmall,
             'medium' => $imageMedium,
-            'large' => $imageLarge,
-            'captionFootnote' => $heroEntry->captionFootnote ? $heroEntry->captionFootnote : null,
+            'large' => $imageLarge
         ];
     }
 

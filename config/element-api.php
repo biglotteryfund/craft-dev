@@ -3,6 +3,7 @@
 use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
 use craft\elements\Category;
 use craft\elements\Entry;
@@ -365,29 +366,7 @@ function getFundingProgramme($locale, $slug)
             'status' => $statuses,
         ],
         'one' => true,
-        'transformer' => function (Entry $entry) use ($locale, $section, $slug) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            $data = [
-                'id' => $entry->id,
-                'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
-                'status' => $status,
-                'dateUpdated' => $entry->dateUpdated,
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'path' => $entry->uri,
-                'hero' => Images::extractHeroImage($entry->heroImage),
-                'summary' => getFundingProgramMatrix($entry, $locale),
-                'intro' => $entry->programmeIntro,
-                'contentSections' => getFundingProgrammeRegionsMatrix($entry, $locale),
-            ];
-
-            if ($entry->relatedCaseStudies) {
-                $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
-            }
-
-            return $data;
-        },
+        'transformer' => new FundingProgrammeTransformer($locale),
     ];
 }
 
