@@ -549,49 +549,6 @@ function getProfiles($locale, $section)
     ];
 }
 
-function getSurveys($locale)
-{
-    normaliseCacheHeaders();
-
-    $searchCriteria = [
-        'section' => 'surveys',
-        'site' => $locale,
-    ];
-
-    // Fetch everything, including closed surveys, if ?all=true is set
-    $showAll = \Craft::$app->request->getParam('all');
-    if ($showAll) {
-        $searchCriteria['status'] = null;
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => $searchCriteria,
-        'transformer' => function (Entry $entry) use ($locale) {
-
-            $choices = array_map(function ($choice) {
-                return [
-                    'id' => (int) $choice->id,
-                    'title' => $choice->choiceTitle,
-                    'allowMessage' => $choice->allowMessage,
-                ];
-            }, $entry->choices->all());
-
-            return [
-                'id' => $entry->id,
-                'status' => $entry->status,
-                'surveyPath' => $entry->path,
-                'dateCreated' => $entry->dateCreated,
-                'title' => $entry->title,
-                'question' => $entry->question,
-                'choices' => $choices,
-                'global' => $entry->global,
-            ];
-        },
-    ];
-}
-
 /**
  * API Endpoint: Get blog posts
  * Get a list of all blog posts
@@ -858,7 +815,6 @@ return [
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/surveys' => getSurveys,
         'api/v1/<locale:en|cy>/blog' => getBlogposts,
         // more specific routes (blogpost, tag/authors) take precedence and come first here
         'api/v1/<locale:en|cy>/blog/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getBlogpostsBySlug,
