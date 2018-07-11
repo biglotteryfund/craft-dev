@@ -19,7 +19,7 @@ function normaliseCacheHeaders()
     header_remove('Pragma');
 }
 
-function getRelatedEntries($entry, $relationType)
+function getRelatedEntries($entry, $relationType, $locale)
 {
     $relatedEntries = [];
     $relatedSearch = [];
@@ -39,6 +39,7 @@ function getRelatedEntries($entry, $relationType)
     foreach ($relatedSearch as $relatedItem) {
         $relatedData = EntryHelpers::extractBasicEntryData($relatedItem);
         $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
+        $relatedData['link'] = EntryHelpers::uriForLocale($relatedItem->uri, $locale);
 
         $heroImage = Images::extractImage($relatedItem->heroImage);
         $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
@@ -46,6 +47,20 @@ function getRelatedEntries($entry, $relationType)
             'h' => 333,
             'crop' => 'faces',
         ]);
+
+        // Some sub-pages are just links to external sites or internal files
+        // so we replace the canonical (empty) page with a link
+        $entryType = $relatedItem->type->handle;
+        if ($entryType === 'linkItem') {
+            $relatedData['entryType'] = $entryType;
+            // is this a document?
+            if ($relatedItem->documentLink && $relatedItem->documentLink->one()) {
+                $relatedData['link'] = $relatedItem->documentLink->one()->url;
+            // or is it an external URL?
+            } else if ($relatedItem->externalUrl) {
+                $relatedData['link'] = $relatedItem->externalUrl;
+            }
+        }
 
         $relatedEntries[] = $relatedData;
     }
@@ -419,17 +434,17 @@ function getListing($locale)
                 $entryData['relatedContent'] = $entry->relatedContent;
             }
 
-            $ancestors = getRelatedEntries($entry, 'ancestors');
+            $ancestors = getRelatedEntries($entry, 'ancestors', $locale);
             if (count($ancestors) > 0) {
                 $entryData['ancestors'] = $ancestors;
             }
 
-            $children = getRelatedEntries($entry, 'children');
+            $children = getRelatedEntries($entry, 'children', $locale);
             if (count($children) > 0) {
                 $entryData['children'] = $children;
             }
 
-            $siblings = getRelatedEntries($entry, 'siblings');
+            $siblings = getRelatedEntries($entry, 'siblings', $locale);
             if (count($siblings) > 0) {
                 $entryData['siblings'] = $siblings;
             }
