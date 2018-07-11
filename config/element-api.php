@@ -391,6 +391,7 @@ function getListing($locale)
 
     $pagePath = \Craft::$app->request->getParam('path');
 
+    $statuses = ['live', 'expired'];
     $searchCriteria = [
         'site' => $locale,
     ];
@@ -400,6 +401,16 @@ function getListing($locale)
     } else {
         $searchCriteria['level'] = 1;
     }
+
+    /**
+     * Allow disabled versions when requesting drafts
+     * to support previews of brand new or disabled pages.
+     */
+    if (EntryHelpers::isDraftOrVersion()) {
+        $statuses[] = 'disabled';
+    }
+
+    $searchCriteria['status'] = $statuses;
 
     return [
         'serializer' => 'jsonApi',
