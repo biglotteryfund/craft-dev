@@ -14,16 +14,6 @@ class StrategicProgrammeTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
-    public static function extractRelatedResearch($field)
-    {
-        $entry = $field->one() ?? false;
-        if ($entry) {
-            return [
-                'title' => $entry->title,
-            ];
-        }
-    }
-
     public static function buildSectionBreadcrumbs(Entry $entry, $locale)
     {
         $parentSection = Entry::find()->section('strategicInvestments')->site($locale)->one();
@@ -63,7 +53,6 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                 return [
                     'title' => $block->contentTitle,
                     'content' => $block->contentBody,
-                    // 'relatedResearch' => self::extractRelatedResearch($block->relatedResearch)
                 ];
             }, $entry->strategicProgrammeImpact->all() ?? []),
             'programmePartners' => [
