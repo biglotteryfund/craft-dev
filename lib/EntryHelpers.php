@@ -14,7 +14,7 @@ class EntryHelpers
 
     public static function getAvailableLanguages($entryId, $currentLanguage)
     {
-        $alternateLanguage = $currentLanguage === 'en' ? 'cy' : $currentLanguage;
+        $alternateLanguage = $currentLanguage === 'en' ? 'cy' : 'en';
 
         $altEntry = Entry::find()
             ->id($entryId)
@@ -25,6 +25,8 @@ class EntryHelpers
         if ($altEntry) {
             array_push($availableLanguages, $alternateLanguage);
         }
+
+        sort($availableLanguages);
 
         return $availableLanguages;
     }
@@ -119,16 +121,6 @@ class EntryHelpers
 
         if ($entry->trailText) {
             $basicData['trailText'] = $entry->trailText;
-        }
-
-        if ($entry->trailPhoto) {
-            $photos = [];
-            foreach ($entry->trailPhoto->all() as $photo) {
-                $photos[] = $photo->url;
-            }
-            if ($photos) {
-                $basicData['photo'] = $photos[0];
-            }
         }
 
         return $basicData;
