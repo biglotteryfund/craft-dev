@@ -4,6 +4,7 @@ use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\Images;
 use craft\elements\Category;
 use craft\elements\Entry;
@@ -56,7 +57,7 @@ function getRelatedEntries($entry, $relationType, $locale)
             // is this a document?
             if ($relatedItem->documentLink && $relatedItem->documentLink->one()) {
                 $relatedData['link'] = $relatedItem->documentLink->one()->url;
-            // or is it an external URL?
+                // or is it an external URL?
             } else if ($relatedItem->externalUrl) {
                 $relatedData['link'] = $relatedItem->externalUrl;
             }
@@ -66,24 +67,6 @@ function getRelatedEntries($entry, $relationType, $locale)
     }
 
     return $relatedEntries;
-}
-
-function parseSegmentMatrix($entry, $locale)
-{
-    $segments = [];
-    if ($entry->contentSegment) {
-        foreach ($entry->contentSegment->all() as $block) {
-            $segment = [];
-            $segment['title'] = $block->segmentTitle;
-            $segment['content'] = $block->segmentContent;
-            $segmentImage = $block->segmentImage->one();
-            if ($segmentImage) {
-                $segment['photo'] = $segmentImage->url;
-            }
-            array_push($segments, $segment);
-        }
-    }
-    return $segments;
 }
 
 function getFundingProgramMatrix($entry, $locale)
@@ -108,6 +91,13 @@ function getFundingProgramMatrix($entry, $locale)
                         'h' => 100,
                         'crop' => 'faces',
                     ]);
+
+                    $image = $heroImage ? $heroImage->imageMedium->one() : null;
+                    $fundingData['image'] = $image ? Images::imgixUrl($image->url, [
+                        'w' => 343,
+                        'h' => 126,
+                        'crop' => 'faces',
+                    ]) : null;
 
                     $orgTypes = [];
                     foreach ($block->organisationType as $o) {
@@ -153,25 +143,6 @@ function getFundingProgramMatrix($entry, $locale)
         }
     }
     return $bodyBlocks;
-}
-
-function getFundingProgrammeRegionsMatrix($entry, $locale)
-{
-    $regions = [];
-    if ($entry->programmeRegions) {
-        foreach ($entry->programmeRegions->all() as $block) {
-            switch ($block->type->handle) {
-                case 'programmeRegion':
-                    $region = [
-                        'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody,
-                    ];
-                    array_push($regions, $region);
-                    break;
-            }
-        }
-    }
-    return $regions;
 }
 
 /**********************************************************
@@ -385,6 +356,63 @@ function getFundingProgramme($locale, $slug)
     ];
 }
 
+/**
+ * API Endpoint: Get Strategic Programmes
+ * Get a list of all active strategic programmes
+ */
+function getStrategicProgrammes($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'strategicProgrammes',
+        ],
+        'transformer' => new StrategicProgrammeTransformer($locale),
+    ];
+}
+
+/**
+ * API Endpoint: Get Strategic Programme
+ * Get full details of a single strategic programme
+ */
+function getStrategicProgramme($locale, $slug)
+{
+    normaliseCacheHeaders();
+
+    /**
+     * Include expired entries
+     * Allows expiry date to be used to drop items of the listing,
+     * but still maintain the details page for historical purposes
+     */
+    $statuses = ['live', 'expired'];
+
+    /**
+     * Allow disabled versions when requesting drafts
+     * to support previews of brand new or disabled pages.
+     */
+    if (EntryHelpers::isDraftOrVersion()) {
+        $statuses[] = 'disabled';
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'strategicProgrammes',
+            'slug' => $slug,
+            'status' => $statuses,
+        ],
+        'one' => true,
+        'transformer' => new StrategicProgrammeTransformer($locale),
+    ];
+}
+
+
 function getListing($locale)
 {
     normaliseCacheHeaders();
@@ -427,23 +455,25 @@ function getListing($locale)
 
             $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
 
-            if ($entry->introductionText) {
-                $entryData['introduction'] = $entry->introductionText;
+            $entryData['introduction'] = $entry->introductionText ?? null;
+
+            $segments = [];
+            if ($entry->contentSegment) {
+                foreach ($entry->contentSegment->all() as $block) {
+                    $segment = [];
+                    $segment['title'] = $block->segmentTitle;
+                    $segment['content'] = $block->segmentContent;
+                    $segmentImage = $block->segmentImage->one();
+                    $segment['photo'] = $segmentImage ? $segmentImage->url : null;
+                    array_push($segments, $segment);
+                }
             }
 
-            // casting to string prevents empty fields
-            if ((string) $entry->outroText) {
-                $entryData['outro'] = $entry->outroText;
-            }
+            $entryData['segments'] = $segments ?? null;
 
-            $segments = parseSegmentMatrix($entry, $locale);
-            if ($segments) {
-                $entryData['segments'] = $segments;
-            }
+            $entryData['outro'] = $entry->outroText ?? null;
 
-            if ($entry->relatedContent) {
-                $entryData['relatedContent'] = $entry->relatedContent;
-            }
+            $entryData['relatedContent'] = $entry->relatedContent ?? null;
 
             $ancestors = getRelatedEntries($entry, 'ancestors', $locale);
             if (count($ancestors) > 0) {
@@ -814,6 +844,8 @@ return [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
+        'api/v1/<locale:en|cy>/strategic-programmes/<slug>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
