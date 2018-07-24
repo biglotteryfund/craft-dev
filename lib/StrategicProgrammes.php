@@ -59,7 +59,6 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             'trailText' => $entry->trailText,
             'intro' => $entry->programmeIntro,
             'aims' => $entry->strategicProgrammeAims,
-            'aims' => $entry->strategicProgrammeAims,
             'impact' => array_map(function ($block) {
                 return [
                     'title' => $block->contentTitle,
@@ -67,7 +66,6 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                     // 'relatedResearch' => self::extractRelatedResearch($block->relatedResearch)
                 ];
             }, $entry->strategicProgrammeImpact->all() ?? []),
-            'aims' => $entry->strategicProgrammeAims,
             'programmePartners' => [
                 'intro' => $entry->programmePartnersIntro,
                 'partners' => array_map(function ($partner) {
