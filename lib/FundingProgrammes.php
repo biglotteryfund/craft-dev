@@ -29,9 +29,25 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'hero' => Images::extractHeroImage($entry->heroImage),
             'heroCredit' => $entry->heroImageCredit ?? null,
             'summary' => getFundingProgramMatrix($entry, $this->locale),
-            'intro' => $entry->programmeIntro,
-            'contentSections' => getFundingProgrammeRegionsMatrix($entry, $this->locale),
+            'intro' => $entry->programmeIntro
         ];
+
+        $contentSections = [];
+        if ($entry->programmeRegions) {
+            foreach ($entry->programmeRegions->all() as $block) {
+                switch ($block->type->handle) {
+                    case 'programmeRegion':
+                        $region = [
+                            'title' => $block->programmeRegionTitle,
+                            'body' => $block->programmeRegionBody,
+                        ];
+                        array_push($contentSections, $region);
+                        break;
+                }
+            }
+        }
+
+        $data['contentSections'] = $contentSections;
 
         if ($entry->relatedCaseStudies) {
             $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
