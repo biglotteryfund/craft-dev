@@ -58,10 +58,14 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             'programmePartners' => [
                 'intro' => $entry->programmePartnersIntro,
                 'partners' => array_map(function ($partner) {
+                    $logoUrl = $partner->partnerLogo->one()->url ?? null;
                     return [
                         'title' => $partner->partnerTitle,
                         'subtitle' => $partner->partnerSubtitle ?? null,
-                        'logo' => $partner->partnerLogo->one() ?? null,
+                        'logo' => $logoUrl ? Images::imgixUrl(
+                            $logoUrl,
+                            ['w' => '80', 'h' => '80']
+                        ) : null,
                         'description' => $partner->partnerDescription,
                         'link' => $partner->partnerUrl ?? null,
                     ];
