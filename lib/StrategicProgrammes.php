@@ -73,7 +73,13 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             ],
             'researchPartners' => [
                 'intro' => $entry->researchPartnersIntro,
-            ]
+            ],
+            'resources' => array_map(function ($block) {
+                return [
+                    'title' => $block->contentTitle,
+                    'content' => $block->contentBody,
+                ];
+            }, $entry->strategicProgrammeResources->all() ?? []),
         ];
 
         return $data;
