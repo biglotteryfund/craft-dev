@@ -20,6 +20,7 @@ class ContentHelpers
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
+            'trailText' => $entry->trailText ?? null,
             'hero' => Images::extractHeroImage($entry->heroImage),
             'heroCredit' => $entry->heroImageCredit ?? null,
         ];

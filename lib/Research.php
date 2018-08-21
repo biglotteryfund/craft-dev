@@ -18,7 +18,14 @@ class ResearchTransformer extends TransformerAbstract
         $common = ContentHelpers::getCommonDetailFields($entry, $this->locale);
         $researchMeta = $entry->researchMeta->one();
 
+        $heroImageField = Images::extractImage($entry->heroImage);
+
         return array_merge($common, [
+            'thumbnail' => $heroImageField ? Images::imgixUrl(
+                $heroImageField->imageMedium->one()->url,
+                ['w' => '640', 'h' => '360']
+            ) : null,
+
             'introduction' => $entry->introductionText ?? null,
             'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
             'researchPartners' => $researchMeta ? $researchMeta->researchPartners : null,
