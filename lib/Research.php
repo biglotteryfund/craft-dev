@@ -75,6 +75,10 @@ class ResearchTransformer extends TransformerAbstract
                     }, $row->contentSections->all() ?? [])
                 ];
             }, $entry->researchSections->all() ?? []),
+
+            'meta' => [
+                'searchScore' => $entry->searchScore ?? null
+            ]
         ]);
     }
 }

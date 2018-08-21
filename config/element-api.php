@@ -366,14 +366,25 @@ function getResearch($locale)
 {
     normaliseCacheHeaders();
 
+    $criteria = [
+        'site' => $locale,
+        'section' => 'research',
+        'status' => EntryHelpers::getVersionStatuses()
+    ];
+
+    if ($searchQuery = \Craft::$app->request->getParam('q')) {
+        $criteria['orderBy'] = 'score';
+        $criteria['search'] = [
+            'query' => $searchQuery,
+            'subLeft' => true,
+            'subRight' => true
+        ];
+    }
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'research',
-            'status' => EntryHelpers::getVersionStatuses(),
-        ],
+        'criteria' => $criteria,
         'transformer' => new ResearchTransformer($locale)
     ];
 }
