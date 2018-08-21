@@ -104,6 +104,26 @@ class EntryHelpers
         ];
     }
 
+    public static function getVersionStatuses()
+    {
+        /**
+         * Include expired entries
+         * Allows expiry date to be used to drop items of the listing,
+         * but still maintain the details page for historical purposes
+         */
+        $statuses = ['live', 'expired'];
+
+        /**
+         * Allow disabled versions when requesting drafts
+         * to support previews of brand new or disabled pages.
+         */
+        if (EntryHelpers::isDraftOrVersion()) {
+            $statuses[] = 'disabled';
+        }
+
+        return $statuses;
+    }
+
     public static function extractBasicEntryData(Entry $entry)
     {
         $basicData = [
