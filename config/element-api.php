@@ -4,6 +4,7 @@ use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\Images;
 use craft\elements\Category;
@@ -353,6 +354,50 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => new FundingProgrammeTransformer($locale),
+    ];
+}
+
+
+/**
+ * API Endpoint: Get research
+ * Get full details of all research entry
+ */
+function getResearch($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'research',
+            'status' => EntryHelpers::getVersionStatuses(),
+        ],
+        'transformer' => new ResearchTransformer($locale)
+    ];
+}
+
+
+/**
+ * API Endpoint: Get research detail
+ * Get full details of a single research entry
+ */
+function getResearchDetail($locale, $slug)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'research',
+            'slug' => $slug,
+            'status' => EntryHelpers::getVersionStatuses(),
+        ],
+        'one' => true,
+        'transformer' => new ResearchTransformer($locale)
     ];
 }
 
@@ -844,6 +889,8 @@ return [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/research' => getResearch,
+        'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
         'api/v1/<locale:en|cy>/strategic-programmes/<slug>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
