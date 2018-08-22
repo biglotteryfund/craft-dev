@@ -9,12 +9,12 @@ class ContentHelpers
 {
     public static function getCommonDetailFields(Entry $entry, $locale)
     {
-
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
         return [
             'id' => $entry->id,
             'status' => $status,
+            'postDate' => $entry->postDate,
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
