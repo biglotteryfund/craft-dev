@@ -37,7 +37,7 @@ class ResearchTransformer extends TransformerAbstract
                     'title' => $document->documentTitle,
                     'url' => $asset->url,
                     'filetype' => $asset->kind,
-                    'filesize' => StringHelpers::formatBytes($asset->size),
+                    'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0),
                     'contents' => $document->documentContents ? explode("\n", $document->documentContents) : [],
                 ];
             }, $entry->researchDocuments->all() ?? []),
