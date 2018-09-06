@@ -1,10 +1,42 @@
+# Environment variables
+env:
+  global:
+    # travis encrypt AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - secure: "gsEC9m4TtYNRkF+2+wCE9WsU8b3wdM9NWyMhLW180OHAXCSNq4yylvEBwzKTMAV9DXkzGUAgHMWkpS+mM48jzOD9l6OpXA/9dGaBXdhmiOFMh1eSmW/5zZtHFVKkmWejc413ITeTIpNJvtB0k1eoIQ6Qarr4DK6VWVhV4eOdTnqcjA9h6OJ4JTda36Ld1Q/x3ikhSz8p2gcvo02RZk0um2KvdRsOzzq/C2K41qxoh6ya817ToJtpKzV7D3rUyGNjG5Qx9SDVek4bz0HCVBRck2zYHf771JssD7eGFvY/CV9T1Tb/JZxlqp6jmJqLYXcA7GmHQxfrAUBNaYKh4vjO01PJAdHEn2q+lYXfLZ0EBWBR0Z3MXkgl3qqtnJGKxWZN6BJaQvS6UNvArLSv/Tkc1whn2qdoLuEqGQOI1MzBHxlX9CLULt3KqYVdfy4ssdUsyyqQZspQYr+5JZ9jd24n9OmDp5r7LSl4DjnUQ4vjcxgvJZFSKgsVDYziqhb0RJxuC3SJI757WZm4piX3/JWwlXX5wmrLeP0iHjMJoyP6CVBr+zo3DQABysVMzE36InZ3Zjkwjp5y0EGb2HYmqZavaIXBIXVZohP3lavnsBclwVOW0kPyazAmYC3rFN0P22SRXeaCE/+3MZwG/8k1gIuPzUUqFUMiiSR4WMOWPzVPjAY="
+    # travis encrypt AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - secure: "clH18cJczlthc/JUKr9NEPY/7gLZFV4fujr6kvpl5aWhs6VL7tKhKOunK0GUgMlsoO/Vsci/KfqIFQXN1ktwcoqhrqsz6jK5T4prWqTR8SBUYJ1pfA6i2bV/pdqzQ6fAyWFi+uJh27NOC0XCbfO4yzW9MCcw+BBujpR+HyUxk9OUdGFKoQwBOjA5yRu2ayPZCkjm3oyhEW5ZwYixXW4pxepL2hjAF8gVEJHd/15e+MAfTO4MMRbz9pSMpj3Djz1l1iMP7aabPwO6BFRDQtSAcRuas/ilz5HCSyXyJJ3poIMjbWe8Y6LBX5ja4F5Ns/fQtFU00NsK2bXtIsFPlejY4Zx/xVrBVZWRVTQ+e32HSk3ZVEb/1CFfBTRBryUe3qpqGogaqZnCxygIheqmoAmdKhSdFb+nEE2fZTSRLdvTQGg0GEjhSepNivSI8gD1M2njbL3TTTWH/pK69FpAaUr5se6iio0++zxCcT1NMgdQeIPGkEVkF8LSXPp9w4ZadPS+l7PU49006MEdbpLS78HZH67u4I1Ewjn61XBpwG1TNefwdEHQkjcFiJkQPu5QXFtFrNN2XcmW7nHcUVAiI6K1wm/MFIrAMbgiS4FM0ntCYEVCmB+N6D4F19ZDIt6Rl2r9mvTt24xKIWr+H8USB6LOt6N6uYWkeAr/IUFYm3ICyyg="
+
+# Defaults
 language: php
 php:
 - 7.1.13
+
+# Cache locations
 cache:
   directories:
-    - $HOME/.composer/cache/files
+  - "$HOME/.composer/cache/files"
+
+# Build stages
 before_script:
 - composer install
 script:
-- ./vendor/bin/phpunit --bootstrap tests/bootstrap.php tests
+- "./vendor/bin/phpunit --bootstrap tests/bootstrap.php tests"
+
+# Deploy steps
+deploy:
+- provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: eu-west-2
+  app: Craft CMS
+  env: craft-test
+  on:
+    branch: master
+- provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: eu-west-2
+  app: Craft CMS
+  env: craft-production-blue
+  on:
+    tags: true
