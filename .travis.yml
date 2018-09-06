@@ -30,6 +30,7 @@ deploy:
   region: eu-west-2
   app: Craft CMS
   env: craft-test
+  bucket_name: elasticbeanstalk-eu-west-2-868515886436
   on:
     branch: master
 - provider: elasticbeanstalk
@@ -38,5 +39,6 @@ deploy:
   region: eu-west-2
   app: Craft CMS
   env: craft-production-blue
+  bucket_name: elasticbeanstalk-eu-west-2-868515886436
   on:
     tags: true
