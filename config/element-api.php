@@ -834,6 +834,50 @@ function getStatRegions($locale)
     ];
 }
 
+/**
+ * API Endpoint: Data single
+ */
+function getDataPage($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'section' => 'data',
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) use ($locale) {
+
+            $stats = [];
+            foreach ($entry->stats as $s) {
+                $statData = [
+                    'title' => $s->statTitle,
+                    'value' => $s->statValue,
+                    'showNumberBeforeTitle' => $s->showNumberBeforeTitle
+                ];
+                if ($s->suffix) {
+                    $statData['suffix'] = $s->suffix;
+                }
+                if ($s->prefix) {
+                    $statData['prefix'] = $s->prefix;
+                }
+                $stats[] = $statData;
+            }
+
+            $data['stats'] = $stats;
+
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'url' => $entry->url,
+                'stats' => $stats
+            ];
+        },
+    ];
+}
+
 function getMerchandise($locale)
 {
     normaliseCacheHeaders();
@@ -917,8 +961,9 @@ return [
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
-        'api/v1/<locale:en|cy>/stat-blocks/' => getStatBlocks,
-        'api/v1/<locale:en|cy>/stat-regions/' => getStatRegions,
+        'api/v1/<locale:en|cy>/stat-blocks' => getStatBlocks,
+        'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
+        'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
         'api/v1/list-routes' => getRoutes,
