@@ -841,23 +841,13 @@ function getDataPage($locale)
 {
     normaliseCacheHeaders();
 
-    $statuses = ['live', 'expired'];
-
-    /**
-     * Allow disabled versions when requesting drafts
-     * to support previews of brand new or disabled pages.
-     */
-    if (EntryHelpers::isDraftOrVersion()) {
-        $statuses[] = 'disabled';
-    }
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'data',
-            'status' => $statuses
+            'status' => EntryHelpers::getVersionStatuses()
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
