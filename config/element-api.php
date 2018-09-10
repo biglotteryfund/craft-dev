@@ -864,18 +864,13 @@ function getDataPage($locale)
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
             $stats = [];
             foreach ($entry->stats as $s) {
-                $statData = [
+                $stats[] = [
                     'title' => $s->statTitle,
                     'value' => $s->statValue,
-                    'showNumberBeforeTitle' => $s->showNumberBeforeTitle
+                    'showNumberBeforeTitle' => $s->showNumberBeforeTitle,
+                    'suffix' => $s->suffix ?? null,
+                    'prefix' => $s->prefix ?? null
                 ];
-                if ($s->suffix) {
-                    $statData['suffix'] = $s->suffix;
-                }
-                if ($s->prefix) {
-                    $statData['prefix'] = $s->prefix;
-                }
-                $stats[] = $statData;
             }
 
             $data['stats'] = $stats;
