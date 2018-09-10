@@ -845,6 +845,7 @@ function getDataPage($locale)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
+            'site' => $locale,
             'section' => 'data',
         ],
         'one' => true,
