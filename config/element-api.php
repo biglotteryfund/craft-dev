@@ -834,6 +834,47 @@ function getStatRegions($locale)
     ];
 }
 
+/**
+ * API Endpoint: Data single
+ */
+function getDataPage($locale)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'section' => 'data',
+            'status' => EntryHelpers::getVersionStatuses()
+        ],
+        'one' => true,
+        'transformer' => function (Entry $entry) use ($locale) {
+            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+            $stats = [];
+            foreach ($entry->stats as $s) {
+                $stats[] = [
+                    'title' => $s->statTitle,
+                    'value' => $s->statValue,
+                    'showNumberBeforeTitle' => $s->showNumberBeforeTitle,
+                    'suffix' => $s->suffix ?? null,
+                    'prefix' => $s->prefix ?? null
+                ];
+            }
+
+            $data['stats'] = $stats;
+
+            return [
+                'id' => $entry->id,
+                'title' => $entry->title,
+                'url' => $entry->url,
+                'stats' => $stats
+            ];
+        },
+    ];
+}
+
 function getMerchandise($locale)
 {
     normaliseCacheHeaders();
@@ -917,8 +958,9 @@ return [
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
-        'api/v1/<locale:en|cy>/stat-blocks/' => getStatBlocks,
-        'api/v1/<locale:en|cy>/stat-regions/' => getStatRegions,
+        'api/v1/<locale:en|cy>/stat-blocks' => getStatBlocks,
+        'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
+        'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
         'api/v1/list-routes' => getRoutes,
