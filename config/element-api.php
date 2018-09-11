@@ -4,9 +4,9 @@ use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
-use biglotteryfund\utils\Images;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -151,18 +151,31 @@ function getFundingProgramMatrix($entry, $locale)
  **********************************************************/
 
 /**
- * API Endpoint: Get Routes
+ * API Endpoint: List routes
  * Get a list of all canonical URLs from the CMS
  */
 function getRoutes()
 {
     normaliseCacheHeaders();
 
+    $includeList = [
+        'about',
+        'benefits',
+        'buildingBetterOpportunities',
+        'contact',
+        'customerService',
+        'fundingGuidance',
+        'fundingProgrammes',
+        'jobs',
+        'research',
+        'strategicProgrammes',
+    ];
+
     return [
         'elementsPerPage' => 1000,
         'criteria' => [
-            'section' => ['about', 'fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
-            'status' => ['live', 'pending', 'expired'],
+            'section' => $includeList,
+            'status' => ['live', 'expired'],
             'orderBy' => 'uri',
         ],
         'transformer' => function (craft\elements\Entry $entry) {
@@ -170,8 +183,6 @@ function getRoutes()
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'path' => '/' . $entry->uri,
-                'live' => $entry->status === 'live',
-                'isFromCms' => true,
             ];
         },
     ];
@@ -344,7 +355,6 @@ function getFundingProgramme($locale, $slug)
     ];
 }
 
-
 /**
  * API Endpoint: Get research
  * Get full details of all research entry
@@ -356,7 +366,7 @@ function getResearch($locale)
     $criteria = [
         'site' => $locale,
         'section' => 'research',
-        'status' => EntryHelpers::getVersionStatuses()
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     if ($searchQuery = \Craft::$app->request->getParam('q')) {
@@ -364,16 +374,15 @@ function getResearch($locale)
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
-            'subRight' => true
+            'subRight' => true,
         ];
     }
 
     return [
         'criteria' => $criteria,
-        'transformer' => new ResearchTransformer($locale)
+        'transformer' => new ResearchTransformer($locale),
     ];
 }
-
 
 /**
  * API Endpoint: Get research detail
@@ -391,7 +400,7 @@ function getResearchDetail($locale, $slug)
             'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
-        'transformer' => new ResearchTransformer($locale)
+        'transformer' => new ResearchTransformer($locale),
     ];
 }
 
@@ -446,7 +455,6 @@ function getStrategicProgramme($locale, $slug)
         'transformer' => new StrategicProgrammeTransformer($locale),
     ];
 }
-
 
 function getListing($locale)
 {
@@ -803,7 +811,7 @@ function getDataPage($locale)
         'criteria' => [
             'site' => $locale,
             'section' => 'data',
-            'status' => EntryHelpers::getVersionStatuses()
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
@@ -815,7 +823,7 @@ function getDataPage($locale)
                     'value' => $s->statValue,
                     'showNumberBeforeTitle' => $s->showNumberBeforeTitle,
                     'suffix' => $s->suffix ?? null,
-                    'prefix' => $s->prefix ?? null
+                    'prefix' => $s->prefix ?? null,
                 ];
             }
 
@@ -825,7 +833,7 @@ function getDataPage($locale)
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'stats' => $stats
+                'stats' => $stats,
             ];
         },
     ];
@@ -893,7 +901,7 @@ function getMerchandise($locale)
 return [
     'defaults' => [
         'serializer' => 'jsonApi',
-        'elementType' => Entry::class
+        'elementType' => Entry::class,
     ],
     'endpoints' => [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
