@@ -300,6 +300,7 @@ function getFundingProgrammes($locale)
                 'title' => $entry->title,
                 'url' => $entry->url,
                 'urlPath' => $entry->uri,
+                'programmeType' => $entry->programmeType->value ?? null,
                 'content' => getFundingProgramMatrix($entry, $locale),
             ];
         },
