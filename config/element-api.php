@@ -827,6 +827,7 @@ function getStatRegions($locale)
                 'beneficiaries' => $category->beneficiaries,
                 'population' => $category->population,
                 'totalAwarded' => $category->totalAwarded,
+                'totalGrants' => $category->totalGrants ?? null,
             ];
 
             return $data;
