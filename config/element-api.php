@@ -159,8 +159,6 @@ function getRoutes()
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'elementsPerPage' => 1000,
         'criteria' => [
             'section' => ['about', 'fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
@@ -188,8 +186,6 @@ function getAliases($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'elementsPerPage' => 1000,
         'criteria' => [
             'site' => $locale,
@@ -216,8 +212,6 @@ function getHeroImage($locale, $slug)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'heroImage',
@@ -241,8 +235,6 @@ function getHomepage($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => 'homepage',
             'site' => $locale,
@@ -274,8 +266,6 @@ function getPromotedNews($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => 'news',
             'articlePromoted' => true,
@@ -298,8 +288,6 @@ function getFundingProgrammes($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
@@ -344,8 +332,6 @@ function getFundingProgramme($locale, $slug)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => $section,
@@ -382,8 +368,6 @@ function getResearch($locale)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => $criteria,
         'transformer' => new ResearchTransformer($locale)
     ];
@@ -399,8 +383,6 @@ function getResearchDetail($locale, $slug)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'research',
@@ -421,8 +403,6 @@ function getStrategicProgrammes($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'strategicProgrammes',
@@ -455,8 +435,6 @@ function getStrategicProgramme($locale, $slug)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'strategicProgrammes',
@@ -497,8 +475,6 @@ function getListing($locale)
     $searchCriteria['status'] = $statuses;
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
@@ -566,8 +542,6 @@ function getFlexibleContent($locale)
     $pagePath = \Craft::$app->request->getParam('path');
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'one' => true,
         'criteria' => [
             'site' => $locale,
@@ -599,8 +573,6 @@ function getCaseStudies($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => 'caseStudies',
             'site' => $locale,
@@ -621,8 +593,6 @@ function getProfiles($locale, $section)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => $section,
             'site' => $locale,
@@ -651,8 +621,6 @@ function getBlogposts($locale)
     $pageLimit = \Craft::$app->request->getParam('page-limit') ?: 2;
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
@@ -677,8 +645,6 @@ function getBlogpostsByCategory($locale, $categorySlug, $subCategorySlug = false
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
@@ -707,8 +673,6 @@ function getBlogpostsByAuthor($locale, $author)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
@@ -741,8 +705,6 @@ function getBlogpostsByTag($locale, $tag)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
@@ -764,8 +726,6 @@ function getBlogpostsBySlug($locale, $slug)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
@@ -784,8 +744,6 @@ function getStatBlocks($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'section' => 'statBlock',
             'site' => $locale,
@@ -813,7 +771,6 @@ function getStatRegions($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
         'elementType' => Category::class,
         'criteria' => [
             'group' => 'region',
@@ -842,8 +799,6 @@ function getDataPage($locale)
     normaliseCacheHeaders();
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
             'section' => 'data',
@@ -891,8 +846,6 @@ function getMerchandise($locale)
     }
 
     return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
         'criteria' => $searchCriteria,
         'transformer' => function (Entry $entry) {
 
@@ -937,6 +890,10 @@ function getMerchandise($locale)
 }
 
 return [
+    'defaults' => [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class
+    ],
     'endpoints' => [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
