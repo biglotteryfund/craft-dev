@@ -27,7 +27,6 @@
     "craftcms/element-api": "^2.5",
     "craftcms/aws-s3": "^1.0",
     "craftcms/redactor": "^2.0",
-    "verbb/field-manager": "^2.0.1",
     "biglotteryfund/preview-button": "^1.0",
     "league/uri": "^5.2",
     "imgix/imgix-php": "^2.1",
