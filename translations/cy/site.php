@@ -13,4 +13,5 @@ return array(
     "Voluntary or community organisation" => "Mudiadau gwirfoddol neu gymunedol",
     "Public sector organisation" => "Mudiadau sector cyhoeddus",
     "Private sector organisation" => "Mudiadau sector preifat",
+    "Small voluntary or community / grassroots groups" => "Grwpiau gwirfoddol neu gymunedol / llawr gwlad bach",
 );
