@@ -15,6 +15,7 @@ class ResearchTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
+        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $common = ContentHelpers::getCommonDetailFields($entry, $this->locale);
         $researchMeta = $entry->researchMeta->one();
 
