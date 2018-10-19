@@ -240,6 +240,7 @@ class EntryHelpers
             'trailText' => $entry->caseStudyTrailText,
             'trailTextMore' => $entry->caseStudyTrailTextMore,
             'grantAmount' => $entry->caseStudyGrantAmount,
+            'grantId' => $entry->caseStudyGrantId ? $entry->caseStudyGrantId : null,
             'thumbnailUrl' => Images::imgixUrl($entry->caseStudyThumbnailImage->one()->url, [
                 'w' => 600,
                 'h' => 400,

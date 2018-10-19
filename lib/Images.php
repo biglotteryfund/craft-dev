@@ -76,7 +76,8 @@ class Images
             'default' => $imageMedium,
             'small' => $imageSmall,
             'medium' => $imageMedium,
-            'large' => $imageLarge
+            'large' => $imageLarge,
+            'grantId' => $heroEntry->heroGrantId ? $heroEntry->heroGrantId : null,
         ];
     }
 
