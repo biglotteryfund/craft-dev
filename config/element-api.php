@@ -4,9 +4,9 @@ use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
-use biglotteryfund\utils\Images;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -357,7 +357,6 @@ function getFundingProgramme($locale, $slug)
     ];
 }
 
-
 /**
  * API Endpoint: Get research
  * Get full details of all research entry
@@ -369,7 +368,7 @@ function getResearch($locale)
     $criteria = [
         'site' => $locale,
         'section' => 'research',
-        'status' => EntryHelpers::getVersionStatuses()
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     if ($searchQuery = \Craft::$app->request->getParam('q')) {
@@ -377,7 +376,7 @@ function getResearch($locale)
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
-            'subRight' => true
+            'subRight' => true,
         ];
     }
 
@@ -385,10 +384,9 @@ function getResearch($locale)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'transformer' => new ResearchTransformer($locale)
+        'transformer' => new ResearchTransformer($locale),
     ];
 }
-
 
 /**
  * API Endpoint: Get research detail
@@ -408,7 +406,7 @@ function getResearchDetail($locale, $slug)
             'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
-        'transformer' => new ResearchTransformer($locale)
+        'transformer' => new ResearchTransformer($locale),
     ];
 }
 
@@ -467,7 +465,6 @@ function getStrategicProgramme($locale, $slug)
         'transformer' => new StrategicProgrammeTransformer($locale),
     ];
 }
-
 
 function getListing($locale)
 {
@@ -848,29 +845,28 @@ function getDataPage($locale)
         'criteria' => [
             'site' => $locale,
             'section' => 'data',
-            'status' => EntryHelpers::getVersionStatuses()
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-            $stats = [];
-            foreach ($entry->stats as $s) {
-                $stats[] = [
-                    'title' => $s->statTitle,
-                    'value' => $s->statValue,
-                    'showNumberBeforeTitle' => $s->showNumberBeforeTitle,
-                    'suffix' => $s->suffix ?? null,
-                    'prefix' => $s->prefix ?? null
-                ];
-            }
-
-            $data['stats'] = $stats;
+            list(
+                'entry' => $entry,
+                'status' => $status
+            ) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
-                'stats' => $stats
+                'stats' => array_map(function ($stat) {
+                    return [
+                        'title' => $stat->statTitle,
+                        'value' => $stat->statValue,
+                        'showNumberBeforeTitle' => $stat->showNumberBeforeTitle,
+                        'suffix' => $stat->suffix ?? null,
+                        'prefix' => $stat->prefix ?? null,
+                    ];
+                }, $entry->stats->all() ?? []),
             ];
         },
     ];
