@@ -14,6 +14,7 @@ class ContentHelpers
         return [
             'id' => $entry->id,
             'status' => $status,
+            'slug' => $entry->slug,
             'postDate' => $entry->postDate,
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,

@@ -5,6 +5,7 @@ use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
+use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use craft\elements\Category;
@@ -19,55 +20,6 @@ function normaliseCacheHeaders()
     $headers->set('cache-control', 'public, max-age=0');
     header_remove('Expires');
     header_remove('Pragma');
-}
-
-function getRelatedEntries($entry, $relationType, $locale)
-{
-    $relatedEntries = [];
-    $relatedSearch = [];
-
-    if ($relationType === 'ancestors') {
-        $relatedSearch = $entry->getAncestors()->all();
-    } else if ($relationType === 'children') {
-        $relatedSearch = $entry->getChildren()->all();
-    } else if ($relationType === 'siblings') {
-        // get parent first to allow including self as a sibling
-        $parent = $entry->getParent();
-        if ($parent) {
-            $relatedSearch = $parent->getDescendants(1)->all();
-        }
-    }
-
-    foreach ($relatedSearch as $relatedItem) {
-        $relatedData = EntryHelpers::extractBasicEntryData($relatedItem);
-        $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
-        $relatedData['link'] = EntryHelpers::uriForLocale($relatedItem->uri, $locale);
-
-        $heroImage = Images::extractImage($relatedItem->heroImage);
-        $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
-            'w' => 500,
-            'h' => 333,
-            'crop' => 'faces',
-        ]);
-
-        // Some sub-pages are just links to external sites or internal files
-        // so we replace the canonical (empty) page with a link
-        $entryType = $relatedItem->type->handle;
-        if ($entryType === 'linkItem') {
-            $relatedData['entryType'] = $entryType;
-            // is this a document?
-            if ($relatedItem->documentLink && $relatedItem->documentLink->one()) {
-                $relatedData['link'] = $relatedItem->documentLink->one()->url;
-                // or is it an external URL?
-            } else if ($relatedItem->externalUrl) {
-                $relatedData['link'] = $relatedItem->externalUrl;
-            }
-        }
-
-        $relatedEntries[] = $relatedData;
-    }
-
-    return $relatedEntries;
 }
 
 function getFundingProgramMatrix($entry, $locale)
@@ -358,6 +310,26 @@ function getFundingProgramme($locale, $slug)
 }
 
 /**
+ * API Endpoint: Get our people
+ */
+function getOurPeople($locale, $slug = null)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'site' => $locale,
+            'slug' => $slug,
+            'section' => 'people',
+            'status' => EntryHelpers::getVersionStatuses(),
+        ],
+        'transformer' => new PeopleTransformer($locale),
+    ];
+}
+
+/**
  * API Endpoint: Get research
  * Get full details of all research entry
  */
@@ -528,17 +500,17 @@ function getListing($locale)
 
             $entryData['relatedContent'] = $entry->relatedContent ?? null;
 
-            $ancestors = getRelatedEntries($entry, 'ancestors', $locale);
+            $ancestors = EntryHelpers::getRelatedEntries($entry, 'ancestors', $locale);
             if (count($ancestors) > 0) {
                 $entryData['ancestors'] = $ancestors;
             }
 
-            $children = getRelatedEntries($entry, 'children', $locale);
+            $children = EntryHelpers::getRelatedEntries($entry, 'children', $locale);
             if (count($children) > 0) {
                 $entryData['children'] = $children;
             }
 
-            $siblings = getRelatedEntries($entry, 'siblings', $locale);
+            $siblings = EntryHelpers::getRelatedEntries($entry, 'siblings', $locale);
             if (count($siblings) > 0) {
                 $entryData['siblings'] = $siblings;
             }
@@ -947,6 +919,7 @@ return [
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
+        'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/blog' => getBlogposts,
         // more specific routes (blogpost, tag/authors) take precedence and come first here
