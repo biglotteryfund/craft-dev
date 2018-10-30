@@ -29,7 +29,8 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'hero' => Images::extractHeroImage($entry->heroImage),
             'heroCredit' => $entry->heroImageCredit ?? null,
             'summary' => getFundingProgramMatrix($entry, $this->locale),
-            'intro' => $entry->programmeIntro
+            'intro' => $entry->programmeIntro,
+            'footer' => $entry->outroText ?? null,
         ];
 
         $contentSections = [];
