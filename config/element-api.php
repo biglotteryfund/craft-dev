@@ -312,7 +312,7 @@ function getFundingProgramme($locale, $slug)
 /**
  * API Endpoint: Get our people
  */
-function getOurPeople($locale, $slug = null)
+function getOurPeople($locale)
 {
     normaliseCacheHeaders();
 
@@ -321,7 +321,6 @@ function getOurPeople($locale, $slug = null)
         'elementType' => Entry::class,
         'criteria' => [
             'site' => $locale,
-            'slug' => $slug,
             'section' => 'people',
             'status' => EntryHelpers::getVersionStatuses(),
         ],
