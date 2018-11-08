@@ -13,5 +13,7 @@ return array(
     "Voluntary or community organisation" => "Voluntary or community organisations",
     "Public sector organisation" => "Public sector organisations",
     "Private sector organisation" => "Private sector organisations",
-    "Small voluntary or community / grassroots groups" => "Small voluntary or community / grassroots groups"
+    "Small voluntary or community / grassroots groups" => "Small voluntary or community / grassroots groups",
+    "Social enterprise" => "Social enterprises",
+    "Statutory organisation" => "Statutory organisations",
 );
