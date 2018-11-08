@@ -14,4 +14,6 @@ return array(
     "Public sector organisation" => "Mudiadau sector cyhoeddus",
     "Private sector organisation" => "Mudiadau sector preifat",
     "Small voluntary or community / grassroots groups" => "Grwpiau gwirfoddol neu gymunedol / llawr gwlad bach",
+    "Social enterprise" => "Mentrau cymdeithasol",
+    "Statutory organisation" => "Mudiadau statudol",
 );
