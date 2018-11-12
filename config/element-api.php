@@ -580,34 +580,6 @@ function getCaseStudies($locale)
     ];
 }
 
-function getProfiles($locale, $section)
-{
-    normaliseCacheHeaders();
-
-    if (!in_array($section, ['seniorManagementTeam', 'boardMembers'])) {
-        throw new Error('Invalid section');
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => $section,
-            'site' => $locale,
-        ],
-        'transformer' => function (Entry $entry) {
-            return [
-                'id' => $entry->id,
-                'slug' => $entry->slug,
-                'title' => $entry->title,
-                'role' => $entry->profileRole,
-                'image' => Images::extractImageUrl($entry->profilePhoto),
-                'bio' => $entry->profileBio,
-            ];
-        },
-    ];
-}
-
 /**
  * API Endpoint: Get blog posts
  * Get a list of all blog posts
@@ -917,7 +889,6 @@ return [
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
-        'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/blog' => getBlogposts,
