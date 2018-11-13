@@ -581,6 +581,7 @@ function getBlogpostsByCategory($locale, $categorySlug, $subCategorySlug = false
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
+            'status' => EntryHelpers::getVersionStatuses(),
             'relatedTo' => ['targetElement' => $category],
         ],
         'meta' => [
@@ -611,6 +612,7 @@ function getBlogpostsByAuthor($locale, $author)
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
+            'status' => EntryHelpers::getVersionStatuses(),
             'relatedTo' => [
                 'targetElement' => $activeAuthor,
                 'field' => 'authors',
@@ -645,6 +647,7 @@ function getBlogpostsByTag($locale, $tag)
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
+            'status' => EntryHelpers::getVersionStatuses(),
             'relatedTo' => [
                 'targetElement' => $activeTag,
                 'field' => 'tags',
@@ -669,6 +672,7 @@ function getBlogpostsBySlug($locale, $slug)
             'site' => $locale,
             'section' => 'blog',
             'slug' => $slug,
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
         'meta' => [
