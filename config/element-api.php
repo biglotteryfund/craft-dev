@@ -546,8 +546,6 @@ function getBlogposts($locale)
 {
     normaliseCacheHeaders();
 
-    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: 2;
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
@@ -556,7 +554,7 @@ function getBlogposts($locale)
             'section' => 'blog',
             'status' => EntryHelpers::getVersionStatuses(),
         ],
-        'elementsPerPage' => $pageLimit,
+        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
         'meta' => [
             'pageType' => 'blog',
         ],
