@@ -278,31 +278,14 @@ function getFundingProgramme($locale, $slug)
 {
     normaliseCacheHeaders();
 
-    $section = 'fundingProgrammes';
-
-    /**
-     * Include expired entries
-     * Allows expiry date to be used to drop items of the listing,
-     * but still maintain the details page for historical purposes
-     */
-    $statuses = ['live', 'expired'];
-
-    /**
-     * Allow disabled versions when requesting drafts
-     * to support previews of brand new or disabled pages.
-     */
-    if (EntryHelpers::isDraftOrVersion()) {
-        $statuses[] = 'disabled';
-    }
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
-            'site' => $locale,
-            'section' => $section,
             'slug' => $slug,
-            'status' => $statuses,
+            'section' => 'fundingProgrammes',
+            'site' => $locale,
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
         'transformer' => new FundingProgrammeTransformer($locale),
@@ -408,29 +391,14 @@ function getStrategicProgramme($locale, $slug)
 {
     normaliseCacheHeaders();
 
-    /**
-     * Include expired entries
-     * Allows expiry date to be used to drop items of the listing,
-     * but still maintain the details page for historical purposes
-     */
-    $statuses = ['live', 'expired'];
-
-    /**
-     * Allow disabled versions when requesting drafts
-     * to support previews of brand new or disabled pages.
-     */
-    if (EntryHelpers::isDraftOrVersion()) {
-        $statuses[] = 'disabled';
-    }
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
-            'site' => $locale,
-            'section' => 'strategicProgrammes',
             'slug' => $slug,
-            'status' => $statuses,
+            'section' => 'strategicProgrammes',
+            'site' => $locale,
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
         'transformer' => new StrategicProgrammeTransformer($locale),
@@ -443,9 +411,9 @@ function getListing($locale)
 
     $pagePath = \Craft::$app->request->getParam('path');
 
-    $statuses = ['live', 'expired'];
     $searchCriteria = [
         'site' => $locale,
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     if ($pagePath) {
@@ -453,16 +421,6 @@ function getListing($locale)
     } else {
         $searchCriteria['level'] = 1;
     }
-
-    /**
-     * Allow disabled versions when requesting drafts
-     * to support previews of brand new or disabled pages.
-     */
-    if (EntryHelpers::isDraftOrVersion()) {
-        $statuses[] = 'disabled';
-    }
-
-    $searchCriteria['status'] = $statuses;
 
     return [
         'serializer' => 'jsonApi',
@@ -580,34 +538,6 @@ function getCaseStudies($locale)
     ];
 }
 
-function getProfiles($locale, $section)
-{
-    normaliseCacheHeaders();
-
-    if (!in_array($section, ['seniorManagementTeam', 'boardMembers'])) {
-        throw new Error('Invalid section');
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => $section,
-            'site' => $locale,
-        ],
-        'transformer' => function (Entry $entry) {
-            return [
-                'id' => $entry->id,
-                'slug' => $entry->slug,
-                'title' => $entry->title,
-                'role' => $entry->profileRole,
-                'image' => Images::extractImageUrl($entry->profilePhoto),
-                'bio' => $entry->profileBio,
-            ];
-        },
-    ];
-}
-
 /**
  * API Endpoint: Get blog posts
  * Get a list of all blog posts
@@ -624,6 +554,7 @@ function getBlogposts($locale)
         'criteria' => [
             'site' => $locale,
             'section' => 'blog',
+            'status' => EntryHelpers::getVersionStatuses(),
         ],
         'elementsPerPage' => $pageLimit,
         'meta' => [
@@ -917,7 +848,6 @@ return [
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
-        'api/v1/<locale:en|cy>/profiles/<section>' => getProfiles,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/blog' => getBlogposts,
