@@ -48,11 +48,15 @@ class BlogTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
+        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
         $primaryCategory = $entry->category->inReverse()->one();
+
         return [
             'id' => $entry->id,
             'title' => $entry->title,
             'slug' => $entry->slug,
+            'status' => $entry->status,
             'link' => EntryHelpers::uriForLocale($entry->uri, $this->locale),
             'postDate' => $entry->postDate,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $this->locale),

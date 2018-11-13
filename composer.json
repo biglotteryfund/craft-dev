@@ -34,7 +34,7 @@
   },
   "autoload" : {
     "psr-4" : {
-      "biglotteryfund\\" : "lib/"
+      "biglotteryfund\\" : [ "modules/", "lib/" ]
     }
   },
   "config": {
