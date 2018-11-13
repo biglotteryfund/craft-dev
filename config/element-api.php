@@ -8,6 +8,7 @@ use biglotteryfund\utils\Images;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
+use biglotteryfund\utils\UpdatesTransformer;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -747,6 +748,64 @@ function getBlogpostsBySlug($locale, $slug)
     ];
 }
 
+function getUpdates($locale, $type = null, $date = null, $slug = null) {
+    normaliseCacheHeaders();
+
+    $isSinglePost = $date && $slug;
+    $tagQuery = \Craft::$app->request->getParam('tag');
+    $authorQuery = \Craft::$app->request->getParam('author');
+    $categoryQuery = \Craft::$app->request->getParam('category');
+
+    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: 2;
+
+    $criteria = [
+        'site' => $locale,
+        'section' => 'updates',
+        'status' => EntryHelpers::getVersionStatuses(),
+    ];
+
+    if ($type) {
+        $criteria['type'] = $type;
+    }
+
+    if ($isSinglePost) {
+        $criteria['slug'] = $slug;
+    } else if ($tagQuery) {
+        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
+        if (!$activeTag) {
+            throw new \yii\web\NotFoundHttpException('Tag not found');
+        }
+        $criteria['relatedTo'] = [
+            'targetElement' => $activeTag
+        ];
+    } else if ($authorQuery) {
+        $activeTag = Tag::find()->group('authors')->slug($authorQuery)->one();
+        if (!$activeTag) {
+            throw new \yii\web\NotFoundHttpException('Author not found');
+        }
+        $criteria['relatedTo'] = [
+            'targetElement' => $activeTag
+        ];
+    } else if ($categoryQuery) {
+        $category = Category::find()->slug($categoryQuery)->one();
+        if (!$category) {
+            throw new \yii\web\NotFoundHttpException('Category not found');
+        }
+        $criteria['relatedTo'] = [
+            'targetElement' => $category
+        ];
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'elementsPerPage' => $isSinglePost ? null : $pageLimit,
+        'one' => $isSinglePost,
+        'transformer' => new UpdatesTransformer($locale)
+    ];
+}
+
 function getStatBlocks($locale)
 {
     normaliseCacheHeaders();
@@ -933,5 +992,10 @@ return [
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
         'api/v1/list-routes' => getRoutes,
+
+        'api/v1/<locale:en|cy>/updates' => getUpdates,
+        'api/v1/<locale:en|cy>/updates/<type:{slug}>' => getUpdates,
+        'api/v1/<locale:en|cy>/updates/<type:{slug}>/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getUpdates,
+
     ],
 ];
