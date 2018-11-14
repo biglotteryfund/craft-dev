@@ -11,6 +11,7 @@ class ContentHelpers
     {
         return [
             'id' => $entry->id,
+            'entryType' => $entry->type->handle,
             'slug' => $entry->slug,
             'status' => $status,
             'postDate' => $entry->postDate,
@@ -22,6 +23,15 @@ class ContentHelpers
             'trailText' => $entry->trailText ?? null,
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
+        ];
+    }
+
+    public static function categorySummary($category, $locale)
+    {
+        return [
+            'title' => $category->title,
+            'link' => EntryHelpers::uriForLocale($category->uri, $locale),
+            'slug' => $category->slug,
         ];
     }
 
@@ -38,19 +48,81 @@ class ContentHelpers
         ];
     }
 
-    public static function categorySummary($category, $locale)
-    {
-        return [
-            'title' => $category->title,
-            'link' => EntryHelpers::uriForLocale($category->uri, $locale),
-            'slug' => $category->slug,
-        ];
-    }
-
     public static function getTags($tagField, $locale)
     {
         return array_map(function ($tag) use ($locale) {
             return self::tagSummary($tag, $locale);
         }, $tagField);
+    }
+
+    /**
+     * Extract data for common flexible content matrix field
+     * - Content area (Redactor field)
+     * - Inline figure (image with a caption)
+     * - Media aside (callout block with text, image, and link)
+     */
+    public static function extractFlexibleContent(Entry $entry)
+    {
+        $parts = [];
+        foreach ($entry->flexibleContent->all() as $block) {
+            switch ($block->type->handle) {
+                case 'contentArea':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'content' => $block->contentBody,
+                    ];
+
+                    array_push($parts, $data);
+                    break;
+                case 'inlineFigure':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'photo' => Images::imgixUrl(
+                            Images::extractImageUrl($block->photo),
+                            ['fit' => 'crop', 'crop' => 'entropy', 'max-w' => 2000]
+                        ),
+                        'photoCaption' => $block->photoCaption ?? null,
+                    ];
+                    array_push($parts, $data);
+                    break;
+                case 'mediaAside':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'quoteText' => $block->quoteText,
+                        'linkText' => $block->linkText ?? null,
+                        'linkUrl' => $block->linkUrl ?? null,
+                        'photo' => Images::imgixUrl(
+                            Images::extractImageUrl($block->photo),
+                            ['w' => '460', 'h' => '280']
+                        ),
+                        'photoCaption' => $block->photoCaption ?? null,
+                    ];
+
+                    array_push($parts, $data);
+                    break;
+            }
+        }
+        return $parts;
+    }
+
+    /**
+     * Extract data for common document groups field
+     */
+    public static function extractDocumentGroups($documentGroupsField)
+    {
+        return array_map(function ($group) {
+            return [
+                'title' => $group->documentsTitle,
+                'files' => array_map(function ($file) {
+                    return [
+                        'label' => $file->title,
+                        'href' => $file->url,
+                        'filetype' => $file->extension,
+                        'filesize' => StringHelpers::formatBytes($file->size, $precision = 0),
+                    ];
+                }, $group->documentsFiles->all() ?? []),
+                'extraContent' => $group->documentsExtra ?? null,
+            ];
+        }, $documentGroupsField->all() ?? []);
     }
 }

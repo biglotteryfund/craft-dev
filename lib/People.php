@@ -36,20 +36,7 @@ class PeopleTransformer extends TransformerAbstract
                     'bio' => $person->personBio,
                 ];
             }, $entry->people->all() ?? []),
-            'documentGroups' => array_map(function ($group) {
-                return [
-                    'title' => $group->documentsTitle,
-                    'files' => array_map(function ($file) {
-                        return [
-                            'label' => $file->title,
-                            'href' => $file->url,
-                            'filetype' => $file->extension,
-                            'filesize' => StringHelpers::formatBytes($file->size, $precision = 0),
-                        ];
-                    }, $group->documentsFiles->all() ?? []),
-                    'extraContent' => $group->documentsExtra ?? null,
-                ];
-            }, $entry->documentGroups->all() ?? []),
+            'documentGroups' => ContentHelpers::extractDocumentGroups($entry->documentGroups),
         ]);
     }
 }

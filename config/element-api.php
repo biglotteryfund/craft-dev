@@ -1,6 +1,7 @@
 <?php
 
 use biglotteryfund\utils\BlogHelpers;
+use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
@@ -202,7 +203,13 @@ function getHomepage($locale)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            $newsQuery = EntryHelpers::queryPromotedNews($locale);
+            $finder = Entry::find();
+            $newsQuery = \Craft::configure($finder, [
+                'section' => 'news',
+                'limit' => 3,
+                'articlePromoted' => true,
+                'site' => $locale,
+            ]);
 
             $data = [
                 'id' => $entry->id,
@@ -510,7 +517,7 @@ function getFlexibleContent($locale)
             $entryData['status'] = $status;
             $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
 
-            $entryData['flexibleContent'] = EntryHelpers::extractFlexibleContent($entry, $locale);
+            $entryData['flexibleContent'] = ContentHelpers::extractFlexibleContent($entry);
 
             return $entryData;
         },
@@ -740,6 +747,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
+        'resourceKey' => 'updates',
         'elementsPerPage' => $isSinglePost ? null : $pageLimit,
         'one' => $isSinglePost,
         'transformer' => new UpdatesTransformer($locale),

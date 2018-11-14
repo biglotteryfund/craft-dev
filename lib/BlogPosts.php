@@ -33,7 +33,7 @@ class BlogTransformer extends TransformerAbstract
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'intro' => $entry->introduction,
             'body' => $entry->body ?? null,
-            'flexibleContent' => EntryHelpers::extractFlexibleContent($entry),
+            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry),
         ];
     }
 }
