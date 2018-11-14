@@ -1,8 +1,7 @@
 <?php
 
-use biglotteryfund\utils\BlogHelpers;
-use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\BlogTransformer;
+use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
@@ -710,33 +709,41 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         $criteria['type'] = $type;
     }
 
+    $meta = [
+        'activeAuthor' => null,
+        'activeTag' => null,
+        'activeCategory' => null,
+    ];
+
     if ($isSinglePost) {
         $criteria['slug'] = $slug;
+    } else if ($authorQuery) {
+        $activeAuthor = Tag::find()->group('authors')->slug($authorQuery)->one();
+        if ($activeAuthor) {
+            $meta['activeAuthor'] = ContentHelpers::tagSummary($activeAuthor, $locale);
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeAuthor,
+            ];
+        } else {
+            throw new \yii\web\NotFoundHttpException('Author not found');
+        }
     } else if ($tagQuery) {
         $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
 
         if ($activeTag) {
+            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeTag,
             ];
         } else {
             throw new \yii\web\NotFoundHttpException('Tag not found');
         }
-
-    } else if ($authorQuery) {
-        $activeTag = Tag::find()->group('authors')->slug($authorQuery)->one();
-        if ($activeTag) {
-            $criteria['relatedTo'] = [
-                'targetElement' => $activeTag,
-            ];
-        } else {
-            throw new \yii\web\NotFoundHttpException('Author not found');
-        }
     } else if ($categoryQuery) {
-        $category = Category::find()->slug($categoryQuery)->one();
-        if ($category) {
+        $activeCategory = Category::find()->slug($categoryQuery)->one();
+        if ($activeCategory) {
+            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
             $criteria['relatedTo'] = [
-                'targetElement' => $category,
+                'targetElement' => $activeCategory,
             ];
         } else {
             throw new \yii\web\NotFoundHttpException('Category not found');
@@ -750,6 +757,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'resourceKey' => 'updates',
         'elementsPerPage' => $isSinglePost ? null : $pageLimit,
         'one' => $isSinglePost,
+        'meta' => $meta,
         'transformer' => new UpdatesTransformer($locale),
     ];
 }
