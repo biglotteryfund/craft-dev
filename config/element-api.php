@@ -680,35 +680,6 @@ function getBlogpostsBySlug($locale, $slug)
     ];
 }
 
-function getStatBlocks($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'statBlock',
-            'site' => $locale,
-        ],
-        'transformer' => function (Entry $entry) {
-            $data = [
-                'id' => $entry->id,
-                'title' => $entry->title,
-                'value' => $entry->statValue,
-                'showNumberBeforeTitle' => $entry->showNumberBeforeTitle,
-            ];
-            if ($entry->suffix) {
-                $data['suffix'] = $entry->suffix;
-            }
-            if ($entry->prefix) {
-                $data['prefix'] = $entry->prefix;
-            }
-            return $data;
-        },
-    ];
-}
-
 function getStatRegions($locale)
 {
     normaliseCacheHeaders();
@@ -859,7 +830,6 @@ return [
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
-        'api/v1/<locale:en|cy>/stat-blocks' => getStatBlocks,
         'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
