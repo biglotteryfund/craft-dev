@@ -27,7 +27,10 @@ class UpdatesTransformer extends TransformerAbstract
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
             'content' => ContentHelpers::extractFlexibleContent($entry),
-            'updateType' => $entry->type,
+            'updateType' => [
+                'name' => $entry->type->name,
+                'slug' => str_replace('_', '-', $entry->type->handle),
+            ],
         ];
 
         if ($entry->type->handle === 'press_releases') {

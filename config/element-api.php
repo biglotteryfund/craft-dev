@@ -706,7 +706,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     ];
 
     if ($type) {
-        $criteria['type'] = $type;
+        $criteria['type'] = str_replace('-', '_', $type);
     }
 
     $meta = [
