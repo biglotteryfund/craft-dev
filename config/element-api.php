@@ -1,7 +1,7 @@
 <?php
 
-use biglotteryfund\utils\BlogHelpers;
 use biglotteryfund\utils\BlogTransformer;
+use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\Images;
@@ -202,7 +202,13 @@ function getHomepage($locale)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            $newsQuery = EntryHelpers::queryPromotedNews($locale);
+            $finder = Entry::find();
+            $newsQuery = \Craft::configure($finder, [
+                'section' => 'news',
+                'limit' => 3,
+                'articlePromoted' => true,
+                'site' => $locale,
+            ]);
 
             $data = [
                 'id' => $entry->id,
@@ -510,7 +516,7 @@ function getFlexibleContent($locale)
             $entryData['status'] = $status;
             $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
 
-            $entryData['flexibleContent'] = EntryHelpers::extractFlexibleContent($entry, $locale);
+            $entryData['flexibleContent'] = ContentHelpers::extractFlexibleContent($entry);
 
             return $entryData;
         },
@@ -585,7 +591,7 @@ function getBlogpostsByCategory($locale, $categorySlug, $subCategorySlug = false
         ],
         'meta' => [
             'pageType' => 'category',
-            'activeCategory' => BlogHelpers::categorySummary($category, $locale),
+            'activeCategory' => ContentHelpers::categorySummary($category, $locale),
         ],
         'transformer' => new BlogTransformer($locale),
     ];
@@ -620,7 +626,7 @@ function getBlogpostsByAuthor($locale, $author)
         ],
         'meta' => [
             'pageType' => 'authors',
-            'activeAuthor' => BlogHelpers::tagSummary($activeAuthor, $locale),
+            'activeAuthor' => ContentHelpers::tagSummary($activeAuthor, $locale),
         ],
         'transformer' => new BlogTransformer($locale),
     ];
@@ -654,7 +660,7 @@ function getBlogpostsByTag($locale, $tag)
         ],
         'meta' => [
             'pageType' => 'tags',
-            'activeTag' => BlogHelpers::tagSummary($activeTag, $locale),
+            'activeTag' => ContentHelpers::tagSummary($activeTag, $locale),
         ],
         'transformer' => new BlogTransformer($locale),
     ];
@@ -681,7 +687,8 @@ function getBlogpostsBySlug($locale, $slug)
     ];
 }
 
-function getUpdates($locale, $type = null, $date = null, $slug = null) {
+function getUpdates($locale, $type = null, $date = null, $slug = null)
+{
     normaliseCacheHeaders();
 
     $isSinglePost = $date && $slug;
@@ -689,7 +696,8 @@ function getUpdates($locale, $type = null, $date = null, $slug = null) {
     $authorQuery = \Craft::$app->request->getParam('author');
     $categoryQuery = \Craft::$app->request->getParam('category');
 
-    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: 2;
+    $defaultPageLimit = 10;
+    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
 
     $criteria = [
         'site' => $locale,
@@ -697,85 +705,63 @@ function getUpdates($locale, $type = null, $date = null, $slug = null) {
         'status' => EntryHelpers::getVersionStatuses(),
     ];
 
-    $meta = [
-        'pageType' => 'single'
-    ];
-
     if ($type) {
         $criteria['type'] = $type;
     }
 
+    $meta = [
+        'activeAuthor' => null,
+        'activeTag' => null,
+        'activeCategory' => null,
+        'pageType' => 'single'
+    ];
+
     if ($isSinglePost) {
         $criteria['slug'] = $slug;
-    } else if ($tagQuery) {
-        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
-        if (!$activeTag) {
-            throw new \yii\web\NotFoundHttpException('Tag not found');
-        }
-        $meta['pageType'] = 'tag';
-        $meta['activeTag'] = BlogHelpers::tagSummary($activeTag, $locale);
-        $criteria['relatedTo'] = [
-            'targetElement' => $activeTag
-        ];
     } else if ($authorQuery) {
         $activeAuthor = Tag::find()->group('authors')->slug($authorQuery)->one();
-        if (!$activeAuthor) {
+        if ($activeAuthor) {
+            $meta['pageType'] = 'author';
+            $meta['activeAuthor'] = ContentHelpers::tagSummary($activeAuthor, $locale);
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeAuthor,
+            ];
+        } else {
             throw new \yii\web\NotFoundHttpException('Author not found');
         }
-        $meta['pageType'] = 'author';
-        $meta['activeAuthor'] = BlogHelpers::tagSummary($activeAuthor, $locale);
-        $criteria['relatedTo'] = [
-            'targetElement' => $activeAuthor
-        ];
+    } else if ($tagQuery) {
+        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
+        if ($activeTag) {
+            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
+            $meta['pageType'] = 'tag';
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeTag,
+            ];
+        } else {
+            throw new \yii\web\NotFoundHttpException('Tag not found');
+        }
     } else if ($categoryQuery) {
         $activeCategory = Category::find()->slug($categoryQuery)->one();
-        if (!$activeCategory) {
+        if ($activeCategory) {
+            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
+            $meta['pageType'] = 'category';
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeCategory,
+            ];
+        } else {
             throw new \yii\web\NotFoundHttpException('Category not found');
         }
-        $meta['pageType'] = 'category';
-        $meta['activeCategory'] = BlogHelpers::categorySummary($activeCategory, $locale);
-        $criteria['relatedTo'] = [
-            'targetElement' => $activeCategory
-        ];
     }
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
+        'resourceKey' => 'updates',
         'elementsPerPage' => $isSinglePost ? null : $pageLimit,
         'one' => $isSinglePost,
         'meta' => $meta,
-        'transformer' => new UpdatesTransformer($locale)
-    ];
-}
-
-function getStatBlocks($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'statBlock',
-            'site' => $locale,
-        ],
-        'transformer' => function (Entry $entry) {
-            $data = [
-                'id' => $entry->id,
-                'title' => $entry->title,
-                'value' => $entry->statValue,
-                'showNumberBeforeTitle' => $entry->showNumberBeforeTitle,
-            ];
-            if ($entry->suffix) {
-                $data['suffix'] = $entry->suffix;
-            }
-            if ($entry->prefix) {
-                $data['prefix'] = $entry->prefix;
-            }
-            return $data;
-        },
+        'transformer' => new UpdatesTransformer($locale),
     ];
 }
 
@@ -909,6 +895,7 @@ function getMerchandise($locale)
 
 return [
     'endpoints' => [
+        'api/v1/list-routes' => getRoutes,
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
@@ -922,23 +909,20 @@ return [
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
+        'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
+        'api/v1/<locale:en|cy>/data' => getDataPage,
+        'api/v1/<locale:en|cy>/aliases' => getAliases,
+        'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
+        'api/v1/<locale:en|cy>/updates' => getUpdates,
+        'api/v1/<locale:en|cy>/updates/<type:{slug}>' => getUpdates,
+        'api/v1/<locale:en|cy>/updates/<type:{slug}>/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getUpdates,
+
+        // @TODO: Remove blog endpoints when we've switched over to the new updates section
         'api/v1/<locale:en|cy>/blog' => getBlogposts,
-        // more specific routes (blogpost, tag/authors) take precedence and come first here
         'api/v1/<locale:en|cy>/blog/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getBlogpostsBySlug,
         'api/v1/<locale:en|cy>/blog/authors/<author:{slug}>' => getBlogpostsByAuthor,
         'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
         'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
-        'api/v1/<locale:en|cy>/stat-blocks' => getStatBlocks,
-        'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
-        'api/v1/<locale:en|cy>/data' => getDataPage,
-        'api/v1/<locale:en|cy>/aliases' => getAliases,
-        'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
-        'api/v1/list-routes' => getRoutes,
-
-        'api/v1/<locale:en|cy>/updates' => getUpdates,
-        'api/v1/<locale:en|cy>/updates/<type:{slug}>' => getUpdates,
-        'api/v1/<locale:en|cy>/updates/<type:{slug}>/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getUpdates,
-
     ],
 ];
