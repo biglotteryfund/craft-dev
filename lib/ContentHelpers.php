@@ -25,4 +25,32 @@ class ContentHelpers
         ];
     }
 
+    public static function tagSummary($tag, $locale)
+    {
+        $tagGroup = $tag->getGroup();
+        return [
+            'id' => (int) $tag->id,
+            'title' => $tag->title,
+            'slug' => $tag->slug,
+            'group' => $tagGroup->handle,
+            'groupTitle' => $tagGroup->name,
+            'link' => EntryHelpers::uriForLocale("blog/{$tagGroup->handle}/{$tag->slug}", $locale),
+        ];
+    }
+
+    public static function categorySummary($category, $locale)
+    {
+        return [
+            'title' => $category->title,
+            'link' => EntryHelpers::uriForLocale($category->uri, $locale),
+            'slug' => $category->slug,
+        ];
+    }
+
+    public static function getTags($tagField, $locale)
+    {
+        return array_map(function ($tag) use ($locale) {
+            return self::tagSummary($tag, $locale);
+        }, $tagField);
+    }
 }

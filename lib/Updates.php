@@ -21,11 +21,12 @@ class UpdatesTransformer extends TransformerAbstract
         $primaryCategory = $entry->category ? $entry->category->inReverse()->one() : null;
 
         return array_merge($common, [
-            'category' => $primaryCategory ? BlogHelpers::categorySummary($primaryCategory, $this->locale) : null,
-            'authors' => BlogHelpers::getTags($entry->authors->all(), $this->locale),
-            'tags' => BlogHelpers::getTags($entry->tags->all(), $this->locale),
+            'trailPhoto' => Images::extractImageUrl($entry->trailPhoto), // @TODO Raw image. What size(s) should we crop this to?
+            'category' => $primaryCategory ? ContentHelpers::categorySummary($primaryCategory, $this->locale) : null,
+            'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
+            'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
-            'content' => EntryHelpers::extractFlexibleContent($entry)
+            'content' => EntryHelpers::extractFlexibleContent($entry),
         ]);
     }
 }
