@@ -25,7 +25,10 @@ class UpdatesTransformer extends TransformerAbstract
             'authors' => BlogHelpers::getTags($entry->authors->all(), $this->locale),
             'tags' => BlogHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
-            'content' => EntryHelpers::extractFlexibleContent($entry)
+            'content' => EntryHelpers::extractFlexibleContent($entry),
+            'contacts' => $entry->pressReleaseContacts ?? null,
+            'notesToEditors' => $entry->pressReleaseNotesToEditors ?? null,
+            'updateType' => $entry->type
         ]);
     }
 }

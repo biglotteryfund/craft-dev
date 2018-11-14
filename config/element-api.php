@@ -697,6 +697,10 @@ function getUpdates($locale, $type = null, $date = null, $slug = null) {
         'status' => EntryHelpers::getVersionStatuses(),
     ];
 
+    $meta = [
+        'pageType' => 'single'
+    ];
+
     if ($type) {
         $criteria['type'] = $type;
     }
@@ -708,24 +712,30 @@ function getUpdates($locale, $type = null, $date = null, $slug = null) {
         if (!$activeTag) {
             throw new \yii\web\NotFoundHttpException('Tag not found');
         }
+        $meta['pageType'] = 'tag';
+        $meta['activeTag'] = BlogHelpers::tagSummary($activeTag, $locale);
         $criteria['relatedTo'] = [
             'targetElement' => $activeTag
         ];
     } else if ($authorQuery) {
-        $activeTag = Tag::find()->group('authors')->slug($authorQuery)->one();
-        if (!$activeTag) {
+        $activeAuthor = Tag::find()->group('authors')->slug($authorQuery)->one();
+        if (!$activeAuthor) {
             throw new \yii\web\NotFoundHttpException('Author not found');
         }
+        $meta['pageType'] = 'author';
+        $meta['activeAuthor'] = BlogHelpers::tagSummary($activeAuthor, $locale);
         $criteria['relatedTo'] = [
-            'targetElement' => $activeTag
+            'targetElement' => $activeAuthor
         ];
     } else if ($categoryQuery) {
-        $category = Category::find()->slug($categoryQuery)->one();
-        if (!$category) {
+        $activeCategory = Category::find()->slug($categoryQuery)->one();
+        if (!$activeCategory) {
             throw new \yii\web\NotFoundHttpException('Category not found');
         }
+        $meta['pageType'] = 'category';
+        $meta['activeCategory'] = BlogHelpers::categorySummary($activeCategory, $locale);
         $criteria['relatedTo'] = [
-            'targetElement' => $category
+            'targetElement' => $activeCategory
         ];
     }
 
@@ -735,6 +745,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null) {
         'criteria' => $criteria,
         'elementsPerPage' => $isSinglePost ? null : $pageLimit,
         'one' => $isSinglePost,
+        'meta' => $meta,
         'transformer' => new UpdatesTransformer($locale)
     ];
 }
