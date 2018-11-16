@@ -256,14 +256,19 @@ function getFundingProgrammes($locale)
 {
     normaliseCacheHeaders();
 
+    $showAll = \Craft::$app->request->getParam('all');
+    $status = $showAll ? ['live', 'expired'] : ['live'];
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => 'live',
+            'status' => $status,
+            'programmeStatus' => 'open'
         ],
+        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
