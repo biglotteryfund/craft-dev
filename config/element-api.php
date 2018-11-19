@@ -38,13 +38,17 @@ function getFundingProgramMatrix($entry, $locale)
 
                     // Use custom thumbnail if one is set, otherwise default to hero image.
                     $heroImage = Images::extractImage($entry->heroImage);
-                    $thumbnailSrc = Images::extractImage($block->photo) ?? $heroImage->imageMedium->one();
+                    $thumbnailSrc = Images::extractImage($block->photo) ?? ($heroImage ? $heroImage->imageMedium->one() : null);
 
-                    $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
-                        'w' => 100,
-                        'h' => 100,
-                        'crop' => 'faces',
-                    ]);
+                    if ($thumbnailSrc) {
+                        $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
+                            'w' => 100,
+                            'h' => 100,
+                            'crop' => 'faces',
+                        ]);
+                    } else {
+                        $fundingData['photo'] = null;
+                    }
 
                     $image = $heroImage ? $heroImage->imageMedium->one() : null;
                     $fundingData['image'] = $image ? Images::imgixUrl($image->url, [
