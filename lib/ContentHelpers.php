@@ -38,7 +38,7 @@ class ContentHelpers
     public static function tagSummary($tag, $locale)
     {
         $tagGroup = $tag->getGroup();
-        return [
+        $basicFields = [
             'id' => (int) $tag->id,
             'title' => $tag->title,
             'slug' => $tag->slug,
@@ -46,6 +46,25 @@ class ContentHelpers
             'groupTitle' => $tagGroup->name,
             'link' => EntryHelpers::uriForLocale("blog/{$tagGroup->handle}/{$tag->slug}", $locale),
         ];
+
+        if ($tagGroup->handle === 'authors') {
+            $basicFields['authorTitle'] = $tag->authorTitle ?? null;
+            $basicFields['shortBiography'] = $tag->shortBiography ?? null;
+            $basicFields['fullBiography'] = $tag->fullBiography ?? null;
+            $photoUrl = Images::extractImageUrl($tag->photo);
+            if ($photoUrl) {
+                $basicFields['photo'] = Images::imgixUrl(
+                    $photoUrl,
+                    [
+                        'w' => 200,
+                        'h' => 200,
+                        'crop' => 'faces',
+                    ]
+                );
+            }
+        }
+
+        return $basicFields;
     }
 
     public static function getTags($tagField, $locale)
