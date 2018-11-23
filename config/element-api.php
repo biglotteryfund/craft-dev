@@ -311,6 +311,38 @@ function getFundingProgramme($locale, $slug)
 }
 
 /**
+ * API Endpoint: Get Funding Programmes
+ * Get full details of a single funding programme
+ */
+function getFundingProgrammesNext($locale, $slug = null)
+{
+    normaliseCacheHeaders();
+
+    $showAll = \Craft::$app->request->getParam('all');
+
+    $criteria = [
+        'section' => 'fundingProgrammes',
+        'site' => $locale,
+        'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
+        'programmeStatus' => 'open'
+    ];
+
+    if ($slug) {
+        $criteria['slug'] = $slug;
+    } else if ($showAll) {
+        $criteria['orderBy'] = 'title asc';
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'one' => $slug ? true : false,
+        'transformer' => new FundingProgrammeTransformer($locale, 2),
+    ];
+}
+
+/**
  * API Endpoint: Get our people
  */
 function getOurPeople($locale)
@@ -910,6 +942,8 @@ return [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammesNext,
+        'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammesNext,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,

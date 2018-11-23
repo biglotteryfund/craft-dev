@@ -9,14 +9,20 @@ use League\Fractal\TransformerAbstract;
 
 class FundingProgrammeTransformer extends TransformerAbstract
 {
-    public function __construct($locale)
+    public function __construct($locale, $apiVersion = 1)
     {
         $this->locale = $locale;
+        $this->apiVersion = $apiVersion;
     }
 
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
+        // Use custom thumbnail if one is set, otherwise default to hero image.
+        $heroImage = Images::extractImage($entry->heroImage);
+        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
+            ($heroImage ? $heroImage->imageMedium->one() : null);
 
         $data = [
             'id' => $entry->id,
@@ -28,10 +34,38 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'path' => $entry->uri,
             'hero' => Images::extractHeroImage($entry->heroImage),
             'heroCredit' => $entry->heroImageCredit ?? null,
-            'summary' => getFundingProgramMatrix($entry, $this->locale),
             'intro' => $entry->programmeIntro,
             'footer' => $entry->outroText ?? null,
         ];
+
+        if ($this->apiVersion === 1) {
+            $data['summary'] = getFundingProgramMatrix($entry, $this->locale);
+        } else {
+            $data = array_merge($data, [
+                'description' => $entry->programmeIntro ?? null,
+                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $this->locale),
+                'thumbnail' => $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
+                    'w' => 100,
+                    'h' => 100,
+                    'crop' => 'faces',
+                ]) : null,
+                'area' => $entry->programmeArea ? [
+                    'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
+                    'value' => $entry->programmeArea->value,
+                ] : null,
+                'fundingSize' => [
+                    'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
+                    'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize  : null,
+                    'totalAvailable' => $entry->totalFundingAvailable ?? null,
+                    'description' => $entry->fundingSizeDescription ?? null
+                ],
+                'applicationDeadline' => $entry->applicationDeadline ?? null,
+                'organisationType' => $entry->organisationType ?? null,
+                'legacyPath' => $entry->legacyPath ?? null
+            ]);
+        }
+
+
 
         $contentSections = [];
         if ($entry->programmeRegions) {
