@@ -38,13 +38,17 @@ function getFundingProgramMatrix($entry, $locale)
 
                     // Use custom thumbnail if one is set, otherwise default to hero image.
                     $heroImage = Images::extractImage($entry->heroImage);
-                    $thumbnailSrc = Images::extractImage($block->photo) ?? $heroImage->imageMedium->one();
+                    $thumbnailSrc = Images::extractImage($block->photo) ?? ($heroImage ? $heroImage->imageMedium->one() : null);
 
-                    $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
-                        'w' => 100,
-                        'h' => 100,
-                        'crop' => 'faces',
-                    ]);
+                    if ($thumbnailSrc) {
+                        $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
+                            'w' => 100,
+                            'h' => 100,
+                            'crop' => 'faces',
+                        ]);
+                    } else {
+                        $fundingData['photo'] = null;
+                    }
 
                     $image = $heroImage ? $heroImage->imageMedium->one() : null;
                     $fundingData['image'] = $image ? Images::imgixUrl($image->url, [
@@ -256,14 +260,21 @@ function getFundingProgrammes($locale)
 {
     normaliseCacheHeaders();
 
+    $showAll = \Craft::$app->request->getParam('all');
+    $status = $showAll ? ['live', 'expired'] : ['live'];
+    $orderBy = $showAll ? 'title asc' : 'lft'; // `lft` is the structure order
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => 'live',
+            'status' => $status,
+            'programmeStatus' => 'open',
+            'orderBy' => $orderBy
         ],
+        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
@@ -296,6 +307,38 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => new FundingProgrammeTransformer($locale),
+    ];
+}
+
+/**
+ * API Endpoint: Get Funding Programmes
+ * Get full details of a single funding programme
+ */
+function getFundingProgrammesNext($locale, $slug = null)
+{
+    normaliseCacheHeaders();
+
+    $showAll = \Craft::$app->request->getParam('all');
+
+    $criteria = [
+        'section' => 'fundingProgrammes',
+        'site' => $locale,
+        'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
+        'programmeStatus' => 'open'
+    ];
+
+    if ($slug) {
+        $criteria['slug'] = $slug;
+    } else if ($showAll) {
+        $criteria['orderBy'] = 'title asc';
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'one' => $slug ? true : false,
+        'transformer' => new FundingProgrammeTransformer($locale, 2),
     ];
 }
 
@@ -899,6 +942,8 @@ return [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammesNext,
+        'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammesNext,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
