@@ -338,6 +338,7 @@ function getFundingProgrammesNext($locale, $slug = null)
         'elementType' => Entry::class,
         'criteria' => $criteria,
         'one' => $slug ? true : false,
+        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
         'transformer' => new FundingProgrammeTransformer($locale, 2),
     ];
 }
