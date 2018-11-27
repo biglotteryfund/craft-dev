@@ -260,21 +260,14 @@ function getFundingProgrammes($locale)
 {
     normaliseCacheHeaders();
 
-    $showAll = \Craft::$app->request->getParam('all');
-    $status = $showAll ? ['live', 'expired'] : ['live'];
-    $orderBy = $showAll ? 'title asc' : 'lft'; // `lft` is the structure order
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => $status,
-            'programmeStatus' => 'open',
-            'orderBy' => $orderBy
+            'status' => 'live'
         ],
-        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
