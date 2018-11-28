@@ -30,6 +30,14 @@ class UpdatesTransformer extends TransformerAbstract
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
             'content' => ContentHelpers::extractFlexibleContent($entry),
+            'relatedFundingProgrammes' => array_map(function ($programme) {
+                return [
+                    'title' => $programme->title,
+                    'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
+                    'photo' => Images::extractHeroImage($programme->heroImage),
+                    'intro' => $programme->programmeIntro,
+                ];
+            }, $entry->relatedFundingProgrammes->all() ?? []),
             'updateType' => [
                 'name' => $entry->type->name,
                 'slug' => str_replace('_', '-', $entry->type->handle),
