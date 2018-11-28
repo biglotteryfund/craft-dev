@@ -68,7 +68,7 @@ class Images
         return $image ? $image->url : null;
     }
 
-    public static function getHeroImageCrops($imageUrl)
+    public static function getStandardCrops($imageUrl)
     {
         return [
             'small' => self::imgixUrl(
