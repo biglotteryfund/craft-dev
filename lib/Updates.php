@@ -44,6 +44,25 @@ class UpdatesTransformer extends TransformerAbstract
             ],
         ];
 
+        $siblingCriteria = [
+            'section' => 'updates',
+            'type' => $entry->type->handle,
+        ];
+
+        $nextPost = $entry->getNext($siblingCriteria);
+        $prevPost = $entry->getPrev($siblingCriteria);
+
+        $extraFields['siblings'] = [
+            'next' => $nextPost ? [
+                'title' => $nextPost->title,
+                'linkUrl' => $nextPost->url,
+            ] : null,
+            'prev' => $prevPost ? [
+                'title' => $prevPost->title,
+                'linkUrl' => $prevPost->url,
+            ] : null,
+        ];
+
         if ($entry->type->handle === 'press_releases') {
             $extraFields['contacts'] = $entry->pressReleaseContacts ?? null;
             $extraFields['notesToEditors'] = $entry->pressReleaseNotesToEditors ?? null;
