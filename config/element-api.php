@@ -732,6 +732,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     $tagQuery = \Craft::$app->request->getParam('tag');
     $authorQuery = \Craft::$app->request->getParam('author');
     $categoryQuery = \Craft::$app->request->getParam('category');
+    $regionQuery = \Craft::$app->request->getParam('region');
 
     $defaultPageLimit = 10;
     $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
@@ -750,7 +751,8 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'activeAuthor' => null,
         'activeTag' => null,
         'activeCategory' => null,
-        'pageType' => 'single'
+        'pageType' => 'single',
+        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale)
     ];
 
     if ($isSinglePost) {
@@ -769,8 +771,8 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     } else if ($tagQuery) {
         $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
         if ($activeTag) {
-            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
             $meta['pageType'] = 'tag';
+            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeTag,
             ];
@@ -778,15 +780,26 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
             throw new \yii\web\NotFoundHttpException('Tag not found');
         }
     } else if ($categoryQuery) {
-        $activeCategory = Category::find()->slug($categoryQuery)->one();
+        $activeCategory = Category::find()->group('blogpost')->slug($categoryQuery)->one();
         if ($activeCategory) {
-            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
             $meta['pageType'] = 'category';
+            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeCategory,
             ];
         } else {
             throw new \yii\web\NotFoundHttpException('Category not found');
+        }
+    } else if ($regionQuery) {
+        $activeRegion = Category::find()->group('region')->slug($regionQuery)->one();
+        if ($activeRegion) {
+            $meta['pageType'] = 'category';
+            $meta['activeRegion'] = ContentHelpers::categorySummary($activeRegion, $locale);
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeRegion,
+            ];
+        } else {
+            throw new \yii\web\NotFoundHttpException('Region category not found');
         }
     }
 

@@ -26,12 +26,34 @@ class ContentHelpers
         ];
     }
 
+    public static function nestedCategorySummary($categories, $locale)
+    {
+        $data = [];
+        foreach ($categories as $category) {
+            if ($category->level == 1) {
+                $summary = self::categorySummary($category, $locale);
+                
+                $children = [];
+                foreach ($categories as $childCategory) {
+                    if ($category->isAncestorOf($childCategory)) {
+                        $children[] = self::categorySummary($childCategory, $locale);
+                    }
+                }
+                    
+                $summary['children'] = $children;
+                $data[] = $summary;
+            }
+        }
+
+        return $data;
+    }
+
     public static function categorySummary($category, $locale)
     {
         return [
             'title' => $category->title,
             'link' => EntryHelpers::uriForLocale($category->uri, $locale),
-            'slug' => $category->slug,
+            'slug' => $category->slug
         ];
     }
 

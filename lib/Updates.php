@@ -27,6 +27,7 @@ class UpdatesTransformer extends TransformerAbstract
             'thumbnail' =>  $trailPhotoUrl ? Images::getStandardCrops($trailPhotoUrl) : null,
             'category' => $primaryCategory ? ContentHelpers::categorySummary($primaryCategory, $this->locale) : null,
             'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
+            'regions' => $entry->regions ? ContentHelpers::nestedCategorySummary($entry->regions->all(), $this->locale) : [],
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
             'content' => ContentHelpers::extractFlexibleContent($entry),
