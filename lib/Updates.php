@@ -19,9 +19,12 @@ class UpdatesTransformer extends TransformerAbstract
         $commonFields = ContentHelpers::getCommonDetailFields($entry, $status, $this->locale);
         $primaryCategory = $entry->category ? $entry->category->inReverse()->one() : null;
 
+        $trailPhotoUrl = $entry->trailPhoto->one() ? $entry->trailPhoto->one()->url : null;
+
         $extraFields = [
             'promoted' => $entry->articlePromoted,
             'trailPhoto' => Images::extractImageUrl($entry->trailPhoto), // @TODO Raw image. What size(s) should we crop this to?
+            'thumbnail' =>  $trailPhotoUrl ? Images::getStandardCrops($trailPhotoUrl) : null,
             'category' => $primaryCategory ? ContentHelpers::categorySummary($primaryCategory, $this->locale) : null,
             'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
