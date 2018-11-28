@@ -260,19 +260,14 @@ function getFundingProgrammes($locale)
 {
     normaliseCacheHeaders();
 
-    $showAll = \Craft::$app->request->getParam('all');
-    $status = $showAll ? ['live', 'expired'] : ['live'];
-
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => $status,
-            'programmeStatus' => 'open'
+            'status' => 'live'
         ],
-        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
@@ -305,6 +300,39 @@ function getFundingProgramme($locale, $slug)
         ],
         'one' => true,
         'transformer' => new FundingProgrammeTransformer($locale),
+    ];
+}
+
+/**
+ * API Endpoint: Get Funding Programmes
+ * Get full details of a single funding programme
+ */
+function getFundingProgrammesNext($locale, $slug = null)
+{
+    normaliseCacheHeaders();
+
+    $showAll = \Craft::$app->request->getParam('all');
+
+    $criteria = [
+        'section' => 'fundingProgrammes',
+        'site' => $locale,
+        'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
+        'programmeStatus' => 'open'
+    ];
+
+    if ($slug) {
+        $criteria['slug'] = $slug;
+    } else if ($showAll) {
+        $criteria['orderBy'] = 'title asc';
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'one' => $slug ? true : false,
+        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
+        'transformer' => new FundingProgrammeTransformer($locale, 2),
     ];
 }
 
@@ -908,6 +936,8 @@ return [
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
         'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammesNext,
+        'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammesNext,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
