@@ -751,6 +751,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'activeAuthor' => null,
         'activeTag' => null,
         'activeCategory' => null,
+        'activeRegion' => null,
         'pageType' => 'single',
         'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale)
     ];
@@ -793,7 +794,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     } else if ($regionQuery) {
         $activeRegion = Category::find()->group('region')->slug($regionQuery)->one();
         if ($activeRegion) {
-            $meta['pageType'] = 'category';
+            $meta['pageType'] = 'region';
             $meta['activeRegion'] = ContentHelpers::categorySummary($activeRegion, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeRegion,
