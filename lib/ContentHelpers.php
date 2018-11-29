@@ -51,7 +51,7 @@ class ContentHelpers
             $basicFields['authorTitle'] = $tag->authorTitle ?? null;
             $basicFields['shortBiography'] = $tag->shortBiography ?? null;
             $basicFields['fullBiography'] = $tag->fullBiography ?? null;
-            $photoUrl = Images::extractImageUrl($tag->photo);
+            $photoUrl = $tag->photo ? Images::extractImageUrl($tag->photo) : null;
             if ($photoUrl) {
                 $basicFields['photo'] = Images::imgixUrl(
                     $photoUrl,
