@@ -266,7 +266,7 @@ function getFundingProgrammes($locale)
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => 'live'
+            'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
             return [
@@ -317,7 +317,7 @@ function getFundingProgrammesNext($locale, $slug = null)
         'section' => 'fundingProgrammes',
         'site' => $locale,
         'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
-        'programmeStatus' => 'open'
+        'programmeStatus' => 'open',
     ];
 
     if ($slug) {
@@ -753,7 +753,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'activeCategory' => null,
         'activeRegion' => null,
         'pageType' => 'single',
-        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale)
+        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale),
     ];
 
     if ($isSinglePost) {
@@ -816,6 +816,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     ];
 }
 
+// @TODO: Remove me once launching updates to data page
 function getStatRegions($locale)
 {
     normaliseCacheHeaders();
@@ -865,10 +866,25 @@ function getDataPage($locale)
                 'status' => $status
             ) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
+            $regionStats = $entry->regionStats->one();
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
+                'regions' => [
+                    'england' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->england),
+                    'northernIreland' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->northernIreland),
+                    'scotland' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->scotland),
+                    'wales' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->wales),
+                ],
                 'stats' => array_map(function ($stat) {
                     return [
                         'title' => $stat->statTitle,
@@ -877,7 +893,7 @@ function getDataPage($locale)
                         'suffix' => $stat->suffix ?? null,
                         'prefix' => $stat->prefix ?? null,
                     ];
-                }, $entry->stats->all() ?? []),
+                }, $entry->stats->all() ?? [])
             ];
         },
     ];
