@@ -266,7 +266,7 @@ function getFundingProgrammes($locale)
         'criteria' => [
             'section' => 'fundingProgrammes',
             'site' => $locale,
-            'status' => 'live'
+            'status' => 'live',
         ],
         'transformer' => function (Entry $entry) use ($locale) {
             return [
@@ -317,7 +317,7 @@ function getFundingProgrammesNext($locale, $slug = null)
         'section' => 'fundingProgrammes',
         'site' => $locale,
         'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
-        'programmeStatus' => 'open'
+        'programmeStatus' => 'open',
     ];
 
     if ($slug) {
@@ -732,6 +732,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     $tagQuery = \Craft::$app->request->getParam('tag');
     $authorQuery = \Craft::$app->request->getParam('author');
     $categoryQuery = \Craft::$app->request->getParam('category');
+    $regionQuery = \Craft::$app->request->getParam('region');
 
     $defaultPageLimit = 10;
     $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
@@ -750,7 +751,9 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'activeAuthor' => null,
         'activeTag' => null,
         'activeCategory' => null,
-        'pageType' => 'single'
+        'activeRegion' => null,
+        'pageType' => 'single',
+        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale),
     ];
 
     if ($isSinglePost) {
@@ -769,8 +772,8 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     } else if ($tagQuery) {
         $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
         if ($activeTag) {
-            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
             $meta['pageType'] = 'tag';
+            $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeTag,
             ];
@@ -778,15 +781,26 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
             throw new \yii\web\NotFoundHttpException('Tag not found');
         }
     } else if ($categoryQuery) {
-        $activeCategory = Category::find()->slug($categoryQuery)->one();
+        $activeCategory = Category::find()->group('blogpost')->slug($categoryQuery)->one();
         if ($activeCategory) {
-            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
             $meta['pageType'] = 'category';
+            $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
             $criteria['relatedTo'] = [
                 'targetElement' => $activeCategory,
             ];
         } else {
             throw new \yii\web\NotFoundHttpException('Category not found');
+        }
+    } else if ($regionQuery) {
+        $activeRegion = Category::find()->group('region')->slug($regionQuery)->one();
+        if ($activeRegion) {
+            $meta['pageType'] = 'region';
+            $meta['activeRegion'] = ContentHelpers::categorySummary($activeRegion, $locale);
+            $criteria['relatedTo'] = [
+                'targetElement' => $activeRegion,
+            ];
+        } else {
+            throw new \yii\web\NotFoundHttpException('Region category not found');
         }
     }
 
@@ -802,6 +816,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     ];
 }
 
+// @TODO: Remove me once launching updates to data page
 function getStatRegions($locale)
 {
     normaliseCacheHeaders();
@@ -851,10 +866,25 @@ function getDataPage($locale)
                 'status' => $status
             ) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
+            $regionStats = $entry->regionStats->one();
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
                 'url' => $entry->url,
+                'regions' => [
+                    'england' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->england),
+                    'northernIreland' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->northernIreland),
+                    'scotland' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->scotland),
+                    'wales' => array_map(function ($row) {
+                        return ['label' => $row['label'], 'value' => $row['value']];
+                    }, $regionStats->wales),
+                ],
                 'stats' => array_map(function ($stat) {
                     return [
                         'title' => $stat->statTitle,
@@ -863,7 +893,7 @@ function getDataPage($locale)
                         'suffix' => $stat->suffix ?? null,
                         'prefix' => $stat->prefix ?? null,
                     ];
-                }, $entry->stats->all() ?? []),
+                }, $entry->stats->all() ?? [])
             ];
         },
     ];
