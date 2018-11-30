@@ -816,34 +816,6 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     ];
 }
 
-// @TODO: Remove me once launching updates to data page
-function getStatRegions($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Category::class,
-        'criteria' => [
-            'group' => 'region',
-            'site' => $locale,
-        ],
-        'transformer' => function (Category $category) {
-            $data = [
-                'id' => $category->id,
-                'slug' => $category->slug,
-                'title' => $category->title,
-                'beneficiaries' => $category->beneficiaries,
-                'population' => $category->population,
-                'totalAwarded' => $category->totalAwarded,
-                'totalGrants' => $category->totalGrants ?? null,
-            ];
-
-            return $data;
-        },
-    ];
-}
-
 /**
  * API Endpoint: Data single
  */
@@ -978,7 +950,6 @@ return [
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
-        'api/v1/<locale:en|cy>/stat-regions' => getStatRegions,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
