@@ -65,6 +65,7 @@ class UpdatesTransformer extends TransformerAbstract
         ];
 
         if ($entry->type->handle === 'press_releases') {
+            $extraFields['articleLink'] = $entry->articleLink ?? null;
             $extraFields['contacts'] = $entry->pressReleaseContacts ?? null;
             $extraFields['notesToEditors'] = $entry->pressReleaseNotesToEditors ?? null;
             $extraFields['documentGroups'] = ContentHelpers::extractDocumentGroups($entry->documentGroups);
