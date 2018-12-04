@@ -7,12 +7,12 @@ use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
+// @TODO: Replace this with FundingProgrammeTransformerNew when moving to new api endpoint
 class FundingProgrammeTransformer extends TransformerAbstract
 {
-    public function __construct($locale, $apiVersion = 1)
+    public function __construct($locale)
     {
         $this->locale = $locale;
-        $this->apiVersion = $apiVersion;
     }
 
     public function transform(Entry $entry)
@@ -36,36 +36,8 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'heroCredit' => $entry->heroImageCredit ?? null,
             'intro' => $entry->programmeIntro,
             'footer' => $entry->outroText ?? null,
+            'summary' => getFundingProgramMatrix($entry, $this->locale)
         ];
-
-        if ($this->apiVersion === 1) {
-            $data['summary'] = getFundingProgramMatrix($entry, $this->locale);
-        } else {
-            $data = array_merge($data, [
-                'description' => $entry->programmeIntro ?? null,
-                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $this->locale),
-                'thumbnail' => $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
-                    'w' => 100,
-                    'h' => 100,
-                    'crop' => 'faces',
-                ]) : null,
-                'area' => $entry->programmeArea ? [
-                    'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
-                    'value' => $entry->programmeArea->value,
-                ] : null,
-                'fundingSize' => [
-                    'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
-                    'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize  : null,
-                    'totalAvailable' => $entry->totalFundingAvailable ?? null,
-                    'description' => $entry->fundingSizeDescription ?? null
-                ],
-                'applicationDeadline' => $entry->applicationDeadline ?? null,
-                'organisationType' => $entry->organisationType ?? null,
-                'legacyPath' => $entry->legacyPath ?? null
-            ]);
-        }
-
-
 
         $contentSections = [];
         if ($entry->programmeRegions) {
@@ -81,6 +53,62 @@ class FundingProgrammeTransformer extends TransformerAbstract
                 }
             }
         }
+
+        $data['contentSections'] = $contentSections;
+
+        if ($entry->relatedCaseStudies) {
+            $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
+        }
+
+        return $data;
+    }
+}
+
+class FundingProgrammeTransformerNew extends TransformerAbstract
+{
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    public function transform(Entry $entry)
+    {
+        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+        $commonFields = ContentHelpers::getCommonDetailFields($entry, $status, $this->locale);
+
+        // Use custom thumbnail if one is set, otherwise default to hero image.
+        $heroImage = Images::extractImage($entry->heroImage);
+        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
+            ($heroImage ? $heroImage->imageMedium->one() : null);
+
+        return array_merge($commonFields, [
+            'description' => $entry->programmeIntro ?? null,
+            'footer' => $entry->outroText ?? null,
+            'thumbnail' => $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
+                'w' => 100,
+                'h' => 100,
+                'crop' => 'faces',
+            ]) : null,
+            'contentSections' => array_map(function($block) {
+                return [
+                    'title' => $block->programmeRegionTitle,
+                    'body' => $block->programmeRegionBody,
+                ];
+            }, $entry->programmeRegions->all() ?? []),
+            'area' => $entry->programmeArea ? [
+                'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
+                'value' => $entry->programmeArea->value,
+            ] : null,
+            'fundingSize' => [
+                'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
+                'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize  : null,
+                'totalAvailable' => $entry->totalFundingAvailable ?? null,
+                'description' => $entry->fundingSizeDescription ?? null
+            ],
+            'applicationDeadline' => $entry->applicationDeadline ?? null,
+            'organisationType' => $entry->organisationType ?? null,
+            'legacyPath' => $entry->legacyPath ?? null
+        ]);
 
         $data['contentSections'] = $contentSections;
 
