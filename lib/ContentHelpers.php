@@ -20,7 +20,7 @@ class ContentHelpers
         }
     }
 
-    public static function getCommonDetailFields(Entry $entry, $status, $locale)
+    public static function getCommonFields(Entry $entry, $status, $locale)
     {
         return [
             'id' => $entry->id,

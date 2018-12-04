@@ -29,7 +29,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-        $commonFields = ContentHelpers::getCommonDetailFields($entry, $status, $this->locale);
+        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         $heroImageField = Images::extractImage($entry->heroImage);
 
