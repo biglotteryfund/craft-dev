@@ -20,7 +20,6 @@ class ListingTransformer extends TransformerAbstract
             'path' => $entry->uri,
             'url' => $entry->url,
             'title' => $entry->title,
-            'displayTitle' => $entry->displayTitle ?? null,
             'dateUpdated' => $entry->dateUpdated,
         ];
 
