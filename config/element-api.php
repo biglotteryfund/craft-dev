@@ -549,15 +549,10 @@ function getFlexibleContent($locale)
         ],
         'transformer' => function (Entry $entry) use ($locale, $pagePath) {
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            $entryData = EntryHelpers::extractBasicEntryData($entry);
-            $entryData['availableLanguages'] = EntryHelpers::getAvailableLanguages($entry->id, $locale);
-            $entryData['status'] = $status;
-            $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
-
-            $entryData['flexibleContent'] = ContentHelpers::extractFlexibleContent($entry);
-
-            return $entryData;
+            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            return array_merge($common, [
+                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry)
+            ]);
         },
     ];
 }
