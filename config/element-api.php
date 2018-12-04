@@ -317,14 +317,15 @@ function getFundingProgrammesNext($locale, $slug = null)
     $criteria = [
         'section' => 'fundingProgrammes',
         'site' => $locale,
-        'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
         'programmeStatus' => 'open',
     ];
 
     if ($slug) {
         $criteria['slug'] = $slug;
+        $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if ($showAll) {
         $criteria['orderBy'] = 'title asc';
+        $criteria['status'] = $showAll ? ['live', 'expired'] : ['live'];
     }
 
     return [
