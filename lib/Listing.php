@@ -13,32 +13,9 @@ class ListingTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
-    private static function extractBasicEntryData(Entry $entry)
-    {
-        $basicData = [
-            'id' => $entry->id,
-            'path' => $entry->uri,
-            'url' => $entry->url,
-            'title' => $entry->title,
-            'dateUpdated' => $entry->dateUpdated,
-        ];
-
-        if ($entry->themeColour) {
-            $basicData['themeColour'] = $entry->themeColour->value;
-        }
-
-        if ($entry->trailText) {
-            $basicData['trailText'] = $entry->trailText;
-        }
-
-        return $basicData;
-    }
-
     private function getRelatedEntries($entry, $relationType)
     {
-        $relatedEntries = [];
         $relatedSearch = [];
-
         if ($relationType === 'ancestors') {
             $relatedSearch = $entry->getAncestors()->all();
         } else if ($relationType === 'children') {
@@ -51,38 +28,43 @@ class ListingTransformer extends TransformerAbstract
             }
         }
 
-        foreach ($relatedSearch as $relatedItem) {
-            $relatedData = self::extractBasicEntryData($relatedItem);
-            $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
-            $relatedData['link'] = EntryHelpers::uriForLocale($relatedItem->uri, $this->locale);
+        $relatedEntries = [];
 
-            $heroImage = Images::extractImage($relatedItem->heroImage);
-            $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
-                'w' => 500,
-                'h' => 333,
-                'crop' => 'faces',
-            ]);
+        foreach ($relatedSearch as $relatedEntry) {
+            list('entry' => $relatedEntry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($relatedEntry);
+            $commonFields = ContentHelpers::getCommonFields($relatedEntry, $status, $this->locale);
 
-            // Some sub-pages are just links to external sites or internal files
-            // so we replace the canonical (empty) page with a link
-            $entryType = $relatedItem->type->handle;
-            if ($entryType === 'linkItem') {
-                $relatedData['entryType'] = $entryType;
-                // is this a document?
-                if ($relatedItem->documentLink && $relatedItem->documentLink->one()) {
-                    $relatedData['link'] = $relatedItem->documentLink->one()->url;
-                    // or is it an external URL?
-                } else if ($relatedItem->externalUrl) {
-                    $relatedData['link'] = $relatedItem->externalUrl;
+            /**
+             * Custom link URL
+             * Some sub-pages are just links to external sites or internal files,
+             * so we replace the canonical (empty) page with a link.
+             */
+            $customLinkUrl = null;
+            if ($relatedEntry->type->handle === 'linkItem') {
+                if ($relatedEntry->documentLink && $relatedEntry->documentLink->one()) {
+                    $customLinkUrl = $relatedEntry->documentLink->one()->url;
+                } else if ($relatedEntry->externalUrl) {
+                    $customLinkUrl = $relatedEntry->externalUrl;
                 }
             }
 
-            $relatedEntries[] = $relatedData;
+            if ($customLinkUrl) {
+                $commonFields['linkUrl'] = $customLinkUrl;
+            }
+
+            $heroImageField = Images::extractImage($relatedEntry->heroImage);
+
+            $relatedEntries[] = array_merge($commonFields, [
+                'photo' => Images::imgixUrl($heroImageField->imageSmall->one()->url, [
+                    'w' => 500,
+                    'h' => 333,
+                    'crop' => 'faces',
+                ]),
+            ]);
         }
 
         return $relatedEntries;
     }
-
 
     public function transform(Entry $entry)
     {
