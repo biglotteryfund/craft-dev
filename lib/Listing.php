@@ -73,14 +73,14 @@ class ListingTransformer extends TransformerAbstract
 
         $customFields = [
             'introduction' => $entry->introductionText ?? null,
-            'segments' => array_map(function ($block) {
+            'segments' => $entry->contentSegment ? array_map(function ($block) {
                 $segmentImage = $block->segmentImage->one();
                 return [
                     'title' => $block->segmentTitle,
                     'content' => $block->segmentContent,
                     'photo' => $segmentImage ? $segmentImage->url : null,
                 ];
-            }, $entry->contentSegment->all() ?? []),
+            }, $entry->contentSegment->all() ?? []) : [],
             'outro' => $entry->outroText ?? null,
             'relatedContent' => $entry->relatedContent ?? null
         ];
