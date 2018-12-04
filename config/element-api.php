@@ -4,6 +4,7 @@ use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\FundingProgrammeTransformerNew;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ResearchTransformer;
@@ -316,14 +317,15 @@ function getFundingProgrammesNext($locale, $slug = null)
     $criteria = [
         'section' => 'fundingProgrammes',
         'site' => $locale,
-        'status' => $showAll ? ['live', 'expired'] : EntryHelpers::getVersionStatuses(),
         'programmeStatus' => 'open',
     ];
 
     if ($slug) {
         $criteria['slug'] = $slug;
+        $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if ($showAll) {
         $criteria['orderBy'] = 'title asc';
+        $criteria['status'] = $showAll ? ['live', 'expired'] : ['live'];
     }
 
     return [
@@ -332,7 +334,7 @@ function getFundingProgrammesNext($locale, $slug = null)
         'criteria' => $criteria,
         'one' => $slug ? true : false,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale, 2),
+        'transformer' => new FundingProgrammeTransformerNew($locale),
     ];
 }
 
