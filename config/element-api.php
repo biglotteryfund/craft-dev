@@ -547,7 +547,7 @@ function getFlexibleContent($locale)
             // Limited to certain sections using flexible content
             'section' => ['aboutLandingPage'],
         ],
-        'transformer' => function (Entry $entry) use ($locale, $pagePath) {
+        'transformer' => function (Entry $entry) use ($locale) {
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
             $common = ContentHelpers::getCommonFields($entry, $status, $locale);
             return array_merge($common, [
