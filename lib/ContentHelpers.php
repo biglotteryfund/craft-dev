@@ -31,8 +31,12 @@ class ContentHelpers
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+            // @TODO: Some older pages use path instead of linkUrl in templates, update these uses and then remove this
+            'path' => $entry->uri,
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
+            // @TODO: Is displayTitle definitely distinct from trailText?
+            'displayTitle' => $entry->displayTitle ?? null,
             'trailText' => $entry->trailText ?? null,
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
