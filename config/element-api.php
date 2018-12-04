@@ -117,13 +117,31 @@ function getRoutes()
 {
     normaliseCacheHeaders();
 
+    $allSectionHandles = array_map(function ($section) {
+        return $section->handle;
+    }, \Craft::$app->sections->allSections);
+
+    $excludeList = [
+        'aliases',
+        'caseStudies',
+        'documents',
+        'heroImage',
+        'homepage',
+        'merchandise',
+        'news',
+        // @TODO: Remove when launching this section
+        'updates'
+    ];
+
+    $allowedSectionHandles = array_diff($allSectionHandles, $excludeList);
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'elementsPerPage' => 1000,
         'criteria' => [
-            'section' => ['about', 'fundingProgrammes', 'fundingGuidance', 'buildingBetterOpportunities'],
-            'status' => ['live', 'pending', 'expired'],
+            'section' => $allowedSectionHandles,
+            'status' => ['live', 'expired'],
             'orderBy' => 'uri',
         ],
         'transformer' => function (craft\elements\Entry $entry) {
@@ -132,7 +150,6 @@ function getRoutes()
                 'title' => $entry->title,
                 'path' => '/' . $entry->uri,
                 'live' => $entry->status === 'live',
-                'isFromCms' => true,
             ];
         },
     ];
