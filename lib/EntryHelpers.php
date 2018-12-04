@@ -33,7 +33,6 @@ class EntryHelpers
 
     public static function uriForLocale($uri, $locale)
     {
-        // @TODO: Can craft construct this for us?
         return $locale === 'cy' ? "/welsh/$uri" : "/$uri";
     }
 
@@ -124,76 +123,8 @@ class EntryHelpers
         return $statuses;
     }
 
-    public static function getRelatedEntries($entry, $relationType, $locale)
-    {
-        $relatedEntries = [];
-        $relatedSearch = [];
 
-        if ($relationType === 'ancestors') {
-            $relatedSearch = $entry->getAncestors()->all();
-        } else if ($relationType === 'children') {
-            $relatedSearch = $entry->getChildren()->all();
-        } else if ($relationType === 'siblings') {
-            // get parent first to allow including self as a sibling
-            $parent = $entry->getParent();
-            if ($parent) {
-                $relatedSearch = $parent->getDescendants(1)->all();
-            }
-        }
-
-        foreach ($relatedSearch as $relatedItem) {
-            $relatedData = EntryHelpers::extractBasicEntryData($relatedItem);
-            $relatedData['isCurrent'] = $entry->uri == $relatedData['path'];
-            $relatedData['link'] = EntryHelpers::uriForLocale($relatedItem->uri, $locale);
-
-            $heroImage = Images::extractImage($relatedItem->heroImage);
-            $relatedData['photo'] = Images::imgixUrl($heroImage->imageSmall->one()->url, [
-                'w' => 500,
-                'h' => 333,
-                'crop' => 'faces',
-            ]);
-
-            // Some sub-pages are just links to external sites or internal files
-            // so we replace the canonical (empty) page with a link
-            $entryType = $relatedItem->type->handle;
-            if ($entryType === 'linkItem') {
-                $relatedData['entryType'] = $entryType;
-                // is this a document?
-                if ($relatedItem->documentLink && $relatedItem->documentLink->one()) {
-                    $relatedData['link'] = $relatedItem->documentLink->one()->url;
-                    // or is it an external URL?
-                } else if ($relatedItem->externalUrl) {
-                    $relatedData['link'] = $relatedItem->externalUrl;
-                }
-            }
-
-            $relatedEntries[] = $relatedData;
-        }
-
-        return $relatedEntries;
-    }
-
-    public static function extractBasicEntryData(Entry $entry)
-    {
-        $basicData = [
-            'id' => $entry->id,
-            'path' => $entry->uri,
-            'url' => $entry->url,
-            'title' => $entry->title,
-            'displayTitle' => $entry->displayTitle ?? null,
-            'dateUpdated' => $entry->dateUpdated,
-        ];
-
-        if ($entry->themeColour) {
-            $basicData['themeColour'] = $entry->themeColour->value;
-        }
-
-        if ($entry->trailText) {
-            $basicData['trailText'] = $entry->trailText;
-        }
-
-        return $basicData;
-    }
+    // @TODO: Extract all methods below here into transformers or ContentHelpers
 
     /**
      * extractNewsSummary

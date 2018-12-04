@@ -6,6 +6,7 @@ use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\FundingProgrammeTransformerNew;
 use biglotteryfund\utils\Images;
+use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
@@ -472,58 +473,7 @@ function getListing($locale)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
-        'transformer' => function (Entry $entry) use ($locale, $pagePath) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
-            $entryData = EntryHelpers::extractBasicEntryData($entry);
-
-            $entryData['availableLanguages'] = EntryHelpers::getAvailableLanguages($entry->id, $locale);
-
-            $entryData['status'] = $status;
-
-            $entryData['hero'] = Images::extractHeroImage($entry->heroImage);
-
-            $entryData['introduction'] = $entry->introductionText ?? null;
-
-            $segments = [];
-            if ($entry->contentSegment) {
-                foreach ($entry->contentSegment->all() as $block) {
-                    $segment = [];
-                    $segment['title'] = $block->segmentTitle;
-                    $segment['content'] = $block->segmentContent;
-                    $segmentImage = $block->segmentImage->one();
-                    $segment['photo'] = $segmentImage ? $segmentImage->url : null;
-                    array_push($segments, $segment);
-                }
-            }
-
-            $entryData['segments'] = $segments ?? null;
-
-            $entryData['outro'] = $entry->outroText ?? null;
-
-            $entryData['relatedContent'] = $entry->relatedContent ?? null;
-
-            $ancestors = EntryHelpers::getRelatedEntries($entry, 'ancestors', $locale);
-            if (count($ancestors) > 0) {
-                $entryData['ancestors'] = $ancestors;
-            }
-
-            $children = EntryHelpers::getRelatedEntries($entry, 'children', $locale);
-            if (count($children) > 0) {
-                $entryData['children'] = $children;
-            }
-
-            $siblings = EntryHelpers::getRelatedEntries($entry, 'siblings', $locale);
-            if (count($siblings) > 0) {
-                $entryData['siblings'] = $siblings;
-            }
-
-            if ($entry->relatedCaseStudies) {
-                $entryData['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
-            }
-
-            return $entryData;
-        },
+        'transformer' => new ListingTransformer($locale),
     ];
 }
 
@@ -551,7 +501,7 @@ function getFlexibleContent($locale)
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
             $common = ContentHelpers::getCommonFields($entry, $status, $locale);
             return array_merge($common, [
-                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry)
+                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry),
             ]);
         },
     ];
