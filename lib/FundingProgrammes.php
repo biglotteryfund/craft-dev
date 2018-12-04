@@ -74,7 +74,7 @@ class FundingProgrammeTransformerNew extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-        $commonFields = ContentHelpers::getCommonDetailFields($entry, $status, $this->locale);
+        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         // Use custom thumbnail if one is set, otherwise default to hero image.
         $heroImage = Images::extractImage($entry->heroImage);
