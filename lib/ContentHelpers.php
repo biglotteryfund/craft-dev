@@ -7,7 +7,20 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
-    public static function getCommonDetailFields(Entry $entry, $status, $locale)
+    public static function extractNewHero(Entry $entry) {
+        $newHeroField = $entry->hero ? $entry->hero->one() : null;
+
+        if ($newHeroField) {
+            return [
+                'image' => $newHeroField->image ? Images::extractHeroImage($newHeroField->image) : null,
+                'credit' => $newHeroField->credit ?? null
+            ];
+        } else {
+            return null;
+        }
+    }
+
+    public static function getCommonFields(Entry $entry, $status, $locale)
     {
         return [
             'id' => $entry->id,
@@ -18,11 +31,17 @@ class ContentHelpers
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+            // @TODO: Is url used anywhere?
+            'url' => $entry->url,
+            // @TODO: Some older pages use path instead of linkUrl in templates, update these uses and then remove this
+            'path' => $entry->uri,
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
             'trailText' => $entry->trailText ?? null,
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
+            'heroNew' => self::extractNewHero($entry),
+            'themeColour' => $entry->themeColour ? $entry->themeColour->value : null
         ];
     }
 

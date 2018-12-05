@@ -29,24 +29,18 @@ class StrategicProgrammeTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         $heroImageField = Images::extractImage($entry->heroImage);
 
-        $data = [
-            'id' => $entry->id,
-            'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $this->locale),
-            'status' => $status,
-            'dateUpdated' => $entry->dateUpdated,
-            'title' => $entry->title,
-            'path' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $this->locale),
+        return array_merge($commonFields, [
+            // @TODO: Update template URLs to use linkUrl
+            'path' => $commonFields['linkUrl'],
             'sectionBreadcrumbs' => self::buildSectionBreadcrumbs($entry, $this->locale),
             'thumbnail' => $heroImageField ? Images::imgixUrl(
                 $heroImageField->imageMedium->one()->url,
                 ['w' => '640', 'h' => '360']
             ) : null,
-            'hero' => $heroImageField ? Images::buildHeroImage($heroImageField) : null,
-            'heroCredit' => $entry->heroImageCredit ?? null,
-            'trailText' => $entry->trailText,
             'intro' => $entry->programmeIntro,
             'aims' => $entry->strategicProgrammeAims,
             'impact' => array_map(function ($block) {
@@ -80,8 +74,6 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                     'content' => $block->contentBody,
                 ];
             }, $entry->strategicProgrammeResources->all() ?? []),
-        ];
-
-        return $data;
+        ]);
     }
 }
