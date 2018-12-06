@@ -26,7 +26,11 @@ return [
         'allowUpdates' => false,
 
         // Disable transforms for animated gifs
-        'transformGifs' => false
+        'transformGifs' => false,
+
+        // Set file uploads to 20mb maximum
+        // This needs to be defined if upload_max_filesize is greater than 16mb (Craft default)
+        'maxUploadFileSize' => 20777216
     ],
 
     // Dev environment settings
