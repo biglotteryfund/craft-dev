@@ -334,11 +334,13 @@ function getFundingProgrammesNext($locale, $slug = null)
 
     $criteria = [
         'section' => 'fundingProgrammes',
-        'site' => $locale,
-        'programmeStatus' => 'open',
+        'site' => $locale
     ];
 
-    if ($slug) {
+    if (!$slug) {
+        // For listing pages, only show programmes that can be directly applied to
+        $criteria['programmeStatus'] = 'open';
+    } else if ($slug) {
         $criteria['slug'] = $slug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if ($showAll) {
