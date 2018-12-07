@@ -55,11 +55,11 @@ class ListingTransformer extends TransformerAbstract
             $heroImageField = Images::extractImage($relatedEntry->heroImage);
 
             $relatedEntries[] = array_merge($commonFields, [
-                'photo' => Images::imgixUrl($heroImageField->imageSmall->one()->url, [
+                'photo' => $heroImageField ? Images::imgixUrl($heroImageField->imageSmall->one()->url, [
                     'w' => 500,
                     'h' => 333,
                     'crop' => 'faces',
-                ]),
+                ]) : null,
             ]);
         }
 
