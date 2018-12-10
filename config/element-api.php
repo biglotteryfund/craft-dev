@@ -699,6 +699,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
     $authorQuery = \Craft::$app->request->getParam('author');
     $categoryQuery = \Craft::$app->request->getParam('category');
     $regionQuery = \Craft::$app->request->getParam('region');
+    $showPromoted = \Craft::$app->request->getParam('promoted');
 
     $defaultPageLimit = 10;
     $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
@@ -708,6 +709,10 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'section' => 'updates',
         'status' => EntryHelpers::getVersionStatuses(),
     ];
+
+    if ($showPromoted) {
+        $criteria['articlePromoted'] = true;
+    }
 
     if ($type) {
         $criteria['type'] = str_replace('-', '_', $type);
