@@ -3,6 +3,7 @@
 namespace biglotteryfund\utils;
 
 use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
@@ -19,19 +20,10 @@ class FundingProgrammeTransformer extends TransformerAbstract
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
-        // Use custom thumbnail if one is set, otherwise default to hero image.
-        $heroImage = Images::extractImage($entry->heroImage);
-        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
-            ($heroImage ? $heroImage->imageMedium->one() : null);
-
         return array_merge($commonFields, [
             'description' => $entry->programmeIntro ?? null,
             'footer' => $entry->outroText ?? null,
-            'thumbnail' => $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
-                'w' => 100,
-                'h' => 100,
-                'crop' => 'faces',
-            ]) : null,
+            'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
             'contentSections' => array_map(function ($block) {
                 return [
                     'title' => $block->programmeRegionTitle,

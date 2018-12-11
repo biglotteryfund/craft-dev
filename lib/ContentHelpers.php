@@ -185,4 +185,16 @@ class ContentHelpers
             ];
         }, $documentGroupsField->all() ?? []);
     }
+
+    // Use custom thumbnail if one is set, otherwise default to hero image.
+    public static function getFundingProgrammeThumbnailUrl($entry) {
+        $heroImage = Images::extractImage($entry->heroImage);
+        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
+            ($heroImage ? $heroImage->imageMedium->one() : null);
+        return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
+            'w' => 100,
+            'h' => 100,
+            'crop' => 'faces',
+        ]) : null;
+    }
 }
