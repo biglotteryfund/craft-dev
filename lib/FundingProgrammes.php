@@ -8,7 +8,7 @@ use biglotteryfund\utils\Images;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
-class FundingProgrammeTransformerNew extends TransformerAbstract
+class FundingProgrammeTransformer extends TransformerAbstract
 {
     public function __construct($locale)
     {
