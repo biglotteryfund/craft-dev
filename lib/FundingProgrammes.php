@@ -50,15 +50,8 @@ class FundingProgrammeTransformer extends TransformerAbstract
             ],
             'applicationDeadline' => $entry->applicationDeadline ?? null,
             'organisationType' => $entry->organisationType ?? null,
-            'legacyPath' => $entry->legacyPath ?? null
+            'legacyPath' => $entry->legacyPath ?? null,
+            'caseStudies' => $entry->relatedCaseStudies ? EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all()) : []
         ]);
-
-        $data['contentSections'] = $contentSections;
-
-        if ($entry->relatedCaseStudies) {
-            $data['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
-        }
-
-        return $data;
     }
 }
