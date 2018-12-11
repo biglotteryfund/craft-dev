@@ -4,7 +4,6 @@ use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
-use biglotteryfund\utils\FundingProgrammeTransformerNew;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
@@ -23,86 +22,6 @@ function normaliseCacheHeaders()
     $headers->set('cache-control', 'public, max-age=0');
     header_remove('Expires');
     header_remove('Pragma');
-}
-
-function getFundingProgramMatrix($entry, $locale)
-{
-    $bodyBlocks = [];
-    if ($entry->fundingProgramme) {
-        foreach ($entry->fundingProgramme->all() as $block) {
-            switch ($block->type->handle) {
-                case 'fundingProgrammeBlock':
-                    $fundingData = [];
-                    $fundingData['title'] = $block->programmeTitle;
-
-                    $pathLinkUrl = $locale === 'cy' ? "/welsh/$entry->uri" : "/$entry->uri";
-                    $fundingData['linkUrl'] = $pathLinkUrl;
-
-                    // Use custom thumbnail if one is set, otherwise default to hero image.
-                    $heroImage = Images::extractImage($entry->heroImage);
-                    $thumbnailSrc = Images::extractImage($block->photo) ?? ($heroImage ? $heroImage->imageMedium->one() : null);
-
-                    if ($thumbnailSrc) {
-                        $fundingData['photo'] = Images::imgixUrl($thumbnailSrc->url, [
-                            'w' => 100,
-                            'h' => 100,
-                            'crop' => 'faces',
-                        ]);
-                    } else {
-                        $fundingData['photo'] = null;
-                    }
-
-                    $image = $heroImage ? $heroImage->imageMedium->one() : null;
-                    $fundingData['image'] = $image ? Images::imgixUrl($image->url, [
-                        'w' => 343,
-                        'h' => 126,
-                        'crop' => 'faces',
-                    ]) : null;
-
-                    $orgTypes = [];
-                    foreach ($block->organisationType as $o) {
-                        $orgTypes[] = EntryHelpers::translate($locale, $o->label);
-                    }
-                    if ($orgTypes) {
-                        $fundingData['organisationTypes'] = $orgTypes;
-                    }
-
-                    if ($block->description) {
-                        $fundingData['description'] = $block->description;
-                    }
-
-                    if ($block->area) {
-                        $fundingData['area'] = [
-                            'label' => EntryHelpers::translate($locale, $block->area->label),
-                            'value' => $block->area->value,
-                        ];
-                    }
-
-                    if ($block->minimumFundingSize && $block->maximumFundingSize) {
-                        $fundingData['fundingSize'] = [
-                            'minimum' => (int) $block->minimumFundingSize,
-                            'maximum' => (int) $block->maximumFundingSize,
-                        ];
-                    }
-
-                    if ($block->fundingSizeDescription) {
-                        $fundingData['fundingSizeDescription'] = $block->fundingSizeDescription;
-                    }
-
-                    if ($block->totalAvailable) {
-                        $fundingData['totalAvailable'] = $block->totalAvailable;
-                    }
-
-                    if ($block->applicationDeadline) {
-                        $fundingData['applicationDeadline'] = $block->applicationDeadline;
-                    }
-
-                    $bodyBlocks = $fundingData;
-                    break;
-            }
-        }
-    }
-    return $bodyBlocks;
 }
 
 /**********************************************************
@@ -130,7 +49,7 @@ function getRoutes()
         'merchandise',
         'news',
         // @TODO: Remove when launching this section
-        'updates'
+        'updates',
     ];
 
     $allowedSectionHandles = array_diff($allSectionHandles, $excludeList);
@@ -273,60 +192,8 @@ function getPromotedNews($locale)
 
 /**
  * API Endpoint: Get Funding Programmes
- * Get a list of all active funding programmes
  */
-function getFundingProgrammes($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'fundingProgrammes',
-            'site' => $locale,
-            'status' => 'live',
-        ],
-        'transformer' => function (Entry $entry) use ($locale) {
-            return [
-                'id' => $entry->id,
-                'status' => $entry->status,
-                'title' => $entry->title,
-                'url' => $entry->url,
-                'urlPath' => $entry->uri,
-                'content' => getFundingProgramMatrix($entry, $locale),
-            ];
-        },
-    ];
-}
-
-/**
- * API Endpoint: Get Funding Programme
- * Get full details of a single funding programme
- */
-function getFundingProgramme($locale, $slug)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'slug' => $slug,
-            'section' => 'fundingProgrammes',
-            'site' => $locale,
-            'status' => EntryHelpers::getVersionStatuses(),
-        ],
-        'one' => true,
-        'transformer' => new FundingProgrammeTransformer($locale),
-    ];
-}
-
-/**
- * API Endpoint: Get Funding Programmes
- * Get full details of a single funding programme
- */
-function getFundingProgrammesNext($locale, $slug = null)
+function getFundingProgrammes($locale, $slug = null)
 {
     normaliseCacheHeaders();
 
@@ -354,7 +221,7 @@ function getFundingProgrammesNext($locale, $slug = null)
         'criteria' => $criteria,
         'one' => $slug ? true : false,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformerNew($locale),
+        'transformer' => new FundingProgrammeTransformer($locale),
     ];
 }
 
@@ -907,10 +774,8 @@ return [
     'endpoints' => [
         'api/v1/list-routes' => getRoutes,
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
-        'api/v1/<locale:en|cy>/funding-programme/<slug>' => getFundingProgramme,
-        'api/v1/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammesNext,
-        'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammesNext,
+        'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
