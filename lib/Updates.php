@@ -35,8 +35,9 @@ class UpdatesTransformer extends TransformerAbstract
                 return [
                     'title' => $programme->title,
                     'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
-                    'photo' => Images::extractHeroImage($programme->heroImage),
                     'intro' => $programme->programmeIntro,
+                    'photo' => Images::extractHeroImage($programme->heroImage),
+                    'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($programme),
                 ];
             }, $entry->relatedFundingProgrammes->all() ?? []),
             'updateType' => [
