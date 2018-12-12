@@ -57,11 +57,11 @@ class UpdatesTransformer extends TransformerAbstract
         $extraFields['siblings'] = [
             'next' => $nextPost ? [
                 'title' => $nextPost->title,
-                'linkUrl' => $nextPost->url,
+                'linkUrl' => EntryHelpers::uriForLocale($nextPost->uri, $this->locale),
             ] : null,
             'prev' => $prevPost ? [
                 'title' => $prevPost->title,
-                'linkUrl' => $prevPost->url,
+                'linkUrl' => EntryHelpers::uriForLocale($prevPost->uri, $this->locale),
             ] : null,
         ];
 
