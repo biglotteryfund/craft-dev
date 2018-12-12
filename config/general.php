@@ -10,7 +10,10 @@ return [
     // Global settings
     '*' => [
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
+        'defaultWeekStartDay' => 1,
+
+        // Use British English (for date formats, mainly)
+        'defaultCpLanguage' => 'en-GB',
 
         // Enable CSRF Protection (recommended, will be enabled by default in Craft 3)
         'enableCsrfProtection' => true,
