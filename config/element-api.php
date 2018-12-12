@@ -590,14 +590,14 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'activeTag' => null,
         'activeCategory' => null,
         'activeRegion' => null,
-        'pageType' => 'single',
-        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->all(), $locale),
+        'pageType' => $isSinglePost ? 'single' : 'listing',
+        'regions' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->site($locale)->all(), $locale),
     ];
 
     if ($isSinglePost) {
         $criteria['slug'] = $slug;
     } else if ($authorQuery) {
-        $activeAuthor = Tag::find()->group('authors')->slug($authorQuery)->one();
+        $activeAuthor = Tag::find()->group('authors')->slug($authorQuery)->site($locale)->one();
         if ($activeAuthor) {
             $meta['pageType'] = 'author';
             $meta['activeAuthor'] = ContentHelpers::tagSummary($activeAuthor, $locale);
@@ -608,7 +608,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
             throw new \yii\web\NotFoundHttpException('Author not found');
         }
     } else if ($tagQuery) {
-        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->one();
+        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->site($locale)->one();
         if ($activeTag) {
             $meta['pageType'] = 'tag';
             $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
@@ -619,7 +619,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
             throw new \yii\web\NotFoundHttpException('Tag not found');
         }
     } else if ($categoryQuery) {
-        $activeCategory = Category::find()->group('blogpost')->slug($categoryQuery)->one();
+        $activeCategory = Category::find()->group('blogpost')->slug($categoryQuery)->site($locale)->one();
         if ($activeCategory) {
             $meta['pageType'] = 'category';
             $meta['activeCategory'] = ContentHelpers::categorySummary($activeCategory, $locale);
@@ -630,7 +630,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
             throw new \yii\web\NotFoundHttpException('Category not found');
         }
     } else if ($regionQuery) {
-        $activeRegion = Category::find()->group('region')->slug($regionQuery)->one();
+        $activeRegion = Category::find()->group('region')->slug($regionQuery)->site($locale)->one();
         if ($activeRegion) {
             $meta['pageType'] = 'region';
             $meta['activeRegion'] = ContentHelpers::categorySummary($activeRegion, $locale);
