@@ -101,7 +101,7 @@ class ListingTransformer extends TransformerAbstract
         }
 
         if ($entry->relatedCaseStudies) {
-            $customFields['caseStudies'] = EntryHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
+            $customFields['caseStudies'] = ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
         }
 
         return array_merge($commonFields, $customFields);

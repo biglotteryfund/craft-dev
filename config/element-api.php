@@ -158,7 +158,7 @@ function getHomepage($locale)
                     'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->one()),
                     'candidates' => Images::extractHomepageHeroImages($entry->homepageHeroImages->all()),
                 ],
-                'newsArticles' => EntryHelpers::extractNewsSummaries($newsQuery->all()),
+                'newsArticles' => ContentHelpers::extractNewsSummaries($newsQuery->all()),
             ];
 
             return $data;
@@ -185,7 +185,7 @@ function getPromotedNews($locale)
         'transformer' => function (Entry $entry) {
             return array_replace_recursive([
                 'id' => $entry->id,
-            ], EntryHelpers::extractNewsSummary($entry));
+            ], ContentHelpers::extractNewsSummary($entry));
         },
     ];
 }
@@ -417,7 +417,7 @@ function getCaseStudies($locale, $grantId = null)
         'criteria' => $criteria,
         'one' => $grantId,
         'transformer' => function (Entry $entry) {
-            return EntryHelpers::extractCaseStudySummary($entry);
+            return ContentHelpers::extractCaseStudySummary($entry);
         },
     ];
 }
