@@ -397,18 +397,25 @@ function getFlexibleContent($locale)
  * API Endpoint: Get case studies
  * Get a list of summaries for all case studies
  */
-function getCaseStudies($locale)
+function getCaseStudies($locale, $grantId = null)
 {
     normaliseCacheHeaders();
+
+    $criteria = [
+        'section' => 'caseStudies',
+        'site' => $locale,
+        'status' => 'live',
+    ];
+
+    if ($grantId) {
+        $criteria['caseStudyGrantId'] = $grantId;
+    }
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'caseStudies',
-            'site' => $locale,
-            'status' => 'live',
-        ],
+        'criteria' => $criteria,
+        'one' => $grantId,
         'transformer' => function (Entry $entry) {
             return EntryHelpers::extractCaseStudySummary($entry);
         },
@@ -774,6 +781,7 @@ return [
     'endpoints' => [
         'api/v1/list-routes' => getRoutes,
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
+        'api/v1/<locale:en|cy>/case-studies/<grantId>' => getCaseStudies,
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/research' => getResearch,

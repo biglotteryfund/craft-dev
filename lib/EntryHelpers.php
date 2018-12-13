@@ -170,6 +170,10 @@ class EntryHelpers
                 'w' => 600,
                 'h' => 400,
             ]),
+            'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
+            'heroCredit' => $entry->heroImageCredit ?? null,
+            'heroNew' => ContentHelpers::extractNewHero($entry),
+            'content' => ContentHelpers::extractFlexibleContent($entry),
         ];
     }
 
