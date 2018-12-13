@@ -1,6 +1,5 @@
 <?php
 
-use biglotteryfund\utils\BlogTransformer;
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
@@ -201,7 +200,7 @@ function getFundingProgrammes($locale, $slug = null)
 
     $criteria = [
         'section' => 'fundingProgrammes',
-        'site' => $locale
+        'site' => $locale,
     ];
 
     if (!$slug) {
@@ -412,148 +411,6 @@ function getCaseStudies($locale)
         'transformer' => function (Entry $entry) {
             return EntryHelpers::extractCaseStudySummary($entry);
         },
-    ];
-}
-
-/**
- * API Endpoint: Get blog posts
- * Get a list of all blog posts
- */
-function getBlogposts($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'blog',
-            'status' => EntryHelpers::getVersionStatuses(),
-        ],
-        'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 10,
-        'meta' => [
-            'pageType' => 'blog',
-        ],
-        'transformer' => new BlogTransformer($locale),
-    ];
-}
-
-/**
- * API Endpoint: Get blog posts by category
- * Get a list of blog posts for a given category
- */
-function getBlogpostsByCategory($locale, $categorySlug, $subCategorySlug = false)
-{
-    $slugToUse = ($subCategorySlug) ? $subCategorySlug : $categorySlug;
-    $category = Category::find()->slug($slugToUse)->one();
-
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'blog',
-            'status' => EntryHelpers::getVersionStatuses(),
-            'relatedTo' => ['targetElement' => $category],
-        ],
-        'meta' => [
-            'pageType' => 'category',
-            'activeCategory' => ContentHelpers::categorySummary($category, $locale),
-        ],
-        'transformer' => new BlogTransformer($locale),
-    ];
-}
-
-/**
- * API Endpoint: Get blog posts by author
- * Get a list of blog posts for a given author
- */
-function getBlogpostsByAuthor($locale, $author)
-{
-    normaliseCacheHeaders();
-
-    $activeAuthor = Tag::find()->group('authors')->slug($author)->one();
-
-    if (!$activeAuthor) {
-        throw new \yii\web\NotFoundHttpException('Author not found');
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'blog',
-            'status' => EntryHelpers::getVersionStatuses(),
-            'relatedTo' => [
-                'targetElement' => $activeAuthor,
-                'field' => 'authors',
-            ],
-
-        ],
-        'meta' => [
-            'pageType' => 'authors',
-            'activeAuthor' => ContentHelpers::tagSummary($activeAuthor, $locale),
-        ],
-        'transformer' => new BlogTransformer($locale),
-    ];
-}
-
-/**
- * API Endpoint: Get blog posts by tag
- * Get a list of blog posts for a given tag
- */
-function getBlogpostsByTag($locale, $tag)
-{
-    normaliseCacheHeaders();
-
-    $activeTag = Tag::find()->group('tags')->slug($tag)->one();
-
-    if (!$activeTag) {
-        throw new \yii\web\NotFoundHttpException('Tag not found');
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'blog',
-            'status' => EntryHelpers::getVersionStatuses(),
-            'relatedTo' => [
-                'targetElement' => $activeTag,
-                'field' => 'tags',
-            ],
-        ],
-        'meta' => [
-            'pageType' => 'tags',
-            'activeTag' => ContentHelpers::tagSummary($activeTag, $locale),
-        ],
-        'transformer' => new BlogTransformer($locale),
-    ];
-}
-
-function getBlogpostsBySlug($locale, $slug)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'blog',
-            'slug' => $slug,
-            'status' => EntryHelpers::getVersionStatuses(),
-        ],
-        'one' => true,
-        'meta' => [
-            'pageType' => 'blogpost',
-        ],
-        'transformer' => new BlogTransformer($locale),
     ];
 }
 
@@ -792,13 +649,5 @@ return [
         'api/v1/<locale:en|cy>/updates' => getUpdates,
         'api/v1/<locale:en|cy>/updates/<type:{slug}>' => getUpdates,
         'api/v1/<locale:en|cy>/updates/<type:{slug}>/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getUpdates,
-
-        // @TODO: Remove blog endpoints when we've switched over to the new updates section
-        'api/v1/<locale:en|cy>/blog' => getBlogposts,
-        'api/v1/<locale:en|cy>/blog/<date:\d{4}-\d{2}-\d{2}>/<slug:{slug}>' => getBlogpostsBySlug,
-        'api/v1/<locale:en|cy>/blog/authors/<author:{slug}>' => getBlogpostsByAuthor,
-        'api/v1/<locale:en|cy>/blog/tags/<tag:{slug}>' => getBlogpostsByTag,
-        'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>' => getBlogpostsByCategory,
-        'api/v1/<locale:en|cy>/blog/<categorySlug:{slug}>/<subCategorySlug:{slug}>' => getBlogpostsByCategory,
     ],
 ];
