@@ -3,6 +3,7 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
@@ -142,15 +143,7 @@ function getHomepage($locale)
             'site' => $locale,
         ],
         'one' => true,
-        'transformer' => function (Entry $entry) {
-            return [
-                'id' => $entry->id,
-                'heroImages' => [
-                    'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->one()),
-                    'candidates' => Images::extractHomepageHeroImages($entry->homepageHeroImages->all()),
-                ],
-            ];
-        },
+        'transformer' => new HomepageTransformer($locale),
     ];
 }
 
