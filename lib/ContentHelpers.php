@@ -7,20 +7,6 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
-    public static function extractNewHero(Entry $entry)
-    {
-        $newHeroField = $entry->hero ? $entry->hero->one() : null;
-
-        if ($newHeroField) {
-            return [
-                'image' => $newHeroField->image ? Images::extractHeroImage($newHeroField->image) : null,
-                'credit' => $newHeroField->credit ?? null,
-            ];
-        } else {
-            return null;
-        }
-    }
-
     public static function getCommonFields(Entry $entry, $status, $locale)
     {
         return [
@@ -41,7 +27,7 @@ class ContentHelpers
             'trailText' => $entry->trailText ?? null,
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => self::extractNewHero($entry),
+            'heroNew' => Images::buildHero($entry->hero),
             'themeColour' => $entry->themeColour ? $entry->themeColour->value : null,
         ];
     }
@@ -221,7 +207,7 @@ class ContentHelpers
             ]),
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => ContentHelpers::extractNewHero($entry),
+            'heroNew' => Images::buildHero($entry->hero),
             'content' => ContentHelpers::extractFlexibleContent($entry),
         ];
     }

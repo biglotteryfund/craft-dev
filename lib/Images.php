@@ -86,6 +86,12 @@ class Images
         ];
     }
 
+    public static function extractHeroImage($imageField)
+    {
+        $hero = self::extractImage($imageField);
+        return $hero ? self::buildHeroImage($hero) : null;
+    }
+
     public static function buildHeroImage($heroEntry)
     {
         $imageSmall = self::imgixUrl(
@@ -114,10 +120,12 @@ class Images
         ];
     }
 
-    public static function extractHeroImage($imageField)
+    public static function buildHero($heroField)
     {
-        $hero = self::extractImage($imageField);
-        return $hero ? self::buildHeroImage($hero) : null;
+        $hero = $heroField->one() ?? null;
+        return $hero ? [
+            'image' => $hero->image ? Images::extractHeroImage($hero->image) : null,
+            'credit' => $hero->credit ?? null,
+        ] : null;
     }
-
 }
