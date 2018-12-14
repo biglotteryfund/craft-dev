@@ -122,10 +122,20 @@ class Images
 
     public static function buildHero($heroField)
     {
+        if ($heroField && $heroField->one()) {
+            $hero = $heroField->one();
+            return [
+                'image' => $hero->image ? Images::extractHeroImage($hero->image) : null,
+                'credit' => $hero->credit ?? null,
+            ];
+        } else {
+            return null;
+        }
+    }
+
+    public static function extractNewHeroImageField($heroField)
+    {
         $hero = $heroField->one() ?? null;
-        return $hero ? [
-            'image' => $hero->image ? Images::extractHeroImage($hero->image) : null,
-            'credit' => $hero->credit ?? null,
-        ] : null;
+        return $hero ? $hero->image->one() : null;
     }
 }
