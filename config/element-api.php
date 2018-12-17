@@ -3,6 +3,7 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
@@ -142,50 +143,7 @@ function getHomepage($locale)
             'site' => $locale,
         ],
         'one' => true,
-        'transformer' => function (Entry $entry) use ($locale) {
-            $finder = Entry::find();
-            $newsQuery = \Craft::configure($finder, [
-                'section' => 'news',
-                'limit' => 3,
-                'articlePromoted' => true,
-                'site' => $locale,
-            ]);
-
-            $data = [
-                'id' => $entry->id,
-                'heroImages' => [
-                    'default' => Images::extractHomepageHeroImage($entry->homepageHeroImages->one()),
-                    'candidates' => Images::extractHomepageHeroImages($entry->homepageHeroImages->all()),
-                ],
-                'newsArticles' => ContentHelpers::extractNewsSummaries($newsQuery->all()),
-            ];
-
-            return $data;
-        },
-    ];
-}
-
-/**
- * API Endpoint: Get Promoted News
- * Get a list of all promoted news articles
- */
-function getPromotedNews($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'section' => 'news',
-            'articlePromoted' => true,
-            'site' => $locale,
-        ],
-        'transformer' => function (Entry $entry) {
-            return array_replace_recursive([
-                'id' => $entry->id,
-            ], ContentHelpers::extractNewsSummary($entry));
-        },
+        'transformer' => new HomepageTransformer($locale),
     ];
 }
 
@@ -650,7 +608,6 @@ return [
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
-        'api/v1/<locale:en|cy>/promoted-news' => getPromotedNews,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,

@@ -2,9 +2,8 @@
 
 namespace biglotteryfund\utils;
 
-use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\ContentHelpers;
-use biglotteryfund\utils\Images;
+use biglotteryfund\utils\EntryHelpers;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
@@ -13,6 +12,16 @@ class FundingProgrammeTransformer extends TransformerAbstract
     public function __construct($locale)
     {
         $this->locale = $locale;
+    }
+
+    private static function buildTrailImage($imageField)
+    {
+        return $imageField ? Images::imgixUrl($imageField->imageMedium->one()->url, [
+            // 5:2 aspect ratio image
+            'w' => 360,
+            'h' => 144,
+            'crop' => 'faces',
+        ]) : null;
     }
 
     public function transform(Entry $entry)
@@ -24,6 +33,8 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'description' => $entry->programmeIntro ?? null,
             'footer' => $entry->outroText ?? null,
             'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+            'trailImage' => self::buildTrailImage($entry->heroImage->one()),
+            'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
             'contentSections' => array_map(function ($block) {
                 return [
                     'title' => $block->programmeRegionTitle,
@@ -43,7 +54,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'applicationDeadline' => $entry->applicationDeadline ?? null,
             'organisationType' => $entry->organisationType ?? null,
             'legacyPath' => $entry->legacyPath ?? null,
-            'caseStudies' => $entry->relatedCaseStudies ? ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all()) : []
+            'caseStudies' => $entry->relatedCaseStudies ? ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all()) : [],
         ]);
     }
 }
