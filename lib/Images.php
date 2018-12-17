@@ -8,16 +8,16 @@ use League\Uri\Parser;
 const IMAGE_SIZES = [
     'small' => [
         'w' => '644',
-        'h' => '425',
+        'h' => '425'
     ],
     'medium' => [
         'w' => '1280',
-        'h' => '720',
+        'h' => '720'
     ],
     'large' => [
         'w' => '1373',
-        'h' => '405',
-    ],
+        'h' => '405'
+    ]
 ];
 
 class Images
@@ -86,12 +86,6 @@ class Images
         ];
     }
 
-    public static function extractHeroImage($imageField)
-    {
-        $hero = self::extractImage($imageField);
-        return $hero ? self::buildHeroImage($hero) : null;
-    }
-
     public static function buildHeroImage($heroEntry)
     {
         $imageSmall = self::imgixUrl(
@@ -120,22 +114,55 @@ class Images
         ];
     }
 
-    public static function buildHero($heroField)
+    public static function extractHeroImage($imageField)
     {
-        if ($heroField && $heroField->one()) {
-            $hero = $heroField->one();
-            return [
-                'image' => $hero->image ? Images::extractHeroImage($hero->image) : null,
-                'credit' => $hero->credit ?? null,
-            ];
-        } else {
-            return null;
-        }
+        $hero = self::extractImage($imageField);
+        return $hero ? self::buildHeroImage($hero) : null;
     }
 
-    public static function extractNewHeroImageField($heroField)
+    public static function extractHomepageHeroImage($hero)
     {
-        $hero = $heroField->one() ?? null;
-        return $hero ? $hero->image->one() : null;
+        $defaults = ['lossless' => true, 'q' => 90];
+
+        $imageSmall = self::imgixUrl(
+            $hero->imageSmall->one()->url,
+            array_replace_recursive($defaults, ['w' => '644', 'h' => '573'])
+        );
+
+        $imageMedium = self::imgixUrl(
+            $hero->imageMedium->one()->url,
+            array_replace_recursive($defaults, ['w' => '1280', 'h' => '720'])
+        );
+
+        $imageLarge = self::imgixUrl(
+            $hero->imageLarge->one()->url,
+            array_replace_recursive($defaults, ['w' => '1373', 'h' => '505'])
+        );
+
+        $result = [
+            'caption' => $hero->caption,
+            'default' => $imageMedium,
+            'small' => $imageSmall,
+            'medium' => $imageMedium,
+            'large' => $imageLarge,
+        ];
+
+        if ($hero->captionFootnote) {
+            $result['captionFootnote'] = $hero->captionFootnote;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Wrapper around `extractHomepageHeroImage`
+     * for extracting an array of summaries from a list of hero images
+     */
+    public static function extractHomepageHeroImages($homepageHeroImages)
+    {
+        return array_map(
+            'self::extractHomepageHeroImage',
+            $homepageHeroImages
+        );
     }
 }
