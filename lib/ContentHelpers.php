@@ -7,6 +7,19 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
+    public static function extractNewHero(Entry $entry) {
+        $newHeroField = $entry->hero ? $entry->hero->one() : null;
+
+        if ($newHeroField) {
+            return [
+                'image' => $newHeroField->image ? Images::extractHeroImage($newHeroField->image) : null,
+                'credit' => $newHeroField->credit ?? null
+            ];
+        } else {
+            return null;
+        }
+    }
+
     public static function getCommonFields(Entry $entry, $status, $locale)
     {
         return [
@@ -27,8 +40,8 @@ class ContentHelpers
             'trailText' => $entry->trailText ?? null,
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => Images::buildHero($entry->hero),
-            'themeColour' => $entry->themeColour ? $entry->themeColour->value : null,
+            'heroNew' => self::extractNewHero($entry),
+            'themeColour' => $entry->themeColour ? $entry->themeColour->value : null
         ];
     }
 
@@ -38,14 +51,14 @@ class ContentHelpers
         foreach ($categories as $category) {
             if ($category->level == 1) {
                 $summary = self::categorySummary($category, $locale);
-
+                
                 $children = [];
                 foreach ($categories as $childCategory) {
                     if ($category->isAncestorOf($childCategory)) {
                         $children[] = self::categorySummary($childCategory, $locale);
                     }
                 }
-
+                    
                 $summary['children'] = $children;
                 $data[] = $summary;
             }
@@ -59,7 +72,7 @@ class ContentHelpers
         return [
             'title' => $category->title,
             'link' => EntryHelpers::uriForLocale($category->uri, $locale),
-            'slug' => $category->slug,
+            'slug' => $category->slug
         ];
     }
 
@@ -174,8 +187,7 @@ class ContentHelpers
     }
 
     // Use custom thumbnail if one is set, otherwise default to hero image.
-    public static function getFundingProgrammeThumbnailUrl($entry)
-    {
+    public static function getFundingProgrammeThumbnailUrl($entry) {
         $heroImage = Images::extractImage($entry->heroImage);
         $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
             ($heroImage ? $heroImage->imageMedium->one() : null);
@@ -184,6 +196,31 @@ class ContentHelpers
             'h' => 100,
             'crop' => 'faces',
         ]) : null;
+    }
+
+    /**
+     * extractNewsSummary
+     * Extract a summary object from a news entry
+     */
+    public static function extractNewsSummary(Entry $entry)
+    {
+        return [
+            'title' => $entry->articleTitle,
+            'summary' => $entry->articleSummary,
+            'link' => $entry->articleLink,
+        ];
+    }
+
+    /**
+     * Wrapper around `extractNewsSummary`
+     * for extracting an array of summaries from a list of news articles
+     */
+    public static function extractNewsSummaries($newsArticles)
+    {
+        return $newsArticles ? array_map(
+            'self::extractNewsSummary',
+            $newsArticles
+        ) : [];
     }
 
     /**
@@ -207,7 +244,7 @@ class ContentHelpers
             ]),
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => Images::buildHero($entry->hero),
+            'heroNew' => ContentHelpers::extractNewHero($entry),
             'content' => ContentHelpers::extractFlexibleContent($entry),
         ];
     }
