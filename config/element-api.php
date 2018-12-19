@@ -392,13 +392,13 @@ function getProjectStories($locale, $grantId = null)
     normaliseCacheHeaders();
 
     $criteria = [
-        'section' => 'caseStudies',
+        'section' => 'projectStories',
         'site' => $locale,
-        'status' => 'live',
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     if ($grantId) {
-        $criteria['caseStudyGrantId'] = $grantId;
+        $criteria['grantId'] = $grantId;
     }
 
     return [
