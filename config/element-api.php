@@ -92,7 +92,7 @@ function getAliases($locale)
             'section' => ['aliases'],
         ],
         'transformer' => function (craft\elements\Entry $alias) use ($locale) {
-                $relatedEntry = $alias->relatedEntry->status(['live', 'expired'])->one();
+            $relatedEntry = $alias->relatedEntry->status(['live', 'expired'])->one();
             if ($relatedEntry) {
                 $uri = EntryHelpers::uriForLocale($relatedEntry->uri, $locale);
             } else if ($alias->externalUrl) {
