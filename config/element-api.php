@@ -159,22 +159,20 @@ function getFundingProgrammes($locale, $slug = null)
 {
     normaliseCacheHeaders();
 
-    $showAll = \Craft::$app->request->getParam('all');
-
     $criteria = [
         'section' => 'fundingProgrammes',
         'site' => $locale,
     ];
 
-    if (!$slug) {
-        // For listing pages, only show programmes that can be directly applied to
-        $criteria['programmeStatus'] = 'open';
-    } else if ($slug) {
+    if ($slug) {
         $criteria['slug'] = $slug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
-    } else if ($showAll) {
+    } else if (\Craft::$app->request->getParam('all') === 'true') {
         $criteria['orderBy'] = 'title asc';
-        $criteria['status'] = $showAll ? ['live', 'expired'] : ['live'];
+        $criteria['status'] = ['live', 'expired'];
+    } else {
+        // For listing pages, only show programmes that can be directly applied to
+        $criteria['programmeStatus'] = 'open';
     }
 
     return [
