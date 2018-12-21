@@ -30,6 +30,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         return array_merge($commonFields, [
+            'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
             'description' => $entry->programmeIntro ?? null,
             'footer' => $entry->outroText ?? null,
             'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
