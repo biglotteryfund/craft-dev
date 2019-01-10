@@ -49,8 +49,6 @@ function getRoutes()
         'homepage',
         'merchandise',
         'news',
-        // @TODO: Remove when launching this section
-        'updates',
     ];
 
     $allowedSectionHandles = array_diff($allSectionHandles, $excludeList);
