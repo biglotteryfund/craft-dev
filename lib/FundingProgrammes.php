@@ -4,6 +4,7 @@ namespace biglotteryfund\utils;
 
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\ProjectStoriesTransformer;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
@@ -56,6 +57,10 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'organisationType' => $entry->organisationType ?? null,
             'legacyPath' => $entry->legacyPath ?? null,
             'caseStudies' => $entry->relatedCaseStudies ? ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all()) : [],
+            'projectStories' => array_map(function ($entry) {
+                $transformer = new ProjectStoriesTransformer($this->locale);
+                return $transformer->transform($entry);
+            }, $entry->relatedProjectStories ? $entry->relatedProjectStories->all() : [])
         ]);
     }
 }

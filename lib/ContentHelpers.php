@@ -132,6 +132,14 @@ class ContentHelpers
                     ];
                     array_push($parts, $data);
                     break;
+                case 'quote':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'quoteText' => $block->quoteText,
+                        'attribution' => $block->attribution ?? null,
+                    ];
+                    array_push($parts, $data);
+                    break;
                 case 'mediaAside':
                     $data = [
                         'type' => $block->type->handle,

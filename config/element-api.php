@@ -7,6 +7,7 @@ use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
+use biglotteryfund\utils\ProjectStoriesTransformer;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\UpdatesTransformer;
@@ -48,8 +49,6 @@ function getRoutes()
         'homepage',
         'merchandise',
         'news',
-        // @TODO: Remove when launching this section
-        'updates',
     ];
 
     $allowedSectionHandles = array_diff($allSectionHandles, $excludeList);
@@ -356,6 +355,7 @@ function getFlexibleContent($locale)
 /**
  * API Endpoint: Get case studies
  * Get a list of summaries for all case studies
+ * @TODO: Deprecate in favour of stories endpoint(s)
  */
 function getCaseStudies($locale, $grantId = null)
 {
@@ -379,6 +379,32 @@ function getCaseStudies($locale, $grantId = null)
         'transformer' => function (Entry $entry) {
             return ContentHelpers::extractCaseStudySummary($entry);
         },
+    ];
+}
+
+/**
+ * Get project stories
+ */
+function getProjectStories($locale, $grantId = null)
+{
+    normaliseCacheHeaders();
+
+    $criteria = [
+        'section' => 'projectStories',
+        'site' => $locale,
+        'status' => EntryHelpers::getVersionStatuses(),
+    ];
+
+    if ($grantId) {
+        $criteria['grantId'] = $grantId;
+    }
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'one' => $grantId ? true : false,
+        'transformer' => new ProjectStoriesTransformer($locale),
     ];
 }
 
@@ -600,6 +626,8 @@ return [
         'api/v1/list-routes' => getRoutes,
         'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
         'api/v1/<locale:en|cy>/case-studies/<grantId>' => getCaseStudies,
+        'api/v1/<locale:en|cy>/project-stories' => getProjectStories,
+        'api/v1/<locale:en|cy>/project-stories/<grantId>' => getProjectStories,
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/research' => getResearch,

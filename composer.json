@@ -31,7 +31,8 @@
     "league/uri": "^5.2",
     "imgix/imgix-php": "^2.1",
     "verbb/super-table": "^2.0",
-    "ether/tags": "^1.0"
+    "ether/tags": "^1.0",
+    "doublesecretagency/craft-inventory": "^2.0"
   },
   "autoload" : {
     "psr-4" : {
