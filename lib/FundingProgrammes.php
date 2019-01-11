@@ -56,7 +56,6 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'applicationDeadline' => $entry->applicationDeadline ?? null,
             'organisationType' => $entry->organisationType ?? null,
             'legacyPath' => $entry->legacyPath ?? null,
-            'caseStudies' => $entry->relatedCaseStudies ? ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all()) : [],
             'projectStories' => array_map(function ($entry) {
                 $transformer = new ProjectStoriesTransformer($this->locale);
                 return $transformer->transform($entry);

@@ -82,7 +82,7 @@ class ListingTransformer extends TransformerAbstract
                 ];
             }, $entry->contentSegment->all() ?? []) : [],
             'outro' => $entry->outroText ?? null,
-            'relatedContent' => $entry->relatedContent ?? null
+            'relatedContent' => $entry->relatedContent ?? null,
         ];
 
         $ancestors = self::getRelatedEntries($entry, 'ancestors');
@@ -98,10 +98,6 @@ class ListingTransformer extends TransformerAbstract
         $siblings = self::getRelatedEntries($entry, 'siblings');
         if (count($siblings) > 0) {
             $customFields['siblings'] = $siblings;
-        }
-
-        if ($entry->relatedCaseStudies) {
-            $customFields['caseStudies'] = ContentHelpers::extractCaseStudySummaries($entry->relatedCaseStudies->all());
         }
 
         return array_merge($commonFields, $customFields);

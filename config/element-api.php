@@ -353,36 +353,6 @@ function getFlexibleContent($locale)
 }
 
 /**
- * API Endpoint: Get case studies
- * Get a list of summaries for all case studies
- * @TODO: Deprecate in favour of stories endpoint(s)
- */
-function getCaseStudies($locale, $grantId = null)
-{
-    normaliseCacheHeaders();
-
-    $criteria = [
-        'section' => 'caseStudies',
-        'site' => $locale,
-        'status' => 'live',
-    ];
-
-    if ($grantId) {
-        $criteria['caseStudyGrantId'] = $grantId;
-    }
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => $criteria,
-        'one' => $grantId,
-        'transformer' => function (Entry $entry) {
-            return ContentHelpers::extractCaseStudySummary($entry);
-        },
-    ];
-}
-
-/**
  * Get project stories
  */
 function getProjectStories($locale, $grantId = null)
@@ -624,8 +594,6 @@ function getMerchandise($locale)
 return [
     'endpoints' => [
         'api/v1/list-routes' => getRoutes,
-        'api/v1/<locale:en|cy>/case-studies' => getCaseStudies,
-        'api/v1/<locale:en|cy>/case-studies/<grantId>' => getCaseStudies,
         'api/v1/<locale:en|cy>/project-stories' => getProjectStories,
         'api/v1/<locale:en|cy>/project-stories/<grantId>' => getProjectStories,
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
