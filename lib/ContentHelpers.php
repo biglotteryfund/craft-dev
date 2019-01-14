@@ -193,42 +193,4 @@ class ContentHelpers
             'crop' => 'faces',
         ]) : null;
     }
-
-    /**
-     * extractCaseStudySummary
-     * Extract a summary object from a case study entry
-     */
-    public static function extractCaseStudySummary(Entry $entry)
-    {
-        return [
-            'id' => $entry->id,
-            'slug' => $entry->slug,
-            'title' => $entry->title,
-            'linkUrl' => $entry->caseStudyLinkUrl,
-            'trailText' => $entry->caseStudyTrailText,
-            'trailTextMore' => $entry->caseStudyTrailTextMore,
-            'grantAmount' => $entry->caseStudyGrantAmount,
-            'grantId' => $entry->caseStudyGrantId ? $entry->caseStudyGrantId : null,
-            'thumbnailUrl' => Images::imgixUrl($entry->caseStudyThumbnailImage->one()->url, [
-                'w' => 600,
-                'h' => 400,
-            ]),
-            'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
-            'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => Images::buildHero($entry->hero),
-            'content' => ContentHelpers::extractFlexibleContent($entry),
-        ];
-    }
-
-    /**
-     * Wrapper around `extractCaseStudySummary`
-     * for extracting an array of summaries from a list of case studies
-     */
-    public static function extractCaseStudySummaries($caseStudies)
-    {
-        return $caseStudies ? array_map(
-            'self::extractCaseStudySummary',
-            $caseStudies
-        ) : [];
-    }
 }
