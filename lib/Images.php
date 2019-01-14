@@ -5,21 +5,6 @@ namespace biglotteryfund\utils;
 use Imgix\UrlBuilder;
 use League\Uri\Parser;
 
-const IMAGE_SIZES = [
-    'small' => [
-        'w' => '644',
-        'h' => '425',
-    ],
-    'medium' => [
-        'w' => '1280',
-        'h' => '720',
-    ],
-    'large' => [
-        'w' => '1373',
-        'h' => '405',
-    ],
-];
-
 class Images
 {
     private static function _getImgixConfig()
@@ -68,24 +53,6 @@ class Images
         return $image ? $image->url : null;
     }
 
-    public static function getStandardCrops($imageUrl)
-    {
-        return [
-            'small' => self::imgixUrl(
-                $imageUrl,
-                IMAGE_SIZES['small']
-            ),
-            'medium' => self::imgixUrl(
-                $imageUrl,
-                IMAGE_SIZES['medium']
-            ),
-            'large' => self::imgixUrl(
-                $imageUrl,
-                IMAGE_SIZES['large']
-            ),
-        ];
-    }
-
     public static function extractHeroImage($imageField)
     {
         $hero = self::extractImage($imageField);
@@ -96,17 +63,17 @@ class Images
     {
         $imageSmall = self::imgixUrl(
             $heroEntry->imageSmall->one()->url,
-            IMAGE_SIZES['small']
+            ['w' => '644', 'fit' => 'fill']
         );
 
         $imageMedium = self::imgixUrl(
             $heroEntry->imageMedium->one()->url,
-            IMAGE_SIZES['medium']
+            ['w' => '1280', 'fit' => 'fill']
         );
 
         $imageLarge = self::imgixUrl(
             $heroEntry->imageLarge->one()->url,
-            IMAGE_SIZES['large']
+            ['w' => '1373', 'fit' => 'fill']
         );
 
         return [

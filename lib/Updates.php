@@ -24,7 +24,20 @@ class UpdatesTransformer extends TransformerAbstract
         $extraFields = [
             'promoted' => $entry->articlePromoted,
             'trailPhoto' => Images::extractImageUrl($entry->trailPhoto),
-            'thumbnail' =>  $trailPhotoUrl ? Images::getStandardCrops($trailPhotoUrl) : null,
+            'thumbnail' => $trailPhotoUrl ? [
+                'small' => Images::imgixUrl($trailPhotoUrl, [
+                    'w' => '644',
+                    'h' => '425',
+                ]),
+                'medium' => Images::imgixUrl($trailPhotoUrl, [
+                    'w' => '1280',
+                    'h' => '720',
+                ]),
+                'large' => Images::imgixUrl($trailPhotoUrl, [
+                    'w' => '1373',
+                    'h' => '405',
+                ]),
+            ] : null,
             'category' => $primaryCategory ? ContentHelpers::categorySummary($primaryCategory, $this->locale) : null,
             'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
             'regions' => $entry->regions ? ContentHelpers::nestedCategorySummary($entry->regions->all(), $this->locale) : [],
