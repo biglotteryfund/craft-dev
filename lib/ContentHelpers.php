@@ -28,7 +28,6 @@ class ContentHelpers
             'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
             'heroCredit' => $entry->heroImageCredit ?? null,
             'heroNew' => Images::buildHero($entry->hero),
-            'themeColour' => $entry->themeColour ? $entry->themeColour->value : null,
         ];
     }
 
