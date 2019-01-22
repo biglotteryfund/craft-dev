@@ -13,6 +13,14 @@ class ResearchTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
+    private static function buildTrailImage($imageField)
+    {
+        return $imageField ? Images::imgixUrl(
+            $imageField->imageMedium->one()->url,
+            ['w' => '640', 'h' => '360']
+        ) : null;
+    }
+
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
@@ -20,13 +28,10 @@ class ResearchTransformer extends TransformerAbstract
 
         $researchMeta = $entry->researchMeta->one();
 
-        $heroImageField = Images::extractImage($entry->heroImage);
-
         return array_merge($common, [
-            'thumbnail' => $heroImageField ? Images::imgixUrl(
-                $heroImageField->imageMedium->one()->url,
-                ['w' => '640', 'h' => '360']
-            ) : null,
+            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
+            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
+            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
 
             'introduction' => $entry->introductionText ?? null,
             'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
@@ -79,8 +84,8 @@ class ResearchTransformer extends TransformerAbstract
             }, $entry->researchSections->all() ?? []),
 
             'meta' => [
-                'searchScore' => $entry->searchScore ?? null
-            ]
+                'searchScore' => $entry->searchScore ?? null,
+            ],
         ]);
     }
 }
