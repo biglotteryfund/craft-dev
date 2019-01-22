@@ -13,6 +13,14 @@ class ListingTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
+    private static function buildTrailImage($imageField)
+    {
+        return $imageField ? Images::imgixUrl(
+            $imageField->imageMedium->one()->url,
+            ['w' => '500', 'h' => '333', 'crop' => 'faces']
+        ) : null;
+    }
+
     private function getRelatedEntries($entry, $relationType)
     {
         $relatedSearch = [];
@@ -52,14 +60,10 @@ class ListingTransformer extends TransformerAbstract
                 $commonFields['linkUrl'] = $customLinkUrl;
             }
 
-            $heroImageField = Images::extractImage($relatedEntry->heroImage);
-
             $relatedEntries[] = array_merge($commonFields, [
-                'photo' => $heroImageField ? Images::imgixUrl($heroImageField->imageSmall->one()->url, [
-                    'w' => 500,
-                    'h' => 333,
-                    'crop' => 'faces',
-                ]) : null,
+                // @TODO: Remove photo in favour of trailImage once all pages have new hero images
+                'photo' => self::buildTrailImage(Images::extractImage($relatedEntry->heroImage)),
+                'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($relatedEntry->hero)),
             ]);
         }
 
