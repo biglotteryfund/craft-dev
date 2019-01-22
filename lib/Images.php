@@ -102,7 +102,11 @@ class Images
 
     public static function extractNewHeroImageField($heroField)
     {
-        $hero = $heroField->one() ?? null;
-        return $hero ? $hero->image->one() : null;
+        if ($heroField) {
+            $hero = $heroField->one() ?? null;
+            return $hero ? $hero->image->one() : null;
+        } else {
+            return null;
+        }
     }
 }
