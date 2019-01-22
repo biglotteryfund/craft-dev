@@ -181,9 +181,23 @@ class ContentHelpers
     }
 
     // Use custom thumbnail if one is set, otherwise default to hero image.
+    // @TODO: Remove one new hero images are all in place
     public static function getFundingProgrammeThumbnailUrl($entry)
     {
         $heroImage = Images::extractImage($entry->heroImage);
+        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
+            ($heroImage ? $heroImage->imageMedium->one() : null);
+        return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
+            'w' => 100,
+            'h' => 100,
+            'crop' => 'faces',
+        ]) : null;
+    }
+
+    // Use custom thumbnail if one is set, otherwise default to hero image.
+    public static function getFundingProgrammeThumbnailUrlNew($entry)
+    {
+        $heroImage = Images::extractNewHeroImageField($entry->hero);
         $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
             ($heroImage ? $heroImage->imageMedium->one() : null);
         return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
