@@ -35,6 +35,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
             'description' => $entry->programmeIntro ?? null,
             'footer' => $entry->outroText ?? null,
             'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+            'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
             'trailImage' => self::buildTrailImage($entry->heroImage->one()),
             'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
             'contentSections' => array_map(function ($block) {

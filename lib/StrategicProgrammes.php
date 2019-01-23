@@ -14,6 +14,14 @@ class StrategicProgrammeTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
+    private static function buildTrailImage($imageField)
+    {
+        return $imageField ? Images::imgixUrl(
+            $imageField->imageMedium->one()->url,
+            ['w' => '640', 'h' => '360']
+        ) : null;
+    }
+
     public static function buildSectionBreadcrumbs(Entry $entry, $locale)
     {
         $parentSection = Entry::find()->section('strategicInvestments')->site($locale)->one();
@@ -37,10 +45,9 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             // @TODO: Update template URLs to use linkUrl
             'path' => $commonFields['linkUrl'],
             'sectionBreadcrumbs' => self::buildSectionBreadcrumbs($entry, $this->locale),
-            'thumbnail' => $heroImageField ? Images::imgixUrl(
-                $heroImageField->imageMedium->one()->url,
-                ['w' => '640', 'h' => '360']
-            ) : null,
+            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
+            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
+            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
             'intro' => $entry->programmeIntro,
             'aims' => $entry->strategicProgrammeAims,
             'impact' => array_map(function ($block) {
