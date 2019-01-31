@@ -34,7 +34,6 @@ class ProjectStoriesTransformer extends TransformerAbstract
         $common = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         return array_merge($common, [
-            // @TODO: Move trailSummary and trailPhoto to getCommonFields?
             'trailSummary' => $entry->trailSummary ?? null,
             'trailPhoto' => self::getTrailPhoto($entry),
             'content' => ContentHelpers::extractFlexibleContent($entry),
