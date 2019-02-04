@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fdc158951594b28c794cb5bce51238d",
+    "content-hash": "36d1733f005a12185b9a260d0000c167",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1123,6 +1123,57 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "doublesecretagency/craft-cpjs",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doublesecretagency/craft-cpjs.git",
+                "reference": "c8cdb87b0361362162c97981494038b3d8595407"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-cpjs/zipball/c8cdb87b0361362162c97981494038b3d8595407",
+                "reference": "c8cdb87b0361362162c97981494038b3d8595407",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Control Panel JS",
+                "handle": "cp-js",
+                "schemaVersion": "2.0.0",
+                "changelogUrl": "https://raw.githubusercontent.com/doublesecretagency/craft-cpjs/v2/CHANGELOG.md",
+                "class": "doublesecretagency\\cpjs\\CpJs"
+            },
+            "autoload": {
+                "psr-4": {
+                    "doublesecretagency\\cpjs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Double Secret Agency",
+                    "homepage": "https://www.doublesecretagency.com/plugins"
+                }
+            ],
+            "description": "Add custom JavaScript to your Control Panel.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "cp-js",
+                "craft-plugin",
+                "craftcms",
+                "javascript"
+            ],
+            "time": "2018-01-01T22:58:51+00:00"
         },
         {
             "name": "doublesecretagency/craft-inventory",
