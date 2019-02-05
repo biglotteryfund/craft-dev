@@ -16,7 +16,7 @@ class ListingTransformer extends TransformerAbstract
     private static function buildTrailImage($imageField)
     {
         return $imageField ? Images::imgixUrl(
-            $imageField->imageMedium->one()->url,
+            $imageField->imageSmall->one()->url,
             ['w' => '500', 'h' => '333', 'crop' => 'faces']
         ) : null;
     }

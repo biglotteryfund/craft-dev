@@ -12,51 +12,25 @@ class HomepageTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
-    private static function buildHomepageHero($hero)
+    private static function buildHomepageLinks($links)
     {
-        $defaults = ['lossless' => true, 'q' => 90];
-
-        $imageSmall = Images::imgixUrl(
-            $hero->imageSmall->one()->url,
-            array_replace_recursive($defaults, ['w' => '644', 'h' => '573'])
-        );
-
-        $imageMedium = Images::imgixUrl(
-            $hero->imageMedium->one()->url,
-            array_replace_recursive($defaults, ['w' => '1280', 'h' => '720'])
-        );
-
-        $imageLarge = Images::imgixUrl(
-            $hero->imageLarge->one()->url,
-            array_replace_recursive($defaults, ['w' => '1373', 'h' => '505'])
-        );
-
-        $result = [
-            'caption' => $hero->caption,
-            'default' => $imageMedium,
-            'small' => $imageSmall,
-            'medium' => $imageMedium,
-            'large' => $imageLarge,
-        ];
-
-        if ($hero->captionFootnote) {
-            $result['captionFootnote'] = $hero->captionFootnote;
+        $parts = [];
+        foreach ($links as $link) {
+            $data = [
+                'label' => $link->linkText,
+                'href' => $link->linkUrl,
+                'image' => Images::extractHeroImage($link->heroImage),
+            ];
+            array_push($parts, $data);
         }
-
-        return $result;
+        return $parts;
     }
 
     public function transform(Entry $entry)
     {
         return [
             'id' => $entry->id,
-            'heroImages' => [
-                'default' => self::buildHomepageHero($entry->homepageHeroImages->one()),
-                'candidates' => array_map(
-                    'self::buildHomepageHero',
-                    $entry->homepageHeroImages->all() ?? []
-                )
-            ],
+            'featuredLinks' => self::buildHomepageLinks($entry->featuredLinks->all()),
         ];
     }
 }

@@ -32,7 +32,10 @@
     "imgix/imgix-php": "^2.1",
     "verbb/super-table": "^2.0",
     "ether/tags": "^1.0",
-    "doublesecretagency/craft-inventory": "^2.0"
+    "doublesecretagency/craft-inventory": "^2.0",
+    "charliedev/element-map": "^1.2",
+    "vardump/recentchanges": "^1.1",
+    "doublesecretagency/craft-cpjs": "^2.1"
   },
   "autoload" : {
     "psr-4" : {
