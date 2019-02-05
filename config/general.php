@@ -27,13 +27,14 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
 
         'allowUpdates' => false,
+        'useProjectConfigFile' => false,
 
         // Disable transforms for animated gifs
         'transformGifs' => false,
 
         // Set file uploads to 20mb maximum
         // This needs to be defined if upload_max_filesize is greater than 16mb (Craft default)
-        'maxUploadFileSize' => 20777216
+        'maxUploadFileSize' => 20777216,
     ],
 
     // Dev environment settings
@@ -42,7 +43,7 @@ return [
         'siteUrl' => null,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
-        'devMode' => true
+        'devMode' => true,
     ],
 
     // Staging environment settings
@@ -50,7 +51,8 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => getenv('BASE_CP_URL')
+        'baseCpUrl' => getenv('BASE_CP_URL'),
+        'allowAdminChanges' => true,
     ],
 
     // Production environment settings
@@ -58,6 +60,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => getenv('BASE_CP_URL')
+        'baseCpUrl' => getenv('BASE_CP_URL'),
+        'allowAdminChanges' => true,
     ],
 ];
