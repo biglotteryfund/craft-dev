@@ -86,7 +86,6 @@ class ListingTransformer extends TransformerAbstract
                 ];
             }, $entry->contentSegment->all() ?? []) : [],
             'outro' => $entry->outroText ?? null,
-            'relatedContent' => $entry->relatedContent ?? null,
         ];
 
         $ancestors = self::getRelatedEntries($entry, 'ancestors');
