@@ -27,7 +27,7 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
 
         'allowUpdates' => false,
-        'useProjectConfigFile' => false,
+        'useProjectConfigFile' => true,
 
         // Disable transforms for animated gifs
         'transformGifs' => false,
@@ -52,7 +52,7 @@ return [
         'siteUrl' => null,
         // avoid breaking HTTPS
         'baseCpUrl' => getenv('BASE_CP_URL'),
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
     ],
 
     // Production environment settings
@@ -61,6 +61,6 @@ return [
         'siteUrl' => null,
         // avoid breaking HTTPS
         'baseCpUrl' => getenv('BASE_CP_URL'),
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
     ],
 ];
