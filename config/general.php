@@ -27,7 +27,7 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
 
         'allowUpdates' => false,
-        'useProjectConfigFile' => false,
+        'useProjectConfigFile' => true,
 
         // Disable transforms for animated gifs
         'transformGifs' => false,
