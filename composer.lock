@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4296a0f93832d8e48f8a71de299b41f",
+    "content-hash": "7d4149f285eab8c3476ee07e16b6c9e1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -614,16 +614,16 @@
         },
         {
             "name": "craftcms/aws-s3",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/aws-s3.git",
-                "reference": "1688ea7d9983416d60591fa1e29b3af4b3f4dbe4"
+                "reference": "1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/1688ea7d9983416d60591fa1e29b3af4b3f4dbe4",
-                "reference": "1688ea7d9983416d60591fa1e29b3af4b3f4dbe4",
+                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5",
+                "reference": "1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5",
                 "shasum": ""
             },
             "require": {
@@ -661,7 +661,7 @@
                 "s3",
                 "yii2"
             ],
-            "time": "2019-02-04T05:08:15+00:00"
+            "time": "2019-02-06T08:06:10+00:00"
         },
         {
             "name": "craftcms/cms",
@@ -2004,6 +2004,11 @@
         {
             "name": "league/uri",
             "version": "5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri.git",
+                "reference": "f2bceb755f1108758cf4cf925e4cd7699ce686aa"
+            },
             "require": {
                 "ext-fileinfo": "*",
                 "ext-intl": "*",
@@ -2850,6 +2855,17 @@
         {
             "name": "roave/security-advisories",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/SecurityAdvisories.git",
+                "reference": "e1b9176e35e8a4521c8b9720f4b5601d5caa68c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e1b9176e35e8a4521c8b9720f4b5601d5caa68c5",
+                "reference": "e1b9176e35e8a4521c8b9720f4b5601d5caa68c5",
+                "shasum": ""
+            },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adodb/adodb-php": "<5.20.12",

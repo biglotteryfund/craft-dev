@@ -25,7 +25,7 @@
     "vlucas/phpdotenv": "^2.4.0",
     "roave/security-advisories": "dev-master",
     "craftcms/element-api": "^2.5",
-    "craftcms/aws-s3": "^1.0",
+    "craftcms/aws-s3": "^1.1",
     "craftcms/redactor": "^2.0",
     "biglotteryfund/preview-button": "^1.0",
     "league/uri": "^5.2",
