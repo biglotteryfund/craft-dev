@@ -52,7 +52,7 @@ return [
         'siteUrl' => null,
         // avoid breaking HTTPS
         'baseCpUrl' => getenv('BASE_CP_URL'),
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
     ],
 
     // Production environment settings
@@ -61,6 +61,6 @@ return [
         'siteUrl' => null,
         // avoid breaking HTTPS
         'baseCpUrl' => getenv('BASE_CP_URL'),
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
     ],
 ];
