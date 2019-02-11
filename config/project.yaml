@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1549898875
+dateModified: 1549900998
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -245,22 +245,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: verbb\supertable\fields\SuperTableField
-  17aea2b7-a2d9-43bf-83d2-e274c679a051:
-    contentColumnType: string
-    fieldGroup: ced9caae-f5aa-41e8-ab84-0b3f7f74ea13
-    handle: testFoo
-    instructions: ''
-    name: 'Test foo'
-    searchable: true
-    settings:
-      options:
-        -
-          default: ''
-          label: ''
-          value: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\RadioButtons
   18a9853a-8570-41b5-9be5-89b09f045a67:
     contentColumnType: text
     fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
@@ -587,21 +571,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  5e12d8ea-1a94-4418-888d-51094a6bc482:
-    contentColumnType: string
-    fieldGroup: ced9caae-f5aa-41e8-ab84-0b3f7f74ea13
-    handle: testMatrix
-    instructions: ''
-    name: 'Test matrix'
-    searchable: true
-    settings:
-      contentTable: '{{%matrixcontent_testmatrix}}'
-      localizeBlocks: ''
-      maxBlocks: ''
-      minBlocks: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Matrix
   607006ca-1479-43a1-9889-7ee63ef60289:
     contentColumnType: string
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -2763,76 +2732,6 @@ matrixBlockTypes:
     handle: contentArea
     name: 'Content Area'
     sortOrder: '1'
-  a6c88e0d-25a0-46af-acc0-2830ca76c393:
-    field: 5e12d8ea-1a94-4418-888d-51094a6bc482
-    fieldLayouts:
-      e392a9fc-063d-4f34-8977-7b926267de53:
-        tabs:
-          -
-            fields:
-              34b39c97-3069-4fee-87a0-f545b7b699fb:
-                required: '0'
-                sortOrder: 3
-              55aab914-a749-4ed2-897d-1c322082e37f:
-                required: '0'
-                sortOrder: 1
-              66e0f4f1-82d7-4fc9-87fb-60c471239d2f:
-                required: '0'
-                sortOrder: 2
-            name: Content
-            sortOrder: 1
-    fields:
-      34b39c97-3069-4fee-87a0-f545b7b699fb:
-        contentColumnType: string(7)
-        fieldGroup: null
-        handle: dishwasher
-        instructions: ''
-        name: Dishwasher
-        searchable: '1'
-        settings:
-          defaultColor: ''
-        translationKeyFormat: null
-        translationMethod: none
-        type: craft\fields\Color
-      55aab914-a749-4ed2-897d-1c322082e37f:
-        contentColumnType: text
-        fieldGroup: null
-        handle: purple
-        instructions: ''
-        name: Purple
-        searchable: '1'
-        settings:
-          availableTransforms: '*'
-          availableVolumes: '*'
-          cleanupHtml: '1'
-          columnType: text
-          purifierConfig: ''
-          purifyHtml: '1'
-          redactorConfig: ''
-        translationKeyFormat: null
-        translationMethod: none
-        type: craft\redactor\Field
-      66e0f4f1-82d7-4fc9-87fb-60c471239d2f:
-        contentColumnType: string
-        fieldGroup: null
-        handle: monkey
-        instructions: ''
-        name: Monkey
-        searchable: '1'
-        settings:
-          limit: null
-          localizeRelations: ''
-          selectionLabel: ''
-          source: 'taggroup:351ca01f-7ccf-4bac-8674-e13f4153467e'
-          sources: '*'
-          targetSiteId: null
-          viewMode: null
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Tags
-    handle: TestMatrixStuff
-    name: TestMatrixStuff
-    sortOrder: 1
   d0984ff1-7885-4dff-b648-3af3e222ade9:
     field: 093b4dc3-16d8-439a-a963-39b9c9d7c164
     fieldLayouts:
@@ -4017,44 +3916,6 @@ sections:
         template: contact/_entry
         uriFormat: contact
     type: single
-  686867d2-7e90-4c8f-a3d6-8c3993d9f198:
-    enableVersioning: true
-    entryTypes:
-      2a3b208b-cad2-4a0e-8d2e-78e38c45981a:
-        fieldLayouts:
-          bf0174c7-c4ac-4eb8-ac7c-4321a65ca119:
-            tabs:
-              -
-                fields:
-                  17aea2b7-a2d9-43bf-83d2-e274c679a051:
-                    required: false
-                    sortOrder: 1
-                  5e12d8ea-1a94-4418-888d-51094a6bc482:
-                    required: false
-                    sortOrder: 2
-                name: 'Delete Me'
-                sortOrder: 1
-        handle: mattTestSection
-        hasTitleField: true
-        name: 'Matt Test Section'
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: mattTestSection
-    name: 'Matt Test Section'
-    propagateEntries: true
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: true
-        hasUrls: true
-        template: ''
-        uriFormat: 'matt-test-section/{slug}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: true
-        hasUrls: true
-        template: ''
-        uriFormat: 'matt-test-section/{slug}'
-    type: channel
   6924a426-e1bd-4c6e-96e4-513956cbaa44:
     enableVersioning: '1'
     entryTypes:
