@@ -885,25 +885,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  99eaaae9-87e0-4b54-a247-504431915423:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImage
-    instructions: 'The main image which will be shown at the top of the page.'
-    name: 'Hero Image'
-    searchable: '1'
-    settings:
-      limit: '1'
-      localizeRelations: ''
-      selectionLabel: ''
-      source: null
-      sources:
-        - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
-      targetSiteId: null
-      viewMode: null
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Entries
   9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
     contentColumnType: text
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1097,23 +1078,6 @@ fields:
       placeholder: ''
     translationKeyFormat: null
     translationMethod: site
-    type: craft\fields\PlainText
-  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-    contentColumnType: text
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImageCredit
-    instructions: 'Use this field if you want to provide a longer custom credit for the image'
-    name: 'Hero image credit'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
     type: craft\fields\PlainText
   ccd71b86-6564-429f-972a-1def8e6840a4:
     contentColumnType: text
@@ -2964,24 +2928,21 @@ sections:
               -
                 fields:
                   0ffe78fe-8cab-4c76-a558-5dcb3cb2dd34:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 2
                 name: 'Content Page'
-                sortOrder: '1'
+                sortOrder: 1
         handle: buildingBetterOpportunities
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Building Better Opportunities'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: buildingBetterOpportunities
     name: 'Building Better Opportunities'
@@ -3006,27 +2967,24 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 2
                 name: 'Jobs page content'
-                sortOrder: '1'
+                sortOrder: 1
         handle: jobs
-        hasTitleField: '1'
+        hasTitleField: true
         name: Jobs
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: jobs
     name: Jobs
@@ -3053,70 +3011,64 @@ sections:
               -
                 fields:
                   03ed24af-07b1-42c3-875e-98050e9560c7:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 4
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 1
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '7'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 5
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
-                    required: '0'
-                    sortOrder: '5'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 3
                   e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 2
                 name: 'Programme Details'
-                sortOrder: '1'
+                sortOrder: 1
               -
                 fields:
                   0db131ea-69e3-4c13-955d-b607df3c9959:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 5
                   1338f3a8-bad4-4e23-a0f0-327be8f16e60:
-                    required: '0'
-                    sortOrder: '9'
+                    required: false
+                    sortOrder: 9
                   46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: '0'
-                    sortOrder: '10'
+                    required: false
+                    sortOrder: 10
                   5899dcd7-1384-49e0-98a5-633b44fa05c0:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                   650ff388-625b-4f42-82bd-10a96d6b47b1:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 3
                   8d3adb13-80ec-4b1a-9524-7b23bafb6c60:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 6
                   9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
-                    required: '0'
-                    sortOrder: '8'
+                    required: false
+                    sortOrder: 8
                   b1cb76e6-64d2-41f8-837d-089907b480c6:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 2
                   c2f8265a-898e-4f67-abf9-45dabc783f7e:
-                    required: '0'
-                    sortOrder: '7'
+                    required: false
+                    sortOrder: 7
                   e5147d7e-c0d3-4cb2-92cf-3b5e5eae96e6:
-                    required: '0'
-                    sortOrder: '11'
+                    required: false
+                    sortOrder: 11
                   ee5ad666-8266-45cc-9852-f681a7db300f:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 4
                 name: 'Programme Summary'
-                sortOrder: '2'
+                sortOrder: 2
         handle: fundingProgrammes
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Funding Programmes'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: fundingProgrammes
     name: 'Funding Programmes'
@@ -3184,46 +3136,43 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   4b573749-5271-405a-9d27-9e086ee1f31f:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 3
                   83a59f94-8342-417f-b427-11c3c162d89e:
-                    required: '1'
-                    sortOrder: '6'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 5
                   ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '1'
-                    sortOrder: '3'
+                    required: true
+                    sortOrder: 2
                 name: 'Main content'
-                sortOrder: '1'
+                sortOrder: 1
               -
                 fields:
                   585a68f7-bb7c-4d7f-9acf-10f9b2107243:
-                    required: '1'
-                    sortOrder: '3'
+                    required: true
+                    sortOrder: 3
                   7a4edc2b-a06d-4baf-a33f-da76742cbf35:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 4
                   d152a0b3-b09f-4b2c-a7a6-605b9a0fed17:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                   f946d578-25d4-40b3-a68b-f04068f34a17:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 2
                 name: 'Related content'
-                sortOrder: '2'
+                sortOrder: 2
         handle: research
-        hasTitleField: '1'
+        hasTitleField: true
         name: Research
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: research
     name: Insights
@@ -3485,27 +3434,24 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 2
                 name: 'Benefits page content'
-                sortOrder: '1'
+                sortOrder: 1
         handle: benefits
-        hasTitleField: '1'
+        hasTitleField: true
         name: Benefits
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: benefits
     name: Benefits
@@ -3532,30 +3478,27 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 5
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 2
                 name: 'Content Page'
-                sortOrder: '1'
+                sortOrder: 1
         handle: contact
-        hasTitleField: '1'
+        hasTitleField: true
         name: Contact
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: contact
     name: Contact
@@ -3582,36 +3525,33 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   4bbbad71-25c1-4e25-9b13-8815cee1ee98:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '7'
+                    required: false
+                    sortOrder: 6
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '8'
+                    required: false
+                    sortOrder: 7
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '6'
+                    required: true
+                    sortOrder: 5
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '5'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 4
                   ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 2
                 name: Content
-                sortOrder: '1'
+                sortOrder: 1
         handle: fundingGuidance
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Funding Guidance'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: fundingGuidance
     name: 'Funding Guidance'
@@ -3694,28 +3634,25 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   8c779db5-d5b9-4669-bb16-7749b921bc9b:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 2
                 name: People
-                sortOrder: '1'
+                sortOrder: 1
               -
                 fields:
                   25308ee1-088a-4b07-83df-c7100eab536e:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                 name: Documents
-                sortOrder: '2'
+                sortOrder: 2
         handle: people
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Our People'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: people
     name: 'Our People'
@@ -3745,42 +3682,36 @@ sections:
               -
                 fields:
                   0cec86e6-ee99-4992-95ee-4044be2efd17:
-                    required: '1'
-                    sortOrder: '7'
+                    required: true
+                    sortOrder: 5
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 1
                   1d64b0db-e29d-4232-b025-ff4793117dd8:
-                    required: '0'
-                    sortOrder: '8'
+                    required: false
+                    sortOrder: 6
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '0'
-                    sortOrder: '9'
+                    required: false
+                    sortOrder: 7
                   54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 4
                   8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
-                    required: '0'
-                    sortOrder: '10'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 8
                   ccddec99-6800-4547-afb4-022b00cf4915:
-                    required: '1'
-                    sortOrder: '5'
+                    required: true
+                    sortOrder: 3
                   ddea1520-060a-494e-95aa-f667a0f513e2:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 2
                 name: 'Case Study'
-                sortOrder: '1'
+                sortOrder: 1
         handle: caseStudies
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Case Studies'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: caseStudies
     name: 'Case Studies'
@@ -3807,24 +3738,21 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 2
                 name: About
-                sortOrder: '1'
+                sortOrder: 1
         handle: aboutLandingPage
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'About landing page'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: aboutLandingPage
     name: 'About landing page'
@@ -3889,30 +3817,27 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 5
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 2
                 name: Content
-                sortOrder: '1'
+                sortOrder: 1
         handle: strategicInvestments
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Strategic investments in England'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: strategicInvestments
     name: 'Strategic investments in England'
@@ -3939,33 +3864,30 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: '0'
-                    sortOrder: '7'
+                    required: false
+                    sortOrder: 6
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 5
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 2
                 name: 'Content Page'
-                sortOrder: '1'
+                sortOrder: 1
         handle: about
-        hasTitleField: '1'
+        hasTitleField: true
         name: About
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: about
     name: About
@@ -3995,27 +3917,24 @@ sections:
               -
                 fields:
                   02eb210a-8b09-489c-994d-009c27b6167b:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   2bef64b2-1bcc-462c-b819-97a7df3fb33a:
-                    required: '0'
-                    sortOrder: '4'
+                    required: false
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 2
                 name: 'Link item'
-                sortOrder: '1'
+                sortOrder: 1
         handle: linkItem
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Link item'
-        sortOrder: '2'
-        titleFormat: null
+        sortOrder: 2
+        titleFormat: ''
         titleLabel: Title
       214caa6b-a341-4d7c-902d-7441c99c07ce:
         fieldLayouts:
@@ -4024,30 +3943,27 @@ sections:
               -
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
+                    required: false
+                    sortOrder: 4
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 5
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 3
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 2
                 name: 'Content Page'
-                sortOrder: '1'
+                sortOrder: 1
         handle: customerService
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Customer Service'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: customerService
     name: 'Customer Service'
@@ -4127,60 +4043,54 @@ sections:
               -
                 fields:
                   02eb210a-8b09-489c-994d-009c27b6167b:
-                    required: '0'
-                    sortOrder: '6'
+                    required: false
+                    sortOrder: 4
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
-                    required: '0'
-                    sortOrder: '5'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 3
                   ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '1'
-                    sortOrder: '4'
+                    required: true
+                    sortOrder: 2
                 name: Common
-                sortOrder: '1'
+                sortOrder: 1
               -
                 fields:
                   607006ca-1479-43a1-9889-7ee63ef60289:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 2
                   dbfb641b-23fa-4110-969e-32cae11e39a9:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                 name: 'Aims & Learning'
-                sortOrder: '2'
+                sortOrder: 2
               -
                 fields:
                   065e680b-ad85-42eb-a1b2-6623e8233466:
-                    required: '0'
-                    sortOrder: '2'
+                    required: false
+                    sortOrder: 2
                   4d5d77c6-2596-4418-85e9-822f7d1c7f67:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                   7d911d3c-651d-4c2c-ae62-a64b0f554bb0:
-                    required: '0'
-                    sortOrder: '3'
+                    required: false
+                    sortOrder: 3
                 name: Partners
-                sortOrder: '3'
+                sortOrder: 3
               -
                 fields:
                   816a3589-836c-4201-9d84-8d77a93a52a8:
-                    required: '0'
-                    sortOrder: '1'
+                    required: false
+                    sortOrder: 1
                 name: Resources
-                sortOrder: '4'
+                sortOrder: 4
         handle: strategicProgrammes
-        hasTitleField: '1'
+        hasTitleField: true
         name: 'Strategic Programmes'
-        sortOrder: '1'
-        titleFormat: null
+        sortOrder: 1
+        titleFormat: ''
         titleLabel: Title
     handle: strategicProgrammes
     name: 'Strategic Programmes'
