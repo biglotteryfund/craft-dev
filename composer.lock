@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a1dd54ead4453fa02fe0cfa603d0225",
+    "content-hash": "7d4149f285eab8c3476ee07e16b6c9e1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -614,20 +614,20 @@
         },
         {
             "name": "craftcms/aws-s3",
-            "version": "1.0.8",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/aws-s3.git",
-                "reference": "94401bcf960eaef1c0f3a9631e8ab34ee4e418fe"
+                "reference": "1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/94401bcf960eaef1c0f3a9631e8ab34ee4e418fe",
-                "reference": "94401bcf960eaef1c0f3a9631e8ab34ee4e418fe",
+                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5",
+                "reference": "1dd3925a13dcceb2bb0a6d448e06ff68c61cb7c5",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.0-RC4",
+                "craftcms/cms": "^3.1.5",
                 "league/flysystem-aws-s3-v3": "^1.0.13"
             },
             "type": "craft-plugin",
@@ -661,20 +661,20 @@
                 "s3",
                 "yii2"
             ],
-            "time": "2018-01-02T18:40:37+00:00"
+            "time": "2019-02-06T08:06:10+00:00"
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.39",
+            "version": "3.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "0edaeef5bd6e8fffd199a263886c4ca737848727"
+                "reference": "ba226f463efce722ddfbcbf726fed851fff37277"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/0edaeef5bd6e8fffd199a263886c4ca737848727",
-                "reference": "0edaeef5bd6e8fffd199a263886c4ca737848727",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/ba226f463efce722ddfbcbf726fed851fff37277",
+                "reference": "ba226f463efce722ddfbcbf726fed851fff37277",
                 "shasum": ""
             },
             "require": {
@@ -701,8 +701,10 @@
                 "php": ">=7.0.0",
                 "pixelandtonic/imagine": "~0.7.1.2",
                 "seld/cli-prompt": "^1.0.3",
+                "symfony/yaml": "^3.2|^4.0",
                 "true/punycode": "^2.1.0",
                 "twig/twig": "^2.5.0",
+                "yii2tech/ar-softdelete": "^1.0.2",
                 "yiisoft/yii2": "~2.0.15.1",
                 "yiisoft/yii2-debug": "^2.0.10",
                 "yiisoft/yii2-queue": "2.1.0",
@@ -747,7 +749,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2019-01-29T20:06:24+00:00"
+            "time": "2019-02-04T19:38:51+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -893,20 +895,20 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.1.7",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "9d2e579b358dd1e42ad34e208ca887d5c9530967"
+                "reference": "1f561397bab4700f36b1393e11aa17c72c3bca0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/9d2e579b358dd1e42ad34e208ca887d5c9530967",
-                "reference": "9d2e579b358dd1e42ad34e208ca887d5c9530967",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/1f561397bab4700f36b1393e11aa17c72c3bca0b",
+                "reference": "1f561397bab4700f36b1393e11aa17c72c3bca0b",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.0-RC15"
+                "craftcms/cms": "^3.1.0"
             },
             "type": "craft-plugin",
             "extra": {
@@ -936,7 +938,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2018-12-17T08:09:54+00:00"
+            "time": "2019-01-30T21:53:19+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -3660,6 +3662,65 @@
             "time": "2019-01-24T22:05:03+00:00"
         },
         {
+            "name": "symfony/yaml",
+            "version": "v4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "d461670ee145092b7e2a56c1da7118f19cadadb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d461670ee145092b7e2a56c1da7118f19cadadb0",
+                "reference": "d461670ee145092b7e2a56c1da7118f19cadadb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-01-16T20:35:37+00:00"
+        },
+        {
             "name": "true/punycode",
             "version": "v2.1.1",
             "source": {
@@ -3826,20 +3887,20 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.0.14",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/super-table.git",
-                "reference": "6acd2d45508f6525ad574eec1d3cf41335c32b77"
+                "reference": "d48678885cc114abdd5b341a860ecf668461a7c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/6acd2d45508f6525ad574eec1d3cf41335c32b77",
-                "reference": "6acd2d45508f6525ad574eec1d3cf41335c32b77",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/d48678885cc114abdd5b341a860ecf668461a7c8",
+                "reference": "d48678885cc114abdd5b341a860ecf668461a7c8",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.0.17"
+                "craftcms/cms": "^3.1.2"
             },
             "type": "craft-plugin",
             "extra": {
@@ -3873,7 +3934,7 @@
                 "craftcms",
                 "super table"
             ],
-            "time": "2018-11-12T11:32:09+00:00"
+            "time": "2019-01-31T02:18:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3925,6 +3986,56 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "yii2tech/ar-softdelete",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2tech/ar-softdelete.git",
+                "reference": "3e29cb1865a7df66de42f6f888b99d2797a80204"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2tech/ar-softdelete/zipball/3e29cb1865a7df66de42f6f888b99d2797a80204",
+                "reference": "3e29cb1865a7df66de42f6f888b99d2797a80204",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.13"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii2tech\\ar\\softdelete\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "Provides support for ActiveRecord soft delete in Yii2",
+            "keywords": [
+                "active",
+                "delete",
+                "integrity",
+                "record",
+                "smart",
+                "soft",
+                "yii2"
+            ],
+            "time": "2019-01-25T15:57:39+00:00"
         },
         {
             "name": "yiisoft/yii2",
