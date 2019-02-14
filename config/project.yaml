@@ -712,34 +712,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
-  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: themeColour
-    instructions: 'Colour to use as an accent colour for the page'
-    name: 'Theme Colour'
-    searchable: '1'
-    settings:
-      options:
-        -
-          default: '1'
-          label: Pink
-          value: pink
-        -
-          default: ''
-          label: Blue
-          value: blue
-        -
-          default: ''
-          label: Cyan
-          value: cyan
-        -
-          default: ''
-          label: Turquoise
-          value: turquoise
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
   7d911d3c-651d-4c2c-ae62-a64b0f554bb0:
     contentColumnType: text
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -3487,14 +3459,11 @@ sections:
                     sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: false
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 2
                 name: 'Content Page'
@@ -3537,15 +3506,12 @@ sections:
                     sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 5
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 7
+                    sortOrder: 6
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
-                    sortOrder: 5
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: false
                     sortOrder: 4
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: false
@@ -3747,9 +3713,6 @@ sections:
                     sortOrder: 1
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
                     required: true
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: false
                     sortOrder: 2
                 name: About
                 sortOrder: 1
@@ -3826,15 +3789,12 @@ sections:
                     sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: false
                     sortOrder: 2
                 name: Content
                 sortOrder: 1
@@ -3873,17 +3833,14 @@ sections:
                     sortOrder: 1
                   46d0352f-42af-4d63-be4d-9c9df54c5871:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 5
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: true
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: true
                     sortOrder: 2
                 name: 'Content Page'
@@ -3923,14 +3880,11 @@ sections:
                 fields:
                   02eb210a-8b09-489c-994d-009c27b6167b:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 3
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 1
                   2bef64b2-1bcc-462c-b819-97a7df3fb33a:
-                    required: false
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 2
                 name: 'Link item'
@@ -3952,15 +3906,12 @@ sections:
                     sortOrder: 1
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 3
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 4
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
-                    sortOrder: 3
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: false
                     sortOrder: 2
                 name: 'Content Page'
                 sortOrder: 1
@@ -4146,10 +4097,10 @@ superTableBlockTypes:
           -
             fields:
               4c0e3bec-906f-4f73-a77c-e631d982dc1a:
-                required: false
+                required: '0'
                 sortOrder: 1
               9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
-                required: false
+                required: '0'
                 sortOrder: 2
             name: Content
             sortOrder: 1
@@ -4160,7 +4111,7 @@ superTableBlockTypes:
         handle: image
         instructions: ''
         name: Image
-        searchable: true
+        searchable: '1'
         settings:
           limit: '1'
           localizeRelations: ''
@@ -4179,7 +4130,7 @@ superTableBlockTypes:
         handle: credit
         instructions: 'Use this field if you want to provide a longer custom credit for the image'
         name: Credit
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
