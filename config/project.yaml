@@ -619,22 +619,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
-  6f4a7270-c40c-4b31-ba86-ef6a553c30c3:
-    contentColumnType: string
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: articleType
-    instructions: ''
-    name: 'Article Type'
-    searchable: '1'
-    settings:
-      options:
-        -
-          default: '1'
-          label: 'Press Release'
-          value: press-release
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
     contentColumnType: text
     fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
@@ -901,23 +885,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  93bda045-a51b-4b7c-9857-de1bb6012d31:
-    contentColumnType: text
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: introduction
-    instructions: 'A few lines of introduction text to be displayed on the blog homepage with a link to read the full version'
-    name: Introduction
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
   99eaaae9-87e0-4b54-a247-504431915423:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -996,34 +963,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  a9533143-99e7-4202-8dc4-616da1460d7f:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: documentUpload
-    instructions: ''
-    name: 'Document Upload'
-    searchable: '1'
-    settings:
-      allowedKinds:
-        - excel
-        - pdf
-        - word
-      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: ''
-      restrictFiles: ''
-      selectionLabel: 'Add a document'
-      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      singleUploadLocationSubpath: documents
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: '1'
-      viewMode: list
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
   adfb9aa8-ae2e-4b0e-9068-1a58c62105b0:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -1302,22 +1241,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  dd4bc8c4-46eb-4902-8ed7-acec15385993:
-    contentColumnType: text
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: articleTitle
-    instructions: ''
-    name: 'Article Title'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\fields\PlainText
   ddea1520-060a-494e-95aa-f667a0f513e2:
     contentColumnType: text
     fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
