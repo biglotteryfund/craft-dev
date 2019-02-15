@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1549904891
+dateModified: 1550236403
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -807,8 +807,16 @@ fields:
     handle: researchSections
     instructions: ''
     name: 'Research sections'
-    searchable: '1'
+    searchable: true
     settings:
+      columns:
+        170:
+          width: ''
+        171:
+          width: ''
+        172:
+          width: ''
+      contentTable: '{{%stc_researchsections}}'
       fieldLayout: row
       localizeBlocks: ''
       maxRows: '3'
@@ -1732,10 +1740,10 @@ matrixBlockTypes:
           -
             fields:
               0b844db0-2788-421f-993c-8f1cd56846d8:
-                required: '1'
+                required: true
                 sortOrder: 2
               64284b05-53d8-4968-8595-aa6e6defaf9f:
-                required: '1'
+                required: true
                 sortOrder: 1
             name: Content
             sortOrder: 1
@@ -1746,7 +1754,7 @@ matrixBlockTypes:
         handle: contentBody
         instructions: ''
         name: Content
-        searchable: '1'
+        searchable: true
         settings:
           availableTransforms: ''
           availableVolumes: ''
@@ -1754,7 +1762,7 @@ matrixBlockTypes:
           columnType: text
           purifierConfig: ''
           purifyHtml: '1'
-          redactorConfig: Basics.json
+          redactorConfig: Full.json
         translationKeyFormat: null
         translationMethod: language
         type: craft\redactor\Field
@@ -1764,7 +1772,7 @@ matrixBlockTypes:
         handle: contentTitle
         instructions: ''
         name: Title
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -2005,13 +2013,13 @@ matrixBlockTypes:
           -
             fields:
               44747783-2800-48fe-aa2d-014ca587d561:
-                required: '0'
+                required: false
                 sortOrder: 2
               6e8e9c06-42ab-4237-a1ee-411f26f24b60:
-                required: '1'
+                required: true
                 sortOrder: 3
               cad928cf-0acb-4dc2-b86f-cfd5961503cf:
-                required: '1'
+                required: true
                 sortOrder: 1
             name: Content
             sortOrder: 1
@@ -2022,7 +2030,7 @@ matrixBlockTypes:
         handle: calloutCredit
         instructions: ''
         name: Credit
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -2039,7 +2047,7 @@ matrixBlockTypes:
         handle: isQuote
         instructions: ''
         name: 'Add quote-marks?'
-        searchable: '1'
+        searchable: true
         settings:
           default: ''
         translationKeyFormat: null
@@ -2051,7 +2059,7 @@ matrixBlockTypes:
         handle: calloutContent
         instructions: ''
         name: Content
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -4627,13 +4635,13 @@ superTableBlockTypes:
           -
             fields:
               698dcade-907a-4233-8c8e-7421845e74d4:
-                required: '1'
+                required: true
                 sortOrder: 3
               927e7ec0-904f-4a13-8fb1-83c7ee913f98:
-                required: '0'
+                required: false
                 sortOrder: 1
               f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
-                required: '0'
+                required: false
                 sortOrder: 2
             name: Content
             sortOrder: 1
@@ -4644,7 +4652,7 @@ superTableBlockTypes:
         handle: contentSections
         instructions: ''
         name: 'Content sections'
-        searchable: '1'
+        searchable: true
         settings:
           contentTable: '{{%matrixcontent_contentsections}}'
           localizeBlocks: ''
@@ -4659,7 +4667,7 @@ superTableBlockTypes:
         handle: sectionTitle
         instructions: ''
         name: Title
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -4676,7 +4684,7 @@ superTableBlockTypes:
         handle: sectionPrefix
         instructions: ''
         name: Prefix
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
