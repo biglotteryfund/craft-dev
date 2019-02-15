@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "7d4149f285eab8c3476ee07e16b6c9e1",
@@ -665,16 +665,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.1.8",
+            "version": "3.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "ba226f463efce722ddfbcbf726fed851fff37277"
+                "reference": "9378d5f9951f81ee361a7e19c03dc1bc69d78a5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/ba226f463efce722ddfbcbf726fed851fff37277",
-                "reference": "ba226f463efce722ddfbcbf726fed851fff37277",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/9378d5f9951f81ee361a7e19c03dc1bc69d78a5e",
+                "reference": "9378d5f9951f81ee361a7e19c03dc1bc69d78a5e",
                 "shasum": ""
             },
             "require": {
@@ -749,7 +749,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2019-02-04T19:38:51+00:00"
+            "time": "2019-02-14T18:31:32+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -2004,11 +2004,6 @@
         {
             "name": "league/uri",
             "version": "5.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/uri.git",
-                "reference": "f2bceb755f1108758cf4cf925e4cd7699ce686aa"
-            },
             "require": {
                 "ext-fileinfo": "*",
                 "ext-intl": "*",
@@ -2855,17 +2850,6 @@
         {
             "name": "roave/security-advisories",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e1b9176e35e8a4521c8b9720f4b5601d5caa68c5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e1b9176e35e8a4521c8b9720f4b5601d5caa68c5",
-                "reference": "e1b9176e35e8a4521c8b9720f4b5601d5caa68c5",
-                "shasum": ""
-            },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adodb/adodb-php": "<5.20.12",
