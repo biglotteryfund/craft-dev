@@ -28,9 +28,20 @@ class HomepageTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
+        $promotedUpdates = \Craft::configure(Entry::find(), [
+            'site' => $this->locale,
+            'section' => 'updates',
+            'articlePromoted' => true,
+            'limit' => 3,
+        ]);
+
         return [
             'id' => $entry->id,
             'featuredLinks' => self::buildHomepageLinks($entry->featuredLinks->all()),
+            'promotedUpdates' => array_map(function ($entry) {
+                $transformer = new UpdatesTransformer($this->locale);
+                return $transformer->transform($entry);
+            }, $promotedUpdates ? $promotedUpdates->all() : [])
         ];
     }
 }
