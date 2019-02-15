@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1550248502
+dateModified: 1550248593
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -60,8 +60,6 @@ fieldGroups:
     name: 'Funding Programmes'
   e3237b61-2fe0-45f7-9036-c1ff7a7975e8:
     name: Data
-  f34fff60-41cf-47f6-8fe9-3146ae2a95b1:
-    name: Homepage
   fe37f91c-b0e2-482c-8482-05d9b335ce86:
     name: Merchandise
 fields:
@@ -326,11 +324,11 @@ fields:
     type: craft\fields\Assets
   3690189e-73a1-4880-aea8-8b326f364617:
     contentColumnType: string
-    fieldGroup: f34fff60-41cf-47f6-8fe9-3146ae2a95b1
+    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
     handle: featuredLinks
     instructions: 'Choose the images and links that should appear on the homepage'
     name: 'Featured links'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_featuredlinks}}'
       localizeBlocks: '1'
@@ -608,21 +606,6 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  78da9b46-1b94-49fb-a8ce-b8986e53a5c3:
-    contentColumnType: string
-    fieldGroup: f34fff60-41cf-47f6-8fe9-3146ae2a95b1
-    handle: homepageHeroImages
-    instructions: ''
-    name: 'Hero Images'
-    searchable: '1'
-    settings:
-      contentTable: '{{%matrixcontent_homepageheroimages}}'
-      localizeBlocks: ''
-      maxBlocks: 6
-      minBlocks: 1
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Matrix
   7a4edc2b-a06d-4baf-a33f-da76742cbf35:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -1846,144 +1829,6 @@ matrixBlockTypes:
     handle: programmeRegion
     name: 'Programme Region'
     sortOrder: '1'
-  4f87a7a2-de4c-49ed-bb87-242364387658:
-    field: 78da9b46-1b94-49fb-a8ce-b8986e53a5c3
-    fieldLayouts:
-      709f2474-2716-4a8d-b7f6-56b021e1cd87:
-        tabs:
-          -
-            fields:
-              287d1d64-550f-4ef0-aed1-a69dfaa34def:
-                required: '0'
-                sortOrder: '4'
-              819104e1-5004-4804-9ea2-ebd2c6c85e12:
-                required: '1'
-                sortOrder: '2'
-              93eff09b-014a-4e1c-a7c4-9f0665996fa5:
-                required: '0'
-                sortOrder: '5'
-              c4a813ff-dc05-4f95-9ed9-d62ed142caea:
-                required: '1'
-                sortOrder: '3'
-              ed221773-330e-4542-8e50-a71a30b081fc:
-                required: '1'
-                sortOrder: '1'
-            name: Content
-            sortOrder: '1'
-    fields:
-      287d1d64-550f-4ef0-aed1-a69dfaa34def:
-        contentColumnType: text
-        fieldGroup: null
-        handle: caption
-        instructions: ''
-        name: Caption
-        searchable: '1'
-        settings:
-          charLimit: ''
-          columnType: text
-          initialRows: 4
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      819104e1-5004-4804-9ea2-ebd2c6c85e12:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageMedium
-        instructions: ''
-        name: 'Image (Medium)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: 1
-          localizeRelations: ''
-          restrictFiles: 1
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: 1
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      93eff09b-014a-4e1c-a7c4-9f0665996fa5:
-        contentColumnType: text
-        fieldGroup: null
-        handle: captionFootnote
-        instructions: ''
-        name: 'Caption footnote'
-        searchable: '1'
-        settings:
-          charLimit: ''
-          columnType: text
-          initialRows: 4
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      c4a813ff-dc05-4f95-9ed9-d62ed142caea:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageLarge
-        instructions: ''
-        name: 'Image (large)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: 1
-          localizeRelations: ''
-          restrictFiles: 1
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: 1
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      ed221773-330e-4542-8e50-a71a30b081fc:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageSmall
-        instructions: ''
-        name: 'Image (Small)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: 1
-          localizeRelations: ''
-          restrictFiles: 1
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: 1
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-    handle: heroImage
-    name: 'Hero Image'
-    sortOrder: '1'
   62705224-8e25-453a-bce2-7d8e0533abce:
     field: 065e680b-ad85-42eb-a1b2-6623e8233466
     fieldLayouts:
@@ -2107,16 +1952,16 @@ matrixBlockTypes:
           -
             fields:
               1c404c31-43dc-4852-a7d2-1e00b85db944:
-                required: '1'
-                sortOrder: '2'
+                required: true
+                sortOrder: 2
               4011843e-910e-40e4-bcbf-f216099ce078:
-                required: '1'
-                sortOrder: '1'
+                required: true
+                sortOrder: 1
               b4fea845-d1b1-417c-9c49-ea0834a65b4e:
-                required: '1'
-                sortOrder: '3'
+                required: true
+                sortOrder: 3
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       1c404c31-43dc-4852-a7d2-1e00b85db944:
         contentColumnType: string
@@ -2124,7 +1969,9 @@ matrixBlockTypes:
         handle: linkUrl
         instructions: 'The URL path this item should point to, eg: /contact or /funding/programmes. This will be automatically converted into the Welsh equivalent where applicable.'
         name: 'Link URL'
-        searchable: '1'
+        searchable: true
+        settings:
+          placeholder: ''
         translationKeyFormat: null
         translationMethod: none
         type: craft\fields\Url
@@ -2134,7 +1981,7 @@ matrixBlockTypes:
         handle: heroImage
         instructions: 'The image that should appear alongside the text. Use a "Mini" hero.'
         name: 'Hero image'
-        searchable: '1'
+        searchable: true
         settings:
           limit: '1'
           localizeRelations: ''
@@ -2153,7 +2000,7 @@ matrixBlockTypes:
         handle: linkText
         instructions: 'The text that should appear, eg. "Talk to us"'
         name: 'Link text'
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -2166,7 +2013,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: featuredLink
     name: 'Featured link'
-    sortOrder: '1'
+    sortOrder: 1
   8251175f-c9d9-44eb-86a3-98aed60cb758:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     fieldLayouts:
