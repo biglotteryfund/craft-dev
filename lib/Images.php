@@ -43,13 +43,13 @@ class Images
 
     public static function extractImage($imageField)
     {
-        $image = $imageField->one();
+        $image = $imageField ? $imageField->one() : null;
         return $image ?? null;
     }
 
     public static function extractImageUrl($imageField)
     {
-        $image = $imageField->one();
+        $image = $imageField ? $imageField->one() : null;
         return $image ? $image->url : null;
     }
 
