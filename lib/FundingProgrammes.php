@@ -15,24 +15,29 @@ class FundingProgrammeTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
+    private static function buildTrailImage($imageField)
+    {
+        return $imageField ? Images::imgixUrl($imageField->imageMedium->one()->url, [
+            // 5:2 aspect ratio image
+            'w' => 360,
+            'h' => 144,
+            'crop' => 'faces',
+        ]) : null;
+    }
+
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
-        $heroImage = Images::getHeroImageField($entry->hero);
-
         return array_merge($commonFields, [
             'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
             'description' => $entry->programmeIntro ?? null,
             'footer' => $entry->outroText ?? null,
-            'thumbnail' => ContentHelpers::getProgrammeThumbnail($entry),
-            'trailImage' => $heroImage ? Images::imgixUrl($heroImage->imageMedium->one()->url, [
-                // 5:2 aspect ratio image
-                'w' => 360,
-                'h' => 144,
-                'crop' => 'faces',
-            ]) : null,
+            'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+            'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
+            'trailImage' => self::buildTrailImage($entry->heroImage->one()),
+            'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
             'contentSections' => array_map(function ($block) {
                 return [
                     'title' => $block->programmeRegionTitle,
