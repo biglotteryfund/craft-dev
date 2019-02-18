@@ -25,8 +25,8 @@ class ContentHelpers
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
             'trailText' => $entry->trailText ?? null,
-            'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
-            'heroCredit' => $entry->heroImageCredit ?? null,
+            // @TODO: Remove heroNew once main app is updated
+            'hero' => Images::buildHero($entry->hero),
             'heroNew' => Images::buildHero($entry->hero),
         ];
     }
@@ -181,23 +181,9 @@ class ContentHelpers
     }
 
     // Use custom thumbnail if one is set, otherwise default to hero image.
-    // @TODO: Remove one new hero images are all in place
-    public static function getFundingProgrammeThumbnailUrl($entry)
+    public static function getProgrammeThumbnail($entry)
     {
-        $heroImage = Images::extractImage($entry->heroImage);
-        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
-            ($heroImage ? $heroImage->imageMedium->one() : null);
-        return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
-            'w' => 100,
-            'h' => 100,
-            'crop' => 'faces',
-        ]) : null;
-    }
-
-    // Use custom thumbnail if one is set, otherwise default to hero image.
-    public static function getFundingProgrammeThumbnailUrlNew($entry)
-    {
-        $heroImage = Images::extractNewHeroImageField($entry->hero);
+        $heroImage = Images::getHeroImageField($entry->hero);
         $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
             ($heroImage ? $heroImage->imageMedium->one() : null);
         return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
