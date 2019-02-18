@@ -43,6 +43,7 @@ function getRoutes()
 
     $excludeList = [
         'aliases',
+        'caseStudies',
         'documents',
         'heroImage',
         'homepage',

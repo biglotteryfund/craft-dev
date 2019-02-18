@@ -92,7 +92,7 @@ class Images
         if ($heroField && $heroField->one()) {
             $hero = $heroField->one();
             return [
-                'image' => $hero->image ? self::extractHeroImage($hero->image) : null,
+                'image' => $hero->image ? Images::extractHeroImage($hero->image) : null,
                 'credit' => $hero->credit ?? null,
             ];
         } else {
@@ -100,7 +100,7 @@ class Images
         }
     }
 
-    public static function getHeroImageField($heroField)
+    public static function extractNewHeroImageField($heroField)
     {
         if ($heroField) {
             $hero = $heroField->one() ?? null;
