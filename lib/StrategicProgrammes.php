@@ -39,15 +39,9 @@ class StrategicProgrammeTransformer extends TransformerAbstract
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
-        $heroImageField = Images::extractImage($entry->heroImage);
-
         return array_merge($commonFields, [
-            // @TODO: Update template URLs to use linkUrl
-            'path' => $commonFields['linkUrl'],
             'sectionBreadcrumbs' => self::buildSectionBreadcrumbs($entry, $this->locale),
-            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
-            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
-            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+            'trailImage' => self::buildTrailImage(Images::getHeroImageField($entry->hero)),
             'intro' => $entry->programmeIntro,
             'aims' => $entry->strategicProgrammeAims,
             'impact' => array_map(function ($block) {
