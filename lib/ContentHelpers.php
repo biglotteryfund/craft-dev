@@ -18,6 +18,7 @@ class ContentHelpers
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+            'openGraph' => self::extractSocialMetaTags($entry),
             // @TODO: Is url used anywhere?
             'url' => $entry->url,
             // @TODO: Some older pages use path instead of linkUrl in templates, update these uses and then remove this
@@ -205,5 +206,44 @@ class ContentHelpers
             'h' => 100,
             'crop' => 'faces',
         ]) : null;
+    }
+
+    // Returns a set of open graph meta tags, optionally matching a ?social=<slug> querystring
+    public static function extractSocialMetaTags(Entry $entry)
+    {
+        $openGraph = [];
+
+        if ($entry->socialMediaTags) {
+            $allTagSets = $entry->socialMediaTags->all();
+
+            // Default to using the first set of tags
+            $ogData = $entry->socialMediaTags->one();
+
+            // If we've passed a ?social=<slug> parameter, try to find its matching
+            // set of tags (eg. for per-URL open graph metadata)
+            if ($searchQuery = \Craft::$app->request->getParam('social')) {
+                $ogSlugs = array_column($allTagSets, 'ogSlug');
+                $matchingSlugIndex = array_search($searchQuery, $ogSlugs);
+                if ($matchingSlugIndex) {
+                    $ogData = $allTagSets[$matchingSlugIndex];
+                }
+            }
+
+            $openGraph['title'] = $ogData->ogTitle ?? null;
+            $openGraph['description'] = $ogData->ogDescription ?? null;
+
+            $images = $ogData->ogImage ?? null;
+
+            if ($images && $images->one()) {
+                // We only allow one set of images per OG tag group
+                $imageSet = $images->one();
+                $data = [];
+                $data['facebook'] = $imageSet->facebook ? Images::extractImageUrl($imageSet->facebook) : null;
+                $data['twitter'] = $imageSet->twitter ? Images::extractImageUrl($imageSet->twitter) : null;
+                $openGraph['images'] = $data;
+            }
+        }
+
+        return $openGraph ? $openGraph : null;
     }
 }
