@@ -169,18 +169,22 @@ function getFundingProgrammes($locale, $slug = null)
     } else if (\Craft::$app->request->getParam('all') === 'true') {
         $criteria['orderBy'] = 'title asc';
         $criteria['status'] = ['live', 'expired'];
+    } else if (\Craft::$app->request->getParam('newest') === 'true') {
+        $criteria['orderBy'] = 'postDate desc';
     } else {
         // For listing pages, only show programmes that can be directly applied to
         $criteria['programmeStatus'] = 'open';
     }
 
+    $isSingle = !!$slug;
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'one' => $slug ? true : false,
+        'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale),
+        'transformer' => new FundingProgrammeTransformer($locale, $isSingle),
     ];
 }
 
