@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553267142
+dateModified: 1553268516
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3468,31 +3468,38 @@ sections:
     enableVersioning: '1'
     entryTypes:
       6cefbe41-9224-4ce3-94bd-740423659c18:
+        name: 'Building Better Opportunities'
+        handle: buildingBetterOpportunities
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           3dbd0510-0cfc-4a98-8dd2-1d78a606c7f6:
             tabs:
               -
-                fields:
-                  0ffe78fe-8cab-4c76-a558-5dcb3cb2dd34:
-                    required: '0'
-                    sortOrder: '4'
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: 'Content Page'
-                sortOrder: '1'
-        handle: buildingBetterOpportunities
-        hasTitleField: '1'
-        name: 'Building Better Opportunities'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 3
+                  0ffe78fe-8cab-4c76-a558-5dcb3cb2dd34:
+                    required: false
+                    sortOrder: 4
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: buildingBetterOpportunities
     name: 'Building Better Opportunities'
     propagateEntries: '1'
@@ -3510,34 +3517,41 @@ sections:
     enableVersioning: '1'
     entryTypes:
       9147c461-7eef-4d50-af6e-474010b5a504:
+        name: Jobs
+        handle: jobs
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           465ad913-dff2-4ca8-bfb1-408cfcaf83e9:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '4'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '5'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
                 name: 'Jobs page content'
-                sortOrder: '1'
-        handle: jobs
-        hasTitleField: '1'
-        name: Jobs
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 3
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 4
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 5
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: jobs
     name: Jobs
     propagateEntries: '1'
@@ -3557,77 +3571,84 @@ sections:
     enableVersioning: '1'
     entryTypes:
       79c88f21-da56-48db-9e1c-ec15618ca38f:
+        name: 'Funding Programmes'
+        handle: fundingProgrammes
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           96266c61-497d-41b4-9e92-9b62178dbf1b:
             tabs:
               -
-                fields:
-                  03ed24af-07b1-42c3-875e-98050e9560c7:
-                    required: '0'
-                    sortOrder: '6'
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '7'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
-                  bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
-                    required: '0'
-                    sortOrder: '5'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
-                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
-                    required: '0'
-                    sortOrder: '4'
                 name: 'Programme Details'
-                sortOrder: '1'
-              -
+                sortOrder: 1
                 fields:
-                  0db131ea-69e3-4c13-955d-b607df3c9959:
-                    required: '0'
-                    sortOrder: '5'
-                  1338f3a8-bad4-4e23-a0f0-327be8f16e60:
-                    required: '0'
-                    sortOrder: '9'
-                  46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: '0'
-                    sortOrder: '10'
-                  5899dcd7-1384-49e0-98a5-633b44fa05c0:
-                    required: '0'
-                    sortOrder: '1'
-                  650ff388-625b-4f42-82bd-10a96d6b47b1:
-                    required: '0'
-                    sortOrder: '3'
-                  8d3adb13-80ec-4b1a-9524-7b23bafb6c60:
-                    required: '0'
-                    sortOrder: '6'
-                  9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
-                    required: '0'
-                    sortOrder: '8'
-                  b1cb76e6-64d2-41f8-837d-089907b480c6:
-                    required: '0'
-                    sortOrder: '2'
-                  c2f8265a-898e-4f67-abf9-45dabc783f7e:
-                    required: '0'
-                    sortOrder: '7'
-                  e5147d7e-c0d3-4cb2-92cf-3b5e5eae96e6:
-                    required: '0'
-                    sortOrder: '11'
-                  ee5ad666-8266-45cc-9852-f681a7db300f:
-                    required: '0'
-                    sortOrder: '4'
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
+                    required: false
+                    sortOrder: 2
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 3
+                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
+                    required: false
+                    sortOrder: 4
+                  bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
+                    required: false
+                    sortOrder: 5
+                  03ed24af-07b1-42c3-875e-98050e9560c7:
+                    required: false
+                    sortOrder: 6
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 7
+              -
                 name: 'Programme Summary'
-                sortOrder: '2'
-        handle: fundingProgrammes
-        hasTitleField: '1'
-        name: 'Funding Programmes'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 2
+                fields:
+                  5899dcd7-1384-49e0-98a5-633b44fa05c0:
+                    required: false
+                    sortOrder: 1
+                  b1cb76e6-64d2-41f8-837d-089907b480c6:
+                    required: false
+                    sortOrder: 2
+                  650ff388-625b-4f42-82bd-10a96d6b47b1:
+                    required: false
+                    sortOrder: 3
+                  ee5ad666-8266-45cc-9852-f681a7db300f:
+                    required: false
+                    sortOrder: 4
+                  0db131ea-69e3-4c13-955d-b607df3c9959:
+                    required: false
+                    sortOrder: 5
+                  8d3adb13-80ec-4b1a-9524-7b23bafb6c60:
+                    required: false
+                    sortOrder: 6
+                  c2f8265a-898e-4f67-abf9-45dabc783f7e:
+                    required: false
+                    sortOrder: 7
+                  9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
+                    required: false
+                    sortOrder: 8
+                  1338f3a8-bad4-4e23-a0f0-327be8f16e60:
+                    required: false
+                    sortOrder: 9
+                  46d0352f-42af-4d63-be4d-9c9df54c5871:
+                    required: false
+                    sortOrder: 10
+                  e5147d7e-c0d3-4cb2-92cf-3b5e5eae96e6:
+                    required: false
+                    sortOrder: 11
+              -
+                name: 'Social Media'
+                sortOrder: 3
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: fundingProgrammes
     name: 'Funding Programmes'
     propagateEntries: '1'
@@ -3688,53 +3709,60 @@ sections:
     enableVersioning: '1'
     entryTypes:
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
+        name: Research
+        handle: research
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           148090b7-1887-40f5-a00e-8d90a513eb77:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  4b573749-5271-405a-9d27-9e086ee1f31f:
-                    required: '0'
-                    sortOrder: '5'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
-                  83a59f94-8342-417f-b427-11c3c162d89e:
-                    required: '1'
-                    sortOrder: '6'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '1'
-                    sortOrder: '3'
                 name: 'Main content'
-                sortOrder: '1'
-              -
+                sortOrder: 1
                 fields:
-                  585a68f7-bb7c-4d7f-9acf-10f9b2107243:
-                    required: '1'
-                    sortOrder: '3'
-                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
-                    required: '0'
-                    sortOrder: '4'
-                  d152a0b3-b09f-4b2c-a7a6-605b9a0fed17:
-                    required: '0'
-                    sortOrder: '1'
-                  f946d578-25d4-40b3-a68b-f04068f34a17:
-                    required: '0'
-                    sortOrder: '2'
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  ccd71b86-6564-429f-972a-1def8e6840a4:
+                    required: true
+                    sortOrder: 3
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 4
+                  4b573749-5271-405a-9d27-9e086ee1f31f:
+                    required: false
+                    sortOrder: 5
+                  83a59f94-8342-417f-b427-11c3c162d89e:
+                    required: true
+                    sortOrder: 6
+              -
                 name: 'Related content'
-                sortOrder: '2'
-        handle: research
-        hasTitleField: '1'
-        name: Research
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 2
+                fields:
+                  d152a0b3-b09f-4b2c-a7a6-605b9a0fed17:
+                    required: false
+                    sortOrder: 1
+                  f946d578-25d4-40b3-a68b-f04068f34a17:
+                    required: false
+                    sortOrder: 2
+                  585a68f7-bb7c-4d7f-9acf-10f9b2107243:
+                    required: true
+                    sortOrder: 3
+                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
+                    required: false
+                    sortOrder: 4
+              -
+                name: 'Social Media'
+                sortOrder: 3
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: research
     name: Insights
     propagateEntries: '1'
@@ -3792,84 +3820,98 @@ sections:
     enableVersioning: '1'
     entryTypes:
       16b4a64e-3a41-41d6-9cb0-abbb0b37773f:
+        name: 'News article'
+        handle: updates
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 2
         fieldLayouts:
           6ccb5707-3d48-45e4-83a9-8baed98aac34:
             tabs:
               -
-                fields:
-                  1b339885-ec9d-4871-852a-6ab021977805:
-                    required: '0'
-                    sortOrder: '2'
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '1'
-                    sortOrder: '8'
-                  419ecf2d-b6f9-4754-a309-88579895b504:
-                    required: '0'
-                    sortOrder: '6'
-                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
-                    required: '0'
-                    sortOrder: '7'
-                  b7e76d5c-aec3-4fbd-8917-ac0907db656e:
-                    required: '0'
-                    sortOrder: '5'
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '0'
-                    sortOrder: '1'
-                  e1e77fc0-240c-43d7-828f-fe39e28553b9:
-                    required: '0'
-                    sortOrder: '4'
-                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
-                    required: '0'
-                    sortOrder: '3'
                 name: 'Article content'
-                sortOrder: '1'
-        handle: updates
-        hasTitleField: '1'
-        name: 'News article'
-        sortOrder: '2'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  ccd71b86-6564-429f-972a-1def8e6840a4:
+                    required: false
+                    sortOrder: 1
+                  1b339885-ec9d-4871-852a-6ab021977805:
+                    required: false
+                    sortOrder: 2
+                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
+                    required: false
+                    sortOrder: 3
+                  e1e77fc0-240c-43d7-828f-fe39e28553b9:
+                    required: false
+                    sortOrder: 4
+                  b7e76d5c-aec3-4fbd-8917-ac0907db656e:
+                    required: false
+                    sortOrder: 5
+                  419ecf2d-b6f9-4754-a309-88579895b504:
+                    required: false
+                    sortOrder: 6
+                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
+                    required: false
+                    sortOrder: 7
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 8
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
       af57c0a7-4c55-470e-9331-03fc4c25b6f9:
+        name: Blogpost
+        handle: blog
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 3
         fieldLayouts:
           cd1b7bf5-abb9-4d14-aa3c-a4cbfdfe88fe:
             tabs:
               -
-                fields:
-                  0cfefd57-0c56-49da-921e-dd45bf0146a8:
-                    required: '1'
-                    sortOrder: '6'
-                  1b339885-ec9d-4871-852a-6ab021977805:
-                    required: '0'
-                    sortOrder: '4'
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '1'
-                    sortOrder: '5'
-                  419ecf2d-b6f9-4754-a309-88579895b504:
-                    required: '0'
-                    sortOrder: '7'
-                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
-                    required: '0'
-                    sortOrder: '9'
-                  b7e76d5c-aec3-4fbd-8917-ac0907db656e:
-                    required: '0'
-                    sortOrder: '3'
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '0'
-                    sortOrder: '1'
-                  e1e77fc0-240c-43d7-828f-fe39e28553b9:
-                    required: '0'
-                    sortOrder: '8'
-                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
-                    required: '0'
-                    sortOrder: '2'
                 name: 'Blog post'
-                sortOrder: '1'
-        handle: blog
-        hasTitleField: '1'
-        name: Blogpost
-        sortOrder: '3'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  ccd71b86-6564-429f-972a-1def8e6840a4:
+                    required: false
+                    sortOrder: 1
+                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
+                    required: false
+                    sortOrder: 2
+                  b7e76d5c-aec3-4fbd-8917-ac0907db656e:
+                    required: false
+                    sortOrder: 3
+                  1b339885-ec9d-4871-852a-6ab021977805:
+                    required: false
+                    sortOrder: 4
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 5
+                  0cfefd57-0c56-49da-921e-dd45bf0146a8:
+                    required: true
+                    sortOrder: 6
+                  419ecf2d-b6f9-4754-a309-88579895b504:
+                    required: false
+                    sortOrder: 7
+                  e1e77fc0-240c-43d7-828f-fe39e28553b9:
+                    required: false
+                    sortOrder: 8
+                  7a4edc2b-a06d-4baf-a33f-da76742cbf35:
+                    required: false
+                    sortOrder: 9
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
       c9f7e8cb-c731-4f5f-8f52-41611666b3a5:
         name: 'Press Release'
         handle: press_releases
@@ -3996,34 +4038,41 @@ sections:
     enableVersioning: '1'
     entryTypes:
       3d29509c-9184-412b-902c-4628e3a3be5e:
+        name: Benefits
+        handle: benefits
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           c994ea54-d2b6-4f64-99b8-0b12898af37a:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '4'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '5'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
                 name: 'Benefits page content'
-                sortOrder: '1'
-        handle: benefits
-        hasTitleField: '1'
-        name: Benefits
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 3
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 4
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 5
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: benefits
     name: Benefits
     propagateEntries: '1'
@@ -4043,37 +4092,44 @@ sections:
     enableVersioning: '1'
     entryTypes:
       b7d863c4-671d-492f-aba9-396925eff937:
+        name: Contact
+        handle: contact
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           df332a3d-7b02-4a23-bf98-f6328b7baaa0:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '0'
-                    sortOrder: '4'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
                 name: 'Content Page'
-                sortOrder: '1'
-        handle: contact
-        hasTitleField: '1'
-        name: Contact
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: false
+                    sortOrder: 3
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: false
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 5
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 6
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: contact
     name: Contact
     propagateEntries: '1'
@@ -4093,43 +4149,50 @@ sections:
     enableVersioning: '1'
     entryTypes:
       a0b8bcd6-c5a7-4c25-aad8-9fa8bdd9eca6:
+        name: 'Funding Guidance'
+        handle: fundingGuidance
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           79b47f10-cb80-4fb4-83a9-9b43d49de47b:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '4'
-                  4bbbad71-25c1-4e25-9b13-8815cee1ee98:
-                    required: '0'
-                    sortOrder: '1'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '7'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '8'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '6'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '5'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '3'
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '0'
-                    sortOrder: '2'
                 name: Content
-                sortOrder: '1'
-        handle: fundingGuidance
-        hasTitleField: '1'
-        name: 'Funding Guidance'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  4bbbad71-25c1-4e25-9b13-8815cee1ee98:
+                    required: false
+                    sortOrder: 1
+                  ccd71b86-6564-429f-972a-1def8e6840a4:
+                    required: false
+                    sortOrder: 2
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 3
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 4
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: false
+                    sortOrder: 5
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 6
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 7
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 8
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: fundingGuidance
     name: 'Funding Guidance'
     propagateEntries: '1'
@@ -4152,40 +4215,47 @@ sections:
     enableVersioning: '1'
     entryTypes:
       3da0ca80-59b6-41e8-87c8-3658d9d2c3ea:
+        name: 'Project Stories'
+        handle: projectStories
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           e69e408d-fe6c-4f2d-bf36-2fce1836fbfa:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  3b6db079-d2fc-4d40-b8d6-010fd64c8895:
-                    required: '0'
-                    sortOrder: '4'
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '1'
-                    sortOrder: '5'
-                  61aca7e9-75e9-4610-a0b5-39bb844a68c1:
-                    required: '1'
-                    sortOrder: '7'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
-                  77ee3d71-5f00-486d-8593-1eea1a6e8cb4:
-                    required: '0'
-                    sortOrder: '1'
-                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
-                    required: '0'
-                    sortOrder: '3'
                 name: 'Project story'
-                sortOrder: '1'
-        handle: projectStories
-        hasTitleField: '1'
-        name: 'Project Stories'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  77ee3d71-5f00-486d-8593-1eea1a6e8cb4:
+                    required: false
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
+                    required: false
+                    sortOrder: 3
+                  3b6db079-d2fc-4d40-b8d6-010fd64c8895:
+                    required: false
+                    sortOrder: 4
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 5
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 6
+                  61aca7e9-75e9-4610-a0b5-39bb844a68c1:
+                    required: true
+                    sortOrder: 7
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: projectStories
     name: 'Project Stories'
     propagateEntries: '1'
@@ -4318,31 +4388,38 @@ sections:
     enableVersioning: '1'
     entryTypes:
       8f2097a4-3a5d-4d38-9c35-b7a713c8758d:
+        name: 'About landing page'
+        handle: aboutLandingPage
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           f464d738-3a07-4b54-add6-d44116434ee2:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '1'
-                    sortOrder: '4'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
                 name: About
-                sortOrder: '1'
-        handle: aboutLandingPage
-        hasTitleField: '1'
-        name: 'About landing page'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: false
+                    sortOrder: 3
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 4
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: aboutLandingPage
     name: 'About landing page'
     propagateEntries: '1'
@@ -4362,25 +4439,32 @@ sections:
     enableVersioning: '1'
     entryTypes:
       ca2c914a-7b86-4e18-885d-339d868d24d9:
+        name: Data
+        handle: data
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           fb473c93-ca03-4a7b-bc3f-06026d23fd5c:
             tabs:
               -
+                name: Data
+                sortOrder: 1
                 fields:
                   093b4dc3-16d8-439a-a963-39b9c9d7c164:
-                    required: '1'
-                    sortOrder: '1'
+                    required: true
+                    sortOrder: 1
                   b1a844c2-594c-4e72-8523-a911d7b80f24:
-                    required: '1'
-                    sortOrder: '2'
-                name: Data
-                sortOrder: '1'
-        handle: data
-        hasTitleField: '1'
-        name: Data
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                    required: true
+                    sortOrder: 2
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: data
     name: Data
     propagateEntries: '1'
@@ -4400,37 +4484,44 @@ sections:
     enableVersioning: '1'
     entryTypes:
       9b5463bd-6bf4-4da9-a732-56e3b5375b77:
+        name: 'Strategic investments in England'
+        handle: strategicInvestments
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           2e584ee6-1524-424c-abbf-2fd255b5f938:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: Content
-                sortOrder: '1'
-        handle: strategicInvestments
-        hasTitleField: '1'
-        name: 'Strategic investments in England'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: false
+                    sortOrder: 3
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 5
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 6
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: strategicInvestments
     name: 'Strategic investments in England'
     propagateEntries: '1'
@@ -4450,40 +4541,47 @@ sections:
     enableVersioning: '1'
     entryTypes:
       1320c236-b94a-4d47-aa7d-68a2aece2c01:
+        name: About
+        handle: about
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           82e54392-e2bd-4e3c-aa03-2c003082b499:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: '0'
-                    sortOrder: '7'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: 'Content Page'
-                sortOrder: '1'
-        handle: about
-        hasTitleField: '1'
-        name: About
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: true
+                    sortOrder: 3
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 5
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 6
+                  46d0352f-42af-4d63-be4d-9c9df54c5871:
+                    required: false
+                    sortOrder: 7
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: about
     name: About
     propagateEntries: '1'
@@ -4535,37 +4633,44 @@ sections:
         titleFormat: null
         titleLabel: Title
       214caa6b-a341-4d7c-902d-7441c99c07ce:
+        name: 'Customer Service'
+        handle: customerService
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           948a33aa-c0ad-4dad-97bc-16bd549f184f:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: '0'
-                    sortOrder: '5'
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: '0'
-                    sortOrder: '6'
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: '1'
-                    sortOrder: '4'
-                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: 'Content Page'
-                sortOrder: '1'
-        handle: customerService
-        hasTitleField: '1'
-        name: 'Customer Service'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
+                    required: false
+                    sortOrder: 3
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 5
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 6
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: customerService
     name: 'Customer Service'
     propagateEntries: '1'
@@ -4638,67 +4743,74 @@ sections:
     enableVersioning: '1'
     entryTypes:
       0a2d1a91-96ae-4fba-867f-62699822b0c6:
+        name: 'Strategic Programmes'
+        handle: strategicProgrammes
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           8c2af0ed-5678-420f-a3a8-4c1d9a7ea622:
             tabs:
               -
-                fields:
-                  02eb210a-8b09-489c-994d-009c27b6167b:
-                    required: '0'
-                    sortOrder: '6'
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
-                  bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
-                    required: '0'
-                    sortOrder: '5'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: '1'
-                    sortOrder: '4'
                 name: Common
-                sortOrder: '1'
-              -
+                sortOrder: 1
                 fields:
-                  607006ca-1479-43a1-9889-7ee63ef60289:
-                    required: '0'
-                    sortOrder: '2'
-                  dbfb641b-23fa-4110-969e-32cae11e39a9:
-                    required: '0'
-                    sortOrder: '1'
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
+                    required: false
+                    sortOrder: 2
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 3
+                  ccd71b86-6564-429f-972a-1def8e6840a4:
+                    required: true
+                    sortOrder: 4
+                  bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
+                    required: false
+                    sortOrder: 5
+                  02eb210a-8b09-489c-994d-009c27b6167b:
+                    required: false
+                    sortOrder: 6
+              -
                 name: 'Aims & Learning'
-                sortOrder: '2'
-              -
+                sortOrder: 2
                 fields:
-                  065e680b-ad85-42eb-a1b2-6623e8233466:
-                    required: '0'
-                    sortOrder: '2'
-                  4d5d77c6-2596-4418-85e9-822f7d1c7f67:
-                    required: '0'
-                    sortOrder: '1'
-                  7d911d3c-651d-4c2c-ae62-a64b0f554bb0:
-                    required: '0'
-                    sortOrder: '3'
-                name: Partners
-                sortOrder: '3'
+                  dbfb641b-23fa-4110-969e-32cae11e39a9:
+                    required: false
+                    sortOrder: 1
+                  607006ca-1479-43a1-9889-7ee63ef60289:
+                    required: false
+                    sortOrder: 2
               -
+                name: Partners
+                sortOrder: 3
+                fields:
+                  4d5d77c6-2596-4418-85e9-822f7d1c7f67:
+                    required: false
+                    sortOrder: 1
+                  065e680b-ad85-42eb-a1b2-6623e8233466:
+                    required: false
+                    sortOrder: 2
+                  7d911d3c-651d-4c2c-ae62-a64b0f554bb0:
+                    required: false
+                    sortOrder: 3
+              -
+                name: Resources
+                sortOrder: 4
                 fields:
                   816a3589-836c-4201-9d84-8d77a93a52a8:
-                    required: '0'
-                    sortOrder: '1'
-                name: Resources
-                sortOrder: '4'
-        handle: strategicProgrammes
-        hasTitleField: '1'
-        name: 'Strategic Programmes'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                    required: false
+                    sortOrder: 1
+              -
+                name: 'Social Media'
+                sortOrder: 5
+                fields:
+                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                    required: false
+                    sortOrder: 1
     handle: strategicProgrammes
     name: 'Strategic Programmes'
     propagateEntries: '1'

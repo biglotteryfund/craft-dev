@@ -218,18 +218,20 @@ class ContentHelpers
             // Default to using the first set of tags
             $ogData = $entry->socialMediaTags->one();
 
-            // If we've passed a ?social=<slug> parameter, try to find its
-            // matching set of tags (eg. for per-URL open graph metadata)
-            if ($searchQuery = \Craft::$app->request->getParam('social')) {
-                $ogData = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
-            }
+            if ($ogData) {
+                // If we've passed a ?social=<slug> parameter, try to find its
+                // matching set of tags (eg. for per-URL open graph metadata)
+                if ($searchQuery = \Craft::$app->request->getParam('social')) {
+                    $ogData = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                }
 
-            $openGraph['title'] = $ogData->ogTitle ?? null;
-            $openGraph['description'] = $ogData->ogDescription ?? null;
-            $openGraph['facebookImage'] = $ogData->ogFacebookImage ? Images::extractImageUrl($ogData->ogFacebookImage) : null;
-            $openGraph['twitterImage'] = $ogData->ogTwitterImage ? Images::extractImageUrl($ogData->ogTwitterImage) : null;
+                $openGraph['title'] = $ogData->ogTitle ?? null;
+                $openGraph['description'] = $ogData->ogDescription ?? null;
+                $openGraph['facebookImage'] = $ogData->ogFacebookImage ? Images::extractImageUrl($ogData->ogFacebookImage) : null;
+                $openGraph['twitterImage'] = $ogData->ogTwitterImage ? Images::extractImageUrl($ogData->ogTwitterImage) : null;
+            }
         }
 
-        return $openGraph ? $openGraph : null;
+        return $openGraph;
     }
 }
