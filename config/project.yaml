@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553268516
+dateModified: 1553511915
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -68,7 +68,7 @@ fieldGroups:
     name: Homepage
   fe37f91c-b0e2-482c-8482-05d9b335ce86:
     name: Merchandise
-  102fb29e-aa0b-4b9f-89fb-54d1539953ee:
+  414787c6-943a-4f50-b4f6-a0a9017a3874:
     name: 'Social Media'
 fields:
   02eb210a-8b09-489c-994d-009c27b6167b:
@@ -230,23 +230,23 @@ fields:
     translationMethod: site
     type: craft\fields\PlainText
   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-    name: 'Hero image (new)'
+    contentColumnType: string
+    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
     handle: hero
     instructions: 'New hero image, will be used on re-branded pages'
+    name: 'Hero image (new)'
     searchable: '1'
-    translationMethod: site
-    translationKeyFormat: null
-    type: verbb\supertable\fields\SuperTableField
     settings:
-      contentTable: '{{%stc_hero}}'
+      contentTable: null
       fieldLayout: row
       localizeBlocks: ''
       maxRows: ''
       minRows: ''
       selectionLabel: ''
       staticField: '1'
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    contentColumnType: string
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   18a9853a-8570-41b5-9be5-89b09f045a67:
     contentColumnType: text
     fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
@@ -299,18 +299,13 @@ fields:
     translationMethod: site
     type: craft\fields\PlainText
   25308ee1-088a-4b07-83df-c7100eab536e:
-    name: 'Document Groups'
+    contentColumnType: string
+    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
     handle: documentGroups
     instructions: 'Any documents that should be attached to this content.'
+    name: 'Document Groups'
     searchable: '1'
-    translationMethod: site
-    translationKeyFormat: null
-    type: verbb\supertable\fields\SuperTableField
     settings:
-      minRows: '0'
-      maxRows: ''
-      localizeBlocks: '1'
-      staticField: ''
       columns:
         194:
           width: ''
@@ -318,11 +313,16 @@ fields:
           width: ''
         196:
           width: ''
-      contentTable: '{{%stc_documentgroups}}'
+      contentTable: null
       fieldLayout: row
+      localizeBlocks: '1'
+      maxRows: ''
+      minRows: '0'
       selectionLabel: 'Add a new document group'
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    contentColumnType: string
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   2588e3c7-9719-44b3-a9ea-e70bae854d2e:
     contentColumnType: string
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -804,13 +804,12 @@ fields:
     translationMethod: site
     type: craft\fields\Matrix
   83a59f94-8342-417f-b427-11c3c162d89e:
-    name: 'Research sections'
+    contentColumnType: string
+    fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
     handle: researchSections
     instructions: ''
-    searchable: '1'
-    translationMethod: site
-    translationKeyFormat: null
-    type: verbb\supertable\fields\SuperTableField
+    name: 'Research sections'
+    searchable: true
     settings:
       columns:
         170:
@@ -826,8 +825,9 @@ fields:
       minRows: '1'
       selectionLabel: 'Add a section'
       staticField: ''
-    fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
-    contentColumnType: string
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   85937a58-39af-479b-b64b-283999b877df:
     contentColumnType: string
     fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
@@ -1088,23 +1088,23 @@ fields:
     translationMethod: site
     type: craft\fields\Assets
   b1a844c2-594c-4e72-8523-a911d7b80f24:
-    name: 'Region stats'
+    contentColumnType: string
+    fieldGroup: e3237b61-2fe0-45f7-9036-c1ff7a7975e8
     handle: regionStats
     instructions: ''
+    name: 'Region stats'
     searchable: '1'
-    translationMethod: site
-    translationKeyFormat: null
-    type: verbb\supertable\fields\SuperTableField
     settings:
-      minRows: '1'
-      maxRows: '1'
-      localizeBlocks: ''
-      staticField: '1'
-      contentTable: '{{%stc_regionstats}}'
+      contentTable: null
       fieldLayout: row
+      localizeBlocks: ''
+      maxRows: '1'
+      minRows: '1'
       selectionLabel: ''
-    fieldGroup: e3237b61-2fe0-45f7-9036-c1ff7a7975e8
-    contentColumnType: string
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   b1cb76e6-64d2-41f8-837d-089907b480c6:
     contentColumnType: string
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1254,23 +1254,22 @@ fields:
     translationMethod: none
     type: craft\fields\Number
   d152a0b3-b09f-4b2c-a7a6-605b9a0fed17:
-    name: 'Research metadata'
+    contentColumnType: string
+    fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
     handle: researchMeta
     instructions: ''
+    name: 'Research metadata'
     searchable: '1'
-    translationMethod: site
-    translationKeyFormat: null
-    type: verbb\supertable\fields\SuperTableField
     settings:
-      minRows: '1'
-      maxRows: '1'
-      localizeBlocks: ''
-      staticField: '1'
       fieldLayout: row
+      localizeBlocks: ''
+      maxRows: '1'
+      minRows: '1'
       selectionLabel: ''
-      contentTable: '{{%stc_researchmeta}}'
-    fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
-    contentColumnType: string
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   d7fe1ecc-0596-44c1-bfc5-fb28d853479f:
     contentColumnType: text
     fieldGroup: 7eb54552-8c0f-4f88-b831-2cccbac8e20d
@@ -1588,20 +1587,11 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  19ef80ab-650b-4599-aa83-efbf6cf1acb1:
-    settings:
-      minRows: ''
-      maxRows: ''
-      contentTable: '{{%stc_socialmediatags}}'
-      localizeBlocks: '1'
-      staticField: ''
-      fieldLayout: row
-      selectionLabel: 'Add a set of tags'
-  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+  5bfc2b9a-ed44-4c97-9606-e0549626166b:
     name: 'Social Media Tags'
     handle: socialMediaTags
     instructions: 'Add some Open Graph metadata which displays when this content is shared on social media (eg. Twitter and Facebook cards)'
-    searchable: true
+    searchable: false
     translationMethod: site
     translationKeyFormat: null
     type: craft\fields\Matrix
@@ -1611,7 +1601,7 @@ fields:
       contentTable: '{{%matrixcontent_socialmediatags}}'
       localizeBlocks: '1'
     contentColumnType: string
-    fieldGroup: 102fb29e-aa0b-4b9f-89fb-54d1539953ee
+    fieldGroup: 414787c6-943a-4f50-b4f6-a0a9017a3874
 imageTransforms:
   02af4884-899c-46bf-9add-6bfac4b267c8:
     format: null
@@ -3252,16 +3242,16 @@ matrixBlockTypes:
     handle: product
     name: Product
     sortOrder: '1'
-  8f927e53-529d-4866-8b90-4395da931389:
-    field: 48eea4d7-6b87-4a75-82b1-b7eac2e381c4
+  68dbd979-4dd5-4892-8ee7-24c7e0e2d338:
+    field: 5bfc2b9a-ed44-4c97-9606-e0549626166b
     name: 'Open Graph Tags'
     handle: openGraphTags
     sortOrder: 1
     fields:
-      8f77e55b-9713-4e06-ac0d-b8bc69fbccb8:
+      e25fad1b-ef7c-43b5-b7e3-f1a6b3a52a30:
         name: Title
         handle: ogTitle
-        instructions: 'The title of this article without any branding (such as our site name). If left blank, the current entry title will be used.'
+        instructions: "The title of this article without any branding (such as our site name). If left blank, the current entry title will be used.\r\n"
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3275,7 +3265,7 @@ matrixBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
-      56590a33-e899-4938-93cf-ef497cee79dd:
+      9d8a6983-da20-40c5-9e86-5f75f542948f:
         name: Description
         handle: ogDescription
         instructions: 'A brief description of the content, usually between 2 and 4 sentences. This will displayed below the title of the post on Facebook.'
@@ -3292,10 +3282,10 @@ matrixBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
-      1a3eadac-b3be-43f2-a68d-170def1a5b3a:
-        name: 'Facebook image'
+      308fc1d1-f833-4368-aa68-ba1a57582ee2:
+        name: 'Facebook Image'
         handle: ogFacebookImage
-        instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px."
+        instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px.\r\n"
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3318,10 +3308,10 @@ matrixBlockTypes:
           localizeRelations: ''
         contentColumnType: string
         fieldGroup: null
-      aa7e4855-a148-4ca2-a9f9-c6616dad2a6a:
-        name: 'Twitter image'
+      fd68a4fd-5663-421a-994b-9004194f2806:
+        name: 'Twitter Image'
         handle: ogTwitterImage
-        instructions: "• Images for Twitter Cards support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels. \r\n• Images must be less than 5MB in size. \r\n• JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
+        instructions: "• Images for this Card support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels.\r\n• Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3344,10 +3334,10 @@ matrixBlockTypes:
           localizeRelations: ''
         contentColumnType: string
         fieldGroup: null
-      4fefd1e5-7dbd-42aa-ae5e-bced44c8b51b:
+      9359e6b6-a3b1-425c-a82b-521a840ae6da:
         name: Slug
         handle: ogSlug
-        instructions: 'Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.'
+        instructions: "Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.\r\n"
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3362,32 +3352,32 @@ matrixBlockTypes:
         contentColumnType: text
         fieldGroup: null
     fieldLayouts:
-      543a7324-00e9-40f0-9e76-74c1a88c14c2:
+      ecf67017-724b-4e8c-bfdb-c59c0456d1dc:
         tabs:
           -
             name: Content
             sortOrder: 1
             fields:
-              8f77e55b-9713-4e06-ac0d-b8bc69fbccb8:
+              e25fad1b-ef7c-43b5-b7e3-f1a6b3a52a30:
                 required: false
                 sortOrder: 1
-              56590a33-e899-4938-93cf-ef497cee79dd:
+              9d8a6983-da20-40c5-9e86-5f75f542948f:
                 required: false
                 sortOrder: 2
-              1a3eadac-b3be-43f2-a68d-170def1a5b3a:
+              308fc1d1-f833-4368-aa68-ba1a57582ee2:
                 required: false
                 sortOrder: 3
-              aa7e4855-a148-4ca2-a9f9-c6616dad2a6a:
+              fd68a4fd-5663-421a-994b-9004194f2806:
                 required: false
                 sortOrder: 4
-              4fefd1e5-7dbd-42aa-ae5e-bced44c8b51b:
+              9359e6b6-a3b1-425c-a82b-521a840ae6da:
                 required: false
                 sortOrder: 5
 plugins:
   aws-s3:
     enabled: '1'
     licenseKey: null
-    schemaVersion: '1.2'
+    schemaVersion: '1.1'
     settings: null
   cp-css:
     enabled: '1'
@@ -3446,7 +3436,7 @@ plugins:
   redactor:
     enabled: '1'
     licenseKey: null
-    schemaVersion: 2.2.2
+    schemaVersion: 2.2.1
     settings: null
   ses:
     enabled: '1'
@@ -3456,7 +3446,7 @@ plugins:
   super-table:
     enabled: '1'
     licenseKey: null
-    schemaVersion: 2.0.10
+    schemaVersion: 2.0.8
     settings: null
   tag-manager:
     enabled: '1'
@@ -3497,7 +3487,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: buildingBetterOpportunities
@@ -3549,7 +3539,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: jobs
@@ -3646,7 +3636,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 3
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: fundingProgrammes
@@ -3760,7 +3750,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 3
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: research
@@ -3861,7 +3851,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
       af57c0a7-4c55-470e-9331-03fc4c25b6f9:
@@ -3909,7 +3899,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
       c9f7e8cb-c731-4f5f-8f52-41611666b3a5:
@@ -3969,7 +3959,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: updates
@@ -3991,31 +3981,38 @@ sections:
     enableVersioning: '1'
     entryTypes:
       32545da5-c0fa-45f7-90c9-5ebc1eb2079c:
+        name: Merchandise
+        handle: merchandise
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           caed816f-70b3-4340-b299-61181fa28f49:
             tabs:
               -
-                fields:
-                  85937a58-39af-479b-b64b-283999b877df:
-                    required: '0'
-                    sortOrder: '4'
-                  ce51477f-1fbc-4c51-a482-621384b56698:
-                    required: '1'
-                    sortOrder: '2'
-                  db0b8702-ef1b-409c-aa55-6de9d41d4d4a:
-                    required: '0'
-                    sortOrder: '1'
-                  e2c780b8-c133-4e69-af2f-cee1076275cd:
-                    required: '1'
-                    sortOrder: '3'
                 name: Merchandise
-                sortOrder: '1'
-        handle: merchandise
-        hasTitleField: '1'
-        name: Merchandise
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  db0b8702-ef1b-409c-aa55-6de9d41d4d4a:
+                    required: false
+                    sortOrder: 1
+                  ce51477f-1fbc-4c51-a482-621384b56698:
+                    required: true
+                    sortOrder: 2
+                  e2c780b8-c133-4e69-af2f-cee1076275cd:
+                    required: true
+                    sortOrder: 3
+                  85937a58-39af-479b-b64b-283999b877df:
+                    required: false
+                    sortOrder: 4
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                    required: false
+                    sortOrder: 1
     handle: merchandise
     name: Merchandise
     propagateEntries: '1'
@@ -4070,7 +4067,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: benefits
@@ -4127,7 +4124,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: contact
@@ -4190,7 +4187,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: fundingGuidance
@@ -4253,7 +4250,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: projectStories
@@ -4275,35 +4272,42 @@ sections:
     enableVersioning: '1'
     entryTypes:
       8f0f28b7-5dd3-4eb9-a71e-1e3f286f8085:
+        name: 'Our People'
+        handle: people
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           711fc888-e548-493d-8917-4bea84002fee:
             tabs:
               -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '2'
-                  8c779db5-d5b9-4669-bb16-7749b921bc9b:
-                    required: '1'
-                    sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '1'
-                    sortOrder: '1'
                 name: People
-                sortOrder: '1'
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: true
+                    sortOrder: 1
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 2
+                  8c779db5-d5b9-4669-bb16-7749b921bc9b:
+                    required: true
+                    sortOrder: 3
               -
+                name: Documents
+                sortOrder: 2
                 fields:
                   25308ee1-088a-4b07-83df-c7100eab536e:
-                    required: '0'
-                    sortOrder: '1'
-                name: Documents
-                sortOrder: '2'
-        handle: people
-        hasTitleField: '1'
-        name: 'Our People'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                    required: false
+                    sortOrder: 1
+              -
+                name: 'Social Media'
+                sortOrder: 3
+                fields:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                    required: false
+                    sortOrder: 1
     handle: people
     name: 'Our People'
     propagateEntries: '1'
@@ -4326,49 +4330,56 @@ sections:
     enableVersioning: '1'
     entryTypes:
       62073583-fc93-4b16-9081-a4d281bf6826:
+        name: 'Case Studies'
+        handle: caseStudies
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
         fieldLayouts:
           1ae40b04-73c4-4578-b564-9cfbe42aaad1:
             tabs:
               -
-                fields:
-                  0cec86e6-ee99-4992-95ee-4044be2efd17:
-                    required: '1'
-                    sortOrder: '7'
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: '0'
-                    sortOrder: '3'
-                  1d64b0db-e29d-4232-b025-ff4793117dd8:
-                    required: '0'
-                    sortOrder: '8'
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: '0'
-                    sortOrder: '9'
-                  54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
-                    required: '0'
-                    sortOrder: '6'
-                  8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
-                    required: '0'
-                    sortOrder: '10'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: '0'
-                    sortOrder: '2'
-                  ccddec99-6800-4547-afb4-022b00cf4915:
-                    required: '1'
-                    sortOrder: '5'
-                  ddea1520-060a-494e-95aa-f667a0f513e2:
-                    required: '0'
-                    sortOrder: '4'
                 name: 'Case Study'
-                sortOrder: '1'
-        handle: caseStudies
-        hasTitleField: '1'
-        name: 'Case Studies'
-        sortOrder: '1'
-        titleFormat: null
-        titleLabel: Title
+                sortOrder: 1
+                fields:
+                  99eaaae9-87e0-4b54-a247-504431915423:
+                    required: false
+                    sortOrder: 1
+                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
+                    required: false
+                    sortOrder: 2
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 3
+                  ddea1520-060a-494e-95aa-f667a0f513e2:
+                    required: false
+                    sortOrder: 4
+                  ccddec99-6800-4547-afb4-022b00cf4915:
+                    required: true
+                    sortOrder: 5
+                  54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
+                    required: false
+                    sortOrder: 6
+                  0cec86e6-ee99-4992-95ee-4044be2efd17:
+                    required: true
+                    sortOrder: 7
+                  1d64b0db-e29d-4232-b025-ff4793117dd8:
+                    required: false
+                    sortOrder: 8
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 9
+                  8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
+                    required: false
+                    sortOrder: 10
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                    required: false
+                    sortOrder: 1
     handle: caseStudies
     name: 'Case Studies'
     propagateEntries: '1'
@@ -4417,7 +4428,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: aboutLandingPage
@@ -4462,7 +4473,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: data
@@ -4519,7 +4530,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: strategicInvestments
@@ -4579,7 +4590,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: about
@@ -4668,7 +4679,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: customerService
@@ -4808,7 +4819,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 5
                 fields:
-                  48eea4d7-6b87-4a75-82b1-b7eac2e381c4:
+                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
                     required: false
                     sortOrder: 1
     handle: strategicProgrammes
@@ -4852,400 +4863,400 @@ sites:
     siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
     sortOrder: '2'
 superTableBlockTypes:
-  ef4190f0-c3cb-450d-9fba-f08da126adbf:
-    field: d152a0b3-b09f-4b2c-a7a6-605b9a0fed17
-    fieldLayouts:
-      a73f3320-bc17-4b98-b38d-feab4088ad38:
-        tabs:
-          -
-            name: Content
-            sortOrder: '1'
-            fields:
-              5d97050c-8006-4a6c-b465-3649f9f25445:
-                required: '0'
-                sortOrder: '1'
-              f830e045-da35-4086-81fb-cafea2a44f22:
-                required: '0'
-                sortOrder: '2'
-    fields:
-      5d97050c-8006-4a6c-b465-3649f9f25445:
-        name: 'Contact email'
-        handle: contactEmail
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
-        settings:
-          placeholder: ''
-          code: ''
-          multiline: ''
-          initialRows: '4'
-          charLimit: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-      f830e045-da35-4086-81fb-cafea2a44f22:
-        name: 'Research partners'
-        handle: researchPartners
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
-        settings:
-          placeholder: ''
-          code: ''
-          multiline: ''
-          initialRows: '4'
-          charLimit: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-  11f0d861-3077-4060-bc9c-1302c520e0c7:
-    field: 83a59f94-8342-417f-b427-11c3c162d89e
-    fieldLayouts:
-      4b9dd016-6f9b-492a-ab5e-b60a9c05cea6:
-        tabs:
-          -
-            name: Content
-            sortOrder: '1'
-            fields:
-              927e7ec0-904f-4a13-8fb1-83c7ee913f98:
-                required: '0'
-                sortOrder: '1'
-              f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
-                required: '0'
-                sortOrder: '2'
-              698dcade-907a-4233-8c8e-7421845e74d4:
-                required: '1'
-                sortOrder: '3'
-    fields:
-      927e7ec0-904f-4a13-8fb1-83c7ee913f98:
-        name: Title
-        handle: sectionTitle
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        fieldGroup: null
-        contentColumnType: text
-      f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
-        name: Prefix
-        handle: sectionPrefix
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        fieldGroup: null
-        contentColumnType: text
-      698dcade-907a-4233-8c8e-7421845e74d4:
-        name: 'Content sections'
-        handle: contentSections
-        instructions: ''
-        searchable: '1'
-        translationMethod: site
-        translationKeyFormat: null
-        type: craft\fields\Matrix
-        settings:
-          contentTable: '{{%matrixcontent_contentsections}}'
-          localizeBlocks: ''
-          maxBlocks: ''
-          minBlocks: '1'
-        fieldGroup: null
-        contentColumnType: string
-  aba74ecd-5c81-4302-90e6-f7e62956af82:
-    field: 25308ee1-088a-4b07-83df-c7100eab536e
-    fieldLayouts:
-      a83b1683-6ddd-4b4d-9382-9a200dd5f295:
-        tabs:
-          -
-            name: Content
-            sortOrder: '1'
-            fields:
-              40a0470d-63cb-42e0-99f4-52a8feae74e4:
-                required: '1'
-                sortOrder: '1'
-              e52a337c-79e4-4687-b45f-203cefe9436a:
-                required: '1'
-                sortOrder: '2'
-              f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
-                required: '0'
-                sortOrder: '3'
-    fields:
-      40a0470d-63cb-42e0-99f4-52a8feae74e4:
-        name: Title
-        handle: documentsTitle
-        instructions: 'Give this collection of documents a title e.g. "Senior Management Team expenses"'
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
-        settings:
-          placeholder: ''
-          code: ''
-          multiline: ''
-          initialRows: '4'
-          charLimit: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-      e52a337c-79e4-4687-b45f-203cefe9436a:
-        name: Files
-        handle: documentsFiles
-        instructions: ''
-        searchable: '1'
-        translationMethod: site
-        translationKeyFormat: null
-        type: craft\fields\Assets
-        settings:
-          useSingleFolder: '1'
-          defaultUploadLocationSource: 'folder:563858d0-1634-4f07-b154-778aa535a6c1'
-          defaultUploadLocationSubpath: ''
-          singleUploadLocationSource: 'folder:563858d0-1634-4f07-b154-778aa535a6c1'
-          singleUploadLocationSubpath: documents
-          restrictFiles: '1'
-          allowedKinds:
-            - excel
-            - pdf
-            - word
-          sources: '*'
-          source: null
-          targetSiteId: null
-          viewMode: list
-          limit: ''
-          selectionLabel: 'Add files'
-          localizeRelations: ''
-        fieldGroup: null
-        contentColumnType: string
-      f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
-        name: 'Extra content'
-        handle: documentsExtra
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\redactor\Field
-        settings:
-          redactorConfig: Minimal.json
-          purifierConfig: ''
-          cleanupHtml: '1'
-          purifyHtml: '1'
-          columnType: text
-          availableVolumes: ''
-          availableTransforms: ''
-        fieldGroup: null
-        contentColumnType: text
-  f5bee33c-d3f2-4482-bf4e-ef30a5e90088:
-    field: b1a844c2-594c-4e72-8523-a911d7b80f24
-    fieldLayouts:
-      e105f608-bdf3-40e6-8052-6d19e15a9bc4:
-        tabs:
-          -
-            name: Content
-            sortOrder: '1'
-            fields:
-              1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
-                required: '1'
-                sortOrder: '1'
-              27a7b349-c009-41c7-9e13-51bd131b5785:
-                required: '1'
-                sortOrder: '2'
-              6814cacd-1dbf-4109-ba6b-8862c021852e:
-                required: '1'
-                sortOrder: '3'
-              cf987298-5d2c-42e4-9ae8-570e017fa92d:
-                required: '1'
-                sortOrder: '4'
-    fields:
-      1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
-        name: England
-        handle: england
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\Table
-        settings:
-          addRowLabel: 'Add a row'
-          maxRows: ''
-          minRows: '1'
-          columns:
-            col1:
-              heading: Label
-              handle: label
-              width: ''
-              type: singleline
-            col2:
-              heading: Value
-              handle: value
-              width: ''
-              type: singleline
-          defaults:
-            row1:
-              col1: ''
-              col2: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-      27a7b349-c009-41c7-9e13-51bd131b5785:
-        name: 'Northern Ireland'
-        handle: northernIreland
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\Table
-        settings:
-          addRowLabel: 'Add a row'
-          maxRows: ''
-          minRows: '1'
-          columns:
-            col1:
-              heading: Label
-              handle: label
-              width: ''
-              type: singleline
-            col2:
-              heading: Value
-              handle: value
-              width: ''
-              type: singleline
-          defaults:
-            row1:
-              col1: ''
-              col2: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-      6814cacd-1dbf-4109-ba6b-8862c021852e:
-        name: Scotland
-        handle: scotland
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\Table
-        settings:
-          addRowLabel: 'Add a row'
-          maxRows: ''
-          minRows: '1'
-          columns:
-            col1:
-              heading: Label
-              handle: label
-              width: ''
-              type: singleline
-            col2:
-              heading: Value
-              handle: value
-              width: ''
-              type: singleline
-          defaults:
-            row1:
-              col1: ''
-              col2: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
-      cf987298-5d2c-42e4-9ae8-570e017fa92d:
-        name: Wales
-        handle: wales
-        instructions: ''
-        searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\Table
-        settings:
-          addRowLabel: 'Add a row'
-          maxRows: ''
-          minRows: '1'
-          columns:
-            col1:
-              heading: Label
-              handle: label
-              width: ''
-              type: singleline
-            col2:
-              heading: Value
-              handle: value
-              width: ''
-              type: singleline
-          defaults:
-            row1:
-              col1: ''
-              col2: ''
-          columnType: text
-        fieldGroup: null
-        contentColumnType: text
   0bae165b-b95b-4859-ad38-f059c70852be:
     field: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
     fieldLayouts:
       bb3ea61d-8133-4cca-bc31-ec9396db1074:
         tabs:
           -
-            name: Content
-            sortOrder: '1'
             fields:
               4c0e3bec-906f-4f73-a77c-e631d982dc1a:
                 required: '0'
-                sortOrder: '1'
+                sortOrder: 1
               9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
                 required: '0'
-                sortOrder: '2'
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
     fields:
       4c0e3bec-906f-4f73-a77c-e631d982dc1a:
-        name: Image
+        contentColumnType: string
+        fieldGroup: null
         handle: image
         instructions: ''
+        name: Image
         searchable: '1'
-        translationMethod: site
-        translationKeyFormat: null
-        type: craft\fields\Entries
         settings:
+          limit: '1'
+          localizeRelations: ''
+          selectionLabel: 'Select a hero image'
+          source: null
           sources:
             - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
-          source: null
           targetSiteId: null
           viewMode: null
-          limit: '1'
-          selectionLabel: 'Select a hero image'
-          localizeRelations: ''
-        fieldGroup: null
-        contentColumnType: string
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Entries
       9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
-        name: Credit
+        contentColumnType: text
+        fieldGroup: null
         handle: credit
         instructions: 'Use this field if you want to provide a longer custom credit for the image'
+        name: Credit
         searchable: '1'
-        translationMethod: language
-        translationKeyFormat: null
-        type: craft\fields\PlainText
         settings:
-          placeholder: ''
-          code: ''
-          multiline: ''
-          initialRows: '4'
           charLimit: ''
+          code: ''
           columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+  11f0d861-3077-4060-bc9c-1302c520e0c7:
+    field: 83a59f94-8342-417f-b427-11c3c162d89e
+    fieldLayouts:
+      4b9dd016-6f9b-492a-ab5e-b60a9c05cea6:
+        tabs:
+          -
+            fields:
+              698dcade-907a-4233-8c8e-7421845e74d4:
+                required: true
+                sortOrder: 3
+              927e7ec0-904f-4a13-8fb1-83c7ee913f98:
+                required: false
+                sortOrder: 1
+              f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
+                required: false
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      698dcade-907a-4233-8c8e-7421845e74d4:
+        contentColumnType: string
         fieldGroup: null
+        handle: contentSections
+        instructions: ''
+        name: 'Content sections'
+        searchable: true
+        settings:
+          contentTable: '{{%matrixcontent_contentsections}}'
+          localizeBlocks: ''
+          maxBlocks: ''
+          minBlocks: '1'
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Matrix
+      927e7ec0-904f-4a13-8fb1-83c7ee913f98:
         contentColumnType: text
+        fieldGroup: null
+        handle: sectionTitle
+        instructions: ''
+        name: Title
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+      f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
+        contentColumnType: text
+        fieldGroup: null
+        handle: sectionPrefix
+        instructions: ''
+        name: Prefix
+        searchable: true
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+  aba74ecd-5c81-4302-90e6-f7e62956af82:
+    field: 25308ee1-088a-4b07-83df-c7100eab536e
+    fieldLayouts:
+      a83b1683-6ddd-4b4d-9382-9a200dd5f295:
+        tabs:
+          -
+            fields:
+              40a0470d-63cb-42e0-99f4-52a8feae74e4:
+                required: '1'
+                sortOrder: 1
+              e52a337c-79e4-4687-b45f-203cefe9436a:
+                required: '1'
+                sortOrder: 2
+              f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
+                required: '0'
+                sortOrder: 3
+            name: Content
+            sortOrder: 1
+    fields:
+      40a0470d-63cb-42e0-99f4-52a8feae74e4:
+        contentColumnType: text
+        fieldGroup: null
+        handle: documentsTitle
+        instructions: 'Give this collection of documents a title e.g. "Senior Management Team expenses"'
+        name: Title
+        searchable: '1'
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+      e52a337c-79e4-4687-b45f-203cefe9436a:
+        contentColumnType: string
+        fieldGroup: null
+        handle: documentsFiles
+        instructions: ''
+        name: Files
+        searchable: '1'
+        settings:
+          allowedKinds:
+            - excel
+            - pdf
+            - word
+          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          defaultUploadLocationSubpath: ''
+          limit: ''
+          localizeRelations: ''
+          restrictFiles: '1'
+          selectionLabel: 'Add files'
+          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          singleUploadLocationSubpath: documents
+          source: null
+          sources: '*'
+          targetSiteId: null
+          useSingleFolder: '1'
+          viewMode: list
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Assets
+      f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
+        contentColumnType: text
+        fieldGroup: null
+        handle: documentsExtra
+        instructions: ''
+        name: 'Extra content'
+        searchable: '1'
+        settings:
+          availableTransforms: ''
+          availableVolumes: ''
+          cleanupHtml: '1'
+          columnType: text
+          purifierConfig: ''
+          purifyHtml: '1'
+          redactorConfig: Minimal.json
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\redactor\Field
+  ef4190f0-c3cb-450d-9fba-f08da126adbf:
+    field: d152a0b3-b09f-4b2c-a7a6-605b9a0fed17
+    fieldLayouts:
+      a73f3320-bc17-4b98-b38d-feab4088ad38:
+        tabs:
+          -
+            fields:
+              5d97050c-8006-4a6c-b465-3649f9f25445:
+                required: '0'
+                sortOrder: 1
+              f830e045-da35-4086-81fb-cafea2a44f22:
+                required: '0'
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      5d97050c-8006-4a6c-b465-3649f9f25445:
+        contentColumnType: text
+        fieldGroup: null
+        handle: contactEmail
+        instructions: ''
+        name: 'Contact email'
+        searchable: '1'
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+      f830e045-da35-4086-81fb-cafea2a44f22:
+        contentColumnType: text
+        fieldGroup: null
+        handle: researchPartners
+        instructions: ''
+        name: 'Research partners'
+        searchable: '1'
+        settings:
+          charLimit: ''
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\PlainText
+  f5bee33c-d3f2-4482-bf4e-ef30a5e90088:
+    field: b1a844c2-594c-4e72-8523-a911d7b80f24
+    fieldLayouts:
+      e105f608-bdf3-40e6-8052-6d19e15a9bc4:
+        tabs:
+          -
+            fields:
+              1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
+                required: '1'
+                sortOrder: 1
+              27a7b349-c009-41c7-9e13-51bd131b5785:
+                required: '1'
+                sortOrder: 2
+              6814cacd-1dbf-4109-ba6b-8862c021852e:
+                required: '1'
+                sortOrder: 3
+              cf987298-5d2c-42e4-9ae8-570e017fa92d:
+                required: '1'
+                sortOrder: 4
+            name: Content
+            sortOrder: 1
+    fields:
+      1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
+        contentColumnType: text
+        fieldGroup: null
+        handle: england
+        instructions: ''
+        name: England
+        searchable: '1'
+        settings:
+          addRowLabel: 'Add a row'
+          columnType: text
+          columns:
+            col1:
+              handle: label
+              heading: Label
+              type: singleline
+              width: ''
+            col2:
+              handle: value
+              heading: Value
+              type: singleline
+              width: ''
+          defaults:
+            row1:
+              col1: ''
+              col2: ''
+          maxRows: ''
+          minRows: '1'
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\Table
+      27a7b349-c009-41c7-9e13-51bd131b5785:
+        contentColumnType: text
+        fieldGroup: null
+        handle: northernIreland
+        instructions: ''
+        name: 'Northern Ireland'
+        searchable: '1'
+        settings:
+          addRowLabel: 'Add a row'
+          columnType: text
+          columns:
+            col1:
+              handle: label
+              heading: Label
+              type: singleline
+              width: ''
+            col2:
+              handle: value
+              heading: Value
+              type: singleline
+              width: ''
+          defaults:
+            row1:
+              col1: ''
+              col2: ''
+          maxRows: ''
+          minRows: '1'
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\Table
+      6814cacd-1dbf-4109-ba6b-8862c021852e:
+        contentColumnType: text
+        fieldGroup: null
+        handle: scotland
+        instructions: ''
+        name: Scotland
+        searchable: '1'
+        settings:
+          addRowLabel: 'Add a row'
+          columnType: text
+          columns:
+            col1:
+              handle: label
+              heading: Label
+              type: singleline
+              width: ''
+            col2:
+              handle: value
+              heading: Value
+              type: singleline
+              width: ''
+          defaults:
+            row1:
+              col1: ''
+              col2: ''
+          maxRows: ''
+          minRows: '1'
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\Table
+      cf987298-5d2c-42e4-9ae8-570e017fa92d:
+        contentColumnType: text
+        fieldGroup: null
+        handle: wales
+        instructions: ''
+        name: Wales
+        searchable: '1'
+        settings:
+          addRowLabel: 'Add a row'
+          columnType: text
+          columns:
+            col1:
+              handle: label
+              heading: Label
+              type: singleline
+              width: ''
+            col2:
+              handle: value
+              heading: Value
+              type: singleline
+              width: ''
+          defaults:
+            row1:
+              col1: ''
+              col2: ''
+          maxRows: ''
+          minRows: '1'
+        translationKeyFormat: null
+        translationMethod: language
+        type: craft\fields\Table
 system:
   edition: pro
   live: true
