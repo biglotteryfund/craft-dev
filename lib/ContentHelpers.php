@@ -18,6 +18,7 @@ class ContentHelpers
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+            'openGraph' => self::extractSocialMetaTags($entry),
             // @TODO: Is url used anywhere?
             'url' => $entry->url,
             // @TODO: Some older pages use path instead of linkUrl in templates, update these uses and then remove this
@@ -205,5 +206,32 @@ class ContentHelpers
             'h' => 100,
             'crop' => 'faces',
         ]) : null;
+    }
+
+    // Returns a set of open graph meta tags, optionally matching a ?social=<slug> querystring
+    public static function extractSocialMetaTags(Entry $entry)
+    {
+        $openGraph = [];
+
+        if ($entry->socialMediaTags) {
+
+            // Default to using the first set of tags
+            $ogData = $entry->socialMediaTags->one();
+
+            if ($ogData) {
+                // If we've passed a ?social=<slug> parameter, try to find its
+                // matching set of tags (eg. for per-URL open graph metadata)
+                if ($searchQuery = \Craft::$app->request->getParam('social')) {
+                    $ogData = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                }
+
+                $openGraph['title'] = $ogData->ogTitle ?? null;
+                $openGraph['description'] = $ogData->ogDescription ?? null;
+                $openGraph['facebookImage'] = $ogData->ogFacebookImage ? Images::extractImageUrl($ogData->ogFacebookImage) : null;
+                $openGraph['twitterImage'] = $ogData->ogTwitterImage ? Images::extractImageUrl($ogData->ogTwitterImage) : null;
+            }
+        }
+
+        return $openGraph;
     }
 }
