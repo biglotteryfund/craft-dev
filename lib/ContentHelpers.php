@@ -213,7 +213,7 @@ class ContentHelpers
     {
         $openGraph = [];
 
-        if ($entry->socialMediaTags) {
+        if (!empty($entry->socialMediaTags)) {
 
             // Default to using the first set of tags
             $ogData = $entry->socialMediaTags->one();
