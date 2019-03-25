@@ -222,7 +222,8 @@ class ContentHelpers
                 // If we've passed a ?social=<slug> parameter, try to find its
                 // matching set of tags (eg. for per-URL open graph metadata)
                 if ($searchQuery = \Craft::$app->request->getParam('social')) {
-                    $ogData = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                    $matchingSlug = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                    $ogData = $matchingSlug ? $matchingSlug : $ogData;
                 }
 
                 $openGraph['title'] = $ogData->ogTitle ?? null;
