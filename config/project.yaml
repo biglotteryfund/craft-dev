@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553511915
+dateModified: 1553531104
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -58,8 +58,6 @@ fieldGroups:
     name: Research
   9a6de417-cda1-486f-9022-b8c5387f751e:
     name: 'Funding Programmes'
-  ced9caae-f5aa-41e8-ab84-0b3f7f74ea13:
-    name: 'Delete Me'
   e3237b61-2fe0-45f7-9036-c1ff7a7975e8:
     name: Data
   f0f968ce-8ae3-4607-9e2f-c7d06f196869:
@@ -68,7 +66,7 @@ fieldGroups:
     name: Homepage
   fe37f91c-b0e2-482c-8482-05d9b335ce86:
     name: Merchandise
-  414787c6-943a-4f50-b4f6-a0a9017a3874:
+  a9adb8e8-0825-43f9-8f1a-862323940637:
     name: 'Social Media'
 fields:
   02eb210a-8b09-489c-994d-009c27b6167b:
@@ -1587,7 +1585,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
     name: 'Social Media Tags'
     handle: socialMediaTags
     instructions: 'Add some Open Graph metadata which displays when this content is shared on social media (eg. Twitter and Facebook cards)'
@@ -1601,7 +1599,7 @@ fields:
       contentTable: '{{%matrixcontent_socialmediatags}}'
       localizeBlocks: '1'
     contentColumnType: string
-    fieldGroup: 414787c6-943a-4f50-b4f6-a0a9017a3874
+    fieldGroup: a9adb8e8-0825-43f9-8f1a-862323940637
 imageTransforms:
   02af4884-899c-46bf-9add-6bfac4b267c8:
     format: null
@@ -3242,13 +3240,13 @@ matrixBlockTypes:
     handle: product
     name: Product
     sortOrder: '1'
-  68dbd979-4dd5-4892-8ee7-24c7e0e2d338:
-    field: 5bfc2b9a-ed44-4c97-9606-e0549626166b
+  cdf38474-7e76-4140-aecb-1e2962f2a9b7:
+    field: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
     name: 'Open Graph Tags'
     handle: openGraphTags
     sortOrder: 1
     fields:
-      e25fad1b-ef7c-43b5-b7e3-f1a6b3a52a30:
+      34c79cfe-a250-4f37-9db7-09538f105c74:
         name: Title
         handle: ogTitle
         instructions: "The title of this article without any branding (such as our site name). If left blank, the current entry title will be used.\r\n"
@@ -3265,7 +3263,7 @@ matrixBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
-      9d8a6983-da20-40c5-9e86-5f75f542948f:
+      10b1092c-6186-4d57-825b-29af4519292d:
         name: Description
         handle: ogDescription
         instructions: 'A brief description of the content, usually between 2 and 4 sentences. This will displayed below the title of the post on Facebook.'
@@ -3282,10 +3280,10 @@ matrixBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
-      308fc1d1-f833-4368-aa68-ba1a57582ee2:
+      313a413e-2758-4963-8abf-7ae418034c90:
         name: 'Facebook Image'
         handle: ogFacebookImage
-        instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px.\r\n"
+        instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px."
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3308,10 +3306,10 @@ matrixBlockTypes:
           localizeRelations: ''
         contentColumnType: string
         fieldGroup: null
-      fd68a4fd-5663-421a-994b-9004194f2806:
+      d0c63510-508c-48bf-8cf2-20b02e9682f7:
         name: 'Twitter Image'
         handle: ogTwitterImage
-        instructions: "• Images for this Card support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels.\r\n• Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
+        instructions: "• Images for Twitter Cards support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels.\r\n• Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3334,10 +3332,10 @@ matrixBlockTypes:
           localizeRelations: ''
         contentColumnType: string
         fieldGroup: null
-      9359e6b6-a3b1-425c-a82b-521a840ae6da:
+      c147383b-5f6d-449c-9120-0ac3da15a85f:
         name: Slug
         handle: ogSlug
-        instructions: "Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.\r\n"
+        instructions: 'Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.'
         searchable: true
         translationMethod: site
         translationKeyFormat: null
@@ -3352,25 +3350,25 @@ matrixBlockTypes:
         contentColumnType: text
         fieldGroup: null
     fieldLayouts:
-      ecf67017-724b-4e8c-bfdb-c59c0456d1dc:
+      df689c5d-a020-4ec2-971f-ca2cd8f5c1b1:
         tabs:
           -
             name: Content
             sortOrder: 1
             fields:
-              e25fad1b-ef7c-43b5-b7e3-f1a6b3a52a30:
+              34c79cfe-a250-4f37-9db7-09538f105c74:
                 required: false
                 sortOrder: 1
-              9d8a6983-da20-40c5-9e86-5f75f542948f:
+              10b1092c-6186-4d57-825b-29af4519292d:
                 required: false
                 sortOrder: 2
-              308fc1d1-f833-4368-aa68-ba1a57582ee2:
+              313a413e-2758-4963-8abf-7ae418034c90:
                 required: false
                 sortOrder: 3
-              fd68a4fd-5663-421a-994b-9004194f2806:
+              d0c63510-508c-48bf-8cf2-20b02e9682f7:
                 required: false
                 sortOrder: 4
-              9359e6b6-a3b1-425c-a82b-521a840ae6da:
+              c147383b-5f6d-449c-9120-0ac3da15a85f:
                 required: false
                 sortOrder: 5
 plugins:
@@ -3487,7 +3485,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: buildingBetterOpportunities
@@ -3539,7 +3537,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: jobs
@@ -3636,7 +3634,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 3
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: fundingProgrammes
@@ -3750,7 +3748,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 3
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: research
@@ -3772,25 +3770,32 @@ sections:
     enableVersioning: '1'
     entryTypes:
       a11f990c-b6b9-4887-bfc3-5aaca8b7c3c0:
+        name: Aliases
+        handle: aliases
+        hasTitleField: false
+        titleLabel: ''
+        titleFormat: '{slug}'
+        sortOrder: 1
         fieldLayouts:
           fda6063b-17f6-4bd4-b0eb-42fdcf0031ef:
             tabs:
               -
-                fields:
-                  02eb210a-8b09-489c-994d-009c27b6167b:
-                    required: '0'
-                    sortOrder: '2'
-                  adfb9aa8-ae2e-4b0e-9068-1a58c62105b0:
-                    required: '0'
-                    sortOrder: '1'
                 name: Aliases
-                sortOrder: '1'
-        handle: aliases
-        hasTitleField: '0'
-        name: Aliases
-        sortOrder: '1'
-        titleFormat: '{slug}'
-        titleLabel: null
+                sortOrder: 1
+                fields:
+                  adfb9aa8-ae2e-4b0e-9068-1a58c62105b0:
+                    required: false
+                    sortOrder: 1
+                  02eb210a-8b09-489c-994d-009c27b6167b:
+                    required: false
+                    sortOrder: 2
+              -
+                name: 'Delete Me'
+                sortOrder: 2
+                fields:
+                  e5ca4911-ec90-44e6-8349-34361a8da221:
+                    required: false
+                    sortOrder: 1
     handle: aliases
     name: Aliases
     propagateEntries: '0'
@@ -3851,7 +3856,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
       af57c0a7-4c55-470e-9331-03fc4c25b6f9:
@@ -3899,7 +3904,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
       c9f7e8cb-c731-4f5f-8f52-41611666b3a5:
@@ -3959,7 +3964,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: updates
@@ -4010,7 +4015,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: merchandise
@@ -4067,7 +4072,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: benefits
@@ -4124,7 +4129,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: contact
@@ -4187,7 +4192,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: fundingGuidance
@@ -4250,7 +4255,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: projectStories
@@ -4305,7 +4310,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 3
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: people
@@ -4377,7 +4382,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: caseStudies
@@ -4428,7 +4433,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: aboutLandingPage
@@ -4473,7 +4478,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: data
@@ -4530,7 +4535,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: strategicInvestments
@@ -4590,7 +4595,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: about
@@ -4679,7 +4684,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 2
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: customerService
@@ -4819,7 +4824,7 @@ sections:
                 name: 'Social Media'
                 sortOrder: 5
                 fields:
-                  5bfc2b9a-ed44-4c97-9606-e0549626166b:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
     handle: strategicProgrammes
