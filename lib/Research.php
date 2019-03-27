@@ -89,12 +89,12 @@ class ResearchTransformer extends TransformerAbstract
             ]);
         } else {
 
-            $asset = $entry->document->one();
-            $documentData = [
+            $asset = !empty($entry->document) ? $entry->document->one() : null;
+            $documentData = $asset ? [
                 'url' => $asset->url,
                 'filetype' => $asset->kind,
                 'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0)
-            ];
+            ] : null;
 
             return array_merge($common, [
                 'summary' => $entry->summary,
@@ -106,7 +106,7 @@ class ResearchTransformer extends TransformerAbstract
                 }, $entry->programme->all() ?? []),
                 'portfolio' => !empty($entry->portfolio) ? ContentHelpers::nestedCategorySummary($entry->portfolio->all(), $this->locale) : [],
                 'partnershipName' => $entry->partnershipName,
-                'documentType' => !empty($entry->documentType) ? ContentHelpers::categorySummary($entry->documentType->one(), $this->locale) : [],
+                'documentType' => !empty($entry->documentType->all()) ? ContentHelpers::categorySummary($entry->documentType->one(), $this->locale) : [],
                 'document' => $documentData,
                 'publisher' => $entry->publisher,
                 'tags' => !empty($entry->documentTags) ? ContentHelpers::getTags($entry->documentTags->all(), $this->locale) : null,
