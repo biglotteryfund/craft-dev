@@ -26,66 +26,92 @@ class ResearchTransformer extends TransformerAbstract
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $common = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
-        $researchMeta = $entry->researchMeta->one();
+        if ($entry->type->handle === 'research') {
+            $researchMeta = $entry->researchMeta->one();
+            return array_merge($common, [
+                // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
+                'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
+                'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
 
-        return array_merge($common, [
-            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
-            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
-            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+                'introduction' => $entry->introductionText ?? null,
+                'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
+                'researchPartners' => $researchMeta ? $researchMeta->researchPartners : null,
 
-            'introduction' => $entry->introductionText ?? null,
-            'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
-            'researchPartners' => $researchMeta ? $researchMeta->researchPartners : null,
+                'documentsPrefix' => $entry->researchDocumentsPrefix ?? null,
+                'documents' => array_map(function ($document) {
+                    $asset = $document->documentAsset->one();
+                    return [
+                        'title' => $document->documentTitle,
+                        'url' => $asset->url,
+                        'filetype' => $asset->kind,
+                        'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0),
+                        'contents' => $document->documentContents ? explode("\n", $document->documentContents) : [],
+                    ];
+                }, $entry->researchDocuments->all() ?? []),
 
-            'documentsPrefix' => $entry->researchDocumentsPrefix ?? null,
-            'documents' => array_map(function ($document) {
-                $asset = $document->documentAsset->one();
-                return [
-                    'title' => $document->documentTitle,
-                    'url' => $asset->url,
-                    'filetype' => $asset->kind,
-                    'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0),
-                    'contents' => $document->documentContents ? explode("\n", $document->documentContents) : [],
-                ];
-            }, $entry->researchDocuments->all() ?? []),
+                'relatedFundingProgrammes' => array_map(function ($programme) {
+                    return [
+                        'title' => $programme->title,
+                        'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
+                    ];
+                }, $entry->relatedFundingProgrammes->all() ?? []),
 
-            'relatedFundingProgrammes' => array_map(function ($programme) {
-                return [
-                    'title' => $programme->title,
-                    'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
-                ];
-            }, $entry->relatedFundingProgrammes->all() ?? []),
+                'sectionsPrefix' => $entry->researchSectionsPrefix ?? null,
+                'sections' => array_map(function ($row) {
+                    return [
+                        'title' => $row->sectionTitle,
+                        'prefix' => $row->sectionPrefix ?? null,
+                        'parts' => array_map(function ($block) {
+                            switch ($block->type->handle) {
+                                case 'contentArea':
+                                    return [
+                                        'type' => $block->type->handle,
+                                        'title' => $block->contentTitle,
+                                        'content' => $block->contentBody,
+                                    ];
+                                    break;
+                                case 'callout':
+                                    return [
+                                        'type' => $block->type->handle,
+                                        'content' => $block->calloutContent,
+                                        'credit' => $block->calloutCredit ?? null,
+                                        'isQuote' => $block->isQuote,
+                                    ];
+                                    break;
+                            }
+                        }, $row->contentSections->all() ?? [])
+                    ];
+                }, $entry->researchSections->all() ?? []),
 
-            'sectionsPrefix' => $entry->researchSectionsPrefix ?? null,
-            'sections' => array_map(function ($row) {
-                return [
-                    'title' => $row->sectionTitle,
-                    'prefix' => $row->sectionPrefix ?? null,
-                    'parts' => array_map(function ($block) {
-                        switch ($block->type->handle) {
-                            case 'contentArea':
-                                return [
-                                    'type' => $block->type->handle,
-                                    'title' => $block->contentTitle,
-                                    'content' => $block->contentBody,
-                                ];
-                                break;
-                            case 'callout':
-                                return [
-                                    'type' => $block->type->handle,
-                                    'content' => $block->calloutContent,
-                                    'credit' => $block->calloutCredit ?? null,
-                                    'isQuote' => $block->isQuote,
-                                ];
-                                break;
-                        }
-                    }, $row->contentSections->all() ?? [])
-                ];
-            }, $entry->researchSections->all() ?? []),
+                'meta' => [
+                    'searchScore' => $entry->searchScore ?? null,
+                ],
+            ]);
+        } else {
 
-            'meta' => [
-                'searchScore' => $entry->searchScore ?? null,
-            ],
-        ]);
+            $asset = $entry->document->one();
+            $documentData = [
+                'url' => $asset->url,
+                'filetype' => $asset->kind,
+                'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0)
+            ];
+
+            return array_merge($common, [
+                'summary' => $entry->summary,
+                'relatedFundingProgrammes' => array_map(function ($programme) {
+                    return [
+                        'title' => $programme->title,
+                        'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
+                    ];
+                }, $entry->programme->all() ?? []),
+                'portfolio' => !empty($entry->portfolio) ? ContentHelpers::nestedCategorySummary($entry->portfolio->all(), $this->locale) : [],
+                'partnershipName' => $entry->partnershipName,
+                'documentType' => !empty($entry->documentType) ? ContentHelpers::categorySummary($entry->documentType->one(), $this->locale) : [],
+                'document' => $documentData,
+                'publisher' => $entry->publisher,
+                'tags' => !empty($entry->documentTags) ? ContentHelpers::getTags($entry->documentTags->all(), $this->locale) : null,
+            ]);
+        }
+
     }
 }

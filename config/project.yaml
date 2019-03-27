@@ -29,7 +29,22 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553531104
+  8c0e1bff-9968-4082-8e67-11cf77d01c3f:
+    name: "Insight Document Type\t"
+    handle: insightDocumentType
+    structure:
+      uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
+      maxLevels: '1'
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        hasUrls: false
+        uriFormat: null
+        template: null
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        hasUrls: false
+        uriFormat: null
+        template: null
+dateModified: 1553603461
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -68,6 +83,8 @@ fieldGroups:
     name: Merchandise
   a9adb8e8-0825-43f9-8f1a-862323940637:
     name: 'Social Media'
+  24b26cf1-ecc7-44ee-a2d5-0f1de62055cf:
+    name: 'Insight Document'
 fields:
   02eb210a-8b09-489c-994d-009c27b6167b:
     contentColumnType: string
@@ -1600,6 +1617,167 @@ fields:
       localizeBlocks: '1'
     contentColumnType: string
     fieldGroup: a9adb8e8-0825-43f9-8f1a-862323940637
+  5024077b-fccb-4164-8874-8fd05a936e13:
+    name: Programme
+    handle: programme
+    instructions: 'Choose a funding programme that this research relates to'
+    searchable: false
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Entries
+    settings:
+      sources:
+        - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
+        - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
+      source: null
+      targetSiteId: null
+      viewMode: null
+      limit: ''
+      selectionLabel: 'Choose a programme'
+      localizeRelations: '1'
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  60a339d6-ca4b-48a2-9e48-6c2bbe582b0e:
+    name: Summary
+    handle: summary
+    instructions: 'A couple of sentences to summarise the content of this document'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  f91f1b44-ef7d-4f91-8d75-75ad6ae3a677:
+    name: Publisher
+    handle: publisher
+    instructions: 'The name of the publisher of this document, eg. "The National Lottery Community Fund" or "Anna Freud".'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  ebcd4aaf-83ff-48e4-9f0d-8a7e22313652:
+    name: 'Document Type'
+    handle: documentType
+    instructions: 'What kind of document this is'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Categories
+    settings:
+      branchLimit: '1'
+      sources: '*'
+      source: 'group:8c0e1bff-9968-4082-8e67-11cf77d01c3f'
+      targetSiteId: null
+      viewMode: null
+      limit: null
+      selectionLabel: 'Choose a document type'
+      localizeRelations: ''
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  6ffbb157-9d66-4994-8a8f-947c35960c2d:
+    name: Portfolio
+    handle: portfolio
+    instructions: 'Which funding portfolio location does this document relate to?'
+    searchable: false
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Categories
+    settings:
+      branchLimit: '1'
+      sources: '*'
+      source: 'group:83f5331d-3367-4856-ab4c-acf5d2725b10'
+      targetSiteId: null
+      viewMode: null
+      limit: null
+      selectionLabel: 'Choose a portfolio'
+      localizeRelations: ''
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  0bab8639-49a8-4bf6-aff7-5ffe60e2bab8:
+    name: Document
+    handle: document
+    instructions: 'Upload the file here'
+    searchable: false
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Assets
+    settings:
+      useSingleFolder: '1'
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: insights/documents
+      restrictFiles: ''
+      allowedKinds:
+        - compressed
+        - excel
+        - html
+        - image
+        - pdf
+        - powerpoint
+        - text
+        - video
+        - word
+      sources: '*'
+      source: null
+      targetSiteId: null
+      viewMode: list
+      limit: '1'
+      selectionLabel: ''
+      localizeRelations: ''
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  3544eb2e-dd0a-4c86-9474-692a074b6802:
+    name: Tags
+    handle: documentTags
+    instructions: 'Add some keywords to help people find this document (eg. "Volunteering", "Loneliness", "Youth employment" etc)'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Tags
+    settings:
+      sources: '*'
+      source: 'taggroup:7e74a4e5-2144-4421-8176-8d66e57f0a3e'
+      targetSiteId: null
+      viewMode: null
+      limit: null
+      selectionLabel: ''
+      localizeRelations: ''
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+  69bcf1c5-c1e1-45db-b20f-76643d1751de:
+    name: 'Partnership Name'
+    handle: partnershipName
+    instructions: 'Add the name of the group or programme this document was produced in partnership with'
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
 imageTransforms:
   02af4884-899c-46bf-9add-6bfac4b267c8:
     format: null
@@ -3556,7 +3734,25 @@ sections:
         uriFormat: jobs
     type: single
   2b1f6da1-20e9-4176-a181-7ab073fab8f9:
-    enableVersioning: '1'
+    name: 'Funding Programmes'
+    handle: fundingProgrammes
+    type: structure
+    enableVersioning: true
+    propagateEntries: true
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'funding/programmes/{slug}'
+        template: funding-programs/_entry
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'funding/programmes/{slug}'
+        template: funding-programs/_entry
+    structure:
+      uid: 570b86f8-ad2e-487e-b501-2c14f616844a
+      maxLevels: '1'
     entryTypes:
       79c88f21-da56-48db-9e1c-ec15618ca38f:
         name: 'Funding Programmes'
@@ -3637,24 +3833,6 @@ sections:
                   6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
-    handle: fundingProgrammes
-    name: 'Funding Programmes'
-    propagateEntries: '1'
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
-    structure:
-      maxLevels: '1'
-      uid: 570b86f8-ad2e-487e-b501-2c14f616844a
-    type: structure
   2b255d19-d30b-4d89-8555-cddcd1eb945e:
     enableVersioning: '1'
     entryTypes:
@@ -3751,6 +3929,44 @@ sections:
                   6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
                     required: false
                     sortOrder: 1
+      e22437bd-941b-4079-9b02-4f37c5b41ea9:
+        name: Document
+        handle: researchDocument
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 2
+        fieldLayouts:
+          8185a6ba-3549-4be6-92c2-3cd81f83275f:
+            tabs:
+              -
+                name: 'Insight Document'
+                sortOrder: 1
+                fields:
+                  60a339d6-ca4b-48a2-9e48-6c2bbe582b0e:
+                    required: true
+                    sortOrder: 1
+                  5024077b-fccb-4164-8874-8fd05a936e13:
+                    required: true
+                    sortOrder: 2
+                  6ffbb157-9d66-4994-8a8f-947c35960c2d:
+                    required: false
+                    sortOrder: 3
+                  69bcf1c5-c1e1-45db-b20f-76643d1751de:
+                    required: false
+                    sortOrder: 4
+                  ebcd4aaf-83ff-48e4-9f0d-8a7e22313652:
+                    required: true
+                    sortOrder: 5
+                  0bab8639-49a8-4bf6-aff7-5ffe60e2bab8:
+                    required: true
+                    sortOrder: 6
+                  f91f1b44-ef7d-4f91-8d75-75ad6ae3a677:
+                    required: false
+                    sortOrder: 7
+                  3544eb2e-dd0a-4c86-9474-692a074b6802:
+                    required: true
+                    sortOrder: 8
     handle: research
     name: Insights
     propagateEntries: '1'
