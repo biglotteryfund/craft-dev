@@ -225,25 +225,46 @@ function getResearch($locale, $type = false)
             'subLeft' => true,
             'subRight' => true,
         ];
+    } else if ($sortQuery = \Craft::$app->request->getParam('sort')) {
+        if ($sortQuery === 'newest') {
+            $criteria['orderBy'] = 'postDate desc';
+        } else if ($sortQuery === 'oldest') {
+            $criteria['orderBy'] = 'postDate asc';
+        }
     }
 
     // Document-specific search query fields
     if ($type === 'documents') {
 
+        // @TODO include non-live programmes?
         $allProgrammes = array_map(function ($programme) use ($locale) {
             return [
-                'title' => $programme->title,
-                'slug' => $programme->slug
+                'label' => $programme->title,
+                'value' => $programme->slug
             ];
-        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->site($locale)->all());
+        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->orderBy('title')->site($locale)->all());
+
+        $allRegions = array_map(function ($region) use ($locale) {
+            return [
+                'label' => $region->title,
+                'value' => $region->slug
+            ];
+        }, Category::find()->group('region')->orderBy('title')->site($locale)->all());
+
+        $allDocTypes = array_map(function ($type) use ($locale) {
+            return [
+                'label' => $type->title,
+                'value' => $type->slug
+            ];
+        }, Category::find()->group('insightDocumentType')->orderBy('title')->site($locale)->all());
 
         $meta = [
             'activeTag' => null,
             'activeProgramme' => null,
             'activePortfolio' => null,
             'activeDocType' => null,
-            'portfolios' => ContentHelpers::nestedCategorySummary(Category::find()->group('region')->site($locale)->all(), $locale),
-            'docTypes' => ContentHelpers::nestedCategorySummary(Category::find()->group('insightDocumentType')->site($locale)->all(), $locale),
+            'portfolios' => $allRegions,
+            'docTypes' => $allDocTypes,
             'programmes' => $allProgrammes,
         ];
 
@@ -265,8 +286,8 @@ function getResearch($locale, $type = false)
             $activeProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->slug($programmeQuery)->site($locale)->one();
             if ($activeProgramme) {
                 $meta['activeProgramme'] = [
-                    'title' => $activeProgramme->title,
-                    'slug' => $activeProgramme->slug
+                    'label' => $activeProgramme->title,
+                    'value' => $activeProgramme->slug
                 ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activeProgramme,
@@ -279,8 +300,8 @@ function getResearch($locale, $type = false)
             $activePortfolio = Category::find()->group('region')->slug($portfolioQuery)->site($locale)->one();
             if ($activePortfolio) {
                 $meta['activePortfolio'] = [
-                    'title' => $activePortfolio->title,
-                    'slug' => $activePortfolio->slug,
+                    'label' => $activePortfolio->title,
+                    'value' => $activePortfolio->slug,
                 ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activePortfolio,
@@ -293,8 +314,8 @@ function getResearch($locale, $type = false)
             $activeDocType = Category::find()->group('insightDocumentType')->slug($docTypeQuery)->site($locale)->one();
             if ($activeDocType) {
                 $meta['activeDocType'] = [
-                    'title' => $activeDocType->title,
-                    'slug' => $activeDocType->slug,
+                    'label' => $activeDocType->title,
+                    'value' => $activeDocType->slug,
                 ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activeDocType,
