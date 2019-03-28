@@ -502,10 +502,9 @@ function getDataPage($locale)
             ) = EntryHelpers::getDraftOrVersionOfEntry($entry);
 
             $regionStats = $entry->regionStats->one();
-            return [
-                'id' => $entry->id,
-                'title' => $entry->title,
-                'url' => $entry->url,
+
+            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            return array_merge($common, [
                 'regions' => [
                     'england' => array_map(function ($row) {
                         return ['label' => $row['label'], 'value' => $row['value']];
@@ -529,7 +528,7 @@ function getDataPage($locale)
                         'prefix' => $stat->prefix ?? null,
                     ];
                 }, $entry->stats->all() ?? [])
-            ];
+            ]);
         },
     ];
 }
