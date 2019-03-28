@@ -274,7 +274,10 @@ function getResearch($locale, $type = false)
         if ($tagQuery = \Craft::$app->request->getParam('tag')) {
             $activeTag = Tag::find()->group('tags')->slug($tagQuery)->site($locale)->one();
             if ($activeTag) {
-                $meta['activeTag'] = ContentHelpers::tagSummary($activeTag, $locale);
+                $meta['activeTag'] = [
+                    'label' => $activeTag->title,
+                    'value' => $activeTag->slug
+                ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activeTag,
                 ];

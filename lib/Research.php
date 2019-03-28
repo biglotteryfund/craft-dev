@@ -43,7 +43,7 @@ class ResearchTransformer extends TransformerAbstract
                     return [
                         'title' => $document->documentTitle,
                         'url' => $asset->url,
-                        'filetype' => $asset->kind,
+                        'filetype' => $asset->extension,
                         'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0),
                         'contents' => $document->documentContents ? explode("\n", $document->documentContents) : [],
                     ];
@@ -92,9 +92,19 @@ class ResearchTransformer extends TransformerAbstract
             $asset = !empty($entry->document) ? $entry->document->one() : null;
             $documentData = $asset ? [
                 'url' => $asset->url,
-                'filetype' => $asset->kind,
+                'filetype' => $asset->extension,
                 'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0)
             ] : null;
+
+            $relatedInsightsPage = null;
+            if (!empty($entry->relatedInsightsPage->one())) {
+                $page = $entry->relatedInsightsPage->one();
+                $relatedInsightsPage = [
+                    'title' => $page->title,
+                    'linkUrl' => $page->externalUrl ? $page->externalUrl : EntryHelpers::uriForLocale($page->uri, $this->locale),
+                ];
+            }
+
 
             return array_merge($common, [
                 'summary' => $entry->summary,
@@ -110,6 +120,7 @@ class ResearchTransformer extends TransformerAbstract
                 'document' => $documentData,
                 'publisher' => $entry->publisher,
                 'tags' => !empty($entry->documentTags) ? ContentHelpers::getTags($entry->documentTags->all(), $this->locale) : null,
+                'relatedInsightsPage' => $relatedInsightsPage
             ]);
         }
 
