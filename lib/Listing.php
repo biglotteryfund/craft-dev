@@ -85,6 +85,7 @@ class ListingTransformer extends TransformerAbstract
                     'photo' => $segmentImage ? $segmentImage->url : null,
                 ];
             }, $entry->contentSegment->all() ?? []) : [],
+            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry),
             'outro' => $entry->outroText ?? null,
         ];
 

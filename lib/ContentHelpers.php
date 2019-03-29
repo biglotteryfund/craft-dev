@@ -116,14 +116,15 @@ class ContentHelpers
                 case 'contentArea':
                     $data = [
                         'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
                         'content' => $block->contentBody,
                     ];
-
                     array_push($parts, $data);
                     break;
                 case 'inlineFigure':
                     $data = [
                         'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
                         'photo' => Images::imgixUrl(
                             Images::extractImageUrl($block->photo),
                             ['fit' => 'crop', 'crop' => 'entropy', 'max-w' => 2000]
@@ -135,14 +136,30 @@ class ContentHelpers
                 case 'quote':
                     $data = [
                         'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
                         'quoteText' => $block->quoteText,
                         'attribution' => $block->attribution ?? null,
                     ];
                     array_push($parts, $data);
                     break;
+                case 'gridBlocks':
+                    $gridBlocks = array();
+                    $data = [
+                        'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
+                    ];
+                    if (!empty($block->blocks->all())) {
+                        $gridBlocks = array_map(function ($gridBlock) {
+                            return $gridBlock->blockContent;
+                        }, $block->blocks->all());
+                    }
+                    $data['content'] = $gridBlocks;
+                    array_push($parts, $data);
+                    break;
                 case 'mediaAside':
                     $data = [
                         'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
                         'quoteText' => $block->quoteText,
                         'linkText' => $block->linkText ?? null,
                         'linkUrl' => $block->linkUrl ?? null,
@@ -152,7 +169,6 @@ class ContentHelpers
                         ),
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
-
                     array_push($parts, $data);
                     break;
             }
