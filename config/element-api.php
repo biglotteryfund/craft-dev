@@ -218,19 +218,18 @@ function getResearch($locale, $type = false)
         'type' => ($type === 'documents') ? 'researchDocument' : 'research'
     ];
 
-    if ($searchQuery = \Craft::$app->request->getParam('q')) {
+    $sortParam = \Craft::$app->request->getParam('sort');
+    if ($searchQuery = \Craft::$app->request->getParam('q') && $sortParam === 'score') {
         $criteria['orderBy'] = 'score';
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
             'subRight' => true,
         ];
-    } else if ($sortQuery = \Craft::$app->request->getParam('sort')) {
-        if ($sortQuery === 'newest') {
-            $criteria['orderBy'] = 'postDate desc';
-        } else if ($sortQuery === 'oldest') {
-            $criteria['orderBy'] = 'postDate asc';
-        }
+    } else if ($sortParam === 'newest') {
+        $criteria['orderBy'] = 'postDate desc';
+    } else if ($sortParam === 'oldest') {
+        $criteria['orderBy'] = 'postDate asc';
     }
 
     // Document-specific search query fields
