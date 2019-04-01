@@ -9,6 +9,7 @@ use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ProjectStoriesTransformer;
 use biglotteryfund\utils\ResearchTransformer;
+use biglotteryfund\utils\ResearchDocumentTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\UpdatesTransformer;
 use craft\elements\Category;
@@ -211,6 +212,8 @@ function getResearch($locale, $type = false)
 {
     normaliseCacheHeaders();
 
+    $transformer = $type === 'documents' ? new ResearchDocumentTransformer($locale) : new ResearchTransformer($locale);
+
     $criteria = [
         'site' => $locale,
         'section' => 'research',
@@ -342,7 +345,7 @@ function getResearch($locale, $type = false)
         'elementType' => Entry::class,
         'criteria' => $criteria,
         'meta' => $meta ?? null,
-        'transformer' => new ResearchTransformer($locale),
+        'transformer' => $transformer,
     ];
 }
 
