@@ -28,55 +28,40 @@ class FundingProgrammeTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
-        if ($entry->type->handle === 'fundingProgrammes') {
-            return array_merge($commonFields, [
-                'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
-                'description' => $entry->programmeIntro ?? null,
-                'footer' => $entry->outroText ?? null,
-                'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
-                'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
-                'trailImage' => self::buildTrailImage($entry->heroImage->one()),
-                'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
-                'contentSections' => array_map(function ($block) {
-                    return [
-                        'title' => $block->programmeRegionTitle,
-                        'body' => $block->programmeRegionBody,
-                    ];
-                }, $entry->programmeRegions->all() ?? []),
-                'area' => $entry->programmeArea ? [
-                    'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
-                    'value' => $entry->programmeArea->value,
-                ] : null,
-                'fundingSize' => [
-                    'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
-                    'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize : null,
-                    'totalAvailable' => $entry->totalFundingAvailable ?? null,
-                    'description' => $entry->fundingSizeDescription ?? null,
-                ],
-                'applicationDeadline' => $entry->applicationDeadline ?? null,
-                'organisationType' => $entry->organisationType ?? null,
-                'legacyPath' => $entry->legacyPath ?? null,
-                'projectStories' => array_map(function ($entry) {
-                    $transformer = new ProjectStoriesTransformer($this->locale);
-                    return $transformer->transform($entry);
-                }, $entry->relatedProjectStories ? $entry->relatedProjectStories->all() : [])
-            ]);
-        } else if ($entry->type->handle === 'contentPage') {
-            $parent = $entry->getParent();
-            if ($parent) {
-                $parent = [
-                    'title' => $parent->title,
-                    'linkUrl' => $parent->externalUrl ? $parent->externalUrl : EntryHelpers::uriForLocale($parent->uri, $this->locale),
+        return array_merge($commonFields, [
+            'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
+            'description' => $entry->programmeIntro ?? null,
+            'footer' => $entry->outroText ?? null,
+            'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+            'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
+            'trailImage' => self::buildTrailImage($entry->heroImage->one()),
+            'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+            'contentSections' => array_map(function ($block) {
+                return [
+                    'title' => $block->programmeRegionTitle,
+                    'body' => $block->programmeRegionBody,
                 ];
-            }
-            return array_merge($commonFields, [
-                'content' => ContentHelpers::extractFlexibleContent($entry),
-                'parent' => $parent
-            ]);
-        } else {
-            return $commonFields;
-        }
+            }, $entry->programmeRegions->all() ?? []),
+            'area' => $entry->programmeArea ? [
+                'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
+                'value' => $entry->programmeArea->value,
+            ] : null,
+            'fundingSize' => [
+                'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
+                'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize : null,
+                'totalAvailable' => $entry->totalFundingAvailable ?? null,
+                'description' => $entry->fundingSizeDescription ?? null,
+            ],
+            'applicationDeadline' => $entry->applicationDeadline ?? null,
+            'organisationType' => $entry->organisationType ?? null,
+            'legacyPath' => $entry->legacyPath ?? null,
+            'projectStories' => array_map(function ($entry) {
+                $transformer = new ProjectStoriesTransformer($this->locale);
+                return $transformer->transform($entry);
+            }, $entry->relatedProjectStories ? $entry->relatedProjectStories->all() : [])
+        ]);
     }
 }
