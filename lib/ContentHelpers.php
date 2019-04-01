@@ -7,7 +7,7 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
-    public static function getCommonFields(Entry $entry, $status, $locale, $skipHeroes = false)
+    public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true)
     {
         $fields = [
             'id' => $entry->id,
@@ -29,7 +29,7 @@ class ContentHelpers
         ];
         $extraFields = [];
 
-        if (!$skipHeroes) {
+        if ($includeHeroes) {
             // Looking up heroes is expensive for some API calls (eg. listing all funding programmes)
             // so we allow them to be optional
             $extraFields = [
