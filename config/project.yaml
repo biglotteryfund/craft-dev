@@ -31,7 +31,7 @@ categoryGroups:
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
   8c0e1bff-9968-4082-8e67-11cf77d01c3f:
     handle: insightDocumentType
-    name: "Insight Document Type\t"
+    name: 'Insight Document Type'
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
         hasUrls: false
@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1553766544
+dateModified: 1554211818
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3755,6 +3755,26 @@ sections:
   2b1f6da1-20e9-4176-a181-7ab073fab8f9:
     enableVersioning: true
     entryTypes:
+      5198ee70-46fa-4b8d-aa8d-1dbb075d8cf8:
+        fieldLayouts:
+          fedb0f9c-6abe-4d16-b92b-0b71cfc1876a:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: true
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 2
+                name: 'Content Page'
+                sortOrder: 1
+        handle: contentPage
+        hasTitleField: true
+        name: 'Content Page'
+        sortOrder: 2
+        titleFormat: ''
+        titleLabel: Title
       79c88f21-da56-48db-9e1c-ec15618ca38f:
         fieldLayouts:
           96266c61-497d-41b4-9e92-9b62178dbf1b:
@@ -3842,14 +3862,14 @@ sections:
         enabledByDefault: true
         hasUrls: true
         template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
+        uriFormat: 'funding/programmes/{parent.slug}/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
         enabledByDefault: true
         hasUrls: true
         template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
+        uriFormat: 'funding/programmes/{parent.slug}/{slug}'
     structure:
-      maxLevels: '1'
+      maxLevels: '2'
       uid: 570b86f8-ad2e-487e-b501-2c14f616844a
     type: structure
   2b255d19-d30b-4d89-8555-cddcd1eb945e:
@@ -3948,9 +3968,9 @@ sections:
         sortOrder: 1
         titleFormat: ''
         titleLabel: Title
-      e22437bd-941b-4079-9b02-4f37c5b41ea9:
+      a18cfedb-9df3-4764-b65c-3a4ed346a5bb:
         fieldLayouts:
-          8185a6ba-3549-4be6-92c2-3cd81f83275f:
+          4f816d29-47c9-48c0-ad4e-939e7019ffc1:
             tabs:
               -
                 fields:
@@ -3985,8 +4005,8 @@ sections:
                 sortOrder: 1
         handle: researchDocument
         hasTitleField: true
-        name: Document
-        sortOrder: 2
+        name: 'Insight Document'
+        sortOrder: 3
         titleFormat: ''
         titleLabel: Title
     handle: research
