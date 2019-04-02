@@ -29,7 +29,7 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553531104
+dateModified: 1553685450
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -2763,19 +2763,19 @@ matrixBlockTypes:
           -
             fields:
               10b1092c-6186-4d57-825b-29af4519292d:
-                required: false
+                required: '0'
                 sortOrder: 2
               313a413e-2758-4963-8abf-7ae418034c90:
-                required: false
+                required: '0'
                 sortOrder: 3
               34c79cfe-a250-4f37-9db7-09538f105c74:
-                required: false
+                required: '0'
                 sortOrder: 1
               c147383b-5f6d-449c-9120-0ac3da15a85f:
-                required: false
+                required: '0'
                 sortOrder: 5
               d0c63510-508c-48bf-8cf2-20b02e9682f7:
-                required: false
+                required: '0'
                 sortOrder: 4
             name: Content
             sortOrder: 1
@@ -2786,7 +2786,7 @@ matrixBlockTypes:
         handle: ogDescription
         instructions: 'A brief description of the content, usually between 2 and 4 sentences. This will displayed below the title of the post on Facebook.'
         name: Description
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -2803,7 +2803,7 @@ matrixBlockTypes:
         handle: ogFacebookImage
         instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px."
         name: 'Facebook Image'
-        searchable: true
+        searchable: '1'
         settings:
           allowedKinds:
             - image
@@ -2829,7 +2829,7 @@ matrixBlockTypes:
         handle: ogTitle
         instructions: "The title of this article without any branding (such as our site name). If left blank, the current entry title will be used.\r\n"
         name: Title
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -2846,7 +2846,7 @@ matrixBlockTypes:
         handle: ogSlug
         instructions: 'Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.'
         name: Slug
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -2863,7 +2863,7 @@ matrixBlockTypes:
         handle: ogTwitterImage
         instructions: "• Images for Twitter Cards support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels.\r\n• Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
         name: 'Twitter Image'
-        searchable: true
+        searchable: '1'
         settings:
           allowedKinds:
             - image
@@ -3556,8 +3556,28 @@ sections:
         uriFormat: jobs
     type: single
   2b1f6da1-20e9-4176-a181-7ab073fab8f9:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
+      5198ee70-46fa-4b8d-aa8d-1dbb075d8cf8:
+        fieldLayouts:
+          fedb0f9c-6abe-4d16-b92b-0b71cfc1876a:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: true
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 2
+                name: 'Content Page'
+                sortOrder: 1
+        handle: contentPage
+        hasTitleField: true
+        name: 'Content Page'
+        sortOrder: 2
+        titleFormat: ''
+        titleLabel: Title
       79c88f21-da56-48db-9e1c-ec15618ca38f:
         fieldLayouts:
           96266c61-497d-41b4-9e92-9b62178dbf1b:
@@ -3639,20 +3659,20 @@ sections:
         titleLabel: Title
     handle: fundingProgrammes
     name: 'Funding Programmes'
-    propagateEntries: '1'
+    propagateEntries: true
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
+        uriFormat: 'funding/programmes/{parent.slug}/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: funding-programs/_entry
-        uriFormat: 'funding/programmes/{slug}'
+        uriFormat: 'funding/programmes/{parent.slug}/{slug}'
     structure:
-      maxLevels: '1'
+      maxLevels: '2'
       uid: 570b86f8-ad2e-487e-b501-2c14f616844a
     type: structure
   2b255d19-d30b-4d89-8555-cddcd1eb945e:

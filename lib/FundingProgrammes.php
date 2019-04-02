@@ -32,25 +32,25 @@ class FundingProgrammeTransformer extends TransformerAbstract
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale, $includeHeroes = $this->isSingle);
 
         $commonProgrammeFields = [
-                'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
-                'description' => $entry->programmeIntro ?? null,
-                'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
-                'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
-                'trailImage' => self::buildTrailImage($entry->heroImage->one()),
-                'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
-                'area' => $entry->programmeArea ? [
-                    'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
-                    'value' => $entry->programmeArea->value,
-                ] : null,
-                'fundingSize' => [
-                    'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
-                    'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize : null,
-                    'totalAvailable' => $entry->totalFundingAvailable ?? null,
-                    'description' => $entry->fundingSizeDescription ?? null,
-                ],
-                'applicationDeadline' => $entry->applicationDeadline ?? null,
-                'organisationType' => $entry->organisationType ?? null,
-                'legacyPath' => $entry->legacyPath ?? null,
+            'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
+            'description' => $entry->programmeIntro ?? null,
+            'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+            'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
+            'trailImage' => $entry->heroImage ? self::buildTrailImage($entry->heroImage->one()) : null,
+            'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+            'area' => $entry->programmeArea ? [
+                'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
+                'value' => $entry->programmeArea->value,
+            ] : null,
+            'fundingSize' => [
+                'minimum' => $entry->minimumFundingSize ? (int) $entry->minimumFundingSize : null,
+                'maximum' => $entry->maximumFundingSize ? (int) $entry->maximumFundingSize : null,
+                'totalAvailable' => $entry->totalFundingAvailable ?? null,
+                'description' => $entry->fundingSizeDescription ?? null,
+            ],
+            'applicationDeadline' => $entry->applicationDeadline ?? null,
+            'organisationType' => $entry->organisationType ?? null,
+            'legacyPath' => $entry->legacyPath ?? null,
         ];
 
         if (!$this->isSingle) {
@@ -64,7 +64,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
                         'title' => $block->programmeRegionTitle,
                         'body' => $block->programmeRegionBody,
                     ];
-                }, $entry->programmeRegions->all() ?? []),
+                }, $entry->programmeRegions ? $entry->programmeRegions->all() : []),
                 'projectStories' => array_map(function ($entry) {
                     $transformer = new ProjectStoriesTransformer($this->locale);
                     return $transformer->transform($entry);
