@@ -29,7 +29,22 @@ categoryGroups:
     structure:
       maxLevels: '2'
       uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35
-dateModified: 1553685450
+  8c0e1bff-9968-4082-8e67-11cf77d01c3f:
+    handle: insightDocumentType
+    name: 'Insight Document Type'
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        hasUrls: false
+        template: null
+        uriFormat: null
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        hasUrls: false
+        template: null
+        uriFormat: null
+    structure:
+      maxLevels: '1'
+      uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
+dateModified: 1554211818
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -46,6 +61,8 @@ email:
 fieldGroups:
   1770279d-fae8-42d7-9209-2e4e311f9e8a:
     name: 'Content Page'
+  24b26cf1-ecc7-44ee-a2d5-0f1de62055cf:
+    name: 'Insight Document'
   2a71faea-4942-4260-b0ee-df0303fc29e9:
     name: Author
   381bc7ef-8175-4392-a114-07f68c9a1b9a:
@@ -124,6 +141,40 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
+  0bab8639-49a8-4bf6-aff7-5ffe60e2bab8:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: document
+    instructions: 'Upload the file here'
+    name: Document
+    searchable: false
+    settings:
+      allowedKinds:
+        - compressed
+        - excel
+        - html
+        - image
+        - pdf
+        - powerpoint
+        - text
+        - video
+        - word
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: ''
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: insights/documents
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   0cec86e6-ee99-4992-95ee-4044be2efd17:
     contentColumnType: text
     fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
@@ -370,6 +421,24 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
+  3544eb2e-dd0a-4c86-9474-692a074b6802:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: documentTags
+    instructions: 'Add some keywords to help people find this document (eg. "Volunteering", "Loneliness", "Youth employment" etc)'
+    name: Tags
+    searchable: true
+    settings:
+      limit: null
+      localizeRelations: ''
+      selectionLabel: ''
+      source: 'taggroup:7e74a4e5-2144-4421-8176-8d66e57f0a3e'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Tags
   3690189e-73a1-4880-aea8-8b326f364617:
     contentColumnType: string
     fieldGroup: f34fff60-41cf-47f6-8fe9-3146ae2a95b1
@@ -402,6 +471,25 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
+  3d1305a6-366b-4a1d-8849-433df83a803e:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: relatedInsightsPage
+    instructions: 'If this document relates to an existing Insights page, choose it here and a link will be displayed.'
+    name: 'Related Insights page'
+    searchable: false
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:3102e285-face-4513-b17e-2d3b046fcc88'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
     contentColumnType: string
     fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
@@ -523,6 +611,26 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\redactor\Field
+  5024077b-fccb-4164-8874-8fd05a936e13:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: programme
+    instructions: 'Choose a funding programme that this research relates to'
+    name: Programme
+    searchable: false
+    settings:
+      limit: ''
+      localizeRelations: '1'
+      selectionLabel: 'Choose a programme'
+      source: null
+      sources:
+        - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
+        - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
   54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
     contentColumnType: text
     fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
@@ -586,6 +694,23 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
+  60a339d6-ca4b-48a2-9e48-6c2bbe582b0e:
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: summary
+    instructions: 'A couple of sentences to summarise the content of this document'
+    name: Summary
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   61aca7e9-75e9-4610-a0b5-39bb844a68c1:
     contentColumnType: text
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -621,6 +746,23 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
+  69bcf1c5-c1e1-45db-b20f-76643d1751de:
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: partnershipName
+    instructions: 'Add the name of the group or programme this document was produced in partnership with'
+    name: 'Partnership Name'
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
     contentColumnType: string
     fieldGroup: a9adb8e8-0825-43f9-8f1a-862323940637
@@ -667,6 +809,25 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  6ffbb157-9d66-4994-8a8f-947c35960c2d:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: portfolio
+    instructions: 'Which funding portfolio location does this document relate to?'
+    name: Portfolio
+    searchable: false
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: ''
+      selectionLabel: 'Choose a portfolio'
+      source: 'group:83f5331d-3367-4856-ab4c-acf5d2725b10'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
     contentColumnType: text
     fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
@@ -1494,6 +1655,25 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Categories
+  ebcd4aaf-83ff-48e4-9f0d-8a7e22313652:
+    contentColumnType: string
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: documentType
+    instructions: 'What kind of document this is'
+    name: 'Document Type'
+    searchable: true
+    settings:
+      branchLimit: '1'
+      limit: null
+      localizeRelations: ''
+      selectionLabel: 'Choose a document type'
+      source: 'group:8c0e1bff-9968-4082-8e67-11cf77d01c3f'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories
   ee5ad666-8266-45cc-9852-f681a7db300f:
     contentColumnType: string
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1530,6 +1710,23 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Dropdown
+  f91f1b44-ef7d-4f91-8d75-75ad6ae3a677:
+    contentColumnType: text
+    fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+    handle: publisher
+    instructions: 'The name of the publisher of this document, eg. "The National Lottery Community Fund" or "Anna Freud".'
+    name: Publisher
+    searchable: true
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
   f946d578-25d4-40b3-a68b-f04068f34a17:
     contentColumnType: text
     fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
@@ -3771,6 +3968,47 @@ sections:
         sortOrder: 1
         titleFormat: ''
         titleLabel: Title
+      a18cfedb-9df3-4764-b65c-3a4ed346a5bb:
+        fieldLayouts:
+          4f816d29-47c9-48c0-ad4e-939e7019ffc1:
+            tabs:
+              -
+                fields:
+                  0bab8639-49a8-4bf6-aff7-5ffe60e2bab8:
+                    required: true
+                    sortOrder: 6
+                  3544eb2e-dd0a-4c86-9474-692a074b6802:
+                    required: true
+                    sortOrder: 8
+                  3d1305a6-366b-4a1d-8849-433df83a803e:
+                    required: false
+                    sortOrder: 9
+                  5024077b-fccb-4164-8874-8fd05a936e13:
+                    required: true
+                    sortOrder: 2
+                  60a339d6-ca4b-48a2-9e48-6c2bbe582b0e:
+                    required: true
+                    sortOrder: 1
+                  69bcf1c5-c1e1-45db-b20f-76643d1751de:
+                    required: false
+                    sortOrder: 4
+                  6ffbb157-9d66-4994-8a8f-947c35960c2d:
+                    required: false
+                    sortOrder: 3
+                  ebcd4aaf-83ff-48e4-9f0d-8a7e22313652:
+                    required: true
+                    sortOrder: 5
+                  f91f1b44-ef7d-4f91-8d75-75ad6ae3a677:
+                    required: false
+                    sortOrder: 7
+                name: 'Insight Document'
+                sortOrder: 1
+        handle: researchDocument
+        hasTitleField: true
+        name: 'Insight Document'
+        sortOrder: 3
+        titleFormat: ''
+        titleLabel: Title
     handle: research
     name: Insights
     propagateEntries: '1'
@@ -3803,13 +4041,6 @@ sections:
                     sortOrder: 1
                 name: Aliases
                 sortOrder: 1
-              -
-                fields:
-                  e5ca4911-ec90-44e6-8349-34361a8da221:
-                    required: false
-                    sortOrder: 1
-                name: 'Delete Me'
-                sortOrder: 2
         handle: aliases
         hasTitleField: false
         name: Aliases
