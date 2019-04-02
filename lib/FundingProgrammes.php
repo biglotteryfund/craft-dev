@@ -28,6 +28,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
         $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
 
         return array_merge($commonFields, [

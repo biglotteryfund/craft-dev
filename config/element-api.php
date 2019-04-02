@@ -3,6 +3,7 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\FundingProgrammeChildTransformer;
 use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
@@ -154,7 +155,7 @@ function getHomepage($locale)
 /**
  * API Endpoint: Get Funding Programmes
  */
-function getFundingProgrammes($locale, $slug = null)
+function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = null)
 {
     normaliseCacheHeaders();
 
@@ -163,8 +164,13 @@ function getFundingProgrammes($locale, $slug = null)
         'site' => $locale,
     ];
 
-    if ($slug) {
-        $criteria['slug'] = $slug;
+    $transformer = $childPageSlug
+        ? new FundingProgrammeChildTransformer($locale)
+        : new FundingProgrammeTransformer($locale);
+
+    if ($childPageSlug || $programmeSlug) {
+        // First look for child pages, then defer to the parent programme
+        $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if (\Craft::$app->request->getParam('all') === 'true') {
         $criteria['orderBy'] = 'title asc';
@@ -178,9 +184,9 @@ function getFundingProgrammes($locale, $slug = null)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'one' => $slug ? true : false,
+        'one' => ($programmeSlug || $childPageSlug) ? true : false,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale),
+        'transformer' => $transformer,
     ];
 }
 
@@ -596,7 +602,8 @@ return [
         'api/v1/<locale:en|cy>/project-stories' => getProjectStories,
         'api/v1/<locale:en|cy>/project-stories/<grantId>' => getProjectStories,
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>/<childPageSlug:{slug}>' => getFundingProgrammes,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
