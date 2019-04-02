@@ -164,27 +164,36 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'site' => $locale,
     ];
 
+    $isSingle = $programmeSlug || $childPageSlug;
+
     $transformer = $childPageSlug
         ? new FundingProgrammeChildTransformer($locale)
-        : new FundingProgrammeTransformer($locale);
+        : new FundingProgrammeTransformer($locale, $isSingle);
 
-    if ($childPageSlug || $programmeSlug) {
+    if ($isSingle) {
         // First look for child pages, then defer to the parent programme
         $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if (\Craft::$app->request->getParam('all') === 'true') {
         $criteria['orderBy'] = 'title asc';
         $criteria['status'] = ['live', 'expired'];
+    } else if (\Craft::$app->request->getParam('newest') === 'true') {
+        $criteria['orderBy'] = 'postDate desc';
     } else {
         // For listing pages, only show programmes that can be directly applied to
         $criteria['programmeStatus'] = 'open';
+    }
+
+    // Don't return child pages when listing funding programmes
+    if (!$isSingle) {
+        $criteria['type'] = 'fundingProgrammes';
     }
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'one' => ($programmeSlug || $childPageSlug) ? true : false,
+        'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
         'transformer' => $transformer,
     ];
