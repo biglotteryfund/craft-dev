@@ -4041,13 +4041,6 @@ sections:
                     sortOrder: 1
                 name: Aliases
                 sortOrder: 1
-              -
-                fields:
-                  e5ca4911-ec90-44e6-8349-34361a8da221:
-                    required: false
-                    sortOrder: 1
-                name: 'Delete Me'
-                sortOrder: 2
         handle: aliases
         hasTitleField: false
         name: Aliases
