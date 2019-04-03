@@ -1,0 +1,21 @@
+.redactor-styles figure.image-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.redactor-styles figure.image-right {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.redactor-styles figure.image-centre {
+    text-align: center;
+}
+
+.redactor-styles figure.image-centre img {
+    margin: auto;
+}
