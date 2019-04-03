@@ -1,5 +1,10 @@
 {
     "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video", "file"],
     "formatting": ["p", "blockquote", "h2", "h3", "h4", "h5"],
-    "plugins": ["fullscreen", "video", "table", "linkButton"]
+    "plugins": ["fullscreen", "video", "table", "linkButton"],
+    "imagePosition" : {
+        "left": "image-left",
+        "right": "image-right",
+        "center": "image-centre"
+    }
 }
