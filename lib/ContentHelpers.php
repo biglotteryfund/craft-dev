@@ -159,7 +159,6 @@ class ContentHelpers
                     $gridBlocks = array();
                     $data = [
                         'type' => $block->type->handle,
-                        'introduction' => $block->introduction ?? null,
                         'title' => $block->flexTitle ?? null,
                     ];
                     if (!empty($block->blocks->all())) {
