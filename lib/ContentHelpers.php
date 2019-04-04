@@ -7,9 +7,9 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
-    public static function getCommonFields(Entry $entry, $status, $locale)
+    public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true)
     {
-        return [
+        $fields = [
             'id' => $entry->id,
             'entryType' => $entry->type->handle,
             'slug' => $entry->slug,
@@ -26,10 +26,20 @@ class ContentHelpers
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
             'trailText' => $entry->trailText ?? null,
-            'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
-            'heroCredit' => $entry->heroImageCredit ?? null,
-            'heroNew' => Images::buildHero($entry->hero),
         ];
+        $extraFields = [];
+
+        if ($includeHeroes) {
+            // Looking up heroes is expensive for some API calls (eg. listing all funding programmes)
+            // so we allow them to be optional
+            $extraFields = [
+                'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
+                'heroCredit' => $entry->heroImageCredit ?? null,
+                'heroNew' => Images::buildHero($entry->hero),
+            ];
+        }
+
+        return array_merge($fields, $extraFields);
     }
 
     public static function nestedCategorySummary($categories, $locale)
@@ -111,6 +121,9 @@ class ContentHelpers
     public static function extractFlexibleContent(Entry $entry)
     {
         $parts = [];
+        if (!$entry->flexibleContent) {
+            return [];
+        }
         foreach ($entry->flexibleContent->all() as $block) {
             switch ($block->type->handle) {
                 case 'contentArea':

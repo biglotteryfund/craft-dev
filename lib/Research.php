@@ -24,11 +24,8 @@ class ResearchTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-        $common = ContentHelpers::getCommonFields($entry, $status, $this->locale);
-
         $researchMeta = $entry->researchMeta->one();
-
-        return array_merge($common, [
+        return array_merge(ContentHelpers::getCommonFields($entry, $status, $this->locale), [
             // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
             'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
             'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
@@ -43,7 +40,7 @@ class ResearchTransformer extends TransformerAbstract
                 return [
                     'title' => $document->documentTitle,
                     'url' => $asset->url,
-                    'filetype' => $asset->kind,
+                    'filetype' => $asset->extension,
                     'filesize' => StringHelpers::formatBytes($asset->size, $precision = 0),
                     'contents' => $document->documentContents ? explode("\n", $document->documentContents) : [],
                 ];

@@ -3,12 +3,14 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
+use biglotteryfund\utils\FundingProgrammeChildTransformer;
 use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ProjectStoriesTransformer;
 use biglotteryfund\utils\ResearchTransformer;
+use biglotteryfund\utils\ResearchDocumentTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\UpdatesTransformer;
 use craft\elements\Category;
@@ -154,7 +156,7 @@ function getHomepage($locale)
 /**
  * API Endpoint: Get Funding Programmes
  */
-function getFundingProgrammes($locale, $slug = null)
+function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = null)
 {
     normaliseCacheHeaders();
 
@@ -163,24 +165,38 @@ function getFundingProgrammes($locale, $slug = null)
         'site' => $locale,
     ];
 
-    if ($slug) {
-        $criteria['slug'] = $slug;
+    $isSingle = $programmeSlug || $childPageSlug;
+
+    $transformer = $childPageSlug
+        ? new FundingProgrammeChildTransformer($locale)
+        : new FundingProgrammeTransformer($locale, $isSingle);
+
+    if ($isSingle) {
+        // First look for child pages, then defer to the parent programme
+        $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
     } else if (\Craft::$app->request->getParam('all') === 'true') {
         $criteria['orderBy'] = 'title asc';
         $criteria['status'] = ['live', 'expired'];
+    } else if (\Craft::$app->request->getParam('newest') === 'true') {
+        $criteria['orderBy'] = 'postDate desc';
     } else {
         // For listing pages, only show programmes that can be directly applied to
         $criteria['programmeStatus'] = 'open';
+    }
+
+    // Don't return child pages when listing funding programmes
+    if (!$isSingle) {
+        $criteria['type'] = 'fundingProgrammes';
     }
 
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'one' => $slug ? true : false,
+        'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale),
+        'transformer' => $transformer,
     ];
 }
 
@@ -207,30 +223,144 @@ function getOurPeople($locale)
  * API Endpoint: Get research
  * Get full details of all research entry
  */
-function getResearch($locale)
+function getResearch($locale, $type = false)
 {
     normaliseCacheHeaders();
+
+    $transformer = $type === 'documents' ? new ResearchDocumentTransformer($locale) : new ResearchTransformer($locale);
 
     $criteria = [
         'site' => $locale,
         'section' => 'research',
         'status' => EntryHelpers::getVersionStatuses(),
+        'type' => ($type === 'documents') ? 'researchDocument' : 'research'
     ];
 
-    if ($searchQuery = \Craft::$app->request->getParam('q')) {
+    $sortParam = \Craft::$app->request->getParam('sort');
+    if ($searchQuery = \Craft::$app->request->getParam('q') && ($sortParam === 'score' || !$sortParam)) {
         $criteria['orderBy'] = 'score';
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
             'subRight' => true,
         ];
+    } else if ($sortParam === 'newest') {
+        $criteria['orderBy'] = 'postDate desc';
+    } else if ($sortParam === 'oldest') {
+        $criteria['orderBy'] = 'postDate asc';
     }
+
+    // Document-specific search query fields
+    if ($type === 'documents') {
+
+        // @TODO include non-live programmes?
+        $allProgrammes = array_map(function ($programme) use ($locale) {
+            return [
+                'label' => $programme->title,
+                'value' => $programme->slug
+            ];
+        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->orderBy('title')->site($locale)->all());
+
+        $allRegions = array_map(function ($region) use ($locale) {
+            return [
+                'label' => $region->title,
+                'value' => $region->slug
+            ];
+        }, Category::find()->group('region')->orderBy('title')->site($locale)->all());
+
+        $allDocTypes = array_map(function ($type) use ($locale) {
+            return [
+                'label' => $type->title,
+                'value' => $type->slug
+            ];
+        }, Category::find()->group('insightDocumentType')->orderBy('title')->site($locale)->all());
+
+        $meta = [
+            'activeTag' => null,
+            'activeProgramme' => null,
+            'activePortfolio' => null,
+            'activeDocType' => null,
+            'portfolios' => $allRegions,
+            'docTypes' => $allDocTypes,
+            'programmes' => $allProgrammes,
+        ];
+
+        $elementsToRelateTo = array();
+
+        // Filter: content tags
+        if ($tagQuery = \Craft::$app->request->getParam('tag')) {
+            $activeTag = Tag::find()->group('tags')->slug($tagQuery)->site($locale)->one();
+            if ($activeTag) {
+                $meta['activeTag'] = [
+                    'label' => $activeTag->title,
+                    'value' => $activeTag->slug
+                ];
+                $elementsToRelateTo[] = [
+                    'targetElement' => $activeTag,
+                ];
+            }
+        }
+
+        // Filter: funding programme
+        if ($programmeQuery = \Craft::$app->request->getParam('programme')) {
+            $activeProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->slug($programmeQuery)->site($locale)->one();
+            if ($activeProgramme) {
+                $meta['activeProgramme'] = [
+                    'label' => $activeProgramme->title,
+                    'value' => $activeProgramme->slug
+                ];
+                $elementsToRelateTo[] = [
+                    'targetElement' => $activeProgramme,
+                ];
+            }
+        }
+
+        // Filter: portfolio (eg. region)
+        if ($portfolioQuery = \Craft::$app->request->getParam('portfolio')) {
+            $activePortfolio = Category::find()->group('region')->slug($portfolioQuery)->site($locale)->one();
+            if ($activePortfolio) {
+                $meta['activePortfolio'] = [
+                    'label' => $activePortfolio->title,
+                    'value' => $activePortfolio->slug,
+                ];
+                $elementsToRelateTo[] = [
+                    'targetElement' => $activePortfolio,
+                ];
+            }
+        }
+
+        // Filter: document type
+        if ($docTypeQuery = \Craft::$app->request->getParam('doctype')) {
+            $activeDocType = Category::find()->group('insightDocumentType')->slug($docTypeQuery)->site($locale)->one();
+            if ($activeDocType) {
+                $meta['activeDocType'] = [
+                    'label' => $activeDocType->title,
+                    'value' => $activeDocType->slug,
+                ];
+                $elementsToRelateTo[] = [
+                    'targetElement' => $activeDocType,
+                ];
+            }
+        }
+
+        if (!empty($elementsToRelateTo)) {
+            // ensure this query requires all relations (eg. AND not OR)
+            array_unshift($elementsToRelateTo, 'and');
+            $criteria['relatedTo'] = $elementsToRelateTo;
+            $meta['criteria'] = $criteria;
+        }
+    }
+
+    $defaultPageLimit = 10;
+    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
 
     return [
         'serializer' => 'jsonApi',
+        'elementsPerPage' => $pageLimit,
         'elementType' => Entry::class,
         'criteria' => $criteria,
-        'transformer' => new ResearchTransformer($locale),
+        'meta' => $meta ?? null,
+        'transformer' => $transformer,
     ];
 }
 
@@ -596,7 +726,9 @@ return [
         'api/v1/<locale:en|cy>/project-stories' => getProjectStories,
         'api/v1/<locale:en|cy>/project-stories/<grantId>' => getProjectStories,
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
-        'api/v2/<locale:en|cy>/funding-programmes/<slug>' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>' => getFundingProgrammes,
+        'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>/<childPageSlug:{slug}>' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/research/<type:documents>' => getResearch,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,

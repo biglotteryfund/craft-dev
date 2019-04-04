@@ -35,7 +35,8 @@
     "doublesecretagency/craft-inventory": "^2.0",
     "charliedev/element-map": "^1.2",
     "vardump/recentchanges": "^1.1",
-    "doublesecretagency/craft-cpjs": "^2.1"
+    "doublesecretagency/craft-cpjs": "^2.1",
+    "doublesecretagency/craft-cpcss": "^2.1"
   },
   "autoload" : {
     "psr-4" : {
