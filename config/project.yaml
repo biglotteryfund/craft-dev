@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1554366810
+dateModified: 1554375949
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3001,15 +3001,36 @@ matrixBlockTypes:
         tabs:
           -
             fields:
+              4a787c27-6078-43fb-a29e-8a61cf61d97c:
+                required: false
+                sortOrder: 2
               78a83748-7862-4217-b345-e40cf81a05c4:
                 required: true
-                sortOrder: 2
+                sortOrder: 3
               9d18c90a-d7c7-40f9-ba89-9aa374932cf9:
                 required: false
                 sortOrder: 1
             name: Content
             sortOrder: 1
     fields:
+      4a787c27-6078-43fb-a29e-8a61cf61d97c:
+        contentColumnType: text
+        fieldGroup: null
+        handle: introduction
+        instructions: 'The content you wish to appear before the grid blocks'
+        name: Introduction
+        searchable: true
+        settings:
+          availableTransforms: '*'
+          availableVolumes: '*'
+          cleanupHtml: '1'
+          columnType: text
+          purifierConfig: safe-iframe-media.json
+          purifyHtml: '1'
+          redactorConfig: Full.json
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\redactor\Field
       78a83748-7862-4217-b345-e40cf81a05c4:
         contentColumnType: string
         fieldGroup: null
@@ -3019,9 +3040,9 @@ matrixBlockTypes:
         searchable: true
         settings:
           columns:
-            332:
+            253:
               width: ''
-          contentTable: '{{%stc_30_blocks}}'
+          contentTable: '{{%stc_25_blocks}}'
           fieldLayout: matrix
           localizeBlocks: '1'
           maxRows: ''
