@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1554471611
+dateModified: 1554735565
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -834,13 +834,13 @@ fields:
     handle: outroText
     instructions: 'This will appear last on the page'
     name: 'Outro content'
-    searchable: '1'
+    searchable: true
     settings:
       availableTransforms: '*'
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Full.json
     translationKeyFormat: null
@@ -4907,12 +4907,15 @@ sections:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 2
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 6
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
                     sortOrder: 5
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 7
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 4
@@ -5154,6 +5157,60 @@ sections:
         template: hero-image/_entry
         uriFormat: 'hero-image/{slug}'
     type: channel
+  e02aeba8-4306-4fb1-b232-5026958c8a3e:
+    enableVersioning: true
+    entryTypes:
+      26cc644f-dd6d-4c41-b0a0-7451175925a8:
+        fieldLayouts:
+          7403f91f-fbbd-40b6-b543-2c5318e9392e:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: true
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 3
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 5
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 2
+                name: Content
+                sortOrder: 1
+              -
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
+                name: 'Social Media'
+                sortOrder: 2
+        handle: theBigLunch
+        hasTitleField: false
+        name: 'The Big Lunch'
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: ''
+    handle: theBigLunch
+    name: 'The Big Lunch'
+    propagateEntries: true
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        template: ''
+        uriFormat: funding/the-big-lunch
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: true
+        hasUrls: true
+        template: ''
+        uriFormat: funding/the-big-lunch
+    type: single
   f273edc9-ecad-4a33-857d-75410b9480e5:
     enableVersioning: '1'
     entryTypes:
