@@ -52,7 +52,7 @@ class UpdatesTransformer extends TransformerAbstract
                     'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($programme),
                     'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($programme),
                 ];
-            }, $entry->relatedFundingProgrammes->all() ?? []),
+            }, $entry->relatedFundingProgrammes->status(['live', 'expired'])->all() ?? []),
             'updateType' => [
                 'name' => $entry->type->name,
                 'slug' => str_replace('_', '-', $entry->type->handle),

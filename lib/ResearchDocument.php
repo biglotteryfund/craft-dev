@@ -40,7 +40,7 @@ class ResearchDocumentTransformer extends TransformerAbstract
                     'title' => $programme->title,
                     'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
                 ];
-            }, $entry->programme->all() ?? []),
+            }, $entry->programme->status(['live', 'expired'])->all() ?? []),
             'portfolio' => !empty($entry->portfolio) ? ContentHelpers::nestedCategorySummary($entry->portfolio->all(), $this->locale) : [],
             'partnershipName' => $entry->partnershipName,
             'documentType' => !empty($entry->documentType->all()) ? ContentHelpers::categorySummary($entry->documentType->one(), $this->locale) : [],
