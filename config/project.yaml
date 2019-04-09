@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1554375949
+dateModified: 1554823927
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -102,10 +102,10 @@ fields:
     handle: programmeRegions
     instructions: ''
     name: 'Content area'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_programmeregions}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -117,10 +117,10 @@ fields:
     handle: programmePartners
     instructions: ''
     name: 'Programme Partners'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_programmepartners}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -132,10 +132,10 @@ fields:
     handle: stats
     instructions: 'Add as many stats as you like to this page'
     name: Stats
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_stats}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -378,10 +378,10 @@ fields:
     handle: fundingProgramme
     instructions: ''
     name: 'Funding Programme'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_fundingprogramme}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: '1'
       minBlocks: ''
     translationKeyFormat: null
@@ -499,7 +499,7 @@ fields:
     searchable: true
     settings:
       contentTable: '{{%matrixcontent_flexiblecontent}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -685,10 +685,10 @@ fields:
     handle: strategicProgrammeImpact
     instructions: ''
     name: 'Strategic Programme Learning'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_strategicprogrammeimpact}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -834,13 +834,13 @@ fields:
     handle: outroText
     instructions: 'This will appear last on the page'
     name: 'Outro content'
-    searchable: '1'
+    searchable: true
     settings:
       availableTransforms: '*'
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Full.json
     translationKeyFormat: null
@@ -887,12 +887,12 @@ fields:
     handle: homepageHeroImages
     instructions: ''
     name: 'Hero Images'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_homepageheroimages}}'
-      localizeBlocks: ''
-      maxBlocks: 6
-      minBlocks: 1
+      localizeBlocks: '1'
+      maxBlocks: '6'
+      minBlocks: '1'
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
@@ -968,10 +968,10 @@ fields:
     handle: strategicProgrammeResources
     instructions: ''
     name: 'Strategic Programme Resources'
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_strategicprogrammeresources}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -1053,10 +1053,10 @@ fields:
     handle: people
     instructions: ''
     name: People
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_people}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -1608,10 +1608,10 @@ fields:
     handle: products
     instructions: 'The individual codes/variations available for this product'
     name: Products
-    searchable: '1'
+    searchable: true
     settings:
       contentTable: '{{%matrixcontent_products}}'
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxBlocks: ''
       minBlocks: ''
     translationKeyFormat: null
@@ -2112,12 +2112,12 @@ matrixBlockTypes:
             fields:
               3baf4be3-0726-477f-b2cb-3c7fba0b2627:
                 required: '1'
-                sortOrder: '2'
+                sortOrder: 2
               70cfdcc3-39a8-482c-a606-ea6b0eda7653:
                 required: '0'
-                sortOrder: '1'
+                sortOrder: 1
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       3baf4be3-0726-477f-b2cb-3c7fba0b2627:
         contentColumnType: text
@@ -2156,7 +2156,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: contentArea
     name: 'Content Area'
-    sortOrder: '1'
+    sortOrder: 1
   209ac148-6e53-4713-aed8-7b9d9f4f8354:
     field: 585a68f7-bb7c-4d7f-9acf-10f9b2107243
     fieldLayouts:
@@ -2316,12 +2316,12 @@ matrixBlockTypes:
             fields:
               70715e88-972e-4c12-abf8-c432b9d1e2f0:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
               b11d5ba7-d5f9-4d87-8215-9841f126f126:
                 required: '0'
-                sortOrder: '2'
+                sortOrder: 2
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       70715e88-972e-4c12-abf8-c432b9d1e2f0:
         contentColumnType: text
@@ -2360,7 +2360,7 @@ matrixBlockTypes:
         type: craft\redactor\Field
     handle: programmeRegion
     name: 'Programme Region'
-    sortOrder: '1'
+    sortOrder: 1
   3cc43546-be29-4562-adac-41c7e5af322e:
     field: 2588e3c7-9719-44b3-a9ea-e70bae854d2e
     fieldLayouts:
@@ -2370,36 +2370,36 @@ matrixBlockTypes:
             fields:
               090e6562-8960-4fad-a311-13651be90c67:
                 required: '0'
-                sortOrder: '9'
+                sortOrder: 9
               42398892-b017-4398-8a7f-49fae56cb523:
                 required: '0'
-                sortOrder: '3'
+                sortOrder: 3
               6b3cce3e-14ba-47bd-a07e-6ce8a9ff0145:
                 required: '0'
-                sortOrder: '2'
+                sortOrder: 2
               78e445e2-f8d3-4476-b883-3d7ae80863ff:
                 required: '0'
-                sortOrder: '6'
+                sortOrder: 6
               7af39ef2-5134-4263-8dd5-feb9cb69232d:
                 required: '0'
-                sortOrder: '4'
+                sortOrder: 4
               a0e7afac-3453-4d4b-b90c-5c0f3c84d15d:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
               a4715664-c154-457f-932a-93c758265b62:
                 required: '0'
-                sortOrder: '10'
+                sortOrder: 10
               b9e65bd1-d011-4240-a79a-5391065fb25d:
                 required: '0'
-                sortOrder: '7'
+                sortOrder: 7
               dab7ef3d-0331-4b2e-b9c8-a7f945ae40e6:
                 required: '0'
-                sortOrder: '5'
+                sortOrder: 5
               de313cae-0521-4ef2-bacc-57b074ca7a0a:
                 required: '0'
-                sortOrder: '8'
+                sortOrder: 8
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       090e6562-8960-4fad-a311-13651be90c67:
         contentColumnType: text
@@ -2618,7 +2618,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: fundingProgrammeBlock
     name: 'Funding Programme Block'
-    sortOrder: '1'
+    sortOrder: 1
   4f87a7a2-de4c-49ed-bb87-242364387658:
     field: 78da9b46-1b94-49fb-a8ce-b8986e53a5c3
     fieldLayouts:
@@ -2628,21 +2628,21 @@ matrixBlockTypes:
             fields:
               287d1d64-550f-4ef0-aed1-a69dfaa34def:
                 required: '0'
-                sortOrder: '4'
+                sortOrder: 4
               819104e1-5004-4804-9ea2-ebd2c6c85e12:
                 required: '1'
-                sortOrder: '2'
+                sortOrder: 2
               93eff09b-014a-4e1c-a7c4-9f0665996fa5:
                 required: '0'
-                sortOrder: '5'
+                sortOrder: 5
               c4a813ff-dc05-4f95-9ed9-d62ed142caea:
                 required: '1'
-                sortOrder: '3'
+                sortOrder: 3
               ed221773-330e-4542-8e50-a71a30b081fc:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       287d1d64-550f-4ef0-aed1-a69dfaa34def:
         contentColumnType: text
@@ -2653,8 +2653,9 @@ matrixBlockTypes:
         searchable: '1'
         settings:
           charLimit: ''
+          code: ''
           columnType: text
-          initialRows: 4
+          initialRows: '4'
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
@@ -2672,16 +2673,16 @@ matrixBlockTypes:
             - image
           defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           defaultUploadLocationSubpath: ''
-          limit: 1
+          limit: '1'
           localizeRelations: ''
-          restrictFiles: 1
+          restrictFiles: '1'
           selectionLabel: ''
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: homepage-heroes
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: 1
+          useSingleFolder: '1'
           viewMode: list
         translationKeyFormat: null
         translationMethod: site
@@ -2695,8 +2696,9 @@ matrixBlockTypes:
         searchable: '1'
         settings:
           charLimit: ''
+          code: ''
           columnType: text
-          initialRows: 4
+          initialRows: '4'
           multiline: ''
           placeholder: ''
         translationKeyFormat: null
@@ -2714,16 +2716,16 @@ matrixBlockTypes:
             - image
           defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           defaultUploadLocationSubpath: ''
-          limit: 1
+          limit: '1'
           localizeRelations: ''
-          restrictFiles: 1
+          restrictFiles: '1'
           selectionLabel: ''
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: homepage-heroes
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: 1
+          useSingleFolder: '1'
           viewMode: list
         translationKeyFormat: null
         translationMethod: site
@@ -2740,23 +2742,23 @@ matrixBlockTypes:
             - image
           defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           defaultUploadLocationSubpath: ''
-          limit: 1
+          limit: '1'
           localizeRelations: ''
-          restrictFiles: 1
+          restrictFiles: '1'
           selectionLabel: ''
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: homepage-heroes
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: 1
+          useSingleFolder: '1'
           viewMode: list
         translationKeyFormat: null
         translationMethod: site
         type: craft\fields\Assets
     handle: heroImage
     name: 'Hero Image'
-    sortOrder: '1'
+    sortOrder: 1
   62705224-8e25-453a-bce2-7d8e0533abce:
     field: 065e680b-ad85-42eb-a1b2-6623e8233466
     fieldLayouts:
@@ -2766,21 +2768,21 @@ matrixBlockTypes:
             fields:
               2b9443e2-b9b5-44b7-a8d8-334d2fc14da2:
                 required: '0'
-                sortOrder: '2'
+                sortOrder: 2
               7e3deee8-2413-4a62-83ff-48d01884e1e1:
                 required: '0'
-                sortOrder: '5'
+                sortOrder: 5
               7f4e9ca4-fd80-4190-a75d-87c4c3e6da0c:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
               8ca6d216-a374-4fd2-848e-4aad3482e15e:
                 required: '0'
-                sortOrder: '3'
+                sortOrder: 3
               b69cd579-4363-4c5b-9514-4ef6a7c1ee35:
                 required: '0'
-                sortOrder: '4'
+                sortOrder: 4
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       2b9443e2-b9b5-44b7-a8d8-334d2fc14da2:
         contentColumnType: text
@@ -2806,6 +2808,8 @@ matrixBlockTypes:
         instructions: ''
         name: 'Partner URL'
         searchable: '1'
+        settings:
+          placeholder: ''
         translationKeyFormat: null
         translationMethod: none
         type: craft\fields\Url
@@ -2871,7 +2875,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: partner
     name: Partner
-    sortOrder: '1'
+    sortOrder: 1
   6bcc0c50-9556-4a0e-878c-cb6b7fe0924f:
     field: 3690189e-73a1-4880-aea8-8b326f364617
     fieldLayouts:
@@ -3212,21 +3216,21 @@ matrixBlockTypes:
             fields:
               512adc98-a4e4-4fb0-8495-21df28915a1a:
                 required: '0'
-                sortOrder: '5'
+                sortOrder: 5
               75a657e2-adf0-40d7-bd76-5cc59b087193:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
               a5366c9c-cd5d-4204-a69a-b41c255d38f7:
                 required: '0'
-                sortOrder: '3'
+                sortOrder: 3
               c85ac5fc-9a3f-4272-9c0d-b7b694627431:
                 required: '1'
-                sortOrder: '2'
+                sortOrder: 2
               d1ec336b-5270-46e3-a606-d89cad97ebb4:
                 required: '0'
-                sortOrder: '4'
+                sortOrder: 4
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       512adc98-a4e4-4fb0-8495-21df28915a1a:
         contentColumnType: text
@@ -3310,7 +3314,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: stats
     name: Stat
-    sortOrder: '1'
+    sortOrder: 1
   d2566f6f-7eb1-4456-9bf5-64885893ddb4:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     fieldLayouts:
@@ -3402,18 +3406,18 @@ matrixBlockTypes:
             fields:
               222acaa4-24a6-4cae-9452-b278a629cbfe:
                 required: '1'
-                sortOrder: '4'
+                sortOrder: 4
               6e480c9d-1c62-4d97-9da3-53d30a26c1c5:
                 required: '0'
-                sortOrder: '2'
+                sortOrder: 2
               781fd322-c052-4665-8ecd-9a980a71cf03:
                 required: '0'
-                sortOrder: '3'
+                sortOrder: 3
               796a0849-2cdd-492e-8b90-4e4cf5901f70:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       222acaa4-24a6-4cae-9452-b278a629cbfe:
         contentColumnType: text
@@ -3495,7 +3499,7 @@ matrixBlockTypes:
         type: craft\fields\PlainText
     handle: person
     name: Person
-    sortOrder: '1'
+    sortOrder: 1
   d745ad26-e6c1-4323-b47f-ea8112e01674:
     field: 816a3589-836c-4201-9d84-8d77a93a52a8
     fieldLayouts:
@@ -3504,13 +3508,13 @@ matrixBlockTypes:
           -
             fields:
               2e4f3125-5c83-4bff-bddc-e78273a85f2e:
-                required: '0'
-                sortOrder: '1'
+                required: false
+                sortOrder: 1
               79ce960c-9903-4458-9509-f834b113d8c2:
-                required: '1'
-                sortOrder: '2'
+                required: true
+                sortOrder: 2
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       2e4f3125-5c83-4bff-bddc-e78273a85f2e:
         contentColumnType: text
@@ -3518,7 +3522,7 @@ matrixBlockTypes:
         handle: contentTitle
         instructions: ''
         name: Title
-        searchable: '1'
+        searchable: true
         settings:
           charLimit: ''
           code: ''
@@ -3535,7 +3539,7 @@ matrixBlockTypes:
         handle: contentBody
         instructions: ''
         name: Content
-        searchable: '1'
+        searchable: true
         settings:
           availableTransforms: ''
           availableVolumes: '*'
@@ -3549,7 +3553,7 @@ matrixBlockTypes:
         type: craft\redactor\Field
     handle: contentarea
     name: 'Content Area'
-    sortOrder: '1'
+    sortOrder: 1
   e7df7f2b-14ef-49f8-956c-23fa144da005:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     fieldLayouts:
@@ -3632,18 +3636,18 @@ matrixBlockTypes:
             fields:
               11bb549a-fc24-42ff-bf9f-a54afe51ea39:
                 required: '1'
-                sortOrder: '3'
+                sortOrder: 3
               2ee49b58-245e-4124-b11a-001248ff4742:
                 required: '0'
-                sortOrder: '4'
+                sortOrder: 4
               e4985fe2-d0f1-4a13-b080-f234c8be527a:
                 required: '1'
-                sortOrder: '1'
+                sortOrder: 1
               fe6bef3e-a17e-4401-8429-6ed0e7f3d86b:
                 required: '1'
-                sortOrder: '2'
+                sortOrder: 2
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       11bb549a-fc24-42ff-bf9f-a54afe51ea39:
         contentColumnType: string
@@ -3727,7 +3731,7 @@ matrixBlockTypes:
         type: craft\fields\Dropdown
     handle: product
     name: Product
-    sortOrder: '1'
+    sortOrder: 1
 plugins:
   aws-s3:
     enabled: '1'
@@ -4924,12 +4928,15 @@ sections:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 2
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 6
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
                     sortOrder: 5
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 6
+                    sortOrder: 7
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 4
@@ -5171,6 +5178,60 @@ sections:
         template: hero-image/_entry
         uriFormat: 'hero-image/{slug}'
     type: channel
+  e02aeba8-4306-4fb1-b232-5026958c8a3e:
+    enableVersioning: true
+    entryTypes:
+      26cc644f-dd6d-4c41-b0a0-7451175925a8:
+        fieldLayouts:
+          7403f91f-fbbd-40b6-b543-2c5318e9392e:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: true
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: false
+                    sortOrder: 4
+                  6c792519-1c25-4194-a0e5-60377539e790:
+                    required: false
+                    sortOrder: 3
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 5
+                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
+                    required: true
+                    sortOrder: 2
+                name: Content
+                sortOrder: 1
+              -
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
+                name: 'Social Media'
+                sortOrder: 2
+        handle: theBigLunch
+        hasTitleField: true
+        name: 'The Big Lunch'
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: Title
+    handle: theBigLunch
+    name: 'The Big Lunch'
+    propagateEntries: true
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        template: ''
+        uriFormat: funding/the-big-lunch
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: true
+        hasUrls: true
+        template: ''
+        uriFormat: funding/the-big-lunch
+    type: single
   f273edc9-ecad-4a33-857d-75410b9480e5:
     enableVersioning: '1'
     entryTypes:

@@ -51,7 +51,7 @@ class ResearchTransformer extends TransformerAbstract
                     'title' => $programme->title,
                     'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
                 ];
-            }, $entry->relatedFundingProgrammes->all() ?? []),
+            }, $entry->relatedFundingProgrammes->status(['live', 'expired'])->all() ?? []),
 
             'sectionsPrefix' => $entry->researchSectionsPrefix ?? null,
             'sections' => array_map(function ($row) {

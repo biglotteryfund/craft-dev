@@ -259,7 +259,7 @@ function getResearch($locale, $type = false)
                 'label' => $programme->title,
                 'value' => $programme->slug
             ];
-        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->orderBy('title')->site($locale)->all());
+        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->orderBy('title')->site($locale)->all());
 
         $allRegions = array_map(function ($region) use ($locale) {
             return [
