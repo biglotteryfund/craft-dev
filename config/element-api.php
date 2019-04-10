@@ -303,7 +303,7 @@ function getResearch($locale, $type = false)
 
         // Filter: funding programme
         if ($programmeQuery = \Craft::$app->request->getParam('programme')) {
-            $activeProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->slug($programmeQuery)->site($locale)->one();
+            $activeProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->slug($programmeQuery)->site($locale)->one();
             if ($activeProgramme) {
                 $meta['activeProgramme'] = [
                     'label' => $activeProgramme->title,
@@ -347,7 +347,6 @@ function getResearch($locale, $type = false)
             // ensure this query requires all relations (eg. AND not OR)
             array_unshift($elementsToRelateTo, 'and');
             $criteria['relatedTo'] = $elementsToRelateTo;
-            $meta['criteria'] = $criteria;
         }
     }
 
