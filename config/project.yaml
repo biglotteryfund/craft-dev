@@ -238,7 +238,7 @@ fields:
       availableVolumes: ''
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -308,7 +308,7 @@ fields:
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -605,7 +605,7 @@ fields:
       availableVolumes: ''
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -740,7 +740,7 @@ fields:
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -956,7 +956,7 @@ fields:
       availableVolumes: ''
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -1329,7 +1329,7 @@ fields:
       availableVolumes: ''
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Minimal.json
     translationKeyFormat: null
@@ -1756,7 +1756,7 @@ fields:
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: ''
     translationKeyFormat: null
@@ -1774,7 +1774,7 @@ fields:
       availableVolumes: '*'
       cleanupHtml: '1'
       columnType: text
-      purifierConfig: ''
+      purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Basics.json
     translationKeyFormat: null
@@ -1994,7 +1994,7 @@ matrixBlockTypes:
           availableVolumes: ''
           cleanupHtml: '1'
           columnType: text
-          purifierConfig: ''
+          purifierConfig: safe-iframe-media.json
           purifyHtml: '1'
           redactorConfig: Full.json
         translationKeyFormat: null
@@ -2541,7 +2541,7 @@ matrixBlockTypes:
           availableVolumes: '*'
           cleanupHtml: '1'
           columnType: text
-          purifierConfig: ''
+          purifierConfig: safe-iframe-media.json
           purifyHtml: '1'
           redactorConfig: ''
         translationKeyFormat: null
@@ -3431,7 +3431,7 @@ matrixBlockTypes:
           availableVolumes: ''
           cleanupHtml: '1'
           columnType: text
-          purifierConfig: ''
+          purifierConfig: safe-iframe-media.json
           purifyHtml: '1'
           redactorConfig: Basics.json
         translationKeyFormat: null
@@ -5572,7 +5572,7 @@ superTableBlockTypes:
           availableVolumes: ''
           cleanupHtml: '1'
           columnType: text
-          purifierConfig: ''
+          purifierConfig: safe-iframe-media.json
           purifyHtml: '1'
           redactorConfig: Minimal.json
         translationKeyFormat: null
