@@ -13,22 +13,18 @@ class ResearchTransformer extends TransformerAbstract
         $this->locale = $locale;
     }
 
-    private static function buildTrailImage($imageField)
-    {
-        return $imageField ? Images::imgixUrl(
-            $imageField->imageMedium->one()->url,
-            ['w' => '640', 'h' => '360']
-        ) : null;
-    }
-
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
         $researchMeta = $entry->researchMeta->one();
+        $heroField = Images::extractNewHeroImageField($entry->hero);
+
         return array_merge(ContentHelpers::getCommonFields($entry, $status, $this->locale), [
-            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
-            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
-            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+            'trailImage' => $heroField ? Images::imgixUrl(
+                $heroField->imageMedium->one()->url,
+                ['w' => '640', 'h' => '360']
+            ) : null,
 
             'introduction' => $entry->introductionText ?? null,
             'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
