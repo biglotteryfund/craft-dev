@@ -237,7 +237,8 @@ function getResearch($locale, $type = false)
     ];
 
     $sortParam = \Craft::$app->request->getParam('sort');
-    if ($searchQuery = \Craft::$app->request->getParam('q') && ($sortParam === 'score' || !$sortParam)) {
+    $searchQuery = \Craft::$app->request->getParam('q');
+    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
         $criteria['orderBy'] = 'score';
         $criteria['search'] = [
             'query' => $searchQuery,
