@@ -697,6 +697,7 @@ function getMerchandise($locale)
                 'itemId' => (int) $entry->id,
                 'title' => $entry->title,
                 'maximum' => (int) $entry->maximumAllowed,
+                'mustBeOrderedDirectly' => $entry->mustBeOrderedDirectly,
                 'products' => $products,
             ];
 
