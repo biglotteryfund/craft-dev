@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1554823927
+dateModified: 1560514263
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -828,6 +828,18 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Categories
+  71707ffe-15d7-4cc8-ba7a-782544799347:
+    contentColumnType: boolean
+    fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
+    handle: mustBeOrderedDirectly
+    instructions: 'If customers should contact us directly to order this, tick this box (eg. it can''t be ordered via the website)'
+    name: 'Must be ordered directly'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
     contentColumnType: text
     fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
@@ -4408,9 +4420,12 @@ sections:
             tabs:
               -
                 fields:
+                  71707ffe-15d7-4cc8-ba7a-782544799347:
+                    required: false
+                    sortOrder: 3
                   85937a58-39af-479b-b64b-283999b877df:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   ce51477f-1fbc-4c51-a482-621384b56698:
                     required: true
                     sortOrder: 2
@@ -4419,7 +4434,7 @@ sections:
                     sortOrder: 1
                   e2c780b8-c133-4e69-af2f-cee1076275cd:
                     required: true
-                    sortOrder: 3
+                    sortOrder: 4
                 name: Merchandise
                 sortOrder: 1
               -
