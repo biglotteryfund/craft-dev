@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1561023886
+dateModified: 1562059367
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4297,9 +4297,9 @@ sections:
                     sortOrder: 1
                 name: 'Social Media'
                 sortOrder: 2
-        handle: updates
+        handle: people_stories
         hasTitleField: true
-        name: 'News article'
+        name: 'People Stories'
         sortOrder: 2
         titleFormat: ''
         titleLabel: Title
@@ -5666,16 +5666,16 @@ superTableBlockTypes:
           -
             fields:
               1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
-                required: true
+                required: '1'
                 sortOrder: 1
               27a7b349-c009-41c7-9e13-51bd131b5785:
-                required: true
+                required: '1'
                 sortOrder: 2
               6814cacd-1dbf-4109-ba6b-8862c021852e:
-                required: true
+                required: '1'
                 sortOrder: 3
               cf987298-5d2c-42e4-9ae8-570e017fa92d:
-                required: true
+                required: '1'
                 sortOrder: 4
             name: Content
             sortOrder: 1
@@ -5686,7 +5686,7 @@ superTableBlockTypes:
         handle: england
         instructions: ''
         name: England
-        searchable: true
+        searchable: '1'
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5716,7 +5716,7 @@ superTableBlockTypes:
         handle: northernIreland
         instructions: ''
         name: 'Northern Ireland'
-        searchable: true
+        searchable: '1'
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5746,7 +5746,7 @@ superTableBlockTypes:
         handle: scotland
         instructions: ''
         name: Scotland
-        searchable: true
+        searchable: '1'
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5776,7 +5776,7 @@ superTableBlockTypes:
         handle: wales
         instructions: ''
         name: Wales
-        searchable: true
+        searchable: '1'
         settings:
           addRowLabel: 'Add a row'
           columnType: text
