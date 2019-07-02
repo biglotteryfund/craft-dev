@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1560514263
+dateModified: 1561023886
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -1006,7 +1006,7 @@ fields:
           width: ''
       contentTable: '{{%stc_researchsections}}'
       fieldLayout: row
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxRows: '3'
       minRows: '1'
       selectionLabel: 'Add a section'
@@ -1279,11 +1279,20 @@ fields:
     handle: regionStats
     instructions: ''
     name: 'Region stats'
-    searchable: '1'
+    searchable: true
     settings:
-      contentTable: null
+      columns:
+        214:
+          width: ''
+        215:
+          width: ''
+        216:
+          width: ''
+        217:
+          width: ''
+      contentTable: '{{%stc_regionstats}}'
       fieldLayout: row
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxRows: '1'
       minRows: '1'
       selectionLabel: ''
@@ -1445,10 +1454,16 @@ fields:
     handle: researchMeta
     instructions: ''
     name: 'Research metadata'
-    searchable: '1'
+    searchable: true
     settings:
+      columns:
+        167:
+          width: ''
+        168:
+          width: ''
+      contentTable: '{{%stc_researchmeta}}'
       fieldLayout: row
-      localizeBlocks: ''
+      localizeBlocks: '1'
       maxRows: '1'
       minRows: '1'
       selectionLabel: ''
@@ -1986,10 +2001,10 @@ matrixBlockTypes:
           -
             fields:
               0b844db0-2788-421f-993c-8f1cd56846d8:
-                required: true
+                required: '1'
                 sortOrder: 2
               64284b05-53d8-4968-8595-aa6e6defaf9f:
-                required: true
+                required: '1'
                 sortOrder: 1
             name: Content
             sortOrder: 1
@@ -2000,7 +2015,7 @@ matrixBlockTypes:
         handle: contentBody
         instructions: ''
         name: Content
-        searchable: true
+        searchable: '1'
         settings:
           availableTransforms: ''
           availableVolumes: ''
@@ -2018,7 +2033,7 @@ matrixBlockTypes:
         handle: contentTitle
         instructions: ''
         name: Title
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -2259,13 +2274,13 @@ matrixBlockTypes:
           -
             fields:
               44747783-2800-48fe-aa2d-014ca587d561:
-                required: false
+                required: '0'
                 sortOrder: 2
               6e8e9c06-42ab-4237-a1ee-411f26f24b60:
-                required: true
+                required: '1'
                 sortOrder: 3
               cad928cf-0acb-4dc2-b86f-cfd5961503cf:
-                required: true
+                required: '1'
                 sortOrder: 1
             name: Content
             sortOrder: 1
@@ -2276,7 +2291,7 @@ matrixBlockTypes:
         handle: calloutCredit
         instructions: ''
         name: Credit
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -2293,7 +2308,7 @@ matrixBlockTypes:
         handle: isQuote
         instructions: ''
         name: 'Add quote-marks?'
-        searchable: true
+        searchable: '1'
         settings:
           default: ''
         translationKeyFormat: null
@@ -2305,7 +2320,7 @@ matrixBlockTypes:
         handle: calloutContent
         instructions: ''
         name: Content
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -5420,13 +5435,13 @@ superTableBlockTypes:
           -
             fields:
               698dcade-907a-4233-8c8e-7421845e74d4:
-                required: true
+                required: '1'
                 sortOrder: 3
               927e7ec0-904f-4a13-8fb1-83c7ee913f98:
-                required: false
+                required: '0'
                 sortOrder: 1
               f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
-                required: false
+                required: '0'
                 sortOrder: 2
             name: Content
             sortOrder: 1
@@ -5437,10 +5452,10 @@ superTableBlockTypes:
         handle: contentSections
         instructions: ''
         name: 'Content sections'
-        searchable: true
+        searchable: '1'
         settings:
           contentTable: '{{%matrixcontent_contentsections}}'
-          localizeBlocks: ''
+          localizeBlocks: '1'
           maxBlocks: ''
           minBlocks: '1'
         translationKeyFormat: null
@@ -5452,7 +5467,7 @@ superTableBlockTypes:
         handle: sectionTitle
         instructions: ''
         name: Title
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -5469,7 +5484,7 @@ superTableBlockTypes:
         handle: sectionPrefix
         instructions: ''
         name: Prefix
-        searchable: true
+        searchable: '1'
         settings:
           charLimit: ''
           code: ''
@@ -5651,16 +5666,16 @@ superTableBlockTypes:
           -
             fields:
               1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
-                required: '1'
+                required: true
                 sortOrder: 1
               27a7b349-c009-41c7-9e13-51bd131b5785:
-                required: '1'
+                required: true
                 sortOrder: 2
               6814cacd-1dbf-4109-ba6b-8862c021852e:
-                required: '1'
+                required: true
                 sortOrder: 3
               cf987298-5d2c-42e4-9ae8-570e017fa92d:
-                required: '1'
+                required: true
                 sortOrder: 4
             name: Content
             sortOrder: 1
@@ -5671,7 +5686,7 @@ superTableBlockTypes:
         handle: england
         instructions: ''
         name: England
-        searchable: '1'
+        searchable: true
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5701,7 +5716,7 @@ superTableBlockTypes:
         handle: northernIreland
         instructions: ''
         name: 'Northern Ireland'
-        searchable: '1'
+        searchable: true
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5731,7 +5746,7 @@ superTableBlockTypes:
         handle: scotland
         instructions: ''
         name: Scotland
-        searchable: '1'
+        searchable: true
         settings:
           addRowLabel: 'Add a row'
           columnType: text
@@ -5761,7 +5776,7 @@ superTableBlockTypes:
         handle: wales
         instructions: ''
         name: Wales
-        searchable: '1'
+        searchable: true
         settings:
           addRowLabel: 'Add a row'
           columnType: text
