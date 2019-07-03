@@ -3,7 +3,6 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
-use biglotteryfund\utils\FundingProgrammeChildTransformer;
 use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
@@ -167,10 +166,6 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
 
     $isSingle = $programmeSlug || $childPageSlug;
 
-    $transformer = $childPageSlug
-        ? new FundingProgrammeChildTransformer($locale)
-        : new FundingProgrammeTransformer($locale, $isSingle);
-
     if ($isSingle) {
         // First look for child pages, then defer to the parent programme
         $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
@@ -196,7 +191,7 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'criteria' => $criteria,
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => $transformer,
+        'transformer' => new FundingProgrammeTransformer($locale, $isSingle)
     ];
 }
 
