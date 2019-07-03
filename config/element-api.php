@@ -3,7 +3,6 @@
 use biglotteryfund\utils\ContentHelpers;
 use biglotteryfund\utils\EntryHelpers;
 use biglotteryfund\utils\FundingProgrammeTransformer;
-use biglotteryfund\utils\FundingProgrammeChildTransformer;
 use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
@@ -167,10 +166,6 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
 
     $isSingle = $programmeSlug || $childPageSlug;
 
-    $transformer = $childPageSlug
-        ? new FundingProgrammeChildTransformer($locale)
-        : new FundingProgrammeTransformer($locale, $isSingle);
-
     if ($isSingle) {
         // First look for child pages, then defer to the parent programme
         $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
@@ -196,7 +191,7 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'criteria' => $criteria,
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => $transformer,
+        'transformer' => new FundingProgrammeTransformer($locale, $isSingle)
     ];
 }
 
@@ -408,8 +403,9 @@ function getStrategicProgrammes($locale)
 /**
  * API Endpoint: Get Strategic Programme
  * Get full details of a single strategic programme
+ * or one of its children
  */
-function getStrategicProgramme($locale, $slug)
+function getStrategicProgramme($locale, $slug, $childPageSlug = null)
 {
     normaliseCacheHeaders();
 
@@ -417,7 +413,7 @@ function getStrategicProgramme($locale, $slug)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
-            'slug' => $slug,
+            'slug' => $childPageSlug ? $childPageSlug : $slug,
             'section' => 'strategicProgrammes',
             'site' => $locale,
             'status' => EntryHelpers::getVersionStatuses(),
@@ -733,7 +729,8 @@ return [
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
-        'api/v1/<locale:en|cy>/strategic-programmes/<slug>' => getStrategicProgramme,
+        'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>' => getStrategicProgramme,
+        'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>/<childPageSlug:{slug}>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
