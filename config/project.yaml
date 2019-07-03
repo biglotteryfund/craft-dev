@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1561023886
+dateModified: 1562153947
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5263,7 +5263,7 @@ sections:
         uriFormat: funding/the-big-lunch
     type: single
   f273edc9-ecad-4a33-857d-75410b9480e5:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       0a2d1a91-96ae-4fba-867f-62699822b0c6:
         fieldLayouts:
@@ -5334,22 +5334,42 @@ sections:
         sortOrder: 1
         titleFormat: ''
         titleLabel: Title
+      de970119-a711-4046-bfa4-423704b36a18:
+        fieldLayouts:
+          40f93cae-1ea2-4faa-b798-ae59c54109a4:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: true
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 2
+                name: 'Content Page'
+                sortOrder: 1
+        handle: contentPage
+        hasTitleField: true
+        name: 'Content Page'
+        sortOrder: 3
+        titleFormat: ''
+        titleLabel: Title
     handle: strategicProgrammes
     name: 'Strategic Programmes'
-    propagateEntries: '1'
+    propagateEntries: true
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: ''
-        uriFormat: 'funding/strategic-investments/{slug}'
+        uriFormat: 'funding/strategic-investments/{parent.slug}/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '0'
-        hasUrls: '1'
+        enabledByDefault: false
+        hasUrls: true
         template: ''
-        uriFormat: 'funding/strategic-investments/{slug}'
+        uriFormat: 'funding/strategic-investments/{parent.slug}/{slug}'
     structure:
-      maxLevels: '1'
+      maxLevels: '2'
       uid: b499b2f0-3599-4386-8b87-801027fab3f6
     type: structure
 siteGroups:

@@ -408,8 +408,9 @@ function getStrategicProgrammes($locale)
 /**
  * API Endpoint: Get Strategic Programme
  * Get full details of a single strategic programme
+ * or one of its children
  */
-function getStrategicProgramme($locale, $slug)
+function getStrategicProgramme($locale, $slug, $childPageSlug = null)
 {
     normaliseCacheHeaders();
 
@@ -417,7 +418,7 @@ function getStrategicProgramme($locale, $slug)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => [
-            'slug' => $slug,
+            'slug' => $childPageSlug ? $childPageSlug : $slug,
             'section' => 'strategicProgrammes',
             'site' => $locale,
             'status' => EntryHelpers::getVersionStatuses(),
@@ -733,7 +734,8 @@ return [
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
-        'api/v1/<locale:en|cy>/strategic-programmes/<slug>' => getStrategicProgramme,
+        'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>' => getStrategicProgramme,
+        'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>/<childPageSlug:{slug}>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
