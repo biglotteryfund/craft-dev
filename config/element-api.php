@@ -395,6 +395,7 @@ function getStrategicProgrammes($locale)
         'criteria' => [
             'site' => $locale,
             'section' => 'strategicProgrammes',
+            'level' => 1
         ],
         'transformer' => new StrategicProgrammeTransformer($locale),
     ];
