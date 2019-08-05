@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1563179858
+dateModified: 1564995065
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4107,7 +4107,7 @@ sections:
         uriFormat: __home__
     type: single
   3102e285-face-4513-b17e-2d3b046fcc88:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
         fieldLayouts:
@@ -4207,18 +4207,18 @@ sections:
         titleLabel: Title
     handle: research
     name: Insights
-    propagateEntries: '1'
+    propagateEntries: true
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: research/_entry
-        uriFormat: 'insights/{slug}'
+        uriFormat: '{% if type.handle == ''research'' %}insights/{slug}{% else %}insights/documents/{slug}{% endif %}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '0'
-        hasUrls: '1'
+        enabledByDefault: false
+        hasUrls: true
         template: research/_entry
-        uriFormat: 'insights/{slug}'
+        uriFormat: '{% if type.handle == ''research'' %}insights/{slug}{% else %}insights/documents/{slug}{% endif %}'
     type: channel
   3ecf7fe6-7292-48f8-9a74-39c2ea37312f:
     enableVersioning: '1'
