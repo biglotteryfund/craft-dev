@@ -339,6 +339,10 @@ function getResearch($locale, $type = false)
             }
         }
 
+        if ($slugQuery = \Craft::$app->request->getParam('slug')) {
+            $criteria['slug'] = $slugQuery;
+        }
+
         if (!empty($elementsToRelateTo)) {
             // ensure this query requires all relations (eg. AND not OR)
             array_unshift($elementsToRelateTo, 'and');
