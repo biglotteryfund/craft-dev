@@ -70,6 +70,25 @@ class ListingTransformer extends TransformerAbstract
         return $relatedEntries;
     }
 
+    private function getRelatedContent($entry)
+    {
+        if (!$entry->relatedEntries->one()) {
+            return null;
+        }
+        $data = [];
+        $relatedContent = $entry->relatedEntries->one();
+        $data['heading'] = $relatedContent->heading;
+        $data['entries'] = array_map(function ($relatedEntry) {
+            $entryItem = $relatedEntry->entry->one();
+            return [
+                'title' => $relatedEntry->entryTitle ?? $entryItem->title,
+                'summary' => $relatedEntry->entryDescription ?? null,
+                'linkUrl' => EntryHelpers::uriForLocale($entryItem->uri, $this->locale)
+            ];
+        }, $relatedContent->relatedEntries->all() ?? []);
+        return $data;
+    }
+
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
@@ -102,6 +121,11 @@ class ListingTransformer extends TransformerAbstract
         $siblings = self::getRelatedEntries($entry, 'siblings');
         if (count($siblings) > 0) {
             $customFields['siblings'] = $siblings;
+        }
+
+        $relatedContent = self::getRelatedContent($entry);
+        if ($relatedContent) {
+            $customFields['relatedContent'] = $relatedContent;
         }
 
         return array_merge($commonFields, $customFields);
