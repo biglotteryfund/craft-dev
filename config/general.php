@@ -35,6 +35,8 @@ return [
         // Set file uploads to 20mb maximum
         // This needs to be defined if upload_max_filesize is greater than 16mb (Craft default)
         'maxUploadFileSize' => 20777216,
+
+        'headlessMode' => true,
     ],
 
     // Dev environment settings
