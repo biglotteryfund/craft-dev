@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1569595286
+dateModified: 1565258274
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -244,29 +244,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
-  10ab52ab-0389-44a7-b3a5-9f1a08050d2d:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: relatedEntries
-    instructions: 'Add a grid of related entries to this page'
-    name: 'Related entries'
-    searchable: false
-    settings:
-      columns:
-        257:
-          width: ''
-        258:
-          width: ''
-      contentTable: '{{%stc_relatedentries}}'
-      fieldLayout: row
-      localizeBlocks: '1'
-      maxRows: ''
-      minRows: ''
-      selectionLabel: ''
-      staticField: '1'
-    translationKeyFormat: null
-    translationMethod: site
-    type: verbb\supertable\fields\SuperTableField
   1156c363-f08f-41a0-a3b7-4258add458bb:
     contentColumnType: text
     fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
@@ -3048,92 +3025,6 @@ matrixBlockTypes:
     handle: contentArea
     name: 'Content Area'
     sortOrder: 1
-  a2cb3524-1e2d-42a5-967c-36966dfff8f3:
-    field: c0d50b90-5e7b-4e40-8bb9-a57aea9dcbca
-    fieldLayouts:
-      452fca8f-d10c-401e-989c-902bfa673ad1:
-        tabs:
-          -
-            fields:
-              373b5444-8860-456f-9a72-c8b45cc9c3ac:
-                required: true
-                sortOrder: 1
-              86429010-d17a-4d39-b858-7e9d71f1918a:
-                required: false
-                sortOrder: 3
-              a3849472-d41d-4fc3-98b1-0dd05f1249f4:
-                required: false
-                sortOrder: 2
-            name: Content
-            sortOrder: 1
-    fields:
-      373b5444-8860-456f-9a72-c8b45cc9c3ac:
-        contentColumnType: string
-        fieldGroup: null
-        handle: entry
-        instructions: 'Choose the item this story should link to'
-        name: Entry
-        searchable: true
-        settings:
-          limit: '1'
-          localizeRelations: ''
-          selectionLabel: ''
-          source: null
-          sources:
-            - 'section:a1f1765e-10d1-45ef-905e-1a8cf5a6458e'
-            - 'section:07ef3333-69c2-456d-ba88-3e0e60c091b8'
-            - 'section:76d204aa-51f8-4a63-bd88-c6239fbd2b0a'
-            - 'section:b50d445d-1022-48a7-898a-ff03d8304412'
-            - 'section:6924a426-e1bd-4c6e-96e4-513956cbaa44'
-            - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
-            - 'section:3102e285-face-4513-b17e-2d3b046fcc88'
-            - 'section:73426a06-bcdf-471b-9984-9fe28d7e5606'
-            - 'section:6e869d59-984b-457b-a497-8f675c2e5ccb'
-            - singles
-            - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
-            - 'section:3fc7e898-601d-45f6-9862-2db3a51d162e'
-          targetSiteId: null
-          viewMode: null
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Entries
-      86429010-d17a-4d39-b858-7e9d71f1918a:
-        contentColumnType: text
-        fieldGroup: null
-        handle: entryDescription
-        instructions: 'Add a description if the linked entry doesn''t have one'
-        name: Description
-        searchable: true
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      a3849472-d41d-4fc3-98b1-0dd05f1249f4:
-        contentColumnType: text
-        fieldGroup: null
-        handle: entryTitle
-        instructions: 'Add a title (to overwrite the existing one) - optional'
-        name: Title
-        searchable: true
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-    handle: entryItem
-    name: 'Entry item'
-    sortOrder: 1
   b3eca5c5-5a5f-4000-bc2f-005c98db960f:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     fieldLayouts:
@@ -5127,21 +5018,18 @@ sections:
             tabs:
               -
                 fields:
-                  10ab52ab-0389-44a7-b3a5-9f1a08050d2d:
-                    required: false
-                    sortOrder: 6
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 2
                   46d0352f-42af-4d63-be4d-9c9df54c5871:
                     required: false
-                    sortOrder: 8
+                    sortOrder: 7
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
                     sortOrder: 5
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 7
+                    sortOrder: 6
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 4
@@ -5510,54 +5398,6 @@ sites:
     siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
     sortOrder: '2'
 superTableBlockTypes:
-  08528ea7-ca26-48e4-9302-dd16a30bae60:
-    field: 10ab52ab-0389-44a7-b3a5-9f1a08050d2d
-    fieldLayouts:
-      0fd3710c-f1da-48f5-9f2b-d1242312d4f6:
-        tabs:
-          -
-            fields:
-              296cdd06-7f90-431f-93b5-0c1eda002eae:
-                required: true
-                sortOrder: 1
-              c0d50b90-5e7b-4e40-8bb9-a57aea9dcbca:
-                required: true
-                sortOrder: 2
-            name: Content
-            sortOrder: 1
-    fields:
-      296cdd06-7f90-431f-93b5-0c1eda002eae:
-        contentColumnType: text
-        fieldGroup: null
-        handle: heading
-        instructions: 'A heading to appear above the items'
-        name: Heading
-        searchable: true
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      c0d50b90-5e7b-4e40-8bb9-a57aea9dcbca:
-        contentColumnType: string
-        fieldGroup: null
-        handle: relatedEntries
-        instructions: 'Choose some entries to appear in the grid'
-        name: Entries
-        searchable: true
-        settings:
-          contentTable: '{{%matrixcontent_relatedentries}}'
-          localizeBlocks: '1'
-          maxBlocks: ''
-          minBlocks: '1'
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Matrix
   0bae165b-b95b-4859-ad38-f059c70852be:
     field: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
     fieldLayouts:
