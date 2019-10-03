@@ -118,7 +118,7 @@ class ContentHelpers
      * - Inline figure (image with a caption)
      * - Media aside (callout block with text, image, and link)
      */
-    public static function extractFlexibleContent(Entry $entry)
+    public static function extractFlexibleContent(Entry $entry, $locale)
     {
         $parts = [];
         if (!$entry->flexibleContent) {
@@ -183,6 +183,25 @@ class ContentHelpers
                         ),
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
+                    array_push($parts, $data);
+                    break;
+                case 'relatedContent':
+                    $gridBlocks = array();
+                    $data = [
+                        'type' => $block->type->handle,
+                        'heading' => $block->heading
+                    ];
+                    if (!empty($block->relatedItems->all())) {
+                        $gridBlocks = array_map(function ($gridBlock) use ($locale) {
+                            $entry = $gridBlock->entry->one();
+                            return [
+                                'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
+                                'description' => $gridBlock->entryDescription ?? null,
+                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale)
+                            ];
+                        }, $block->relatedItems->all());
+                    }
+                    $data['content'] = $gridBlocks;
                     array_push($parts, $data);
                     break;
             }
@@ -279,7 +298,7 @@ class ContentHelpers
             ];
         }
         return array_merge(ContentHelpers::getCommonFields($entry, $status, $locale), [
-            'content' => ContentHelpers::extractFlexibleContent($entry),
+            'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null
         ]);
     }
