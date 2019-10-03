@@ -196,7 +196,7 @@ class ContentHelpers
                             $entry = $gridBlock->entry->one();
                             return [
                                 'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
-                                'description' => $gridBlock->entryDescription ?? null,
+                                'summary' => $gridBlock->entryDescription ?? null,
                                 'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale)
                             ];
                         }, $block->relatedItems->all());
