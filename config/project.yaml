@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1570177510
+dateModified: 1570194618
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3916,14 +3916,6 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
-  preview-button:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings:
-      draftParameter: draft
-      urlBase: 'https://www.tnlcommunityfund.org.uk'
-      versionParameter: version
   recentchanges:
     enabled: '1'
     licenseKey: null
