@@ -7,6 +7,18 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
+
+    private static function buildTrailImage($imageField)
+    {
+        $photoUrl = $imageField ? Images::extractImageUrl($imageField) : null;
+        return $photoUrl ? Images::imgixUrl($photoUrl, [
+            // 5:2 aspect ratio image
+            'w' => 360,
+            'h' => 144,
+            'crop' => 'faces',
+        ]) : null;
+    }
+
     public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true)
     {
         $fields = [
@@ -194,11 +206,13 @@ class ContentHelpers
                     if (!empty($block->relatedItems->all())) {
                         $gridBlocks = array_map(function ($gridBlock) use ($locale) {
                             $entry = $gridBlock->entry->one();
-                            return [
+                            $entryBlock = [
                                 'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
                                 'summary' => $gridBlock->entryDescription ?? null,
-                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale)
+                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                                'trailImage' => $gridBlock->entryImage ? self::buildTrailImage($gridBlock->entryImage) : null,
                             ];
+                            return $entryBlock;
                         }, $block->relatedItems->all());
                     }
                     $data['content'] = $gridBlocks;

@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1570114983
+dateModified: 1570177510
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3089,6 +3089,8 @@ matrixBlockTypes:
               width: ''
             258:
               width: ''
+            261:
+              width: ''
           fieldLayout: row
           selectionLabel: 'Add a related item'
         contentColumnType: string
@@ -5681,6 +5683,33 @@ superTableBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
+      2dbee670-c961-4ea7-b503-cf23bce9541e:
+        name: Image
+        handle: entryImage
+        instructions: 'Choose an image to appear with this content'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Assets
+        settings:
+          useSingleFolder: ''
+          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          defaultUploadLocationSubpath: content
+          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          singleUploadLocationSubpath: ''
+          restrictFiles: '1'
+          allowedKinds:
+            - image
+          sources: '*'
+          source: null
+          targetSiteId: null
+          viewMode: list
+          limit: '1'
+          selectionLabel: ''
+          localizeRelations: ''
+          validateRelatedElements: ''
+        contentColumnType: string
+        fieldGroup: null
       9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
         name: Entry
         handle: entry
@@ -5739,6 +5768,9 @@ superTableBlockTypes:
               2184906d-f2b9-4d39-a094-bfa50ccf8271:
                 required: false
                 sortOrder: 3
+              2dbee670-c961-4ea7-b503-cf23bce9541e:
+                required: false
+                sortOrder: 4
               9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
                 required: true
                 sortOrder: 1
