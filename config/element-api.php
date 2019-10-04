@@ -477,7 +477,7 @@ function getFlexibleContent($locale)
             list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
             $common = ContentHelpers::getCommonFields($entry, $status, $locale);
             return array_merge($common, [
-                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry),
+                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
             ]);
         },
     ];

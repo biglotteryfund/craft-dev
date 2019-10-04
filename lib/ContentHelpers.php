@@ -7,6 +7,18 @@ use craft\elements\Entry;
 
 class ContentHelpers
 {
+
+    private static function buildTrailImage($imageField)
+    {
+        $photoUrl = $imageField ? Images::extractImageUrl($imageField) : null;
+        return $photoUrl ? Images::imgixUrl($photoUrl, [
+            // 5:2 aspect ratio image
+            'w' => 360,
+            'h' => 144,
+            'crop' => 'faces',
+        ]) : null;
+    }
+
     public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true)
     {
         $fields = [
@@ -118,7 +130,7 @@ class ContentHelpers
      * - Inline figure (image with a caption)
      * - Media aside (callout block with text, image, and link)
      */
-    public static function extractFlexibleContent(Entry $entry)
+    public static function extractFlexibleContent(Entry $entry, $locale)
     {
         $parts = [];
         if (!$entry->flexibleContent) {
@@ -183,6 +195,27 @@ class ContentHelpers
                         ),
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
+                    array_push($parts, $data);
+                    break;
+                case 'relatedContent':
+                    $gridBlocks = array();
+                    $data = [
+                        'type' => $block->type->handle,
+                        'heading' => $block->heading
+                    ];
+                    if (!empty($block->relatedItems->all())) {
+                        $gridBlocks = array_map(function ($gridBlock) use ($locale) {
+                            $entry = $gridBlock->entry->one();
+                            $entryBlock = [
+                                'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
+                                'summary' => $gridBlock->entryDescription ?? null,
+                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                                'trailImage' => $gridBlock->entryImage ? self::buildTrailImage($gridBlock->entryImage) : null,
+                            ];
+                            return $entryBlock;
+                        }, $block->relatedItems->all());
+                    }
+                    $data['content'] = $gridBlocks;
                     array_push($parts, $data);
                     break;
             }
@@ -279,7 +312,7 @@ class ContentHelpers
             ];
         }
         return array_merge(ContentHelpers::getCommonFields($entry, $status, $locale), [
-            'content' => ContentHelpers::extractFlexibleContent($entry),
+            'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null
         ]);
     }
