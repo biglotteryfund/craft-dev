@@ -27,7 +27,6 @@
     "craftcms/element-api": "2.6.0",
     "craftcms/aws-s3": "1.2.5",
     "craftcms/redactor": "2.4.0",
-    "biglotteryfund/preview-button": "^1.0",
     "league/uri": "^5.2",
     "imgix/imgix-php": "^2.1",
     "verbb/super-table": "2.3.0",
