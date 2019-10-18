@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1570194618
+dateModified: 1571307695
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3869,29 +3869,29 @@ matrixBlockTypes:
     sortOrder: 1
 plugins:
   aws-s3:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: '1.2'
     settings: null
   cp-css:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 2.0.0
     settings:
       additionalCss: ''
       cssFile: /resources/css/cp.css
   cp-js:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 2.0.0
     settings: null
   element-api:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
   element-map:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
@@ -3917,12 +3917,12 @@ plugins:
     enabled: true
     schemaVersion: 2.0.0
   recentchanges:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
   redactor:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 2.3.0
     settings: null
@@ -3932,12 +3932,12 @@ plugins:
     schemaVersion: 1.0.0
     settings: null
   super-table:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 2.2.0
     settings: null
   tag-manager:
-    enabled: '1'
+    enabled: true
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
@@ -5478,6 +5478,57 @@ sections:
       uid: b499b2f0-3599-4386-8b87-801027fab3f6
     type: structure
     propagationMethod: all
+  fe6c1cbb-359d-4fe3-92d9-b5c1aec35783:
+    name: Funding
+    handle: funding
+    type: structure
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: '{parent.uri ? parent.uri : ''funding''}/{slug}'
+        template: ''
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: '{parent.uri ? parent.uri : ''funding''}/{slug}'
+        template: ''
+    structure:
+      uid: e166e603-46ac-461c-8480-ffc5dd4482a1
+      maxLevels: null
+    entryTypes:
+      9c272981-2512-4e3e-9555-e3b161c5b5a7:
+        name: Funding
+        handle: funding
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          26c3b5f6-f1a3-464e-88b5-ad3baeaf6ceb:
+            tabs:
+              -
+                name: Content
+                sortOrder: 1
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 2
+                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
+                    required: false
+                    sortOrder: 3
+              -
+                name: 'Social Media'
+                sortOrder: 2
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
 siteGroups:
   ea0f6303-e72a-4088-bfb5-82489efb3267:
     name: 'The National Lottery Community Fund'
