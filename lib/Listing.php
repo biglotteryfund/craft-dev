@@ -87,6 +87,7 @@ class ListingTransformer extends TransformerAbstract
             }, $entry->contentSegment->all() ?? []) : [],
             'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
             'outro' => $entry->outroText ?? null,
+            'childPageDisplay' => $entry->childPageDisplay ? $entry->childPageDisplay->value : null,
         ];
 
         $ancestors = self::getRelatedEntries($entry, 'ancestors');
