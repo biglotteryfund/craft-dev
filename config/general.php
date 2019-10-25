@@ -36,6 +36,9 @@ return [
         // This needs to be defined if upload_max_filesize is greater than 16mb (Craft default)
         'maxUploadFileSize' => 20777216,
 
+        // Allow expiring links (eg. shareable previews) to last for a week
+        'defaultTokenDuration ' => 604800, // one week
+
     ],
 
     // Dev environment settings
