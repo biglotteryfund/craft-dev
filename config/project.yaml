@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1572521575
+dateModified: 1572538461
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3085,6 +3085,8 @@ matrixBlockTypes:
           columns:
             259:
               width: ''
+            265:
+              width: ''
             260:
               width: ''
             258:
@@ -5827,7 +5829,7 @@ superTableBlockTypes:
       9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
         name: Entry
         handle: entry
-        instructions: 'Choose the entry to link to'
+        instructions: 'Choose the entry to link to. If you don''t choose one you must supply an External Link instead.'
         searchable: false
         translationMethod: site
         translationKeyFormat: null
@@ -5872,6 +5874,19 @@ superTableBlockTypes:
           columnType: text
         contentColumnType: text
         fieldGroup: null
+      b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9:
+        name: 'External Link'
+        handle: externalLink
+        instructions: 'Optional – if you supply a link then this will be used instead of the entry. Use this to add a piece of content from an external, third-party website.'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Url
+        settings:
+          placeholder: ''
+          maxLength: '255'
+        contentColumnType: string(255)
+        fieldGroup: null
     fieldLayouts:
       c352ef75-2b80-4c0e-8505-4164a11a4a65:
         tabs:
@@ -5881,14 +5896,17 @@ superTableBlockTypes:
             fields:
               2184906d-f2b9-4d39-a094-bfa50ccf8271:
                 required: false
-                sortOrder: 3
+                sortOrder: 4
               2dbee670-c961-4ea7-b503-cf23bce9541e:
                 required: false
-                sortOrder: 4
+                sortOrder: 5
               9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
-                required: true
+                required: false
                 sortOrder: 1
               ab94c548-6f17-4790-b6dd-4c766143bee5:
+                required: false
+                sortOrder: 3
+              b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9:
                 required: false
                 sortOrder: 2
   aba74ecd-5c81-4302-90e6-f7e62956af82:

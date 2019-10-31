@@ -214,16 +214,20 @@ class ContentHelpers
                         'heading' => $block->heading
                     ];
                     if (!empty($block->relatedItems->all())) {
-                        $gridBlocks = array_map(function ($gridBlock) use ($locale) {
+                        $gridBlocks = array_filter(array_map(function ($gridBlock) use ($locale) {
+                            $externalUrl = $gridBlock->externalLink;
                             $entry = $gridBlock->entry->one();
+                            if (!$entry && !$externalUrl) {
+                                return false;
+                            }
                             $entryBlock = [
                                 'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
                                 'summary' => $gridBlock->entryDescription ?? null,
-                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                                'linkUrl' => $externalUrl ? $externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
                                 'trailImage' => $gridBlock->entryImage ? self::buildTrailImage($gridBlock->entryImage) : null,
                             ];
                             return $entryBlock;
-                        }, $block->relatedItems->all());
+                        }, $block->relatedItems->all()));
                     }
                     $data['content'] = $gridBlocks;
                     array_push($parts, $data);
