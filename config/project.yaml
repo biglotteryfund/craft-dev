@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1572538461
+dateModified: 1572539557
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3071,7 +3071,7 @@ matrixBlockTypes:
       0e47e9ca-df73-41e1-83a7-f333ec5fc1b2:
         name: 'Related items'
         handle: relatedItems
-        instructions: 'Choose some items to appear below the heading'
+        instructions: 'Choose some items to appear below the heading. You can choose either an Entry to link to, or an external URL instead. If you don''t choose either then the item won''t appear.'
         searchable: false
         translationMethod: site
         translationKeyFormat: null
