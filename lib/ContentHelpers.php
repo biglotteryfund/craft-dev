@@ -8,6 +8,16 @@ use craft\elements\Entry;
 class ContentHelpers
 {
 
+    private static function allPagesHaveImages(array $pages)
+    {
+        foreach ($pages as $page) {
+            if (!$page['trailImage']) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static function buildTrailImage($imageField)
     {
         $photoUrl = $imageField ? Images::extractImageUrl($imageField) : null;
@@ -130,7 +140,7 @@ class ContentHelpers
      * - Inline figure (image with a caption)
      * - Media aside (callout block with text, image, and link)
      */
-    public static function extractFlexibleContent(Entry $entry, $locale)
+    public static function extractFlexibleContent(Entry $entry, $locale, $children = null)
     {
         $parts = [];
         if (!$entry->flexibleContent) {
@@ -226,11 +236,17 @@ class ContentHelpers
                     array_push($parts, $data);
                     break;
                 case 'childPageList':
-                    $data = [
-                        'type' => $block->type->handle,
-                        'displayMode' => $block->childPageDisplayStyle->value
-                    ];
-                    array_push($parts, $data);
+                    if (count($children) > 0) {
+                        // Work out if we can display a grid of photos
+                        $allPagesHaveImages = self::allPagesHaveImages($children);
+                        $desiredDisplayMode = $block->childPageDisplayStyle->value;
+                        $displayMode = ($desiredDisplayMode === 'grid' && $allPagesHaveImages) ? 'grid' : 'list';
+                        $data = [
+                            'type' => $block->type->handle,
+                            'displayMode' => $displayMode,
+                        ];
+                        array_push($parts, $data);
+                    }
                     break;
             }
         }

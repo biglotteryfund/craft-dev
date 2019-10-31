@@ -85,9 +85,7 @@ class ListingTransformer extends TransformerAbstract
                     'photo' => $segmentImage ? $segmentImage->url : null,
                 ];
             }, $entry->contentSegment->all() ?? []) : [],
-            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
-            'outro' => $entry->outroText ?? null,
-            'childPageDisplay' => $entry->childPageDisplay ? $entry->childPageDisplay->value : null,
+            'outro' => $entry->outroText ?? null
         ];
 
         $ancestors = self::getRelatedEntries($entry, 'ancestors');
@@ -104,6 +102,10 @@ class ListingTransformer extends TransformerAbstract
         if (count($siblings) > 0) {
             $customFields['siblings'] = $siblings;
         }
+
+        // Finally construct flexible content, which depends upon some of the above fields
+        $customFields['flexibleContent'] = ContentHelpers::extractFlexibleContent($entry, $this->locale, $children);
+
 
         return array_merge($commonFields, $customFields);
     }
