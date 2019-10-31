@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1571393950
+dateModified: 1572518371
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3785,6 +3785,80 @@ matrixBlockTypes:
                 required: false
                 sortOrder: 3
               f9c3f7a5-d574-4be1-b35a-da174c68b4b8:
+                required: false
+                sortOrder: 1
+  f61ad888-6ae7-4c9f-ab43-f7a3ed6c76da:
+    field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+    name: 'Table of Contents'
+    handle: tableOfContents
+    sortOrder: 7
+    fields:
+      173fd2cb-0f50-4807-ac9b-7af40f73e7ca:
+        name: 'Table of Contents introduction'
+        handle: tableOfContentsIntro
+        instructions: 'Place this block where you''d like your Table of Contents (TOC) to appear. If your other Flexible Content blocks have Titles, they''ll appear in your TOC. You can add text here to appear above the TOC.'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\redactor\Field
+        settings:
+          redactorConfig: Full.json
+          purifierConfig: ''
+          cleanupHtml: true
+          removeInlineStyles: '1'
+          removeEmptyTags: '1'
+          removeNbsp: '1'
+          purifyHtml: '1'
+          columnType: text
+          availableVolumes: '*'
+          availableTransforms: '*'
+        contentColumnType: text
+        fieldGroup: null
+    fieldLayouts:
+      e51405f2-fcb8-4e77-9b2a-57e786130311:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              173fd2cb-0f50-4807-ac9b-7af40f73e7ca:
+                required: false
+                sortOrder: 1
+  f76c4d99-f62f-463b-b573-946becc0923d:
+    field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+    name: 'Child Page List'
+    handle: childPageList
+    sortOrder: 8
+    fields:
+      e86eb7e9-f5e2-4185-8c86-f76acce0b3ca:
+        name: 'Child page display style'
+        handle: childPageDisplayStyle
+        instructions: 'Place this block where you''d like child pages to be displayed. Choose how they should be displayed:'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Dropdown
+        settings:
+          optgroups: true
+          options:
+            -
+              label: 'Text list'
+              value: list
+              default: '1'
+            -
+              label: 'Photo grid'
+              value: grid
+              default: ''
+        contentColumnType: string
+        fieldGroup: null
+    fieldLayouts:
+      aa35dd33-d70e-4bca-9e52-801a628ee678:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              e86eb7e9-f5e2-4185-8c86-f76acce0b3ca:
                 required: false
                 sortOrder: 1
   fa1bc12d-a0f6-4d83-a213-cb9a9ca82eb5:

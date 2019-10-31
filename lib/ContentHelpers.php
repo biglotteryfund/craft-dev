@@ -218,6 +218,20 @@ class ContentHelpers
                     $data['content'] = $gridBlocks;
                     array_push($parts, $data);
                     break;
+                case 'tableOfContents':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'content' => $block->tableOfContentsIntro ?? null
+                    ];
+                    array_push($parts, $data);
+                    break;
+                case 'childPageList':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'displayMode' => $block->childPageDisplayStyle->value
+                    ];
+                    array_push($parts, $data);
+                    break;
             }
         }
         return $parts;
