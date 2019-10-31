@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1572518371
+dateModified: 1572521575
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -475,31 +475,6 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  3cfdb7b7-949e-4841-b88d-148f1ea0b289:
-    name: 'Child page display'
-    handle: childPageDisplay
-    instructions: "How should child pages of this page be displayed?\n\nNote: photo grids will only display if each child page has a hero image."
-    searchable: false
-    translationMethod: none
-    translationKeyFormat: null
-    type: craft\fields\Dropdown
-    settings:
-      optgroups: true
-      options:
-        -
-          label: 'Do not show child pages'
-          value: none
-          default: '1'
-        -
-          label: 'Show child pages as a photo grid'
-          value: grid
-          default: ''
-        -
-          label: 'Show child pages as a list of text links'
-          value: list
-          default: ''
-    contentColumnType: string
-    fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
   3d1305a6-366b-4a1d-8849-433df83a803e:
     contentColumnType: string
     fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
@@ -5615,15 +5590,9 @@ sections:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 1
-                  3cfdb7b7-949e-4841-b88d-148f1ea0b289:
-                    required: false
-                    sortOrder: 4
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
                     required: true
                     sortOrder: 2
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 3
               -
                 name: 'Social Media'
                 sortOrder: 2
