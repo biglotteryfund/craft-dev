@@ -10,10 +10,11 @@ use League\Fractal\TransformerAbstract;
 
 class FundingProgrammeTransformer extends TransformerAbstract
 {
-    public function __construct($locale, $isSingle = false)
+    public function __construct($locale, $isSingle = false, $includeImages = false)
     {
         $this->locale = $locale;
         $this->isSingle = $isSingle;
+        $this->includeImages = $includeImages;
     }
 
     private static function buildTrailImage($imageField)
@@ -37,10 +38,6 @@ class FundingProgrammeTransformer extends TransformerAbstract
             $commonProgrammeFields = [
                 'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
                 'description' => $entry->programmeIntro ?? null,
-                'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
-                'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
-                'trailImage' => $entry->heroImage ? self::buildTrailImage($entry->heroImage->one()) : null,
-                'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
                 'area' => $entry->programmeArea ? [
                     'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
                     'value' => $entry->programmeArea->value,
@@ -57,7 +54,17 @@ class FundingProgrammeTransformer extends TransformerAbstract
             ];
 
             if (!$this->isSingle) {
-                return array_merge($commonFields, $commonProgrammeFields);
+                if ($this->includeImages) {
+                    return array_merge($commonFields, $commonProgrammeFields);
+                } else {
+                    $imageFields = [
+                        'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
+                        'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
+                        'trailImage' => $entry->heroImage ? self::buildTrailImage($entry->heroImage->one()) : null,
+                        'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero))
+                    ];
+                    return array_merge($commonFields, $commonProgrammeFields, $imageFields);
+                }
             } else {
                 // Add in the content fields for single programme display
                 return array_merge($commonFields, $commonProgrammeFields, [

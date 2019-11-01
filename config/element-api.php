@@ -165,12 +165,13 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
     ];
 
     $isSingle = $programmeSlug || $childPageSlug;
+    $showAllProgrammes = \Craft::$app->request->getParam('all') === 'true';
 
     if ($isSingle) {
         // First look for child pages, then defer to the parent programme
         $criteria['slug'] = $childPageSlug ? $childPageSlug : $programmeSlug;
         $criteria['status'] = EntryHelpers::getVersionStatuses();
-    } else if (\Craft::$app->request->getParam('all') === 'true') {
+    } else if ($showAllProgrammes) {
         $criteria['orderBy'] = 'title asc';
         $criteria['status'] = ['live', 'expired'];
     } else if (\Craft::$app->request->getParam('newest') === 'true') {
@@ -191,7 +192,7 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'criteria' => $criteria,
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale, $isSingle)
+        'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes)
     ];
 }
 
