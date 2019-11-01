@@ -10,11 +10,11 @@ use League\Fractal\TransformerAbstract;
 
 class FundingProgrammeTransformer extends TransformerAbstract
 {
-    public function __construct($locale, $isSingle = false, $showAllProgrammes = false)
+    public function __construct($locale, $isSingle = false, $includeImages = false)
     {
         $this->locale = $locale;
         $this->isSingle = $isSingle;
-        $this->showAllProgrammes = $showAllProgrammes;
+        $this->includeImages = $includeImages;
     }
 
     private static function buildTrailImage($imageField)
@@ -54,7 +54,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
             ];
 
             if (!$this->isSingle) {
-                if ($this->showAllProgrammes) {
+                if ($this->includeImages) {
                     return array_merge($commonFields, $commonProgrammeFields);
                 } else {
                     $imageFields = [
