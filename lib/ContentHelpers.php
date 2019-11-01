@@ -8,6 +8,16 @@ use craft\elements\Entry;
 class ContentHelpers
 {
 
+    private static function allPagesHaveImages(array $pages)
+    {
+        foreach ($pages as $page) {
+            if (!$page['trailImage']) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static function buildTrailImage($imageField)
     {
         $photoUrl = $imageField ? Images::extractImageUrl($imageField) : null;
@@ -130,7 +140,7 @@ class ContentHelpers
      * - Inline figure (image with a caption)
      * - Media aside (callout block with text, image, and link)
      */
-    public static function extractFlexibleContent(Entry $entry, $locale)
+    public static function extractFlexibleContent(Entry $entry, $locale, $children = null)
     {
         $parts = [];
         if (!$entry->flexibleContent) {
@@ -204,19 +214,43 @@ class ContentHelpers
                         'heading' => $block->heading
                     ];
                     if (!empty($block->relatedItems->all())) {
-                        $gridBlocks = array_map(function ($gridBlock) use ($locale) {
+                        $gridBlocks = array_filter(array_map(function ($gridBlock) use ($locale) {
+                            $externalUrl = $gridBlock->externalLink;
                             $entry = $gridBlock->entry->one();
+                            if (!$entry && !$externalUrl) {
+                                return false;
+                            }
                             $entryBlock = [
                                 'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
                                 'summary' => $gridBlock->entryDescription ?? null,
-                                'linkUrl' => EntryHelpers::uriForLocale($entry->uri, $locale),
+                                'linkUrl' => $externalUrl ? $externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
                                 'trailImage' => $gridBlock->entryImage ? self::buildTrailImage($gridBlock->entryImage) : null,
                             ];
                             return $entryBlock;
-                        }, $block->relatedItems->all());
+                        }, $block->relatedItems->all()));
                     }
                     $data['content'] = $gridBlocks;
                     array_push($parts, $data);
+                    break;
+                case 'tableOfContents':
+                    $data = [
+                        'type' => $block->type->handle,
+                        'content' => $block->tableOfContentsIntro ?? null
+                    ];
+                    array_push($parts, $data);
+                    break;
+                case 'childPageList':
+                    if (count($children) > 0) {
+                        // Work out if we can display a grid of photos
+                        $allPagesHaveImages = self::allPagesHaveImages($children);
+                        $desiredDisplayMode = $block->childPageDisplayStyle->value;
+                        $displayMode = ($desiredDisplayMode === 'grid' && $allPagesHaveImages) ? 'grid' : 'list';
+                        $data = [
+                            'type' => $block->type->handle,
+                            'displayMode' => $displayMode,
+                        ];
+                        array_push($parts, $data);
+                    }
                     break;
             }
         }
