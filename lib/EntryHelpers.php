@@ -12,13 +12,19 @@ class EntryHelpers
         return \Craft::t('site', $message, $variables, $locale);
     }
 
-    public static function getAvailableLanguages($entryId, $currentLanguage)
+    public static function getAvailableLanguages($entryId, $currentLanguage, $includeExpiredForTranslations = false)
     {
+        $statuses = ['live'];
         $alternateLanguage = $currentLanguage === 'en' ? 'cy' : 'en';
+
+        if ($includeExpiredForTranslations) {
+            $statuses[] = 'expired';
+        }
 
         $altEntry = Entry::find()
             ->id($entryId)
             ->site($alternateLanguage)
+            ->status($statuses)
             ->one();
 
         $availableLanguages = [$currentLanguage];

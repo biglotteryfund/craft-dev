@@ -29,7 +29,7 @@ class ContentHelpers
         ]) : null;
     }
 
-    public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true)
+    public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true, $includeExpiredForTranslations = false)
     {
         $fields = [
             'id' => $entry->id,
@@ -39,7 +39,7 @@ class ContentHelpers
             'postDate' => $entry->postDate,
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
-            'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale),
+            'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale, $includeExpiredForTranslations),
             'openGraph' => self::extractSocialMetaTags($entry),
             // @TODO: Is url used anywhere?
             'url' => $entry->url,

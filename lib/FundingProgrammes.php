@@ -30,7 +30,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
     public function transform(Entry $entry)
     {
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale, $includeHeroes = $this->isSingle);
+        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale, $includeHeroes = $this->isSingle, $includeExpiredForTranslations = true);
 
         if ($entry->type->handle === 'contentPage') {
             return ContentHelpers::getFlexibleContentPage($entry, $this->locale);
