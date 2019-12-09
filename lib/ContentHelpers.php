@@ -149,10 +149,21 @@ class ContentHelpers
         foreach ($entry->flexibleContent->all() as $block) {
             switch ($block->type->handle) {
                 case 'contentArea':
+
+                    // Scale down any in-body images
+                    $contentWithResizedImages = preg_replace_callback(
+                        '/<img src="(https:\/\/www.tnlcommunityfund.org.uk\/media\/.+?)"/i',
+                        function ($matches) {
+                            $url = Images::imgixUrl($matches[1], ['w' => 900, 'fit' => 'fill']);
+                            return '<img src="' . $url . '"';
+                        },
+                        $block->contentBody
+                    );
+
                     $data = [
                         'type' => $block->type->handle,
                         'title' => $block->flexTitle ?? null,
-                        'content' => $block->contentBody,
+                        'content' => $contentWithResizedImages,
                     ];
                     array_push($parts, $data);
                     break;
