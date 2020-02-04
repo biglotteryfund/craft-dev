@@ -309,20 +309,34 @@ class ContentHelpers
     public static function extractSocialMetaTags(Entry $entry)
     {
         $openGraph = [];
+        $socialMediaTags = $entry->socialMediaTags->type('openGraphTags')->all();
 
-        if (!empty($entry->socialMediaTags)) {
+        if (!empty($socialMediaTags)) {
+            $ogData = null;
+            $matchingSlug = null;
 
-            // Default to using the first set of tags
-            $ogData = $entry->socialMediaTags->one();
+            // If we've passed a ?social=<slug> parameter, try to find its
+            // matching set of tags (eg. for per-URL open graph metadata)
+            if ($searchQuery = \Craft::$app->request->getParam('social')) {
+                $matchingSlug = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                if ($matchingSlug) {
+                    $ogData = $matchingSlug;
+                }
+            }
+
+            // Find items without any custom slugs (eg. a candidate for default metadata)
+            if (!$matchingSlug) {
+                $blankSocialTags = array_filter($socialMediaTags, function ($tag) {
+                    return $tag->ogSlug == null;
+                });
+                // Get the first item in the array
+                if ($blankSocialTags) {
+                    $ogData = reset($blankSocialTags);
+                }
+            }
+
 
             if ($ogData) {
-                // If we've passed a ?social=<slug> parameter, try to find its
-                // matching set of tags (eg. for per-URL open graph metadata)
-                if ($searchQuery = \Craft::$app->request->getParam('social')) {
-                    $matchingSlug = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
-                    $ogData = $matchingSlug ? $matchingSlug : $ogData;
-                }
-
                 $openGraph['title'] = $ogData->ogTitle ?? null;
                 $openGraph['description'] = $ogData->ogDescription ?? null;
                 $openGraph['facebookImage'] = $ogData->ogFacebookImage ? Images::extractImageUrl($ogData->ogFacebookImage) : null;
