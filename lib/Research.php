@@ -30,6 +30,8 @@ class ResearchTransformer extends TransformerAbstract
             'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
             'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
 
+            'parent' => ContentHelpers::getParentInfo($entry, $this->locale),
+
             'introduction' => $entry->introductionText ?? null,
             'contactEmail' => $researchMeta ? $researchMeta->contactEmail : null,
             'researchPartners' => $researchMeta ? $researchMeta->researchPartners : null,
