@@ -227,6 +227,7 @@ function getResearch($locale, $type = false)
 
     $criteria = [
         'site' => $locale,
+        'level' => 1, // Skip child pages
         'section' => 'research',
         'status' => EntryHelpers::getVersionStatuses(),
         'type' => ($type === 'documents') ? 'researchDocument' : 'research'
@@ -368,7 +369,7 @@ function getResearch($locale, $type = false)
  * API Endpoint: Get research detail
  * Get full details of a single research entry
  */
-function getResearchDetail($locale, $slug)
+function getResearchDetail($locale, $slug, $childPageSlug = null)
 {
     normaliseCacheHeaders();
 
@@ -378,7 +379,7 @@ function getResearchDetail($locale, $slug)
         'criteria' => [
             'site' => $locale,
             'section' => 'research',
-            'slug' => $slug,
+            'slug' => $childPageSlug ? $childPageSlug : $slug,
             'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
@@ -734,6 +735,7 @@ return [
         'api/v1/<locale:en|cy>/research/<type:documents>' => getResearch,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,
+        'api/v1/<locale:en|cy>/research/<slug>/<childPageSlug:{slug}>' => getResearchDetail,
         'api/v1/<locale:en|cy>/strategic-programmes' => getStrategicProgrammes,
         'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>/<childPageSlug:{slug}>' => getStrategicProgramme,
