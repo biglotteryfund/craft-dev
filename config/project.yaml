@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1580815703
+dateModified: 1580899980
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4301,7 +4301,7 @@ sections:
         template: research/_entry
     structure:
       uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
-      maxLevels: null
+      maxLevels: 1
     entryTypes:
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
         fieldLayouts:
