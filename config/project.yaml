@@ -2308,6 +2308,65 @@ matrixBlockTypes:
     handle: document
     name: Document
     sortOrder: '1'
+  2c3319ca-6bc4-4ccf-bfb7-d5209f897813:
+    field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+    name: 'Fact River'
+    handle: factRiver
+    sortOrder: 5
+    fields:
+      8134de3d-e6de-40c9-becb-401b18359723:
+        name: Title
+        handle: flexTitle
+        instructions: 'A title field to distinguish this block of content'
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        contentColumnType: text
+        fieldGroup: null
+      ccf624ab-e6d7-471d-bfa1-ff81a5811e28:
+        name: Facts
+        handle: facts
+        instructions: 'Add some facts and images to appear together'
+        searchable: true
+        translationMethod: site
+        translationKeyFormat: null
+        type: verbb\supertable\fields\SuperTableField
+        settings:
+          minRows: '1'
+          maxRows: ''
+          contentTable: '{{%stc_29_facts}}'
+          propagationMethod: all
+          staticField: ''
+          columns:
+            268:
+              width: ''
+            269:
+              width: ''
+          fieldLayout: row
+          selectionLabel: 'Add a fact'
+        contentColumnType: string
+        fieldGroup: null
+    fieldLayouts:
+      19de0582-9d46-445d-b771-9b93990fcdcb:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              8134de3d-e6de-40c9-becb-401b18359723:
+                required: false
+                sortOrder: 1
+              ccf624ab-e6d7-471d-bfa1-ff81a5811e28:
+                required: false
+                sortOrder: 2
   2c5d7371-4063-4b74-a3d9-7cad0fa95556:
     field: 698dcade-907a-4233-8c8e-7421845e74d4
     fieldLayouts:
@@ -3078,7 +3137,7 @@ matrixBlockTypes:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     name: 'Related Content'
     handle: relatedContent
-    sortOrder: 6
+    sortOrder: 7
     fields:
       0e47e9ca-df73-41e1-83a7-f333ec5fc1b2:
         name: 'Related items'
@@ -3095,15 +3154,15 @@ matrixBlockTypes:
           propagationMethod: all
           staticField: ''
           columns:
-            259:
-              width: ''
-            265:
-              width: ''
             260:
+              width: ''
+            263:
+              width: ''
+            261:
               width: ''
             258:
               width: ''
-            261:
+            259:
               width: ''
           fieldLayout: row
           selectionLabel: 'Add a related item'
@@ -3143,7 +3202,7 @@ matrixBlockTypes:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     name: 'Grid Blocks'
     handle: gridBlocks
-    sortOrder: 5
+    sortOrder: 6
     fields:
       4a787c27-6078-43fb-a29e-8a61cf61d97c:
         name: Introduction
@@ -3780,7 +3839,7 @@ matrixBlockTypes:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     name: 'Table of Contents'
     handle: tableOfContents
-    sortOrder: 7
+    sortOrder: 8
     fields:
       173fd2cb-0f50-4807-ac9b-7af40f73e7ca:
         name: 'Table of Contents introduction'
@@ -3817,7 +3876,7 @@ matrixBlockTypes:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     name: 'Child Page List'
     handle: childPageList
-    sortOrder: 8
+    sortOrder: 9
     fields:
       e86eb7e9-f5e2-4185-8c86-f76acce0b3ca:
         name: 'Child page display style'
@@ -4313,7 +4372,7 @@ sections:
         template: research/_entry
     structure:
       uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
-      maxLevels: 1
+      maxLevels: 2
     entryTypes:
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
         fieldLayouts:
@@ -5797,6 +5856,70 @@ superTableBlockTypes:
               5643199b-c773-4d2b-97b9-18270e979de5:
                 required: true
                 sortOrder: 1
+  6efff020-4bf0-4494-8e1a-ca7247dae1f6:
+    field: ccf624ab-e6d7-471d-bfa1-ff81a5811e28
+    fields:
+      b12041a2-e5fa-4a46-9c59-845f38904c4d:
+        name: 'Fact text'
+        handle: factText
+        instructions: 'Use bold text to highlight words in colour'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\redactor\Field
+        settings:
+          redactorConfig: Basics.json
+          purifierConfig: ''
+          cleanupHtml: true
+          removeInlineStyles: '1'
+          removeEmptyTags: '1'
+          removeNbsp: '1'
+          purifyHtml: '1'
+          columnType: text
+          availableVolumes: '*'
+          availableTransforms: '*'
+        contentColumnType: text
+        fieldGroup: null
+      bd4940c4-0930-4c96-afb8-76b05ad900b5:
+        name: 'Fact image'
+        handle: factImage
+        instructions: 'Choose an illustration to sit alongside the fact text'
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Assets
+        settings:
+          useSingleFolder: '1'
+          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          defaultUploadLocationSubpath: ''
+          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+          singleUploadLocationSubpath: facts
+          restrictFiles: '1'
+          allowedKinds:
+            - image
+          sources: '*'
+          source: null
+          targetSiteId: null
+          viewMode: list
+          limit: '1'
+          selectionLabel: ''
+          localizeRelations: ''
+          validateRelatedElements: ''
+        contentColumnType: string
+        fieldGroup: null
+    fieldLayouts:
+      dd6d6907-b080-4b38-af12-30dccd6ff83e:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              b12041a2-e5fa-4a46-9c59-845f38904c4d:
+                required: true
+                sortOrder: 1
+              bd4940c4-0930-4c96-afb8-76b05ad900b5:
+                required: true
+                sortOrder: 2
   a1addbac-ed0c-4926-8d64-cece4ece579f:
     field: 0e47e9ca-df73-41e1-83a7-f333ec5fc1b2
     fields:

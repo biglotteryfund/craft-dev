@@ -207,29 +207,45 @@ class ContentHelpers
                     ];
                     array_push($parts, $data);
                     break;
+                case 'factRiver':
+                    $factRiver = array();
+                    $data = [
+                        'type' => $block->type->handle,
+                        'title' => $block->flexTitle ?? null,
+                    ];
+                    if (!empty($block->facts->all())) {
+                        $factRiver = array_map(function ($fact) {
+                            return [
+                                'text' => $fact->factText,
+                                'image' => Images::extractImageUrl($fact->factImage)
+                            ];
+                        }, $block->facts->all());
+                    }
+                    $data['content'] = $factRiver;
+                    array_push($parts, $data);
+                    break;
                 case 'relatedContent':
-                    $gridBlocks = array();
+                    $relatedContent = array();
                     $data = [
                         'type' => $block->type->handle,
                         'heading' => $block->heading
                     ];
                     if (!empty($block->relatedItems->all())) {
-                        $gridBlocks = array_filter(array_map(function ($gridBlock) use ($locale) {
+                        $relatedContent = array_filter(array_map(function ($gridBlock) use ($locale) {
                             $externalUrl = $gridBlock->externalLink;
                             $entry = $gridBlock->entry->one();
                             if (!$entry && !$externalUrl) {
                                 return false;
                             }
-                            $entryBlock = [
+                            return [
                                 'title' => $gridBlock->entryTitle ? $gridBlock->entryTitle : $entry->title,
                                 'summary' => $gridBlock->entryDescription ?? null,
                                 'linkUrl' => $externalUrl ? $externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
                                 'trailImage' => $gridBlock->entryImage ? self::buildTrailImage($gridBlock->entryImage) : null,
                             ];
-                            return $entryBlock;
                         }, $block->relatedItems->all()));
                     }
-                    $data['content'] = $gridBlocks;
+                    $data['content'] = $relatedContent;
                     array_push($parts, $data);
                     break;
                 case 'tableOfContents':
