@@ -325,20 +325,34 @@ class ContentHelpers
     public static function extractSocialMetaTags(Entry $entry)
     {
         $openGraph = [];
+        $socialMediaTags = $entry->socialMediaTags->type('openGraphTags')->all();
 
-        if (!empty($entry->socialMediaTags)) {
+        if (!empty($socialMediaTags)) {
+            $ogData = null;
+            $matchingSlug = null;
 
-            // Default to using the first set of tags
-            $ogData = $entry->socialMediaTags->one();
+            // If we've passed a ?social=<slug> parameter, try to find its
+            // matching set of tags (eg. for per-URL open graph metadata)
+            if ($searchQuery = \Craft::$app->request->getParam('social')) {
+                $matchingSlug = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
+                if ($matchingSlug) {
+                    $ogData = $matchingSlug;
+                }
+            }
+
+            // Find items without any custom slugs (eg. a candidate for default metadata)
+            if (!$matchingSlug) {
+                $blankSocialTags = array_filter($socialMediaTags, function ($tag) {
+                    return $tag->ogSlug == null;
+                });
+                // Get the first item in the array
+                if ($blankSocialTags) {
+                    $ogData = reset($blankSocialTags);
+                }
+            }
+
 
             if ($ogData) {
-                // If we've passed a ?social=<slug> parameter, try to find its
-                // matching set of tags (eg. for per-URL open graph metadata)
-                if ($searchQuery = \Craft::$app->request->getParam('social')) {
-                    $matchingSlug = $entry->socialMediaTags->type('openGraphTags')->ogSlug($searchQuery)->one();
-                    $ogData = $matchingSlug ? $matchingSlug : $ogData;
-                }
-
                 $openGraph['title'] = $ogData->ogTitle ?? null;
                 $openGraph['description'] = $ogData->ogDescription ?? null;
                 $openGraph['facebookImage'] = $ogData->ogFacebookImage ? Images::extractImageUrl($ogData->ogFacebookImage) : null;
@@ -350,10 +364,8 @@ class ContentHelpers
     }
 
     // Returns a standardised form for flexible pages, typically children of other pages
-    public static function getFlexibleContentPage(Entry $entry, $locale)
+    public static function getParentInfo(Entry $entry, $locale)
     {
-        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
         $parent = $entry->getParent();
         if ($parent) {
             $parent = [
@@ -361,6 +373,16 @@ class ContentHelpers
                 'linkUrl' => $parent->externalUrl ? $parent->externalUrl : EntryHelpers::uriForLocale($parent->uri, $locale),
             ];
         }
+        return $parent ?? null;
+    }
+
+
+    // Returns a standardised form for flexible pages, typically children of other pages
+    public static function getFlexibleContentPage(Entry $entry, $locale)
+    {
+        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+
+        $parent = self::getParentInfo($entry, $locale);
         return array_merge(ContentHelpers::getCommonFields($entry, $status, $locale), [
             'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null

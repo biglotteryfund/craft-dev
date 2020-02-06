@@ -4342,7 +4342,25 @@ sections:
     type: single
     propagationMethod: all
   3102e285-face-4513-b17e-2d3b046fcc88:
+    name: Insights
+    handle: research
+    type: structure
     enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: '{% if type.handle == ''research'' %}insights/{parent.slug}/{slug}{% else %}insights/documents/{slug}{% endif %}'
+        template: research/_entry
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: false
+        hasUrls: true
+        uriFormat: '{% if type.handle == ''research'' %}insights/{parent.slug}/{slug}{% else %}insights/documents/{slug}{% endif %}'
+        template: research/_entry
+    structure:
+      uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
+      maxLevels: 1
     entryTypes:
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
         fieldLayouts:
@@ -4440,21 +4458,6 @@ sections:
         sortOrder: 3
         titleFormat: ''
         titleLabel: Title
-    handle: research
-    name: Insights
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: true
-        hasUrls: true
-        template: research/_entry
-        uriFormat: '{% if type.handle == ''research'' %}insights/{slug}{% else %}insights/documents/{slug}{% endif %}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: false
-        hasUrls: true
-        template: research/_entry
-        uriFormat: '{% if type.handle == ''research'' %}insights/{slug}{% else %}insights/documents/{slug}{% endif %}'
-    type: channel
-    propagationMethod: all
   3ecf7fe6-7292-48f8-9a74-39c2ea37312f:
     enableVersioning: '1'
     entryTypes:
