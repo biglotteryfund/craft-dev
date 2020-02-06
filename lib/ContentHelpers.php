@@ -325,6 +325,11 @@ class ContentHelpers
     public static function extractSocialMetaTags(Entry $entry)
     {
         $openGraph = [];
+
+        if (!isset($entry->socialMediaTags)) {
+            return $openGraph;
+        }
+
         $socialMediaTags = $entry->socialMediaTags->type('openGraphTags')->all();
 
         if (!empty($socialMediaTags)) {
