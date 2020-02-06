@@ -27,7 +27,10 @@ class ListingTransformer extends TransformerAbstract
         if ($relationType === 'ancestors') {
             $relatedSearch = $entry->getAncestors()->all();
         } else if ($relationType === 'children') {
-            $relatedSearch = $entry->getChildren()->all();
+            $children = $entry->getChildren()->all();
+            $relatedSearch = array_filter($children, function ($childPage) {
+                return isset($childPage->excludeThisPageFromChildLists) ? !$childPage->excludeThisPageFromChildLists : true;
+            });
         } else if ($relationType === 'siblings') {
             // get parent first to allow including self as a sibling
             $parent = $entry->getParent();

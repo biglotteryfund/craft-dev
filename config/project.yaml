@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1580899980
+dateModified: 1580989923
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -868,6 +868,18 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\redactor\Field
+  75254713-f63e-44ac-b875-cbc61d48ca9c:
+    name: 'Exclude this page from child lists?'
+    handle: excludeThisPageFromChildLists
+    instructions: 'Should this page be hidden from automatic lists of child pages (if it has a parent)?'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Lightswitch
+    settings:
+      default: ''
+    contentColumnType: boolean
+    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
     contentColumnType: text
     fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
@@ -5598,6 +5610,9 @@ sections:
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
                     required: true
                     sortOrder: 2
+                  75254713-f63e-44ac-b875-cbc61d48ca9c:
+                    required: false
+                    sortOrder: 3
               -
                 name: 'Social Media'
                 sortOrder: 2
