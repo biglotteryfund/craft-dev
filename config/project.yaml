@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1581501586
+dateModified: 1581689323
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -1202,25 +1202,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  99eaaae9-87e0-4b54-a247-504431915423:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImage
-    instructions: 'The main image which will be shown at the top of the page.'
-    name: 'Hero Image'
-    searchable: '1'
-    settings:
-      limit: '1'
-      localizeRelations: ''
-      selectionLabel: ''
-      source: null
-      sources:
-        - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
-      targetSiteId: null
-      viewMode: null
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Entries
   9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
     contentColumnType: text
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1479,23 +1460,6 @@ fields:
       placeholder: ''
     translationKeyFormat: null
     translationMethod: site
-    type: craft\fields\PlainText
-  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-    contentColumnType: text
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImageCredit
-    instructions: 'Use this field if you want to provide a longer custom credit for the image'
-    name: 'Hero image credit'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
     type: craft\fields\PlainText
   ccd71b86-6564-429f-972a-1def8e6840a4:
     contentColumnType: text
@@ -4389,9 +4353,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -4445,9 +4406,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Jobs page content'
                 sortOrder: 1
               -
@@ -4520,15 +4478,9 @@ sections:
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
                     sortOrder: 7
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
                     required: false
                     sortOrder: 5
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
                     required: false
                     sortOrder: 4
@@ -4669,9 +4621,6 @@ sections:
                   83a59f94-8342-417f-b427-11c3c162d89e:
                     required: true
                     sortOrder: 6
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: true
                     sortOrder: 3
@@ -5064,9 +5013,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Benefits page content'
                 sortOrder: 1
               -
@@ -5125,9 +5071,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5192,9 +5135,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 5
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 3
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: false
                     sortOrder: 2
@@ -5314,9 +5254,6 @@ sections:
                   8c779db5-d5b9-4669-bb16-7749b921bc9b:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: People
                 sortOrder: 1
               -
@@ -5388,12 +5325,6 @@ sections:
                   8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
                     required: false
                     sortOrder: 10
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   ccddec99-6800-4547-afb4-022b00cf4915:
                     required: true
                     sortOrder: 5
@@ -5452,9 +5383,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: About
                 sortOrder: 1
               -
@@ -5565,9 +5493,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: Content
                 sortOrder: 1
               -
@@ -5632,9 +5557,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5693,9 +5615,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: '0'
                     sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: 'Link item'
                 sortOrder: '1'
         handle: linkItem
@@ -5725,9 +5644,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5892,15 +5808,9 @@ sections:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
                     required: false
                     sortOrder: 5
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: true
                     sortOrder: 4

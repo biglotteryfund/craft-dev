@@ -100,7 +100,7 @@ class Images
         }
     }
 
-    public static function extractNewHeroImageField($heroField)
+    public static function extractHeroImageField($heroField)
     {
         if ($heroField) {
             $hero = $heroField->one() ?? null;

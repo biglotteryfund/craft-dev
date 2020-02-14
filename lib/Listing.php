@@ -64,9 +64,7 @@ class ListingTransformer extends TransformerAbstract
             }
 
             $relatedEntries[] = array_merge($commonFields, [
-                // @TODO: Remove photo in favour of trailImage once all pages have new hero images
-                'photo' => self::buildTrailImage(Images::extractImage($relatedEntry->heroImage)),
-                'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($relatedEntry->hero)),
+                'trailImage' => self::buildTrailImage(Images::extractHeroImageField($relatedEntry->hero)),
             ]);
         }
 
