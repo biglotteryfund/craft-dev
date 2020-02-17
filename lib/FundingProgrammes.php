@@ -59,9 +59,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
                 } else {
                     $imageFields = [
                         'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($entry),
-                        'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($entry),
-                        'trailImage' => $entry->heroImage ? self::buildTrailImage($entry->heroImage->one()) : null,
-                        'trailImageNew' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero))
+                        'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero))
                     ];
                     return array_merge($commonFields, $commonProgrammeFields, $imageFields);
                 }

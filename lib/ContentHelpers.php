@@ -41,10 +41,6 @@ class ContentHelpers
             'dateUpdated' => $entry->dateUpdated,
             'availableLanguages' => EntryHelpers::getAvailableLanguages($entry->id, $locale, $includeExpiredForTranslations),
             'openGraph' => self::extractSocialMetaTags($entry),
-            // @TODO: Is url used anywhere?
-            'url' => $entry->url,
-            // @TODO: Some older pages use path instead of linkUrl in templates, update these uses and then remove this
-            'path' => $entry->uri,
             'linkUrl' => $entry->externalUrl ? $entry->externalUrl : EntryHelpers::uriForLocale($entry->uri, $locale),
             'title' => $entry->title,
             'trailText' => $entry->trailText ?? null,
@@ -55,9 +51,7 @@ class ContentHelpers
             // Looking up heroes is expensive for some API calls (eg. listing all funding programmes)
             // so we allow them to be optional
             $extraFields = [
-                'hero' => $entry->heroImage ? Images::extractHeroImage($entry->heroImage) : null,
-                'heroCredit' => $entry->heroImageCredit ?? null,
-                'heroNew' => Images::buildHero($entry->hero),
+                'hero' => Images::buildHero($entry->hero),
             ];
         }
 
@@ -294,24 +288,11 @@ class ContentHelpers
         }, $documentGroupsField->all() ?? []);
     }
 
-    // Use custom thumbnail if one is set, otherwise default to hero image.
-    // @TODO: Remove one new hero images are all in place
-    public static function getFundingProgrammeThumbnailUrl($entry)
-    {
-        $heroImage = Images::extractImage($entry->heroImage);
-        $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
-            ($heroImage ? $heroImage->imageMedium->one() : null);
-        return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [
-            'w' => 100,
-            'h' => 100,
-            'crop' => 'faces',
-        ]) : null;
-    }
 
     // Use custom thumbnail if one is set, otherwise default to hero image.
-    public static function getFundingProgrammeThumbnailUrlNew($entry)
+    public static function getFundingProgrammeThumbnailUrl($entry)
     {
-        $heroImage = Images::extractNewHeroImageField($entry->hero);
+        $heroImage = Images::extractHeroImageField($entry->hero);
         $thumbnailSrc = Images::extractImage($entry->trailPhoto) ??
             ($heroImage ? $heroImage->imageMedium->one() : null);
         return $thumbnailSrc ? Images::imgixUrl($thumbnailSrc->url, [

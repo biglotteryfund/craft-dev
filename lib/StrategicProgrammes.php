@@ -30,14 +30,9 @@ class StrategicProgrammeTransformer extends TransformerAbstract
         if ($entry->type->handle === 'contentPage') {
             return ContentHelpers::getFlexibleContentPage($entry, $this->locale);
         } else {
-            $heroImageField = Images::extractImage($entry->heroImage);
 
             return array_merge($commonFields, [
-                // @TODO: Update template URLs to use linkUrl
-                'path' => $commonFields['linkUrl'],
-                // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
-                'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
-                'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+                'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero)),
                 'intro' => $entry->programmeIntro,
                 'aims' => $entry->strategicProgrammeAims,
                 'impact' => array_map(function ($block) {

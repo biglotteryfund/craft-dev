@@ -15,7 +15,7 @@ class ProjectStoriesTransformer extends TransformerAbstract
 
     private static function getTrailPhoto($entry)
     {
-        $hero = Images::extractNewHeroImageField($entry->hero);
+        $hero = Images::extractHeroImageField($entry->hero);
         $heroImage = $hero ? $hero->imageMedium->one() : null;
         $trailImage = $entry->trailPhoto->one() ?? null;
 

@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1581501586
+dateModified: 1581689778
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -385,21 +385,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: verbb\supertable\fields\SuperTableField
-  2588e3c7-9719-44b3-a9ea-e70bae854d2e:
-    contentColumnType: string
-    fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
-    handle: fundingProgramme
-    instructions: ''
-    name: 'Funding Programme'
-    searchable: true
-    settings:
-      contentTable: '{{%matrixcontent_fundingprogramme}}'
-      localizeBlocks: '1'
-      maxBlocks: '1'
-      minBlocks: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Matrix
   2bef64b2-1bcc-462c-b819-97a7df3fb33a:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -810,29 +795,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Matrix
-  6f4a7270-c40c-4b31-ba86-ef6a553c30c3:
-    contentColumnType: string
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: articleType
-    instructions: ''
-    name: 'Article Type'
-    searchable: '1'
-    settings:
-      options:
-        -
-          __assoc__:
-            -
-              - default
-              - '1'
-            -
-              - label
-              - 'Press Release'
-            -
-              - value
-              - press-release
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Dropdown
   6ffbb157-9d66-4994-8a8f-947c35960c2d:
     contentColumnType: string
     fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
@@ -1185,42 +1147,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  93bda045-a51b-4b7c-9857-de1bb6012d31:
-    contentColumnType: text
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: introduction
-    instructions: 'A few lines of introduction text to be displayed on the blog homepage with a link to read the full version'
-    name: Introduction
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
-  99eaaae9-87e0-4b54-a247-504431915423:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImage
-    instructions: 'The main image which will be shown at the top of the page.'
-    name: 'Hero Image'
-    searchable: '1'
-    settings:
-      limit: '1'
-      localizeRelations: ''
-      selectionLabel: ''
-      source: null
-      sources:
-        - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
-      targetSiteId: null
-      viewMode: null
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Entries
   9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
     contentColumnType: text
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1280,34 +1206,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  a9533143-99e7-4202-8dc4-616da1460d7f:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: documentUpload
-    instructions: ''
-    name: 'Document Upload'
-    searchable: '1'
-    settings:
-      allowedKinds:
-        - excel
-        - pdf
-        - word
-      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: ''
-      restrictFiles: ''
-      selectionLabel: 'Add a document'
-      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      singleUploadLocationSubpath: documents
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: '1'
-      viewMode: list
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
   adfb9aa8-ae2e-4b0e-9068-1a58c62105b0:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -1480,23 +1378,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-    contentColumnType: text
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: heroImageCredit
-    instructions: 'Use this field if you want to provide a longer custom credit for the image'
-    name: 'Hero image credit'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\fields\PlainText
   ccd71b86-6564-429f-972a-1def8e6840a4:
     contentColumnType: text
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -1637,22 +1518,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  dd4bc8c4-46eb-4902-8ed7-acec15385993:
-    contentColumnType: text
-    fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
-    handle: articleTitle
-    instructions: ''
-    name: 'Article Title'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: language
-    type: craft\fields\PlainText
   ddea1520-060a-494e-95aa-f667a0f513e2:
     contentColumnType: text
     fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
@@ -2628,350 +2493,6 @@ matrixBlockTypes:
         type: craft\redactor\Field
     handle: programmeRegion
     name: 'Programme Region'
-    sortOrder: 1
-  3cc43546-be29-4562-adac-41c7e5af322e:
-    field: 2588e3c7-9719-44b3-a9ea-e70bae854d2e
-    fieldLayouts:
-      12166ec1-20c8-4752-81e6-893b3ee05207:
-        tabs:
-          -
-            fields:
-              090e6562-8960-4fad-a311-13651be90c67:
-                required: '0'
-                sortOrder: 9
-              42398892-b017-4398-8a7f-49fae56cb523:
-                required: '0'
-                sortOrder: 3
-              6b3cce3e-14ba-47bd-a07e-6ce8a9ff0145:
-                required: '0'
-                sortOrder: 2
-              78e445e2-f8d3-4476-b883-3d7ae80863ff:
-                required: '0'
-                sortOrder: 6
-              7af39ef2-5134-4263-8dd5-feb9cb69232d:
-                required: '0'
-                sortOrder: 4
-              a0e7afac-3453-4d4b-b90c-5c0f3c84d15d:
-                required: '1'
-                sortOrder: 1
-              a4715664-c154-457f-932a-93c758265b62:
-                required: '0'
-                sortOrder: 10
-              b9e65bd1-d011-4240-a79a-5391065fb25d:
-                required: '0'
-                sortOrder: 7
-              dab7ef3d-0331-4b2e-b9c8-a7f945ae40e6:
-                required: '0'
-                sortOrder: 5
-              de313cae-0521-4ef2-bacc-57b074ca7a0a:
-                required: '0'
-                sortOrder: 8
-            name: Content
-            sortOrder: 1
-    fields:
-      090e6562-8960-4fad-a311-13651be90c67:
-        contentColumnType: text
-        fieldGroup: null
-        handle: totalAvailable
-        instructions: ''
-        name: 'Total available'
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-      42398892-b017-4398-8a7f-49fae56cb523:
-        contentColumnType: string
-        fieldGroup: null
-        handle: photo
-        instructions: ''
-        name: Photo
-        searchable: '1'
-        settings:
-          allowedKinds: null
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: ''
-          localizeRelations: ''
-          restrictFiles: ''
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: ''
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: ''
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      6b3cce3e-14ba-47bd-a07e-6ce8a9ff0145:
-        contentColumnType: text
-        fieldGroup: null
-        handle: description
-        instructions: ''
-        name: Description
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: '1'
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-      78e445e2-f8d3-4476-b883-3d7ae80863ff:
-        contentColumnType: integer(10)
-        fieldGroup: null
-        handle: minimumFundingSize
-        instructions: 'In £'
-        name: 'Minimum funding size'
-        searchable: '1'
-        settings:
-          decimals: 0
-          defaultValue: null
-          max: null
-          min: null
-          size: null
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\Number
-      7af39ef2-5134-4263-8dd5-feb9cb69232d:
-        contentColumnType: string
-        fieldGroup: null
-        handle: area
-        instructions: ''
-        name: Area
-        searchable: '1'
-        settings:
-          options:
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - England
-                -
-                  - value
-                  - england
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - Wales
-                -
-                  - value
-                  - wales
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - Scotland
-                -
-                  - value
-                  - scotland
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Northern Ireland'
-                -
-                  - value
-                  - northernIreland
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - UK-wide
-                -
-                  - value
-                  - ukWide
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Countries outside the UK'
-                -
-                  - value
-                  - countriesOutsideTheUk
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Dropdown
-      a0e7afac-3453-4d4b-b90c-5c0f3c84d15d:
-        contentColumnType: text
-        fieldGroup: null
-        handle: programmeTitle
-        instructions: ''
-        name: Title
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-      a4715664-c154-457f-932a-93c758265b62:
-        contentColumnType: text
-        fieldGroup: null
-        handle: applicationDeadline
-        instructions: ''
-        name: 'Application deadline'
-        searchable: '1'
-        settings:
-          availableTransforms: '*'
-          availableVolumes: '*'
-          columnType: text
-          purifierConfig: safe-iframe-media.json
-          purifyHtml: '1'
-          redactorConfig: ''
-          removeEmptyTags: '1'
-          removeInlineStyles: '1'
-          removeNbsp: '1'
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\redactor\Field
-      b9e65bd1-d011-4240-a79a-5391065fb25d:
-        contentColumnType: integer(10)
-        fieldGroup: null
-        handle: maximumFundingSize
-        instructions: 'In £'
-        name: 'Maximum funding size'
-        searchable: '1'
-        settings:
-          decimals: 0
-          defaultValue: null
-          max: null
-          min: null
-          size: null
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\Number
-      dab7ef3d-0331-4b2e-b9c8-a7f945ae40e6:
-        contentColumnType: string
-        fieldGroup: null
-        handle: organisationType
-        instructions: ''
-        name: 'Organisation type'
-        searchable: '1'
-        settings:
-          options:
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Voluntary or community organisation'
-                -
-                  - value
-                  - voluntaryOrCommunityOrganisation
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Public sector organisation'
-                -
-                  - value
-                  - publicSectorOrganisation
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Private sector organisation'
-                -
-                  - value
-                  - privateSectorOrganisation
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Small voluntary or community / grassroots groups'
-                -
-                  - value
-                  - smallVoluntaryOrCommunityGrassrootsGroups
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Social enterprise'
-                -
-                  - value
-                  - socialEnterprise
-            -
-              __assoc__:
-                -
-                  - default
-                  - ''
-                -
-                  - label
-                  - 'Statutory organisation'
-                -
-                  - value
-                  - statutoryOrganisation
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\MultiSelect
-      de313cae-0521-4ef2-bacc-57b074ca7a0a:
-        contentColumnType: text
-        fieldGroup: null
-        handle: fundingSizeDescription
-        instructions: "Custom funding size description text, e.g., \"approx. £500,000 per project\".\r\nIf left blank the min and max funding size will be used."
-        name: 'Funding size description'
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-    handle: fundingProgrammeBlock
-    name: 'Funding Programme Block'
     sortOrder: 1
   4f87a7a2-de4c-49ed-bb87-242364387658:
     field: 78da9b46-1b94-49fb-a8ce-b8986e53a5c3
@@ -4389,9 +3910,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -4445,9 +3963,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Jobs page content'
                 sortOrder: 1
               -
@@ -4520,15 +4035,9 @@ sections:
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
                     sortOrder: 7
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
                     required: false
                     sortOrder: 5
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
                     required: false
                     sortOrder: 4
@@ -4669,9 +4178,6 @@ sections:
                   83a59f94-8342-417f-b427-11c3c162d89e:
                     required: true
                     sortOrder: 6
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: true
                     sortOrder: 3
@@ -5064,9 +4570,6 @@ sections:
                   7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Benefits page content'
                 sortOrder: 1
               -
@@ -5125,9 +4628,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5192,9 +4692,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 5
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 3
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: false
                     sortOrder: 2
@@ -5314,9 +4811,6 @@ sections:
                   8c779db5-d5b9-4669-bb16-7749b921bc9b:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: People
                 sortOrder: 1
               -
@@ -5388,12 +4882,6 @@ sections:
                   8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
                     required: false
                     sortOrder: 10
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   ccddec99-6800-4547-afb4-022b00cf4915:
                     required: true
                     sortOrder: 5
@@ -5452,9 +4940,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: true
-                    sortOrder: 1
                 name: About
                 sortOrder: 1
               -
@@ -5565,9 +5050,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: Content
                 sortOrder: 1
               -
@@ -5632,9 +5114,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: true
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5693,9 +5172,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: '0'
                     sortOrder: '3'
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: '0'
-                    sortOrder: '1'
                 name: 'Link item'
                 sortOrder: '1'
         handle: linkItem
@@ -5725,9 +5201,6 @@ sections:
                   7c09fc37-6348-4112-b5e1-f4e32fe2c4ec:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5892,15 +5365,9 @@ sections:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 3
-                  99eaaae9-87e0-4b54-a247-504431915423:
-                    required: false
-                    sortOrder: 1
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
                     required: false
                     sortOrder: 5
-                  c69c1ae1-4fa6-4bfb-9432-43367817a05a:
-                    required: false
-                    sortOrder: 2
                   ccd71b86-6564-429f-972a-1def8e6840a4:
                     required: true
                     sortOrder: 4

@@ -26,9 +26,7 @@ class ResearchTransformer extends TransformerAbstract
         list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $researchMeta = $entry->researchMeta->one();
         return array_merge(ContentHelpers::getCommonFields($entry, $status, $this->locale), [
-            // @TODO: Remove thumbnail in favour of trailImage once all pages have new hero images
-            'thumbnail' => self::buildTrailImage(Images::extractImage($entry->heroImage)),
-            'trailImage' => self::buildTrailImage(Images::extractNewHeroImageField($entry->hero)),
+            'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero)),
 
             'parent' => ContentHelpers::getParentInfo($entry, $this->locale),
 

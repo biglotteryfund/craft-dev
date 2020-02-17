@@ -50,7 +50,6 @@ class UpdatesTransformer extends TransformerAbstract
                     'linkUrl' => $programme->externalUrl ? $programme->externalUrl : EntryHelpers::uriForLocale($programme->uri, $this->locale),
                     'intro' => $programme->programmeIntro,
                     'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($programme),
-                    'thumbnailNew' => ContentHelpers::getFundingProgrammeThumbnailUrlNew($programme),
                 ];
             }, $entry->relatedFundingProgrammes->status(['live', 'expired'])->all() ?? []),
             'updateType' => [
