@@ -246,6 +246,8 @@ function getResearch($locale, $type = false)
         $criteria['orderBy'] = 'postDate desc';
     } else if ($sortParam === 'oldest') {
         $criteria['orderBy'] = 'postDate asc';
+    } else {
+        $criteria['orderBy'] = 'postDate desc';
     }
 
     // Document-specific search query fields
@@ -255,9 +257,9 @@ function getResearch($locale, $type = false)
         $allProgrammes = array_map(function ($programme) use ($locale) {
             return [
                 'label' => $programme->title,
-                'value' => $programme->slug
+                'value' => $programme->slug,
             ];
-        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->orderBy('title')->site($locale)->all());
+        }, Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->orderBy('title')->site($locale)->level(1)->all());
 
         $allRegions = array_map(function ($region) use ($locale) {
             return [
