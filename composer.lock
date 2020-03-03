@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9308d3de4253062fa401c122f6d04076",
+    "content-hash": "1086f878aa875a14f9fa1aabfdd8d183",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1614,16 +1614,16 @@
         },
         {
             "name": "imgix/imgix-php",
-            "version": "2.3.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imgix/imgix-php.git",
-                "reference": "081c80c26d34e37d287f10fb6de620b495d11dee"
+                "reference": "ff013094feb4855c561999f2248f3fafe0a25ec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/081c80c26d34e37d287f10fb6de620b495d11dee",
-                "reference": "081c80c26d34e37d287f10fb6de620b495d11dee",
+                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/ff013094feb4855c561999f2248f3fafe0a25ec1",
+                "reference": "ff013094feb4855c561999f2248f3fafe0a25ec1",
                 "shasum": ""
             },
             "require": {
@@ -1646,7 +1646,7 @@
             "keywords": [
                 "imgix"
             ],
-            "time": "2019-05-07T00:02:57+00:00"
+            "time": "2019-08-29T23:30:57+00:00"
         },
         {
             "name": "intervention/httpauth",
