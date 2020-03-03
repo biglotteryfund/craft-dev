@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a05daab7a8b9f919bc8c1ecbc8d516f",
+    "content-hash": "289d3054cbe06e0b48aecbda3960b906",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5524,20 +5524,20 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.4.4",
+            "version": "2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/super-table.git",
-                "reference": "746cc0122329dff4548227caa68852222bceabee"
+                "reference": "29e4a2eea3653fa8822725d59032b4afb762ced1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/746cc0122329dff4548227caa68852222bceabee",
-                "reference": "746cc0122329dff4548227caa68852222bceabee",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/29e4a2eea3653fa8822725d59032b4afb762ced1",
+                "reference": "29e4a2eea3653fa8822725d59032b4afb762ced1",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.4.0",
+                "craftcms/cms": "^3.4.8",
                 "verbb/base": "^1.0.0"
             },
             "type": "craft-plugin",
@@ -5572,7 +5572,7 @@
                 "craftcms",
                 "super table"
             ],
-            "time": "2020-02-03T01:25:40+00:00"
+            "time": "2020-02-28T09:01:53+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
