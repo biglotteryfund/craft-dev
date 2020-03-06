@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1583336038
+dateModified: 1583486561
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -2833,12 +2833,9 @@ matrixBlockTypes:
               07ec6268-ea09-40f7-a0df-d409d17e31a8:
                 required: true
                 sortOrder: 1
-              88374b39-193d-4847-acde-689626c04bd9:
-                required: true
-                sortOrder: 2
               c5e3e9e9-98e4-4a37-a62d-608c506b1132:
                 required: false
-                sortOrder: 3
+                sortOrder: 2
             name: Content
             sortOrder: 1
     fields:
@@ -2854,31 +2851,14 @@ matrixBlockTypes:
           localizeRelations: '1'
           selectionLabel: ''
           source: null
-          sources: '*'
+          sources:
+            - 'section:578177e6-786a-4fb0-8555-f42db7f6b729'
           targetSiteId: null
           validateRelatedElements: ''
           viewMode: null
         translationKeyFormat: null
         translationMethod: site
         type: craft\fields\Entries
-      88374b39-193d-4847-acde-689626c04bd9:
-        contentColumnType: text
-        fieldGroup: null
-        handle: summary
-        instructions: 'A few lines of text to summarise this entry'
-        name: Summary
-        searchable: false
-        settings:
-          byteLimit: null
-          charLimit: null
-          code: ''
-          columnType: null
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
       c5e3e9e9-98e4-4a37-a62d-608c506b1132:
         contentColumnType: boolean
         fieldGroup: null
@@ -6226,7 +6206,7 @@ superTableBlockTypes:
         settings:
           contentTable: '{{%matrixcontent_relateditems}}'
           maxBlocks: ''
-          minBlocks: ''
+          minBlocks: '1'
           propagationMethod: all
         translationKeyFormat: null
         translationMethod: site

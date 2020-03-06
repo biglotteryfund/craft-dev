@@ -35,7 +35,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             if ($entry->strategicProgrammeLatestContent) {
 
                 $latestContent['heading'] = $entry->strategicProgrammeLatestContent->heading;
-                $latestContent['introduction'] = $entry->strategicProgrammeLatestContent->introduction ?? null;
+                $latestContent['introduction'] = $entry->strategicProgrammeLatestContent->introduction;
 
                 if ($entry->strategicProgrammeLatestContent->relatedItems) {
                     $related = $entry->strategicProgrammeLatestContent->relatedItems->all();
@@ -43,8 +43,8 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                         $entry = $item->entry->one();
                         $commonFields = ContentHelpers::getCommonFields($entry, 'live', $this->locale);
                         return array_merge($commonFields, [
-                            'summary' => $item->summary,
-                            'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero)),
+                            'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
+                            'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
                             'isFeatured' => $item->featureThisEntry,
                         ]);
                     }, $related ?? []);
