@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a05daab7a8b9f919bc8c1ecbc8d516f",
+    "content-hash": "2e008cafbb2e2794f4f0140aa0948957",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -586,16 +586,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.4.9",
+            "version": "3.4.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "fa28541499591b458e11f61c21016365da7120f5"
+                "reference": "2613dc758987a2d986ccf0a0c4f59b4c303eef1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/fa28541499591b458e11f61c21016365da7120f5",
-                "reference": "fa28541499591b458e11f61c21016365da7120f5",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/2613dc758987a2d986ccf0a0c4f59b4c303eef1c",
+                "reference": "2613dc758987a2d986ccf0a0c4f59b4c303eef1c",
                 "shasum": ""
             },
             "require": {
@@ -679,7 +679,7 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2020-02-28T19:59:36+00:00"
+            "time": "2020-03-18T13:20:28+00:00"
         },
         {
             "name": "craftcms/element-api",
@@ -2078,16 +2078,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.66",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/021569195e15f8209b1c4bebb78bd66aa4f08c21",
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21",
                 "shasum": ""
             },
             "require": {
@@ -2158,7 +2158,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-17T18:58:12+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -4049,13 +4049,14 @@
                 "ezsystems/ezplatform-admin-ui": ">=1.3,<1.3.5|>=1.4,<1.4.6",
                 "ezsystems/ezplatform-admin-ui-assets": ">=4,<4.2",
                 "ezsystems/ezplatform-user": ">=1,<1.0.1",
-                "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.13.1|>=6,<6.7.9.1|>=6.8,<6.13.5.1|>=7,<7.2.4.1|>=7.3,<7.3.2.1",
-                "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.12.3|>=2011,<2017.12.4.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3",
+                "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.14.1|>=6,<6.7.9.1|>=6.8,<6.13.6.2|>=7,<7.2.4.1|>=7.3,<7.3.2.1|>=7.5,<7.5.6.2",
+                "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.14.1|>=2011,<2017.12.7.2|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3|>=2019.3,<2019.3.4.2",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
                 "ezyang/htmlpurifier": "<4.1.1",
                 "firebase/php-jwt": "<2",
                 "fooman/tcpdf": "<6.2.22",
                 "fossar/tcpdf-parser": "<6.2.22",
+                "friendsofsymfony/oauth2-php": "<1.3",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
                 "fuel/core": "<1.8.1",
@@ -4067,6 +4068,7 @@
                 "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
                 "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29",
                 "illuminate/encryption": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.40|>=5.6,<5.6.15",
+                "illuminate/view": ">=7,<7.1.2",
                 "ivankristianto/phpwhois": "<=4.3",
                 "james-heinrich/getid3": "<1.9.9",
                 "joomla/session": "<1.3.1",
@@ -4074,7 +4076,7 @@
                 "kazist/phpwhois": "<=4.2.6",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
-                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
+                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30|>=7,<7.1.2",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "league/commonmark": "<0.18.3",
                 "librenms/librenms": "<1.53",
@@ -4138,6 +4140,7 @@
                 "socalnick/scn-social-auth": "<1.15.2",
                 "spoonity/tcpdf": "<6.2.22",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
+                "ssddanbrown/bookstack": "<0.25.3",
                 "stormpath/sdk": ">=0,<9.9.99",
                 "studio-42/elfinder": "<2.1.49",
                 "swiftmailer/swiftmailer": ">=4,<5.4.5",
@@ -4245,7 +4248,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2020-03-02T07:11:48+00:00"
+            "time": "2020-03-15T11:13:32+00:00"
         },
         {
             "name": "seld/cli-prompt",
@@ -5638,16 +5641,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.22",
+            "version": "4.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/anti-xss.git",
-                "reference": "4c23b8b88430834ee3eaee30d2bc373ef1ba19eb"
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/4c23b8b88430834ee3eaee30d2bc373ef1ba19eb",
-                "reference": "4c23b8b88430834ee3eaee30d2bc373ef1ba19eb",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
                 "shasum": ""
             },
             "require": {
@@ -5691,7 +5694,7 @@
                 "security",
                 "xss"
             ],
-            "time": "2020-02-06T14:46:13+00:00"
+            "time": "2020-03-08T00:12:04+00:00"
         },
         {
             "name": "voku/arrayy",
@@ -5805,16 +5808,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.4.8",
+            "version": "1.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "a3801f5facf187a28cc2cae7b98a540c36406dc4"
+                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/a3801f5facf187a28cc2cae7b98a540c36406dc4",
-                "reference": "a3801f5facf187a28cc2cae7b98a540c36406dc4",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/240e93829a5f985fab0984a6e55ae5e26b78a334",
+                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334",
                 "shasum": ""
             },
             "require": {
@@ -5850,20 +5853,20 @@
                 "clean",
                 "php"
             ],
-            "time": "2020-02-06T21:46:48+00:00"
+            "time": "2020-03-13T01:23:26+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.40",
+            "version": "5.4.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565"
+                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/1b558059a84d566843c8d0a2ba1d9c3051764565",
-                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e34247dce28f9aebebd2d752d8813b91de689aec",
+                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec",
                 "shasum": ""
             },
             "require": {
@@ -5924,7 +5927,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-02-22T23:18:32+00:00"
+            "time": "2020-03-06T01:23:48+00:00"
         },
         {
             "name": "voku/stop-words",
@@ -6544,21 +6547,21 @@
         },
         {
             "name": "yiisoft/yii2-shell",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-shell.git",
-                "reference": "1d9548d56ef45fb82a39cf32b84d137ddd92dc38"
+                "reference": "8439588d187c23d47e0e6fd773f5b544c87f4d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-shell/zipball/1d9548d56ef45fb82a39cf32b84d137ddd92dc38",
-                "reference": "1d9548d56ef45fb82a39cf32b84d137ddd92dc38",
+                "url": "https://api.github.com/repos/yiisoft/yii2-shell/zipball/8439588d187c23d47e0e6fd773f5b544c87f4d56",
+                "reference": "8439588d187c23d47e0e6fd773f5b544c87f4d56",
                 "shasum": ""
             },
             "require": {
                 "psy/psysh": "~0.9.3",
-                "symfony/var-dumper": "~2.7|~3.0|~4.0",
+                "symfony/var-dumper": "~2.7|~3.0|~4.0|~5.0",
                 "yiisoft/yii2": "~2.0.0"
             },
             "type": "yii2-extension",
@@ -6592,7 +6595,7 @@
                 "shell",
                 "yii2"
             ],
-            "time": "2019-01-07T21:30:35+00:00"
+            "time": "2020-03-03T20:19:36+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
