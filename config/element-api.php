@@ -368,6 +368,135 @@ function getResearch($locale, $type = false)
 }
 
 /**
+ * API Endpoint: Get publication
+ * Get full details of all publications
+ */
+function getPublication($locale, $programmeSlug, $pageSlug = null)
+{
+    normaliseCacheHeaders();
+
+    $criteria = [
+        'site' => $locale,
+        'section' => 'publications',
+        'status' => EntryHelpers::getVersionStatuses()
+    ];
+
+    $isSingle = $pageSlug ? true : false;
+    if ($pageSlug) {
+        $criteria['slug'] = $pageSlug;
+    }
+
+    $associatedProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->slug($programmeSlug)->site($locale)->one();
+
+    $sortParam = \Craft::$app->request->getParam('sort');
+    $searchQuery = \Craft::$app->request->getParam('q');
+    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
+        $criteria['orderBy'] = 'score';
+        $criteria['search'] = [
+            'query' => $searchQuery,
+            'subLeft' => true,
+            'subRight' => true,
+        ];
+    } else if ($sortParam === 'newest') {
+        $criteria['orderBy'] = 'postDate desc';
+    } else if ($sortParam === 'oldest') {
+        $criteria['orderBy'] = 'postDate asc';
+    } else {
+        $criteria['orderBy'] = 'postDate desc';
+    }
+
+
+    $meta = [
+        'activeTag' => null
+    ];
+
+    $elementsToRelateTo = array();
+    if ($associatedProgramme) {
+        $meta['programme'] = [
+            'title' => $associatedProgramme->title,
+            'linkUrl' => $associatedProgramme->externalUrl ? $associatedProgramme->externalUrl : EntryHelpers::uriForLocale($associatedProgramme->uri, $locale),
+            'intro' => $associatedProgramme->programmeIntro,
+            'slug' => $associatedProgramme->slug,
+            'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($associatedProgramme),
+        ];
+        $elementsToRelateTo[] = [
+            'targetElement' => $associatedProgramme
+        ];
+    }
+
+    // Filter: content tags
+    if ($tagQuery = \Craft::$app->request->getParam('tag')) {
+        $activeTag = Tag::find()->group('tags')->slug($tagQuery)->site($locale)->one();
+        if ($activeTag) {
+            $meta['activeTag'] = [
+                'label' => $activeTag->title,
+                'value' => $activeTag->slug
+            ];
+            $elementsToRelateTo[] = [
+                'targetElement' => $activeTag,
+            ];
+        }
+    }
+
+    if (!empty($elementsToRelateTo)) {
+        // ensure this query requires all relations (eg. AND not OR)
+        array_unshift($elementsToRelateTo, 'and');
+        $criteria['relatedTo'] = $elementsToRelateTo;
+    }
+
+    $defaultPageLimit = 10;
+    $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementsPerPage' => $pageLimit,
+        'one' => $isSingle,
+        'elementType' => Entry::class,
+        'criteria' => $criteria,
+        'meta' => $meta ?? null,
+        'transformer' => function (Entry $entry) use ($locale) {
+            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
+            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            return array_merge($common, [
+                'tags' => ContentHelpers::getTags($entry->tags->all(), $locale),
+                'authors' => ContentHelpers::getTags($entry->authors->all(), $locale),
+                'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
+            ]);
+        },
+    ];
+}
+
+function getPublicationTags($locale, $programmeSlug)
+{
+    normaliseCacheHeaders();
+
+    $criteria = [
+        'site' => $locale,
+        'section' => 'publications',
+        'status' => EntryHelpers::getVersionStatuses()
+    ];
+
+    $associatedProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->slug($programmeSlug)->site($locale)->one();
+    $criteria['relatedTo'] = [
+        'targetElement' => $associatedProgramme,
+    ];
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'paginate' => false,
+        'criteria' => $criteria,
+        'meta' => $meta ?? null,
+        'transformer' => function (Entry $entry) use ($locale) {
+            return [
+                'id' => $entry->id,
+                'tags' => ContentHelpers::getTags($entry->tags->all(), $locale)
+            ];
+        }
+    ];
+}
+
+/**
  * API Endpoint: Get research detail
  * Get full details of a single research entry
  */
@@ -734,6 +863,9 @@ return [
         'api/v2/<locale:en|cy>/funding-programmes' => getFundingProgrammes,
         'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>' => getFundingProgrammes,
         'api/v2/<locale:en|cy>/funding-programmes/<programmeSlug:{slug}>/<childPageSlug:{slug}>' => getFundingProgrammes,
+        'api/v1/<locale:en|cy>/funding/publications/<programmeSlug:{slug}>/tags' => getPublicationTags,
+        'api/v1/<locale:en|cy>/funding/publications/<programmeSlug:{slug}>' => getPublication,
+        'api/v1/<locale:en|cy>/funding/publications/<programmeSlug:{slug}>/<pageSlug:{slug}>' => getPublication,
         'api/v1/<locale:en|cy>/research/<type:documents>' => getResearch,
         'api/v1/<locale:en|cy>/research' => getResearch,
         'api/v1/<locale:en|cy>/research/<slug>' => getResearchDetail,

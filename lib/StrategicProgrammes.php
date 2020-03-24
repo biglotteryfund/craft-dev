@@ -31,6 +31,28 @@ class StrategicProgrammeTransformer extends TransformerAbstract
             return ContentHelpers::getFlexibleContentPage($entry, $this->locale);
         } else {
 
+            $latestContent = [];
+            if ($entry->strategicProgrammeLatestContent) {
+
+                $latestContent['heading'] = $entry->strategicProgrammeLatestContent->heading;
+                $latestContent['introduction'] = $entry->strategicProgrammeLatestContent->introduction;
+                $latestContent['outro'] = $entry->strategicProgrammeLatestContent->outro;
+
+                if ($entry->strategicProgrammeLatestContent->relatedItems) {
+                    $related = $entry->strategicProgrammeLatestContent->relatedItems->all();
+                    $latestContent['items'] = array_map(function ($item) {
+                        $entry = $item->entry->one();
+                        $commonFields = ContentHelpers::getCommonFields($entry, 'live', $this->locale);
+                        return array_merge($commonFields, [
+                            'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
+                            'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
+                            'isFeatured' => $item->featureThisEntry,
+                        ]);
+                    }, $related ?? []);
+                }
+
+            }
+
             return array_merge($commonFields, [
                 'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero)),
                 'intro' => $entry->programmeIntro,
@@ -41,6 +63,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                         'content' => $block->contentBody,
                     ];
                 }, $entry->strategicProgrammeImpact->all() ?? []),
+                'latestContent' => $latestContent ?? null,
                 'programmePartners' => [
                     'intro' => $entry->programmePartnersIntro,
                     'partners' => array_map(function ($partner) {
