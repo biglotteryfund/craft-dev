@@ -36,6 +36,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
 
                 $latestContent['heading'] = $entry->strategicProgrammeLatestContent->heading;
                 $latestContent['introduction'] = $entry->strategicProgrammeLatestContent->introduction;
+                $latestContent['outro'] = $entry->strategicProgrammeLatestContent->outro;
 
                 if ($entry->strategicProgrammeLatestContent->relatedItems) {
                     $related = $entry->strategicProgrammeLatestContent->relatedItems->all();

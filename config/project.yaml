@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1583486561
+dateModified: 1585042741
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -6166,6 +6166,9 @@ superTableBlockTypes:
         tabs:
           -
             fields:
+              1886c75e-22fc-4f85-aabf-58913f9b3515:
+                required: false
+                sortOrder: 4
               a6d9429e-d666-443b-aa43-0a8a4107aa45:
                 required: true
                 sortOrder: 1
@@ -6178,6 +6181,29 @@ superTableBlockTypes:
             name: Content
             sortOrder: 1
     fields:
+      1886c75e-22fc-4f85-aabf-58913f9b3515:
+        contentColumnType: text
+        fieldGroup: null
+        handle: outro
+        instructions: 'Some text to appear after the list of related content.'
+        name: Outro
+        searchable: true
+        settings:
+          availableTransforms: '*'
+          availableVolumes: '*'
+          cleanupHtml: true
+          columnType: text
+          purifierConfig: safe-iframe-media.json
+          purifyHtml: '1'
+          redactorConfig: Full.json
+          removeEmptyTags: '1'
+          removeInlineStyles: '1'
+          removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\redactor\Field
       a6d9429e-d666-443b-aa43-0a8a4107aa45:
         contentColumnType: text
         fieldGroup: null
