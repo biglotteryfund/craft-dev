@@ -48,7 +48,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
                             'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
                             'isFeatured' => $item->featureThisEntry,
                         ]);
-                    }, $related ?? []);
+                    }, $related ?? null);
                 }
 
             }
