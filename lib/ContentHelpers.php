@@ -134,7 +134,7 @@ class ContentHelpers
      * - Inline figure (image with a caption)
      * - Media aside (callout block with text, image, and link)
      */
-    public static function extractFlexibleContent(Entry $entry, $locale, $children = null)
+    public static function extractFlexibleContent(Entry $entry, $locale, $children = array())
     {
         $parts = [];
         if (!$entry->flexibleContent) {
