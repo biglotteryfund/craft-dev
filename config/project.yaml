@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1585829754
+dateModified: 1585830481
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -286,15 +286,31 @@ fields:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
     handle: hero
-    instructions: 'New hero image, will be used on re-branded pages'
-    name: 'Hero image (new)'
-    searchable: '1'
+    instructions: 'Hero image that will be used on re-branded pages'
+    name: 'Hero image'
+    searchable: true
     settings:
+      columns:
+        __assoc__:
+          -
+            - 4c0e3bec-906f-4f73-a77c-e631d982dc1a
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
       contentTable: '{{%stc_hero}}'
       fieldLayout: row
-      localizeBlocks: ''
       maxRows: ''
       minRows: ''
+      propagationMethod: all
       selectionLabel: ''
       staticField: '1'
     translationKeyFormat: null
@@ -5732,13 +5748,13 @@ superTableBlockTypes:
           -
             fields:
               4c0e3bec-906f-4f73-a77c-e631d982dc1a:
-                required: '0'
-                sortOrder: '1'
+                required: false
+                sortOrder: 1
               9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
-                required: '0'
-                sortOrder: '2'
+                required: false
+                sortOrder: 2
             name: Content
-            sortOrder: '1'
+            sortOrder: 1
     fields:
       4c0e3bec-906f-4f73-a77c-e631d982dc1a:
         contentColumnType: string
@@ -5746,7 +5762,7 @@ superTableBlockTypes:
         handle: image
         instructions: ''
         name: Image
-        searchable: '1'
+        searchable: true
         settings:
           limit: '1'
           localizeRelations: ''
@@ -5755,6 +5771,7 @@ superTableBlockTypes:
           sources:
             - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
           targetSiteId: null
+          validateRelatedElements: ''
           viewMode: null
         translationKeyFormat: null
         translationMethod: site
@@ -5765,9 +5782,10 @@ superTableBlockTypes:
         handle: credit
         instructions: 'Use this field if you want to provide a longer custom credit for the image'
         name: Credit
-        searchable: '1'
+        searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
