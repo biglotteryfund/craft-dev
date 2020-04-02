@@ -5,7 +5,7 @@
 You'll need the following tools installed in order to run the project locally:
 
 -   [Composer](https://getcomposer.org/download/) v1.3.0+
--   MySQL v5.7+ or PostgreSQL 9.5+
+-   MySQL v5.7+
 
 Once you have the prerequisites installed on your machine, and have the project checked out locally, run these commands in your terminal of choice:
 
@@ -19,7 +19,7 @@ composer install
 
 ## Create a Database
 
-Next up, you need to create a database for the project. Both MySQL 5.5+ and PostgreSQL 9.5+ are supported.
+Next up, you need to create a database for the project using MySQL 5.5+.
 
 If you’re given a choice, we recommend the following database settings in most cases:
 
@@ -27,10 +27,6 @@ If you’re given a choice, we recommend the following database settings in most
 
     -   Default Character Set: utf8
     -   Default Collation: utf8_unicode_ci
-
--   PostgreSQL
-
-    -   Character Set: UTF8
 
 ## Create a local `.env` file
 
@@ -49,9 +45,9 @@ If you’re not using MAMP or another localhosting tool, you will probably need 
 You can test whether you set everything up correctly by pointing your web browser to `http://<Hostname>/index.php?p=admin/install` (substituting <Hostname> with your web server’s host name). If Craft’s Setup Wizard is shown, the host name is correctly resolving to your Craft installation.
 
 ## Run the Setup Wizard
-Finally, it’s time to run Craft’s Setup Wizard. You can either run that from your [terminal](###Terminal Setup) or your [web browser](###Web Browser Setup).
+Finally, it’s time to run Craft’s Setup Wizard. You can either run that from your [terminal](#terminal-setup) or your [web browser](#web-browser-setup).
 
-###Terminal Setup
+### Terminal Setup
 In your terminal, go to your project’s root directory and run the following command to kick off the Setup Wizard:
 
 ```shell script
@@ -60,11 +56,11 @@ In your terminal, go to your project’s root directory and run the following co
 
 The command will ask you a few questions to learn how to connect to your database, and then kick off Craft’s installer. Once it’s done, you should be able to access your new Craft site from your web browser.
 
-###Web Browser Setup
+### Web Browser Setup
 In your web browser, go to `http://<Hostname>/index.php?p=admin/install` (substituting <Hostname> with your web server’s host name). If you’ve done everything right so far, you should be greeted by Craft’s Setup Wizard.`
 
 For guidance, you may use Step 6 from the official [Craft CMS guide](https://docs.craftcms.com/v3/installation.html#step-6-run-the-setup-wizard).
 
-##Start the application
+## Start the application
 
 The application should now be setup and running. Visit `http://<Hostname>/index.php` (substituting <Hostname> with your web server’s host name) in your browser to confirm everything is OK.
