@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1585834006
+dateModified: 1585841482
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -1856,22 +1856,25 @@ matrixBlockTypes:
             fields:
               150131ea-da93-4441-8117-02f680c539b3:
                 required: true
+                sortOrder: 3
+              1587e3fa-6d82-4313-acc8-57cbb3efc205:
+                required: false
                 sortOrder: 2
               178b8dbb-f3a2-4052-83ad-54876b558ad1:
                 required: false
                 sortOrder: 1
               2ef35c95-9777-4c08-aaac-026610e5f493:
                 required: false
-                sortOrder: 4
+                sortOrder: 5
               7d71a8d0-acba-434c-beea-e249a42e2eb0:
                 required: true
-                sortOrder: 6
+                sortOrder: 7
               9b5752e0-417a-4630-a38d-d8660b30a7b5:
                 required: true
-                sortOrder: 5
+                sortOrder: 6
               d7924e5c-fe96-4f97-b9a0-fd1de63ba4df:
                 required: false
-                sortOrder: 3
+                sortOrder: 4
             name: Content
             sortOrder: 1
     fields:
@@ -1883,9 +1886,28 @@ matrixBlockTypes:
         name: 'Quote text'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+      1587e3fa-6d82-4313-acc8-57cbb3efc205:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
           initialRows: '4'
           multiline: ''
           placeholder: ''
@@ -1900,7 +1922,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -1930,7 +1953,8 @@ matrixBlockTypes:
         name: 'Photo caption'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -1955,12 +1979,14 @@ matrixBlockTypes:
           localizeRelations: ''
           restrictFiles: '1'
           selectionLabel: 'Add a photo'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: media-asides
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: '1'
+          useSingleFolder: true
           validateRelatedElements: ''
           viewMode: large
         translationKeyFormat: null
@@ -1974,7 +2000,8 @@ matrixBlockTypes:
         name: 'Link text'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -2272,15 +2299,36 @@ matrixBlockTypes:
         tabs:
           -
             fields:
+              77a13e88-e5dd-4e7b-8a1c-6afd6df5f16c:
+                required: false
+                sortOrder: 2
               8134de3d-e6de-40c9-becb-401b18359723:
                 required: false
                 sortOrder: 1
               ccf624ab-e6d7-471d-bfa1-ff81a5811e28:
                 required: false
-                sortOrder: 2
+                sortOrder: 3
             name: Content
             sortOrder: 1
     fields:
+      77a13e88-e5dd-4e7b-8a1c-6afd6df5f16c:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
       8134de3d-e6de-40c9-becb-401b18359723:
         contentColumnType: text
         fieldGroup: null
@@ -2289,7 +2337,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -2307,16 +2356,21 @@ matrixBlockTypes:
         searchable: true
         settings:
           columns:
-            268:
-              __assoc__:
+            __assoc__:
+              -
+                - b12041a2-e5fa-4a46-9c59-845f38904c4d
                 -
-                  - width
-                  - ''
-            269:
-              __assoc__:
+                  __assoc__:
+                    -
+                      - width
+                      - ''
+              -
+                - bd4940c4-0930-4c96-afb8-76b05ad900b5
                 -
-                  - width
-                  - ''
+                  __assoc__:
+                    -
+                      - width
+                      - ''
           contentTable: '{{%stc_29_facts}}'
           fieldLayout: row
           maxRows: ''
@@ -2842,6 +2896,9 @@ matrixBlockTypes:
                 sortOrder: 1
               6a689d57-9eee-472a-abc0-5a948b024538:
                 required: true
+                sortOrder: 3
+              dc97428e-30ce-4f6e-b4ef-39cd8939f0f8:
+                required: false
                 sortOrder: 2
             name: Content
             sortOrder: 1
@@ -2854,7 +2911,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -2881,9 +2939,29 @@ matrixBlockTypes:
           removeEmptyTags: '1'
           removeInlineStyles: '1'
           removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
+      dc97428e-30ce-4f6e-b4ef-39cd8939f0f8:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
     handle: contentArea
     name: 'Content Area'
     sortOrder: 1
@@ -2896,10 +2974,13 @@ matrixBlockTypes:
             fields:
               0e47e9ca-df73-41e1-83a7-f333ec5fc1b2:
                 required: true
-                sortOrder: 2
+                sortOrder: 3
               adc6a5a1-620b-4256-93fd-328ce7e9988a:
                 required: true
                 sortOrder: 1
+              b5a52c7f-eb68-4dfa-aa77-646c1cfb8ff2:
+                required: false
+                sortOrder: 2
             name: Content
             sortOrder: 1
     fields:
@@ -2914,35 +2995,35 @@ matrixBlockTypes:
           columns:
             __assoc__:
               -
-                - 260
+                - 9e3ed77a-cb3c-491b-b2ad-503715cbf99b
                 -
                   __assoc__:
                     -
                       - width
                       - ''
               -
-                - 263
+                - b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9
                 -
                   __assoc__:
                     -
                       - width
                       - ''
               -
-                - 261
+                - ab94c548-6f17-4790-b6dd-4c766143bee5
                 -
                   __assoc__:
                     -
                       - width
                       - ''
               -
-                - 258
+                - 2184906d-f2b9-4d39-a094-bfa50ccf8271
                 -
                   __assoc__:
                     -
                       - width
                       - ''
               -
-                - 259
+                - 2dbee670-c961-4ea7-b503-cf23bce9541e
                 -
                   __assoc__:
                     -
@@ -2961,14 +3042,33 @@ matrixBlockTypes:
       adc6a5a1-620b-4256-93fd-328ce7e9988a:
         contentColumnType: text
         fieldGroup: null
-        handle: heading
-        instructions: 'Enter a heading to appear above the related items'
-        name: Heading
+        handle: flexTitle
+        instructions: 'A title field to distinguish this block of content'
+        name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+      b5a52c7f-eb68-4dfa-aa77-646c1cfb8ff2:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
           initialRows: '4'
           multiline: ''
           placeholder: ''
@@ -2985,18 +3085,39 @@ matrixBlockTypes:
         tabs:
           -
             fields:
-              4a787c27-6078-43fb-a29e-8a61cf61d97c:
+              4a5bebba-9af5-40d0-a53a-437a491e2b8d:
                 required: false
                 sortOrder: 2
+              4a787c27-6078-43fb-a29e-8a61cf61d97c:
+                required: false
+                sortOrder: 3
               78a83748-7862-4217-b345-e40cf81a05c4:
                 required: true
-                sortOrder: 3
+                sortOrder: 4
               9d18c90a-d7c7-40f9-ba89-9aa374932cf9:
                 required: false
                 sortOrder: 1
             name: Content
             sortOrder: 1
     fields:
+      4a5bebba-9af5-40d0-a53a-437a491e2b8d:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
       4a787c27-6078-43fb-a29e-8a61cf61d97c:
         contentColumnType: text
         fieldGroup: null
@@ -3015,6 +3136,8 @@ matrixBlockTypes:
           removeEmptyTags: '1'
           removeInlineStyles: '1'
           removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
@@ -3027,11 +3150,14 @@ matrixBlockTypes:
         searchable: true
         settings:
           columns:
-            253:
-              __assoc__:
+            __assoc__:
+              -
+                - 5643199b-c773-4d2b-97b9-18270e979de5
                 -
-                  - width
-                  - ''
+                  __assoc__:
+                    -
+                      - width
+                      - ''
           contentTable: '{{%stc_25_blocks}}'
           fieldLayout: matrix
           maxRows: ''
@@ -3050,7 +3176,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3308,18 +3435,39 @@ matrixBlockTypes:
         tabs:
           -
             fields:
+              33f3bd0a-c69b-4155-a29c-0abbfec8ce0a:
+                required: false
+                sortOrder: 2
               66ed464a-5f48-4f0a-9be4-d40c165c1307:
                 required: true
-                sortOrder: 2
+                sortOrder: 3
               ad9b8390-2149-43ab-9d4a-e7d7c963bf6d:
                 required: false
                 sortOrder: 1
               c81fafb4-ee1d-48a2-9ed5-ed72e57990ae:
                 required: true
-                sortOrder: 3
+                sortOrder: 4
             name: Content
             sortOrder: 1
     fields:
+      33f3bd0a-c69b-4155-a29c-0abbfec8ce0a:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
       66ed464a-5f48-4f0a-9be4-d40c165c1307:
         contentColumnType: string
         fieldGroup: null
@@ -3336,12 +3484,14 @@ matrixBlockTypes:
           localizeRelations: ''
           restrictFiles: '1'
           selectionLabel: 'Add a photo'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: inline-figures
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: '1'
+          useSingleFolder: true
           validateRelatedElements: ''
           viewMode: large
         translationKeyFormat: null
@@ -3355,7 +3505,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3372,7 +3523,8 @@ matrixBlockTypes:
         name: 'Photo caption'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3552,18 +3704,39 @@ matrixBlockTypes:
         tabs:
           -
             fields:
+              78af6e74-c2e5-4566-b114-d71a80e411e0:
+                required: false
+                sortOrder: 2
               b828d85b-dfb9-4f21-96df-ad8e1c7da55c:
                 required: true
-                sortOrder: 2
+                sortOrder: 3
               d5e0411f-7cfb-4e2d-8228-f8c37e1ee003:
                 required: false
-                sortOrder: 3
+                sortOrder: 4
               f9c3f7a5-d574-4be1-b35a-da174c68b4b8:
                 required: false
                 sortOrder: 1
             name: Content
             sortOrder: 1
     fields:
+      78af6e74-c2e5-4566-b114-d71a80e411e0:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
       b828d85b-dfb9-4f21-96df-ad8e1c7da55c:
         contentColumnType: text
         fieldGroup: null
@@ -3572,7 +3745,8 @@ matrixBlockTypes:
         name: 'Quote text'
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3589,7 +3763,8 @@ matrixBlockTypes:
         name: Attribution
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3606,7 +3781,8 @@ matrixBlockTypes:
         name: Title
         searchable: true
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -3649,6 +3825,8 @@ matrixBlockTypes:
           removeEmptyTags: '1'
           removeInlineStyles: '1'
           removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
@@ -5692,6 +5870,8 @@ superTableBlockTypes:
           removeEmptyTags: '1'
           removeInlineStyles: '1'
           removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
@@ -5729,6 +5909,8 @@ superTableBlockTypes:
           removeEmptyTags: '1'
           removeInlineStyles: '1'
           removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
@@ -5748,12 +5930,14 @@ superTableBlockTypes:
           localizeRelations: ''
           restrictFiles: '1'
           selectionLabel: ''
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: facts
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: '1'
+          useSingleFolder: true
           validateRelatedElements: ''
           viewMode: list
         translationKeyFormat: null
@@ -5792,7 +5976,8 @@ superTableBlockTypes:
         name: Description
         searchable: false
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'
@@ -5817,12 +6002,14 @@ superTableBlockTypes:
           localizeRelations: ''
           restrictFiles: '1'
           selectionLabel: ''
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: true
           singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
           singleUploadLocationSubpath: ''
           source: null
           sources: '*'
           targetSiteId: null
-          useSingleFolder: ''
+          useSingleFolder: false
           validateRelatedElements: ''
           viewMode: list
         translationKeyFormat: null
@@ -5843,7 +6030,6 @@ superTableBlockTypes:
           sources:
             - 'section:a1f1765e-10d1-45ef-905e-1a8cf5a6458e'
             - 'section:07ef3333-69c2-456d-ba88-3e0e60c091b8'
-            - 'section:76d204aa-51f8-4a63-bd88-c6239fbd2b0a'
             - 'section:b50d445d-1022-48a7-898a-ff03d8304412'
             - 'section:6924a426-e1bd-4c6e-96e4-513956cbaa44'
             - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
@@ -5867,7 +6053,8 @@ superTableBlockTypes:
         name: Title
         searchable: false
         settings:
-          charLimit: ''
+          byteLimit: null
+          charLimit: null
           code: ''
           columnType: text
           initialRows: '4'

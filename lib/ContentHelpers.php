@@ -141,14 +141,17 @@ class ContentHelpers
             return [];
         }
         foreach ($entry->flexibleContent->all() as $block) {
+            $commonBlockFields = [
+                'type' => $block->type->handle,
+                'title' => $block->flexTitle ?? null,
+                'tocTitle' => $block->tocTitle ?? null
+            ];
+            $data = [];
             switch ($block->type->handle) {
                 case 'contentArea':
                     $data = [
-                        'type' => $block->type->handle,
-                        'title' => $block->flexTitle ?? null,
                         'content' => $block->contentBody,
                     ];
-                    array_push($parts, $data);
                     break;
                 case 'inlineFigure':
                     $data = [
@@ -160,23 +163,17 @@ class ContentHelpers
                         ),
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
-                    array_push($parts, $data);
                     break;
                 case 'quote':
                     $data = [
-                        'type' => $block->type->handle,
-                        'title' => $block->flexTitle ?? null,
                         'quoteText' => $block->quoteText,
                         'attribution' => $block->attribution ?? null,
                     ];
-                    array_push($parts, $data);
                     break;
                 case 'gridBlocks':
                     $gridBlocks = array();
                     $data = [
-                        'type' => $block->type->handle,
-                        'introduction' => $block->introduction ?? null,
-                        'title' => $block->flexTitle ?? null,
+                        'introduction' => $block->introduction ?? null
                     ];
                     if (!empty($block->blocks->all())) {
                         $gridBlocks = array_map(function ($gridBlock) {
@@ -184,12 +181,9 @@ class ContentHelpers
                         }, $block->blocks->all());
                     }
                     $data['content'] = $gridBlocks;
-                    array_push($parts, $data);
                     break;
                 case 'mediaAside':
                     $data = [
-                        'type' => $block->type->handle,
-                        'title' => $block->flexTitle ?? null,
                         'quoteText' => $block->quoteText,
                         'linkText' => $block->linkText ?? null,
                         'linkUrl' => $block->linkUrl ?? null,
@@ -199,14 +193,9 @@ class ContentHelpers
                         ),
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
-                    array_push($parts, $data);
                     break;
                 case 'factRiver':
                     $factRiver = array();
-                    $data = [
-                        'type' => $block->type->handle,
-                        'title' => $block->flexTitle ?? null,
-                    ];
                     if (!empty($block->facts->all())) {
                         $factRiver = array_map(function ($fact) {
                             return [
@@ -216,13 +205,12 @@ class ContentHelpers
                         }, $block->facts->all());
                     }
                     $data['content'] = $factRiver;
-                    array_push($parts, $data);
                     break;
                 case 'relatedContent':
                     $relatedContent = array();
                     $data = [
-                        'type' => $block->type->handle,
-                        'heading' => $block->heading
+                        // @TODO remove `heading` when its usage is removed from the templates
+                        'heading' => $block->flexTitle?? null
                     ];
                     if (!empty($block->relatedItems->all())) {
                         $relatedContent = array_filter(array_map(function ($gridBlock) use ($locale) {
@@ -240,14 +228,11 @@ class ContentHelpers
                         }, $block->relatedItems->all()));
                     }
                     $data['content'] = $relatedContent;
-                    array_push($parts, $data);
                     break;
                 case 'tableOfContents':
                     $data = [
-                        'type' => $block->type->handle,
                         'content' => $block->tableOfContentsIntro ?? null
                     ];
-                    array_push($parts, $data);
                     break;
                 case 'childPageList':
                     if (count($children) > 0) {
@@ -256,13 +241,14 @@ class ContentHelpers
                         $desiredDisplayMode = $block->childPageDisplayStyle->value;
                         $displayMode = ($desiredDisplayMode === 'grid' && $allPagesHaveImages) ? 'grid' : 'list';
                         $data = [
-                            'type' => $block->type->handle,
                             'displayMode' => $displayMode,
                         ];
-                        array_push($parts, $data);
                     }
                     break;
             }
+
+            array_push($parts, array_merge($commonBlockFields, $data));
+
         }
         return $parts;
     }
