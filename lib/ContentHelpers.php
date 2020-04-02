@@ -154,13 +154,11 @@ class ContentHelpers
                     ];
                     break;
                 case 'inlineFigure':
+                    $fileUrl = Images::extractImageUrl($block->photo);
                     $data = [
-                        'type' => $block->type->handle,
-                        'title' => $block->flexTitle ?? null,
-                        'photo' => Images::imgixUrl(
-                            Images::extractImageUrl($block->photo),
+                        'photo' => $fileUrl ? Images::imgixUrl($fileUrl,
                             ['fit' => 'crop', 'crop' => 'entropy', 'max-w' => 2000]
-                        ),
+                        ) : null,
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
                     break;
@@ -183,14 +181,14 @@ class ContentHelpers
                     $data['content'] = $gridBlocks;
                     break;
                 case 'mediaAside':
+                    $fileUrl = Images::extractImageUrl($block->photo);
                     $data = [
                         'quoteText' => $block->quoteText,
                         'linkText' => $block->linkText ?? null,
                         'linkUrl' => $block->linkUrl ?? null,
-                        'photo' => Images::imgixUrl(
-                            Images::extractImageUrl($block->photo),
+                        'photo' => $fileUrl ? Images::imgixUrl($fileUrl,
                             ['w' => '460', 'h' => '280']
-                        ),
+                        ) : null,
                         'photoCaption' => $block->photoCaption ?? null,
                     ];
                     break;
