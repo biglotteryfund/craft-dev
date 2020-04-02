@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1585830481
+dateModified: 1585834006
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -81,8 +81,6 @@ fieldGroups:
     name: Publication
   e3237b61-2fe0-45f7-9036-c1ff7a7975e8:
     name: Data
-  f0f968ce-8ae3-4607-9e2f-c7d06f196869:
-    name: 'Case Study'
   f34fff60-41cf-47f6-8fe9-3146ae2a95b1:
     name: Homepage
   fe37f91c-b0e2-482c-8482-05d9b335ce86:
@@ -177,22 +175,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  0cec86e6-ee99-4992-95ee-4044be2efd17:
-    contentColumnType: text
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyTrailText
-    instructions: 'Paragraph of summary text. Displayed when a case study is shown on other pages. If no text is provided then the introduction will be used.'
-    name: 'Trail Text'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: 4
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
   0cfefd57-0c56-49da-921e-dd45bf0146a8:
     contentColumnType: string
     fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
@@ -352,22 +334,6 @@ fields:
       placeholder: ''
     translationKeyFormat: null
     translationMethod: language
-    type: craft\fields\PlainText
-  1d64b0db-e29d-4232-b025-ff4793117dd8:
-    contentColumnType: text
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyTrailTextMore
-    instructions: 'Text to use for link to full case study, e.g. "Read their story"'
-    name: 'Trail Text More'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: 4
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
     type: craft\fields\PlainText
   25308ee1-088a-4b07-83df-c7100eab536e:
     contentColumnType: string
@@ -556,25 +522,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  46d0352f-42af-4d63-be4d-9c9df54c5871:
-    contentColumnType: string
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: relatedCaseStudies
-    instructions: 'Associate up to three case studies with the page.'
-    name: 'Related Case Studies'
-    searchable: '1'
-    settings:
-      limit: '3'
-      localizeRelations: ''
-      selectionLabel: 'Add a case-study'
-      source: null
-      sources:
-        - 'section:76d204aa-51f8-4a63-bd88-c6239fbd2b0a'
-      targetSiteId: null
-      viewMode: null
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Entries
   4b573749-5271-405a-9d27-9e086ee1f31f:
     contentColumnType: text
     fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
@@ -650,22 +597,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
-  54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
-    contentColumnType: text
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyGrantAmount
-    instructions: 'Associated grant amount if there is one.'
-    name: 'Grant Amount'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: 4
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
   585a68f7-bb7c-4d7f-9acf-10f9b2107243:
     contentColumnType: string
     fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
@@ -1150,22 +1081,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Number
-  8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
-    contentColumnType: text
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyLinkUrl
-    instructions: 'Link to full case-study'
-    name: 'Link URL'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      columnType: text
-      initialRows: 4
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\PlainText
   9af6d5eb-9e64-473d-b1c3-5642ec2ead05:
     contentColumnType: text
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -1455,32 +1370,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
-  ccddec99-6800-4547-afb4-022b00cf4915:
-    contentColumnType: string
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyThumbnailImage
-    instructions: ''
-    name: 'Thumbnail Image'
-    searchable: '1'
-    settings:
-      allowedKinds:
-        - image
-      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: ''
-      restrictFiles: '1'
-      selectionLabel: ''
-      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-      singleUploadLocationSubpath: case-studies
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: '1'
-      viewMode: list
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
   ce51477f-1fbc-4c51-a482-621384b56698:
     contentColumnType: integer(10)
     fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
@@ -1578,23 +1467,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  ddea1520-060a-494e-95aa-f667a0f513e2:
-    contentColumnType: text
-    fieldGroup: f0f968ce-8ae3-4607-9e2f-c7d06f196869
-    handle: caseStudyGrantId
-    instructions: 'Enter the ID of a grant, eg. 0030101410'
-    name: 'Grant ID number'
-    searchable: '1'
-    settings:
-      charLimit: ''
-      code: ''
-      columnType: text
-      initialRows: '4'
-      multiline: ''
-      placeholder: ''
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
   de88932a-f149-4bf7-93da-5cafdbdcf19b:
     contentColumnType: string
     fieldGroup: 7eb54552-8c0f-4f88-b831-2cccbac8e20d
@@ -4190,9 +4062,6 @@ sections:
                   1338f3a8-bad4-4e23-a0f0-327be8f16e60:
                     required: false
                     sortOrder: 9
-                  46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: false
-                    sortOrder: 10
                   5899dcd7-1384-49e0-98a5-633b44fa05c0:
                     required: false
                     sortOrder: 1
@@ -5056,73 +4925,6 @@ sections:
       maxLevels: '1'
       uid: 06e92080-7399-4f70-9c65-004954b969d0
     type: structure
-  76d204aa-51f8-4a63-bd88-c6239fbd2b0a:
-    enableVersioning: '1'
-    entryTypes:
-      62073583-fc93-4b16-9081-a4d281bf6826:
-        fieldLayouts:
-          1ae40b04-73c4-4578-b564-9cfbe42aaad1:
-            tabs:
-              -
-                fields:
-                  0cec86e6-ee99-4992-95ee-4044be2efd17:
-                    required: true
-                    sortOrder: 7
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 3
-                  1d64b0db-e29d-4232-b025-ff4793117dd8:
-                    required: false
-                    sortOrder: 8
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 9
-                  54f67d9c-5b73-4bb0-85e6-ca6d9949e03c:
-                    required: false
-                    sortOrder: 6
-                  8e813e66-eb51-4945-ba7b-013aa7d8b7d2:
-                    required: false
-                    sortOrder: 10
-                  ccddec99-6800-4547-afb4-022b00cf4915:
-                    required: true
-                    sortOrder: 5
-                  ddea1520-060a-494e-95aa-f667a0f513e2:
-                    required: false
-                    sortOrder: 4
-                name: 'Case Study'
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: caseStudies
-        hasTitleField: true
-        name: 'Case Studies'
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: caseStudies
-    name: 'Case Studies'
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: case-studies/_entry
-        uriFormat: '{% if caseStudyGrantId %}funding/grants/{caseStudyGrantId}{% else %}case-studies/{slug}{% endif %}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '0'
-        hasUrls: '1'
-        template: case-studies/_entry
-        uriFormat: '{% if caseStudyGrantId %}funding/grants/{caseStudyGrantId}{% else %}case-studies/{slug}{% endif %}'
-    type: channel
   786c93b6-b099-4c32-b2d4-579a4b485a40:
     enableVersioning: '1'
     entryTypes:
@@ -5300,9 +5102,6 @@ sections:
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
                     required: false
                     sortOrder: 6
-                  46d0352f-42af-4d63-be4d-9c9df54c5871:
-                    required: false
-                    sortOrder: 8
                   6c792519-1c25-4194-a0e5-60377539e790:
                     required: false
                     sortOrder: 5
