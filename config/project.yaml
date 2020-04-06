@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1586175330
+dateModified: 1586179755
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4674,12 +4674,12 @@ sections:
         enabledByDefault: true
         hasUrls: true
         template: ''
-        uriFormat: 'funding/publications/{programme.first.slug}/{slug}'
+        uriFormat: 'funding/publications/{programme.one.slug}/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
         enabledByDefault: false
         hasUrls: true
         template: ''
-        uriFormat: 'funding/publications/{slug}'
+        uriFormat: 'funding/publications/{programme.one.slug}/{slug}'
     type: channel
   619b3c92-f538-49a7-9d9b-ab6923cd3808:
     enableVersioning: '1'
