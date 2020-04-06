@@ -30,7 +30,6 @@ class Images
 
             $builder = new UrlBuilder($imgixConfig['domain']);
             $builder->setSignKey($imgixConfig['signKey']);
-            $builder->setUseHttps(true);
             $builder->setIncludeLibraryParam(false);
 
             $defaults = array('auto' => "compress,format", 'crop' => 'entropy', 'fit' => 'crop');
