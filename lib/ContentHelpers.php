@@ -206,10 +206,6 @@ class ContentHelpers
                     break;
                 case 'relatedContent':
                     $relatedContent = array();
-                    $data = [
-                        // @TODO remove `heading` when its usage is removed from the templates
-                        'heading' => $block->flexTitle?? null
-                    ];
                     if (!empty($block->relatedItems->all())) {
                         $relatedContent = array_filter(array_map(function ($gridBlock) use ($locale) {
                             $externalUrl = $gridBlock->externalLink;
@@ -225,7 +221,9 @@ class ContentHelpers
                             ];
                         }, $block->relatedItems->all()));
                     }
-                    $data['content'] = $relatedContent;
+                    $data = [
+                        'content' => $relatedContent
+                    ];
                     break;
                 case 'tableOfContents':
                     $data = [
