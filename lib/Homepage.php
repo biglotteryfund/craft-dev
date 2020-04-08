@@ -37,7 +37,7 @@ class HomepageTransformer extends TransformerAbstract
 
         return [
             'id' => $entry->id,
-            'content' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
+            'content' => $entry->introductionText ?? null,
             'featuredLinks' => self::buildHomepageLinks($entry->featuredLinks->all()),
             'promotedUpdates' => array_map(function ($entry) {
                 $transformer = new UpdatesTransformer($this->locale);
