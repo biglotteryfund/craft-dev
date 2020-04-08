@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1586270903
+dateModified: 1586338510
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -845,21 +845,6 @@ fields:
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
-  78da9b46-1b94-49fb-a8ce-b8986e53a5c3:
-    contentColumnType: string
-    fieldGroup: f34fff60-41cf-47f6-8fe9-3146ae2a95b1
-    handle: homepageHeroImages
-    instructions: ''
-    name: 'Hero Images'
-    searchable: true
-    settings:
-      contentTable: '{{%matrixcontent_homepageheroimages}}'
-      localizeBlocks: '1'
-      maxBlocks: '6'
-      minBlocks: '1'
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Matrix
   7a4edc2b-a06d-4baf-a33f-da76742cbf35:
     contentColumnType: string
     fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
@@ -2458,146 +2443,6 @@ matrixBlockTypes:
         type: craft\redactor\Field
     handle: programmeRegion
     name: 'Programme Region'
-    sortOrder: 1
-  4f87a7a2-de4c-49ed-bb87-242364387658:
-    field: 78da9b46-1b94-49fb-a8ce-b8986e53a5c3
-    fieldLayouts:
-      709f2474-2716-4a8d-b7f6-56b021e1cd87:
-        tabs:
-          -
-            fields:
-              287d1d64-550f-4ef0-aed1-a69dfaa34def:
-                required: '0'
-                sortOrder: 4
-              819104e1-5004-4804-9ea2-ebd2c6c85e12:
-                required: '1'
-                sortOrder: 2
-              93eff09b-014a-4e1c-a7c4-9f0665996fa5:
-                required: '0'
-                sortOrder: 5
-              c4a813ff-dc05-4f95-9ed9-d62ed142caea:
-                required: '1'
-                sortOrder: 3
-              ed221773-330e-4542-8e50-a71a30b081fc:
-                required: '1'
-                sortOrder: 1
-            name: Content
-            sortOrder: 1
-    fields:
-      287d1d64-550f-4ef0-aed1-a69dfaa34def:
-        contentColumnType: text
-        fieldGroup: null
-        handle: caption
-        instructions: ''
-        name: Caption
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      819104e1-5004-4804-9ea2-ebd2c6c85e12:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageMedium
-        instructions: ''
-        name: 'Image (Medium)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: '1'
-          localizeRelations: ''
-          restrictFiles: '1'
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: '1'
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      93eff09b-014a-4e1c-a7c4-9f0665996fa5:
-        contentColumnType: text
-        fieldGroup: null
-        handle: captionFootnote
-        instructions: ''
-        name: 'Caption footnote'
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\PlainText
-      c4a813ff-dc05-4f95-9ed9-d62ed142caea:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageLarge
-        instructions: ''
-        name: 'Image (large)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: '1'
-          localizeRelations: ''
-          restrictFiles: '1'
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: '1'
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      ed221773-330e-4542-8e50-a71a30b081fc:
-        contentColumnType: string
-        fieldGroup: null
-        handle: imageSmall
-        instructions: ''
-        name: 'Image (Small)'
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: '1'
-          localizeRelations: ''
-          restrictFiles: '1'
-          selectionLabel: ''
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: homepage-heroes
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: '1'
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-    handle: heroImage
-    name: 'Hero Image'
     sortOrder: 1
   62705224-8e25-453a-bce2-7d8e0533abce:
     field: 065e680b-ad85-42eb-a1b2-6623e8233466
