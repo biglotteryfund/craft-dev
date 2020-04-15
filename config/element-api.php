@@ -455,8 +455,7 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
         'criteria' => $criteria,
         'meta' => $meta ?? null,
         'transformer' => function (Entry $entry) use ($locale) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            $common = ContentHelpers::getCommonFields($entry, $entry->status, $locale);
             return array_merge($common, [
                 'tags' => ContentHelpers::getTags($entry->tags->all(), $locale),
                 'authors' => ContentHelpers::getTags($entry->authors->all(), $locale),
@@ -607,8 +606,7 @@ function getFlexibleContent($locale)
             'section' => ['aboutLandingPage'],
         ],
         'transformer' => function (Entry $entry) use ($locale) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            $common = ContentHelpers::getCommonFields($entry, $entry->status, $locale);
             return array_merge($common, [
                 'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
             ]);
@@ -756,14 +754,9 @@ function getDataPage($locale)
         ],
         'one' => true,
         'transformer' => function (Entry $entry) use ($locale) {
-            list(
-                'entry' => $entry,
-                'status' => $status
-            ) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
             $regionStats = $entry->regionStats->one();
 
-            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
+            $common = ContentHelpers::getCommonFields($entry, $entry->status, $locale);
             return array_merge($common, [
                 'regions' => [
                     'england' => array_map(function ($row) {

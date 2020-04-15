@@ -15,8 +15,6 @@ class ResearchDocumentTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
         $asset = !empty($entry->document) ? $entry->document->one() : null;
         $documentData = $asset ? [
             'url' => $asset->url,
@@ -33,7 +31,7 @@ class ResearchDocumentTransformer extends TransformerAbstract
             ];
         }
 
-        return array_merge(ContentHelpers::getCommonFields($entry, $status, $this->locale), [
+        return array_merge(ContentHelpers::getCommonFields($entry, $entry->status, $this->locale), [
             'summary' => $entry->summary,
             'relatedFundingProgrammes' => array_map(function ($programme) {
                 return [

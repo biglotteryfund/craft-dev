@@ -348,10 +348,8 @@ class ContentHelpers
     // Returns a standardised form for flexible pages, typically children of other pages
     public static function getFlexibleContentPage(Entry $entry, $locale)
     {
-        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-
         $parent = self::getParentInfo($entry, $locale);
-        return array_merge(ContentHelpers::getCommonFields($entry, $status, $locale), [
+        return array_merge(ContentHelpers::getCommonFields($entry, $entry->status, $locale), [
             'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null
         ]);
