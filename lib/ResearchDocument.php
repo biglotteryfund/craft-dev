@@ -31,7 +31,7 @@ class ResearchDocumentTransformer extends TransformerAbstract
             ];
         }
 
-        return array_merge(ContentHelpers::getCommonFields($entry, $entry->status, $this->locale), [
+        return array_merge(ContentHelpers::getCommonFields($entry, $this->locale), [
             'summary' => $entry->summary,
             'relatedFundingProgrammes' => array_map(function ($programme) {
                 return [

@@ -42,7 +42,7 @@ class ListingTransformer extends TransformerAbstract
         $relatedEntries = [];
 
         foreach ($relatedSearch as $relatedEntry) {
-            $commonFields = ContentHelpers::getCommonFields($relatedEntry, $entry->status, $this->locale);
+            $commonFields = ContentHelpers::getCommonFields($relatedEntry, $this->locale);
 
             /**
              * Custom link URL
@@ -72,7 +72,7 @@ class ListingTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        $commonFields = ContentHelpers::getCommonFields($entry, $entry->status, $this->locale);
+        $commonFields = ContentHelpers::getCommonFields($entry, $this->locale);
 
         $customFields = [
             'introduction' => $entry->introductionText ?? null,

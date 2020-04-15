@@ -29,13 +29,13 @@ class ContentHelpers
         ]) : null;
     }
 
-    public static function getCommonFields(Entry $entry, $status, $locale, $includeHeroes = true, $includeExpiredForTranslations = false)
+    public static function getCommonFields(Entry $entry, $locale, $includeHeroes = true, $includeExpiredForTranslations = false)
     {
         $fields = [
             'id' => $entry->id,
             'entryType' => $entry->type->handle,
             'slug' => $entry->slug,
-            'status' => $status,
+            'status' => $entry->status,
             'postDate' => $entry->postDate,
             'dateCreated' => $entry->dateCreated,
             'dateUpdated' => $entry->dateUpdated,
@@ -349,7 +349,7 @@ class ContentHelpers
     public static function getFlexibleContentPage(Entry $entry, $locale)
     {
         $parent = self::getParentInfo($entry, $locale);
-        return array_merge(ContentHelpers::getCommonFields($entry, $entry->status, $locale), [
+        return array_merge(ContentHelpers::getCommonFields($entry, $locale), [
             'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null
         ]);

@@ -24,7 +24,7 @@ class StrategicProgrammeTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        $commonFields = ContentHelpers::getCommonFields($entry, $entry->status, $this->locale);
+        $commonFields = ContentHelpers::getCommonFields($entry, $this->locale);
 
         if ($entry->type->handle === 'contentPage') {
             return ContentHelpers::getFlexibleContentPage($entry, $this->locale);

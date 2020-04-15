@@ -30,7 +30,7 @@ class ProjectStoriesTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        $common = ContentHelpers::getCommonFields($entry, $entry->status, $this->locale);
+        $common = ContentHelpers::getCommonFields($entry, $this->locale);
 
         return array_merge($common, [
             // @TODO: Move trailSummary and trailPhoto to getCommonFields?

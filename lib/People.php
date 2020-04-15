@@ -15,7 +15,7 @@ class PeopleTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        $common = ContentHelpers::getCommonFields($entry, $entry->status, $this->locale);
+        $common = ContentHelpers::getCommonFields($entry, $this->locale);
 
         return array_merge($common, [
             'people' => array_map(function ($person) {
