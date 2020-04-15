@@ -8,8 +8,8 @@ use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
 use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ProjectStoriesTransformer;
-use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\ResearchDocumentTransformer;
+use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\StrategicProgrammeTransformer;
 use biglotteryfund\utils\UpdatesTransformer;
 use craft\elements\Category;
@@ -192,7 +192,7 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'criteria' => $criteria,
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
-        'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes)
+        'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes),
     ];
 }
 
@@ -230,7 +230,7 @@ function getResearch($locale, $type = false)
         'level' => 1, // Skip child pages
         'section' => 'research',
         'status' => EntryHelpers::getVersionStatuses(),
-        'type' => ($type === 'documents') ? 'researchDocument' : 'research'
+        'type' => ($type === 'documents') ? 'researchDocument' : 'research',
     ];
 
     $sortParam = \Craft::$app->request->getParam('sort');
@@ -264,14 +264,14 @@ function getResearch($locale, $type = false)
         $allRegions = array_map(function ($region) use ($locale) {
             return [
                 'label' => $region->title,
-                'value' => $region->slug
+                'value' => $region->slug,
             ];
         }, Category::find()->group('region')->orderBy('title')->site($locale)->all());
 
         $allDocTypes = array_map(function ($type) use ($locale) {
             return [
                 'label' => $type->title,
-                'value' => $type->slug
+                'value' => $type->slug,
             ];
         }, Category::find()->group('insightDocumentType')->orderBy('title')->site($locale)->all());
 
@@ -293,7 +293,7 @@ function getResearch($locale, $type = false)
             if ($activeTag) {
                 $meta['activeTag'] = [
                     'label' => $activeTag->title,
-                    'value' => $activeTag->slug
+                    'value' => $activeTag->slug,
                 ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activeTag,
@@ -307,7 +307,7 @@ function getResearch($locale, $type = false)
             if ($activeProgramme) {
                 $meta['activeProgramme'] = [
                     'label' => $activeProgramme->title,
-                    'value' => $activeProgramme->slug
+                    'value' => $activeProgramme->slug,
                 ];
                 $elementsToRelateTo[] = [
                     'targetElement' => $activeProgramme,
@@ -378,7 +378,7 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
     $criteria = [
         'site' => $locale,
         'section' => 'publications',
-        'status' => EntryHelpers::getVersionStatuses()
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     $isSingle = $pageSlug ? true : false;
@@ -405,9 +405,8 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
         $criteria['orderBy'] = 'postDate desc';
     }
 
-
     $meta = [
-        'activeTag' => null
+        'activeTag' => null,
     ];
 
     $elementsToRelateTo = array();
@@ -420,7 +419,7 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
             'thumbnail' => ContentHelpers::getFundingProgrammeThumbnailUrl($associatedProgramme),
         ];
         $elementsToRelateTo[] = [
-            'targetElement' => $associatedProgramme
+            'targetElement' => $associatedProgramme,
         ];
     }
 
@@ -430,7 +429,7 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
         if ($activeTag) {
             $meta['activeTag'] = [
                 'label' => $activeTag->title,
-                'value' => $activeTag->slug
+                'value' => $activeTag->slug,
             ];
             $elementsToRelateTo[] = [
                 'targetElement' => $activeTag,
@@ -473,7 +472,7 @@ function getPublicationTags($locale, $programmeSlug)
     $criteria = [
         'site' => $locale,
         'section' => 'publications',
-        'status' => EntryHelpers::getVersionStatuses()
+        'status' => EntryHelpers::getVersionStatuses(),
     ];
 
     $associatedProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->slug($programmeSlug)->site($locale)->one();
@@ -490,9 +489,9 @@ function getPublicationTags($locale, $programmeSlug)
         'transformer' => function (Entry $entry) use ($locale) {
             return [
                 'id' => $entry->id,
-                'tags' => ContentHelpers::getTags($entry->tags->all(), $locale)
+                'tags' => ContentHelpers::getTags($entry->tags->all(), $locale),
             ];
-        }
+        },
     ];
 }
 
@@ -532,7 +531,7 @@ function getStrategicProgrammes($locale)
         'criteria' => [
             'site' => $locale,
             'section' => 'strategicProgrammes',
-            'level' => 1
+            'level' => 1,
         ],
         'transformer' => new StrategicProgrammeTransformer($locale),
     ];
@@ -583,36 +582,6 @@ function getListing($locale)
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
         'transformer' => new ListingTransformer($locale),
-    ];
-}
-
-/**
- * API Endpoint: Get flexible content
- * Get a page using the flexible content field model
- */
-function getFlexibleContent($locale)
-{
-    normaliseCacheHeaders();
-
-    $pagePath = \Craft::$app->request->getParam('path');
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'one' => true,
-        'criteria' => [
-            'site' => $locale,
-            'uri' => $pagePath,
-            // Limited to certain sections using flexible content
-            'section' => ['aboutLandingPage'],
-        ],
-        'transformer' => function (Entry $entry) use ($locale) {
-            list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-            $common = ContentHelpers::getCommonFields($entry, $status, $locale);
-            return array_merge($common, [
-                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
-            ]);
-        },
     ];
 }
 
@@ -876,7 +845,6 @@ return [
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
-        'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
