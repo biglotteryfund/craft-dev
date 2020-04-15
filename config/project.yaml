@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1586361327
+dateModified: 1586939719
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4259,6 +4259,69 @@ sections:
     structure:
       maxLevels: 2
       uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
+    type: structure
+  3d219965-b138-465f-b62d-5ad75c0204ec:
+    enableVersioning: true
+    entryTypes:
+      2b58251e-76e0-4d9c-9dc5-6d753ce7c1f7:
+        fieldLayouts:
+          cf9cbad3-9006-4cf7-9115-0fcfd8cbf47b:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 2
+                  75254713-f63e-44ac-b875-cbc61d48ca9c:
+                    required: false
+                    sortOrder: 3
+                name: Content
+                sortOrder: 1
+              -
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
+                name: 'Social Media'
+                sortOrder: 2
+        handle: covid19Insight
+        hasTitleField: true
+        name: 'Covid-19 Insight'
+        sortOrder: 1
+        titleFormat: ''
+        titleLabel: Title
+    handle: covid19Insights
+    name: 'Covid-19 Insights'
+    previewTargets:
+      -
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
+    propagationMethod: all
+    siteSettings:
+      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+        enabledByDefault: true
+        hasUrls: true
+        template: ''
+        uriFormat: '{parent.uri ? parent.uri : ''insights/covid-19-resources''}/{slug}'
+      d0635f95-a563-4f66-9195-33da0eb644d5:
+        enabledByDefault: false
+        hasUrls: true
+        template: ''
+        uriFormat: '{parent.uri ? parent.uri : ''insights/covid-19-resources''}/{slug}'
+    structure:
+      maxLevels: null
+      uid: f0d3ab54-d2f5-4e2d-b417-fe353b5b46ae
     type: structure
   3ecf7fe6-7292-48f8-9a74-39c2ea37312f:
     enableVersioning: '1'
