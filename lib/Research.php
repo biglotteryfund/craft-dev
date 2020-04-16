@@ -23,9 +23,8 @@ class ResearchTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
         $researchMeta = $entry->researchMeta->one();
-        return array_merge(ContentHelpers::getCommonFields($entry, $status, $this->locale), [
+        return array_merge(ContentHelpers::getCommonFields($entry, $this->locale), [
             'trailImage' => self::buildTrailImage(Images::extractHeroImageField($entry->hero)),
 
             'parent' => ContentHelpers::getParentInfo($entry, $this->locale),

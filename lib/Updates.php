@@ -15,8 +15,7 @@ class UpdatesTransformer extends TransformerAbstract
 
     public function transform(Entry $entry)
     {
-        list('entry' => $entry, 'status' => $status) = EntryHelpers::getDraftOrVersionOfEntry($entry);
-        $commonFields = ContentHelpers::getCommonFields($entry, $status, $this->locale);
+        $commonFields = ContentHelpers::getCommonFields($entry, $this->locale);
         $primaryCategory = $entry->category ? $entry->category->inReverse()->one() : null;
 
         $trailPhotoUrl = $entry->trailPhoto->one() ? $entry->trailPhoto->one()->url : null;
