@@ -1,0 +1,30 @@
+{
+  "name": "Craft CMS",
+  "version": "1.0.0",
+  "description": "An install of Craft used as a headless CMS for www.biglotteryfund.org.uk",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biglotteryfund/craft-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biglotteryfund/craft-dev/issues"
+  },
+  "homepage": "https://github.com/biglotteryfund/craft-dev#readme",
+  "dependencies": {
+    "aws-sdk": "^2.656.0",
+    "lodash": "^4.17.15",
+    "yargs": "^15.3.1"
+  }
+}
