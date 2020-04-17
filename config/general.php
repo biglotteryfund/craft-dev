@@ -6,6 +6,9 @@
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
  */
 
+use biglotteryfund\conf\ConfigManager;
+$config = new biglotteryfund\conf\ConfigManager;
+
 return [
     // Global settings
     '*' => [
@@ -24,7 +27,7 @@ return [
         // Control Panel trigger word
         'cpTrigger' => 'admin',
 
-        'securityKey' => getenv('SECURITY_KEY'),
+        'securityKey' => $config->getConfig('security/key', getenv('SECURITY_KEY')),
 
         'allowUpdates' => false,
         'useProjectConfigFile' => true,
@@ -37,7 +40,7 @@ return [
         'maxUploadFileSize' => 20777216,
 
         // Allow expiring links (eg. shareable previews) to last for a week
-        'defaultTokenDuration ' => 604800, // one week
+        'defaultTokenDuration' => 604800, // one week
 
     ],
 
@@ -55,7 +58,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => getenv('BASE_CP_URL'),
+        'baseCpUrl' => $config->getConfig('urls/basecp', getenv('BASE_CP_URL')),
         'allowAdminChanges' => false,
     ],
 
@@ -64,7 +67,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => getenv('BASE_CP_URL'),
+        'baseCpUrl' => $config->getConfig('urls/basecp', getenv('BASE_CP_URL')),
         'allowAdminChanges' => false,
     ],
 ];
