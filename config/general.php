@@ -27,7 +27,7 @@ return [
         // Control Panel trigger word
         'cpTrigger' => 'admin',
 
-        'securityKey' => $config->getConfig('security/key', getenv('SECURITY_KEY')),
+        'securityKey' => $config->getConfig('SECURITY_KEY', getenv('SECURITY_KEY')),
 
         'allowUpdates' => false,
         'useProjectConfigFile' => true,
@@ -58,7 +58,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => $config->getConfig('urls/basecp', getenv('BASE_CP_URL')),
+        'baseCpUrl' => $config->getConfig('BASE_CP_URL', getenv('BASE_CP_URL')),
         'allowAdminChanges' => false,
     ],
 
@@ -67,7 +67,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => $config->getConfig('urls/basecp', getenv('BASE_CP_URL')),
+        'baseCpUrl' => $config->getConfig('BASE_CP_URL', getenv('BASE_CP_URL')),
         'allowAdminChanges' => false,
     ],
 ];

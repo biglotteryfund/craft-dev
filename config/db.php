@@ -11,10 +11,10 @@ $config = new biglotteryfund\conf\ConfigManager;
 
 return [
     'driver' => 'mysql',
-    'server' => $config->getConfig('db/server', getenv('CRAFT_DB_SERVER')),
-    'user' => $config->getConfig('db/user', getenv('CRAFT_DB_USER')),
-    'password' => $config->getConfig('db/password', getenv('CRAFT_DB_PASSWORD')),
-    'database' => $config->getConfig('db/database', getenv('CRAFT_DB_DATABASE')),
+    'server' => $config->getConfig('DB_SERVER', getenv('CRAFT_DB_SERVER')),
+    'user' => $config->getConfig('DB_USER', getenv('CRAFT_DB_USER')),
+    'password' => $config->getConfig('DB_PASSWORD', getenv('CRAFT_DB_PASSWORD')),
+    'database' => $config->getConfig('DB_DATABASE', getenv('CRAFT_DB_DATABASE')),
     'schema' => getenv('CRAFT_DB_SCHEMA') ?: 'public',
     'tablePrefix' => getenv('CRAFT_DB_TABLE_PREFIX') ?: '',
     'port' => getenv('CRAFT_DB_PORT') ?: 3306

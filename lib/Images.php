@@ -12,8 +12,8 @@ class Images
     private static function _getImgixConfig()
     {
         $config = new ConfigManager();
-        $imgixDomain = $config->getConfig('imgix/domain', getenv('CUSTOM_IMGIX_DOMAIN'));
-        $imgixSignKey = $config->getConfig('imgix/signkey', getenv('CUSTOM_IMGIX_SIGN_KEY'));
+        $imgixDomain = $config->getConfig('CUSTOM_IMGIX_DOMAIN', getenv('CUSTOM_IMGIX_DOMAIN'));
+        $imgixSignKey = $config->getConfig('CUSTOM_IMGIX_SIGN_KEY', getenv('CUSTOM_IMGIX_SIGN_KEY'));
 
         if ($imgixDomain && $imgixSignKey) {
             return [
