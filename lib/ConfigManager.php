@@ -16,7 +16,7 @@ class ConfigManager
             $this->conf = new Config('/etc/craft/parameters.json');
         } catch (FileNotFoundException $e) {
             // no secret file found so we should be in dev mode
-            if (CRAFT_ENVIRONMENT !== 'dev') {
+            if (defined('CRAFT_ENVIRONMENT') && CRAFT_ENVIRONMENT !== 'dev') {
                 debug_print_backtrace();
                 trigger_error("A secrets file is required on non-development environments", E_USER_ERROR);
                 exit();
