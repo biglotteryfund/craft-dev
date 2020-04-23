@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1586939719
+dateModified: 1587635399
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3600,6 +3600,9 @@ matrixBlockTypes:
               173fd2cb-0f50-4807-ac9b-7af40f73e7ca:
                 required: false
                 sortOrder: 1
+              dc9d6364-e0f8-4248-a241-f05de05d3b56:
+                required: false
+                sortOrder: 2
             name: Content
             sortOrder: 1
     fields:
@@ -3607,8 +3610,8 @@ matrixBlockTypes:
         contentColumnType: text
         fieldGroup: null
         handle: tableOfContentsIntro
-        instructions: 'Place this block where you''d like your Table of Contents (TOC) to appear. If your other Flexible Content blocks have Titles, they''ll appear in your TOC. You can add text here to appear above the TOC.'
-        name: 'Table of Contents introduction'
+        instructions: 'Place this block where you''d like your table of contents to appear. If your other flexible content blocks have titles, they''ll appear in your table of contents. You can add text here to appear above the table of contents.'
+        name: 'Table of contents introduction'
         searchable: false
         settings:
           availableTransforms: '*'
@@ -3626,6 +3629,18 @@ matrixBlockTypes:
         translationKeyFormat: null
         translationMethod: site
         type: craft\redactor\Field
+      dc9d6364-e0f8-4248-a241-f05de05d3b56:
+        contentColumnType: boolean
+        fieldGroup: null
+        handle: showLastUpdatedDate
+        instructions: 'If this is enabled a "Last updated" message will be shown above the table of contents'
+        name: 'Show last updated date?'
+        searchable: false
+        settings:
+          default: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Lightswitch
     handle: tableOfContents
     name: 'Table of Contents'
     sortOrder: 8
