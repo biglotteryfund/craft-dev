@@ -227,7 +227,7 @@ class ContentHelpers
                     break;
                 case 'tableOfContents':
                     $data = [
-                        'showLastUpdatedDate' => $block->showLastUpdatedDate ?? false,
+                        'lastUpdated' => $block->showLastUpdatedDate ? $entry->dateUpdated : null,
                         'content' => $block->tableOfContentsIntro ?? null,
                     ];
                     break;
