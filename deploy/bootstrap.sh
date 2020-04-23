@@ -11,7 +11,7 @@ set -e
 #################################################
 # Override default owner set in deploy artefact to web user
 
-chown -R www-data:www-data /var/www/craft/
+chown -R nginx:nginx /var/www/craft/
 
 #################################################
 # App environment
@@ -43,36 +43,31 @@ fi
 
 /var/www/craft/bin/get-secrets --environment=$APP_ENV
 
-#copy license file
 # Craft license file
-#  /etc/blf/config/license.key:
-#    mode: "000644"
-#    owner: webapp
-#    group: webapp
-#    authentication: "S3Auth"
-#    source: https://s3-eu-west-1.amazonaws.com/blf-craft-license/license.key
-#command: "mv /etc/blf/config/license.key config/license.key"
+license_dest=config/license.key
+aws s3 cp s3://blf-craft-license/license.key $license_dest
+chmod 644 $license_dest
+chown root:root $license_dest
 
+#################################################
+# Configure PHP
+#################################################
+
+cp /var/www/craft/deploy/uploads.ini /etc/php.d
+chmod 644 /etc/php.d/uploads.ini
+chown root:root /etc/php.d/uploads.ini
 
 #################################################
 # Configure NGINX
 #################################################
-
 # Copy nginx config files to correct place
+
 nginx_config=/var/www/craft/deploy/nginx.conf
 server_config=/var/www/craft/deploy/server.conf
 
-# Configure nginx
+cp $nginx_config /etc/nginx/nginx.conf
 
-# copy uploads.ini
-#files:
-#  "/etc/php.d/uploads.ini" :
-#    mode: "000644"
-#    owner: root
-#    group: root
-
-rm -f /etc/nginx/sites-enabled/default
-cp $nginx_config /etc/nginx/conf.d
+mkdir -p /etc/nginx/sites-enabled
 cp $server_config /etc/nginx/sites-enabled
 
 service nginx restart
