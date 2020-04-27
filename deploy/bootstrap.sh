@@ -11,7 +11,9 @@ set -e
 #################################################
 # Override default owner set in deploy artefact to web user
 
-chown -R nginx:nginx /var/www/craft/
+#chown -R nginx:nginx /var/www/craft/
+chmod -R 744 composer.json composer.lock config/license.key storage/* vendor/* web/cpresources/*
+
 
 #################################################
 # App environment

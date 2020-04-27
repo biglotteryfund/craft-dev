@@ -9,8 +9,9 @@ set -e
 #################################################
 # Install NGINX and PHP
 #################################################
-yum update
-amazon-linux-extras install nginx1.12 php-mbstring php7.2 -y
+yum update -y
+amazon-linux-extras install nginx1.12 php7.2 -y
+yum install -y php-mbstring
 
 #################################################
 # Install Node.js
