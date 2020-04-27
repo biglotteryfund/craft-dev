@@ -11,8 +11,9 @@ set -e
 #################################################
 # Override default owner set in deploy artefact to web user
 
-#chown -R nginx:nginx /var/www/craft/
-chmod -R 744 composer.json composer.lock config/license.key storage/* vendor/* web/cpresources/*
+chown -R nginx:nginx /var/www/craft/
+cd /var/www/craft
+chmod -R 777 composer.json composer.lock storage vendor web/cpresources
 
 
 #################################################
@@ -48,7 +49,7 @@ fi
 # Craft license file
 license_dest=config/license.key
 aws s3 cp s3://blf-craft-license/license.key $license_dest
-chmod 644 $license_dest
+chmod 744 $license_dest
 chown root:root $license_dest
 
 #################################################

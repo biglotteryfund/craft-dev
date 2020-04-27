@@ -7,11 +7,14 @@ set -e
 # Run during the "AfterInstall" CodeDeploy phase
 
 #################################################
-# Install NGINX and PHP
+# Install NGINX and PHP /
 #################################################
 yum update -y
+
 amazon-linux-extras install nginx1.12 php7.2 -y
-yum install -y php-mbstring
+
+# todo: Craft prefers ImageMagick to php-gd but struggled to install this on Amazon Linux 2
+yum install -y php-mbstring php-dom php-gd
 
 #################################################
 # Install Node.js
