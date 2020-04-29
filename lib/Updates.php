@@ -36,6 +36,11 @@ class UpdatesTransformer extends TransformerAbstract
                     'w' => '1373',
                     'h' => '405',
                 ]),
+                'square' => Images::imgixUrl($trailPhotoUrl, [
+                    'w' => 100,
+                    'h' => 100,
+                    'crop' => 'faces',
+                ]),
             ] : null,
             'category' => $primaryCategory ? ContentHelpers::categorySummary($primaryCategory, $this->locale) : null,
             'authors' => ContentHelpers::getTags($entry->authors->all(), $this->locale),
