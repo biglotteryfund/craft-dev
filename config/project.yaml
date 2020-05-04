@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1587635399
+dateModified: 1588344344
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -2444,6 +2444,131 @@ matrixBlockTypes:
     handle: programmeRegion
     name: 'Programme Region'
     sortOrder: 1
+  32ec7f03-0bd3-4c24-8faf-fd6865335ce7:
+    field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+    fieldLayouts:
+      df9d695b-e31e-4161-8527-6123f2433360:
+        tabs:
+          -
+            fields:
+              1f9b106d-8f14-46d3-a10d-43d420b0629d:
+                required: true
+                sortOrder: 4
+              3b442650-9011-4c04-a835-6f0a22f33912:
+                required: false
+                sortOrder: 2
+              73de08ed-f8af-4970-902b-63f329c0a54e:
+                required: true
+                sortOrder: 3
+              f3fbe1e6-2f0e-4acd-a98e-25310e2079dd:
+                required: false
+                sortOrder: 1
+            name: Content
+            sortOrder: 1
+    fields:
+      1f9b106d-8f14-46d3-a10d-43d420b0629d:
+        contentColumnType: smallint(2)
+        fieldGroup: null
+        handle: numberOfItems
+        instructions: 'How many items should be displayed from this section?'
+        name: 'Number of items'
+        searchable: false
+        settings:
+          decimals: 0
+          defaultValue: '5'
+          max: '20'
+          min: '1'
+          prefix: ''
+          size: null
+          suffix: item(s)
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Number
+      3b442650-9011-4c04-a835-6f0a22f33912:
+        contentColumnType: text
+        fieldGroup: null
+        handle: tocTitle
+        instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+        name: 'Table of Contents title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+      73de08ed-f8af-4970-902b-63f329c0a54e:
+        contentColumnType: string
+        fieldGroup: null
+        handle: sectionType
+        instructions: 'What section should entries be chosen from?'
+        name: Section
+        searchable: false
+        settings:
+          optgroups: true
+          options:
+            -
+              __assoc__:
+                -
+                  - label
+                  - Blogposts
+                -
+                  - value
+                  - blogposts
+                -
+                  - default
+                  - ''
+            -
+              __assoc__:
+                -
+                  - label
+                  - 'Press Releases'
+                -
+                  - value
+                  - pressReleases
+                -
+                  - default
+                  - ''
+            -
+              __assoc__:
+                -
+                  - label
+                  - 'Funding Programmes'
+                -
+                  - value
+                  - fundingProgrammes
+                -
+                  - default
+                  - ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\Dropdown
+      f3fbe1e6-2f0e-4acd-a98e-25310e2079dd:
+        contentColumnType: text
+        fieldGroup: null
+        handle: flexTitle
+        instructions: 'A title field to distinguish this block of content'
+        name: Title
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+    handle: automaticContentList
+    name: 'Automatic Content List'
+    sortOrder: 8
   62705224-8e25-453a-bce2-7d8e0533abce:
     field: 065e680b-ad85-42eb-a1b2-6623e8233466
     fieldLayouts:
@@ -3643,7 +3768,7 @@ matrixBlockTypes:
         type: craft\fields\Lightswitch
     handle: tableOfContents
     name: 'Table of Contents'
-    sortOrder: 8
+    sortOrder: 9
   f76c4d99-f62f-463b-b573-946becc0923d:
     field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
     fieldLayouts:
@@ -3694,7 +3819,7 @@ matrixBlockTypes:
         type: craft\fields\Dropdown
     handle: childPageList
     name: 'Child Page List'
-    sortOrder: 9
+    sortOrder: 10
   fa1bc12d-a0f6-4d83-a213-cb9a9ca82eb5:
     field: e2c780b8-c133-4e69-af2f-cee1076275cd
     fieldLayouts:
