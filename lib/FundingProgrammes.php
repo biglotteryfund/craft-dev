@@ -37,6 +37,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
             $commonProgrammeFields = [
                 'isArchived' => $commonFields['status'] === 'expired' && $entry->legacyPath !== null,
                 'description' => $entry->programmeIntro ?? null,
+                'trailText' => $entry->programmeTrailText ?? null,
                 'area' => $entry->programmeArea ? [
                     'label' => EntryHelpers::translate($this->locale, $entry->programmeArea->label),
                     'value' => $entry->programmeArea->value,

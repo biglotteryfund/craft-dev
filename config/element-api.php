@@ -15,6 +15,7 @@ use biglotteryfund\utils\UpdatesTransformer;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
+use craft\elements\GlobalSet;
 
 function normaliseCacheHeaders()
 {
@@ -186,12 +187,23 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         $criteria['type'] = 'fundingProgrammes';
     }
 
+    $covidStatuses = GlobalSet::find()->handle('covid19Messaging')->site($locale)->one();
+    if ($covidStatuses) {
+        $meta['covid19Statuses'] = array_map(function ($status) {
+            return [
+                'country' => $status->country->value,
+                'status' => $status->statusMessage,
+            ];
+        }, $covidStatuses->covid19Status->all() ?? []);
+    }
+
     return [
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $criteria,
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
+        'meta' => $meta ?? null,
         'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes)
     ];
 }
