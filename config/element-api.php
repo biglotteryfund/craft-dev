@@ -21,7 +21,7 @@ function normaliseCacheHeaders()
     $headers = \Craft::$app->response->headers;
 
     $headers->set('access-control-allow-origin', '*');
-    $headers->set('cache-control', 'public, max-age=0');
+    $headers->set('cache-control', 'public, max-age=10s');
     header_remove('Expires');
     header_remove('Pragma');
 }

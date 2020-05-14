@@ -73,6 +73,9 @@ cp $nginx_config /etc/nginx/nginx.conf
 mkdir -p /etc/nginx/sites-enabled
 cp $server_config /etc/nginx/sites-enabled
 
+# Create nginx cache directory
+mkdir -p /var/tmp/nginx-cache
+
 service nginx restart
 service php-fpm restart
 
