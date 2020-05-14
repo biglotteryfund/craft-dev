@@ -144,7 +144,7 @@ class ContentHelpers
             $commonBlockFields = [
                 'type' => $block->type->handle,
                 'title' => $block->flexTitle ?? null,
-                'tocTitle' => $block->tocTitle ?? null
+                'tocTitle' => $block->tocTitle ?? null,
             ];
             $data = [];
             switch ($block->type->handle) {
@@ -171,7 +171,7 @@ class ContentHelpers
                 case 'gridBlocks':
                     $gridBlocks = array();
                     $data = [
-                        'introduction' => $block->introduction ?? null
+                        'introduction' => $block->introduction ?? null,
                     ];
                     if (!empty($block->blocks->all())) {
                         $gridBlocks = array_map(function ($gridBlock) {
@@ -198,7 +198,7 @@ class ContentHelpers
                         $factRiver = array_map(function ($fact) {
                             return [
                                 'text' => $fact->factText,
-                                'image' => Images::extractImageUrl($fact->factImage)
+                                'image' => Images::extractImageUrl($fact->factImage),
                             ];
                         }, $block->facts->all());
                     }
@@ -222,12 +222,39 @@ class ContentHelpers
                         }, $block->relatedItems->all()));
                     }
                     $data = [
-                        'content' => $relatedContent
+                        'content' => $relatedContent,
+                    ];
+                    break;
+                case 'automaticContentList':
+
+                    $updatesTransformer = new UpdatesTransformer($locale);
+                    $fundingProgrammeTransformer = new FundingProgrammeTransformer($locale, false, false);
+
+                    $items = [];
+                    $section = $block->sectionType->value;
+                    if ($section === 'blogposts' || $section === 'pressReleases') {
+                        $typeName = $section === 'blogposts' ? 'blog' : 'press_releases';
+                        $blogposts = Entry::find()->section('updates')->site($locale)->type($typeName)->limit($block->numberOfItems)->all();
+                        $items = array_map(function ($entry) use ($updatesTransformer) {
+                            return $updatesTransformer->transform($entry);
+                        }, $blogposts);
+                    } else if ($section === 'fundingProgrammes') {
+                        $programmes = Entry::find()->section('fundingProgrammes')->site($locale)->level(1)->limit($block->numberOfItems)->orderBy('postDate desc')->all();
+                        $items = array_map(function ($entry) use ($fundingProgrammeTransformer) {
+                            return $fundingProgrammeTransformer->transform($entry);
+                        }, $programmes);
+                    }
+
+                    $data = [
+                        'sectionType' => $block->sectionType->value,
+                        'numberOfItems' => $block->numberOfItems,
+                        'items' => $items
                     ];
                     break;
                 case 'tableOfContents':
                     $data = [
-                        'content' => $block->tableOfContentsIntro ?? null
+                        'lastUpdated' => $block->showLastUpdatedDate ? $entry->dateUpdated : null,
+                        'content' => $block->tableOfContentsIntro ?? null,
                     ];
                     break;
                 case 'childPageList':
@@ -269,7 +296,6 @@ class ContentHelpers
             ];
         }, $documentGroupsField->all() ?? []);
     }
-
 
     // Use custom thumbnail if one is set, otherwise default to hero image.
     public static function getFundingProgrammeThumbnailUrl($entry)
@@ -319,7 +345,6 @@ class ContentHelpers
                 }
             }
 
-
             if ($ogData) {
                 $openGraph['title'] = $ogData->ogTitle ?? null;
                 $openGraph['description'] = $ogData->ogDescription ?? null;
@@ -344,14 +369,13 @@ class ContentHelpers
         return $parent ?? null;
     }
 
-
     // Returns a standardised form for flexible pages, typically children of other pages
     public static function getFlexibleContentPage(Entry $entry, $locale)
     {
         $parent = self::getParentInfo($entry, $locale);
         return array_merge(ContentHelpers::getCommonFields($entry, $locale), [
             'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
-            'parent' => $parent ?? null
+            'parent' => $parent ?? null,
         ]);
     }
 }
