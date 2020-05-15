@@ -38,6 +38,10 @@ then
     APP_ENV="production"
 fi
 
+# Define placeholder string to be replaced
+# with dynamic $APP_ENV value.
+APP_ENV_PLACEHOLDER="APP_ENV"
+
 #################################################
 # App secrets
 #################################################
@@ -59,6 +63,19 @@ chown root:root $license_dest
 cp /var/www/craft/deploy/uploads.ini /etc/php.d
 chmod 644 /etc/php.d/uploads.ini
 chown root:root /etc/php.d/uploads.ini
+
+#################################################
+# Configure CloudWatch agent
+#################################################
+
+# Configure/start Cloudwatch agent with config file
+cloudwatch_config_src=/var/www/craft/deploy/cloudwatch-agent.json
+sed -i "s|$APP_ENV_PLACEHOLDER|$APP_ENV|g" $cloudwatch_config_src
+
+cloudwatch_config_dest=/opt/aws/amazon-cloudwatch-agent/bin/cms.json
+cp $cloudwatch_config_src $cloudwatch_config_dest
+amazon-cloudwatch-agent-ctl -a fetch-config -c file:$cloudwatch_config_dest -s
+amazon-cloudwatch-agent-ctl -a start
 
 #################################################
 # Configure NGINX

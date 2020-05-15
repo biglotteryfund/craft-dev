@@ -31,3 +31,11 @@ rm -rf awscli-bundle.zip awscli-bundle
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
 ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+#################################################
+# CloudWatch agent
+#################################################
+# Used for log aggregation and server metrics
+# See cloudwatch-agent.json for the config we use
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+rpm -U ./amazon-cloudwatch-agent.rpm
