@@ -60,9 +60,9 @@ chown root:root $license_dest
 # Configure PHP
 #################################################
 
-cp /var/www/craft/deploy/uploads.ini /etc/php.d
-chmod 644 /etc/php.d/uploads.ini
-chown root:root /etc/php.d/uploads.ini
+cp /var/www/craft/deploy/cms.ini /etc/php.d
+chmod 644 /etc/php.d/cms.ini
+chown root:root /etc/php.d/cms.ini
 
 #################################################
 # Configure CloudWatch agent
