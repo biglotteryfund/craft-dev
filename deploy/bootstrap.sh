@@ -97,5 +97,10 @@ chmod -R 777 $nginx_cache
 chown -R nginx:nginx $nginx_cache
 
 service nginx restart
+
+# Change php-fpm user to match webapp
+php_fpm_conf=/etc/php-fpm.d/www.conf
+sed -i "s| = apache$| = nginx|g" $php_fpm_conf
+
 service php-fpm restart
 
