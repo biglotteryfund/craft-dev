@@ -19,6 +19,7 @@ cache:
 # Build stages
 before_script:
 - composer install
+- npm install
 script:
 - "./vendor/bin/phpunit --bootstrap tests/bootstrap.php tests"
 
