@@ -7,16 +7,6 @@ set -e
 # Run during the "AfterInstall" CodeDeploy phase
 
 #################################################
-# Permissions
-#################################################
-# Override default owner set in deploy artefact to web user
-
-chown -R nginx:nginx /var/www/craft/
-cd /var/www/craft
-chmod -R 777 composer.json composer.lock storage vendor web/cpresources
-
-
-#################################################
 # App environment
 #################################################
 # Set app environment based on CodeDeploy group
