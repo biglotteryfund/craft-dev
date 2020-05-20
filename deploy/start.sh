@@ -4,9 +4,6 @@ set -e
 # ApplicationStart script
 #################################################
 
-# Run any migrations to the CMS and sync the project config
-su -s /bin/bash -c 'cd /var/www/craft/ && ./craft migrate/all && ./craft project-config/sync' nginx
-
 #################################################
 # Permissions
 #################################################
@@ -15,3 +12,12 @@ su -s /bin/bash -c 'cd /var/www/craft/ && ./craft migrate/all && ./craft project
 chown -R nginx:nginx /var/www/craft/
 cd /var/www/craft
 chmod -R 777 composer.json composer.lock storage vendor web/cpresources config
+
+# Run any migrations to the CMS and sync the project config
+su -s /bin/bash -c 'cd /var/www/craft/ && ./craft migrate/all && ./craft project-config/sync' nginx
+
+# Set permissions again
+# @TODO work out why we need this twice
+# (craft migration runs as php-fpm user, apache, which changes ownership?)
+chown -R nginx:nginx /var/www/craft/
+cd /var/www/craft && chmod -R 777 composer.json composer.lock storage vendor web/cpresources config
