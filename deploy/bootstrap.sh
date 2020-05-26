@@ -43,8 +43,8 @@ APP_ENV_PLACEHOLDER="APP_ENV"
 # Craft license file
 license_dest=config/license.key
 aws s3 cp s3://blf-craft-license/license.key $license_dest
-chmod 744 $license_dest
-chown root:root $license_dest
+chmod 777 $license_dest
+chown nginx:nginx $license_dest
 
 #################################################
 # Configure PHP
