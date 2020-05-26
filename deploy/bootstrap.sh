@@ -41,7 +41,7 @@ APP_ENV_PLACEHOLDER="APP_ENV"
 /var/www/craft/bin/get-secrets --environment=$APP_ENV
 
 # Craft license file
-license_dest=config/license.key
+license_dest=/var/www/craft/config/license.key
 aws s3 cp s3://blf-craft-license/license.key $license_dest
 chmod 777 $license_dest
 chown nginx:nginx $license_dest
