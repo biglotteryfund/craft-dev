@@ -47,7 +47,6 @@ deploy:
     skip_cleanup: true
     on:
       repo: biglotteryfund/craft-dev
-      tags: true
   # Deploy merge commits to the test env
   - provider: codedeploy
     region: eu-west-2
