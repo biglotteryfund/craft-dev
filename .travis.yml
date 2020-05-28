@@ -19,28 +19,55 @@ cache:
 # Build stages
 before_script:
 - composer install
+- npm install
 script:
 - "./vendor/bin/phpunit --bootstrap tests/bootstrap.php tests"
 
+# Prepare artefact for deployment
+# Store a temporary env var to only run before_deploy once
+# (current behaviour is to run before_deploy once _per_ provider)
+# https://github.com/travis-ci/travis-ci/issues/2570#issuecomment-171262181
+before_deploy:
+  - >
+    if ! [ "$BEFORE_DEPLOY_RUN" ]; then
+      export BEFORE_DEPLOY_RUN=1;
+      ./deploy/travis-prepare-deploy.sh
+    fi
+
 # Deploy steps
 deploy:
-- provider: elasticbeanstalk
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  region: eu-west-2
-  app: Craft CMS
-  env: craft-test
-  bucket_name: elasticbeanstalk-eu-west-2-868515886436
-  bucket_path: Craft CMS
-  on:
-    branch: master
-- provider: elasticbeanstalk
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  region: eu-west-2
-  app: Craft CMS
-  env: craft-production-blue
-  bucket_name: elasticbeanstalk-eu-west-2-868515886436
-  bucket_path: Craft CMS
-  on:
-    tags: true
+  # Upload zip file to S3
+  - provider: s3
+    region: eu-west-2
+    bucket: blf-deployments
+    upload-dir: CMS
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    local_dir: cms_deploy
+    skip_cleanup: true
+    on:
+      repo: biglotteryfund/craft-dev
+  # Deploy merge commits to the test env
+  - provider: codedeploy
+    region: eu-west-2
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: blf-deployments
+    key: CMS/build-$TRAVIS_BUILD_NUMBER.zip
+    bundle_type: zip
+    application: Craft_CMS
+    deployment_group: Test_Fleet
+    on:
+      tags: false
+  # Deploy new version tags to production
+  - provider: codedeploy
+    region: eu-west-2
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: blf-deployments
+    key: CMS/build-$TRAVIS_BUILD_NUMBER.zip
+    bundle_type: zip
+    application: Craft_CMS
+    deployment_group: Live_Fleet
+    on:
+      tags: true

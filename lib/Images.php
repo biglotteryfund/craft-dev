@@ -4,13 +4,16 @@ namespace biglotteryfund\utils;
 
 use Imgix\UrlBuilder;
 use League\Uri\Parser;
+use biglotteryfund\conf\ConfigManager;
+
 
 class Images
 {
     private static function _getImgixConfig()
     {
-        $imgixDomain = getenv('CUSTOM_IMGIX_DOMAIN');
-        $imgixSignKey = getenv('CUSTOM_IMGIX_SIGN_KEY');
+        $config = new ConfigManager();
+        $imgixDomain = $config->getConfig('CUSTOM_IMGIX_DOMAIN', getenv('CUSTOM_IMGIX_DOMAIN'));
+        $imgixSignKey = $config->getConfig('CUSTOM_IMGIX_SIGN_KEY', getenv('CUSTOM_IMGIX_SIGN_KEY'));
 
         if ($imgixDomain && $imgixSignKey) {
             return [

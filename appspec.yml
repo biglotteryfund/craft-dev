@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/craft
+hooks:
+  BeforeInstall:
+    - location: deploy/pre-install.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: deploy/provision.sh
+      timeout: 600
+      runas: root
+    - location: deploy/bootstrap.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: deploy/start.sh
+      timeout: 300
