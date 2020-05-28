@@ -598,35 +598,6 @@ function getListing($locale)
 }
 
 /**
- * API Endpoint: Get flexible content
- * Get a page using the flexible content field model
- */
-function getFlexibleContent($locale)
-{
-    normaliseCacheHeaders();
-
-    $pagePath = \Craft::$app->request->getParam('path');
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'one' => true,
-        'criteria' => [
-            'site' => $locale,
-            'uri' => $pagePath,
-            // Limited to certain sections using flexible content
-            'section' => ['aboutLandingPage'],
-        ],
-        'transformer' => function (Entry $entry) use ($locale) {
-            $common = ContentHelpers::getCommonFields($entry, $locale);
-            return array_merge($common, [
-                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
-            ]);
-        },
-    ];
-}
-
-/**
  * Get project stories
  */
 function getProjectStories($locale, $grantId = null)
@@ -881,7 +852,6 @@ return [
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
-        'api/v1/<locale:en|cy>/flexible-content' => getFlexibleContent,
         'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
