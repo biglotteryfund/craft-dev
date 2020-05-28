@@ -45,8 +45,6 @@ deploy:
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     local_dir: cms_deploy
     skip_cleanup: true
-    on:
-      repo: biglotteryfund/craft-dev
   # Deploy merge commits to the test env
   - provider: codedeploy
     region: eu-west-2
