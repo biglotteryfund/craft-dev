@@ -45,6 +45,21 @@ deploy:
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     local_dir: cms_deploy
     skip_cleanup: true
+    on:
+      branch: master
+  # Upload zip file to S3
+  # Workaround for Travis treating tags as branch names
+  # See https://github.com/travis-ci/travis-ci/issues/7780#issuecomment-302389370
+  - provider: s3
+    region: eu-west-2
+    bucket: blf-deployments
+    upload-dir: CMS
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    local_dir: cms_deploy
+    skip_cleanup: true
+    on:
+      tags: true
   # Deploy merge commits to the test env
   - provider: codedeploy
     region: eu-west-2
@@ -56,6 +71,7 @@ deploy:
     application: Craft_CMS
     deployment_group: Test_Fleet
     on:
+      branch: master
       tags: false
   # Deploy new version tags to production
   - provider: codedeploy
@@ -68,4 +84,5 @@ deploy:
     application: Craft_CMS
     deployment_group: Live_Fleet
     on:
+      branch: master
       tags: true
