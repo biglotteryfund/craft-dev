@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1591023266
+dateModified: 1591189394
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5414,7 +5414,7 @@ sections:
         uriFormat: funding/strategic-investments
     type: single
   a1f1765e-10d1-45ef-905e-1a8cf5a6458e:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       1320c236-b94a-4d47-aa7d-68a2aece2c01:
         fieldLayouts:
@@ -5456,22 +5456,30 @@ sections:
     name: About
     previewTargets:
       -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
     propagationMethod: all
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: about/_entry
-        uriFormat: 'about/{parent.uri}/{slug}'
+        uriFormat: '{parent.uri ? parent.uri : ''about''}/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: about/_entry
-        uriFormat: 'about/{parent.uri}/{slug}'
+        uriFormat: '{parent.uri ? parent.uri : ''about''}/{slug}'
     structure:
-      maxLevels: '2'
+      maxLevels: 2
       uid: 328de783-1cb3-4267-930d-5c830925bfe8
     type: structure
   b50d445d-1022-48a7-898a-ff03d8304412:
