@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1591189394
+dateModified: 1591196097
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5663,20 +5663,28 @@ sections:
     name: 'The Big Lunch'
     previewTargets:
       -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
     propagationMethod: all
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
         enabledByDefault: true
         hasUrls: true
         template: ''
-        uriFormat: funding/the-big-lunch
+        uriFormat: funding/the-big-lunch-old
       d0635f95-a563-4f66-9195-33da0eb644d5:
         enabledByDefault: true
         hasUrls: true
         template: ''
-        uriFormat: funding/the-big-lunch
+        uriFormat: funding/the-big-lunch-old
     type: single
   f273edc9-ecad-4a33-857d-75410b9480e5:
     enableVersioning: true
