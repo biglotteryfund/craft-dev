@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1591196097
+dateModified: 1591199153
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4175,18 +4175,12 @@ sections:
             tabs:
               -
                 fields:
-                  0ffe78fe-8cab-4c76-a558-5dcb3cb2dd34:
-                    required: false
-                    sortOrder: 5
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 1
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 4
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
-                    sortOrder: 3
+                    sortOrder: 2
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -4219,61 +4213,6 @@ sections:
       maxLevels: null
       uid: b8fbce60-cd00-49c5-a24a-35fc0bb208c1
     type: structure
-  16bd8e56-7aac-415d-b06b-34c8a02cb6c6:
-    enableVersioning: '1'
-    entryTypes:
-      9147c461-7eef-4d50-af6e-474010b5a504:
-        fieldLayouts:
-          465ad913-dff2-4ca8-bfb1-408cfcaf83e9:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 2
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 4
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 5
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: true
-                    sortOrder: 3
-                name: 'Jobs page content'
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: jobs
-        hasTitleField: true
-        name: Jobs
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: jobs
-    name: Jobs
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: ''
-        uriFormat: jobs
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: ''
-        uriFormat: jobs
-    type: single
   2b1f6da1-20e9-4176-a181-7ab073fab8f9:
     enableVersioning: true
     entryTypes:
@@ -4892,61 +4831,6 @@ sections:
       maxLevels: null
       uid: 622fc39d-8869-457b-91c3-4f71f65eeae0
     type: structure
-  571fe90a-3077-475c-9868-6db9ec6cbac2:
-    enableVersioning: '1'
-    entryTypes:
-      3d29509c-9184-412b-902c-4628e3a3be5e:
-        fieldLayouts:
-          c994ea54-d2b6-4f64-99b8-0b12898af37a:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 2
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 4
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 5
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: true
-                    sortOrder: 3
-                name: 'Benefits page content'
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: benefits
-        hasTitleField: true
-        name: Benefits
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: benefits
-    name: Benefits
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: benefits/_entry
-        uriFormat: jobs/benefits
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: ''
-        uriFormat: jobs/benefits
-    type: single
   578177e6-786a-4fb0-8555-f42db7f6b729:
     enableVersioning: true
     entryTypes:
@@ -5424,19 +5308,10 @@ sections:
                 fields:
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
-                    sortOrder: 2
+                    sortOrder: 1
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 6
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 5
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 7
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
-                    sortOrder: 4
+                    sortOrder: 2
                 name: 'Content Page'
                 sortOrder: 1
               -
@@ -5518,15 +5393,6 @@ sections:
                     required: false
                     sortOrder: 1
                   40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 4
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 3
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 5
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
                     required: true
                     sortOrder: 2
                 name: 'Content Page'
@@ -5620,72 +5486,6 @@ sections:
         template: hero-image/_entry
         uriFormat: 'hero-image/{slug}'
     type: channel
-  e02aeba8-4306-4fb1-b232-5026958c8a3e:
-    enableVersioning: true
-    entryTypes:
-      26cc644f-dd6d-4c41-b0a0-7451175925a8:
-        fieldLayouts:
-          7403f91f-fbbd-40b6-b543-2c5318e9392e:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: true
-                    sortOrder: 1
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 4
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 3
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 5
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: true
-                    sortOrder: 2
-                name: Content
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: theBigLunch
-        hasTitleField: true
-        name: 'The Big Lunch'
-        sortOrder: 1
-        titleFormat: '{section.name|raw}'
-        titleLabel: Title
-    handle: theBigLunch
-    name: 'The Big Lunch'
-    previewTargets:
-      -
-        __assoc__:
-          -
-            - label
-            - 'Primary entry page'
-          -
-            - urlFormat
-            - '{url}'
-          -
-            - refresh
-            - '1'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: true
-        hasUrls: true
-        template: ''
-        uriFormat: funding/the-big-lunch-old
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: true
-        hasUrls: true
-        template: ''
-        uriFormat: funding/the-big-lunch-old
-    type: single
   f273edc9-ecad-4a33-857d-75410b9480e5:
     enableVersioning: true
     entryTypes:
