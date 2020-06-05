@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1591199153
+dateModified: 1591366266
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4951,73 +4951,6 @@ sections:
         template: contact/_entry
         uriFormat: contact
     type: single
-  6924a426-e1bd-4c6e-96e4-513956cbaa44:
-    enableVersioning: '1'
-    entryTypes:
-      a0b8bcd6-c5a7-4c25-aad8-9fa8bdd9eca6:
-        fieldLayouts:
-          79b47f10-cb80-4fb4-83a9-9b43d49de47b:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 4
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 8
-                  4bbbad71-25c1-4e25-9b13-8815cee1ee98:
-                    required: false
-                    sortOrder: 1
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 7
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 9
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: true
-                    sortOrder: 6
-                  ccd71b86-6564-429f-972a-1def8e6840a4:
-                    required: false
-                    sortOrder: 2
-                name: Content
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: fundingGuidance
-        hasTitleField: true
-        name: 'Funding Guidance'
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: fundingGuidance
-    name: 'Funding Guidance'
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: funding-guidance/_entry
-        uriFormat: 'funding/funding-guidance/{parent.slug}/{slug}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: funding-guidance/_entry
-        uriFormat: 'funding/funding-guidance/{parent.slug}/{slug}'
-    structure:
-      maxLevels: null
-      uid: 76a4a410-b5d6-44f7-b8e2-b91c197ae0a1
-    type: structure
   6e869d59-984b-457b-a497-8f675c2e5ccb:
     enableVersioning: '1'
     entryTypes:
