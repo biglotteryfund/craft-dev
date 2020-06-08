@@ -763,7 +763,8 @@ function getDataPage($locale)
                         'suffix' => $stat->suffix ?? null,
                         'prefix' => $stat->prefix ?? null,
                     ];
-                }, $entry->stats->all() ?? [])
+                }, $entry->stats->all() ?? []),
+                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
             ]);
         },
     ];
