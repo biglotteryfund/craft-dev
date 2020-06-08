@@ -204,6 +204,23 @@ class ContentHelpers
                     }
                     $data['content'] = $factRiver;
                     break;
+                case 'person':
+                    $image = $block->personPhoto->one() ?? null;
+                    $data = [
+                        'name' => $block->flexTitle,
+                        'role' => $block->personRole ?? null,
+                        'image' => $image ? [
+                            // Is the source image large or small?
+                            // Used to determine what layout to use
+                            'type' => $image->width > 500 ? 'large' : 'small',
+                            'url' => Images::imgixUrl(
+                                $image->url,
+                                ['fit' => 'crop', 'crop' => 'entropy', 'max-w' => 1200]
+                            ),
+                        ] : null,
+                        'bio' => $block->personBio,
+                    ];
+                    break;
                 case 'relatedContent':
                     $relatedContent = array();
                     if (!empty($block->relatedItems->all())) {
