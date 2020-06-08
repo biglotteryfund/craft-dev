@@ -18,6 +18,8 @@
             if (element.nodeName === 'A') {
                 var $node = $R.dom(element);
                 $node.toggleClass('btn');
+            } else {
+                alert("Please select a link first before making it into a button.")
             }
         }
     });
