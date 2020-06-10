@@ -62,3 +62,7 @@
 .redactor-styles .cms-icon-fax-number::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 35'%3E%3Cpath d='M5.78 15.18h12v4.45H5.73v15.25H-.22l.05-35h20.35l.1 4.35H5.78v10.95zM44.78 22.63H32.53l-4.6 12.25h-6.05l14-35h6.9l12.85 35h-6.6l-4.25-12.25zm-10.7-4.4h9.2l-4.4-12.75-4.8 12.75zM82.58 34.88l-8.85-13.15-9.25 13.15h-6.55l12.6-17.8-11.6-17.2h7.1l8.2 12.2 8.55-12.2h6.6l-12 16.9 12.2 18.1h-7z'/%3E%3C/svg%3E");
 }
+
+.redactor-styles .cms-type-small {
+    font-size: 85%;
+}

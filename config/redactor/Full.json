@@ -2,11 +2,22 @@
     "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video", "file"],
     "formatting": ["p", "blockquote", "h2", "h3", "h4", "h5"],
     "formattingAdd": {
+        "small-text": {
+            "title": "Small text",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-type-small"
+                },
+                "type": "toggle"
+            }
+        },
         "phone-number": {
             "title": "Phone number",
             "api": "module.block.format",
             "args": {
-                "tag": "p",
+                "tag": "li",
                 "attr": {
                     "class": "cms-icon-phone-number"
                 },
