@@ -18,7 +18,6 @@ return [
             // Instantiate and return it
             return Craft::createObject($config);
         },
-        'cache' => craft\cache\DbCache::class,
     ],
     'bootstrap' => [
         'control-panel',
