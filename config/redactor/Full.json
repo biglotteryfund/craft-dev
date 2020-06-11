@@ -17,7 +17,7 @@
             "title": "Phone number",
             "api": "module.block.format",
             "args": {
-                "tag": "li",
+                "tag": "p",
                 "attr": {
                     "class": "cms-icon-phone-number"
                 },
