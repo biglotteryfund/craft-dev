@@ -1,7 +1,64 @@
 {
-    "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video", "file"],
+    "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "redactoranchors", "image", "video", "file"],
     "formatting": ["p", "blockquote", "h2", "h3", "h4", "h5"],
-    "plugins": ["fullscreen", "video", "table", "linkButton"],
+    "formattingAdd": {
+        "small-text": {
+            "title": "Small text",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-type-small"
+                },
+                "type": "toggle"
+            }
+        },
+        "phone-number": {
+            "title": "Phone number",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-icon-phone-number"
+                },
+                "type": "toggle"
+            }
+        },
+        "email-address": {
+            "title": "Email address",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-icon-email-address"
+                },
+                "type": "toggle"
+            }
+        },
+        "location-map": {
+            "title": "Location / Map",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-icon-location-map"
+                },
+                "type": "toggle"
+            }
+        },
+        "fax-number": {
+            "title": "Fax number",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "attr": {
+                    "class": "cms-icon-fax-number"
+                },
+                "type": "toggle"
+            }
+        }
+    },
+    "plugins": ["fullscreen", "video", "table", "linkButton", "redactoranchors"],
     "imagePosition" : {
         "left": "image-left",
         "right": "image-right",
