@@ -1,5 +1,5 @@
 {
-    "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video", "file"],
+    "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "redactoranchors", "image", "video", "file"],
     "formatting": ["p", "blockquote", "h2", "h3", "h4", "h5"],
     "formattingAdd": {
         "small-text": {
@@ -58,7 +58,7 @@
             }
         }
     },
-    "plugins": ["fullscreen", "video", "table", "linkButton"],
+    "plugins": ["fullscreen", "video", "table", "linkButton", "redactoranchors"],
     "imagePosition" : {
         "left": "image-left",
         "right": "image-right",
