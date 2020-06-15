@@ -7,7 +7,7 @@ set -e
 # Run during the "AfterInstall" CodeDeploy phase
 
 #################################################
-# Install NGINX and PHP /
+# Install NGINX and PHP
 #################################################
 yum update -y
 
@@ -15,6 +15,15 @@ amazon-linux-extras install nginx1.12 php7.2 -y
 
 # todo: Craft prefers ImageMagick to php-gd but struggled to install this on Amazon Linux 2
 yum install -y php-mbstring php-dom php-gd php-intl
+
+#################################################
+# Install MySQL
+#################################################
+# We don't use mysql on the server itself (RDS handles this)
+# but we need access to the `mysqldump` function for database backups.
+wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
+yum install -y mysql-community-server
 
 #################################################
 # Install Node.js
