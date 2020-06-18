@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1591963253
+dateModified: 1592493652
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5154,7 +5154,7 @@ sections:
         uriFormat: '{% if grantId %}funding/grants/{grantId}{% else %}case-studies/{slug}{% endif %}'
     type: channel
   73426a06-bcdf-471b-9984-9fe28d7e5606:
-    enableVersioning: '1'
+    enableVersioning: true
     entryTypes:
       8f0f28b7-5dd3-4eb9-a71e-1e3f286f8085:
         fieldLayouts:
@@ -5197,22 +5197,30 @@ sections:
     name: 'Our People'
     previewTargets:
       -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
     propagationMethod: all
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
+        enabledByDefault: true
+        hasUrls: true
         template: ''
-        uriFormat: 'about/our-people/{slug}'
+        uriFormat: 'about/our-people-old/{slug}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '0'
-        hasUrls: '1'
+        enabledByDefault: false
+        hasUrls: true
         template: ''
-        uriFormat: 'about/our-people/{slug}'
+        uriFormat: 'about/our-people-old/{slug}'
     structure:
-      maxLevels: '1'
+      maxLevels: 1
       uid: 06e92080-7399-4f70-9c65-004954b969d0
     type: structure
   786c93b6-b099-4c32-b2d4-579a4b485a40:
