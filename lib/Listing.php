@@ -8,6 +8,7 @@ use League\Fractal\TransformerAbstract;
 
 class ListingTransformer extends TransformerAbstract
 {
+
     public function __construct($locale)
     {
         $this->locale = $locale;
@@ -23,6 +24,7 @@ class ListingTransformer extends TransformerAbstract
 
     private function getRelatedEntries($entry, $relationType)
     {
+        $relatedEntries = [];
         $relatedSearch = [];
         if ($relationType === 'ancestors') {
             $relatedSearch = $entry->getAncestors()->all();
@@ -36,10 +38,13 @@ class ListingTransformer extends TransformerAbstract
             $parent = $entry->getParent();
             if ($parent) {
                 $relatedSearch = $parent->getDescendants(1)->all();
+            } else {
+                // For top-level entries with no parents,
+                // include this entry in the list of siblings manually
+                $relatedEntries = [$entry];
+                $relatedSearch = $entry->getSiblings(1)->all();
             }
         }
-
-        $relatedEntries = [];
 
         foreach ($relatedSearch as $relatedEntry) {
             $commonFields = ContentHelpers::getCommonFields($relatedEntry, $this->locale);
@@ -65,6 +70,12 @@ class ListingTransformer extends TransformerAbstract
             $relatedEntries[] = array_merge($commonFields, [
                 'trailImage' => self::buildTrailImage(Images::extractHeroImageField($relatedEntry->hero)),
             ]);
+        }
+
+        // Sort sibling pages by title
+        if ($relationType === 'siblings') {
+            $siblingTitles = array_column($relatedEntries, 'title');
+            array_multisort($siblingTitles, SORT_ASC, $relatedEntries);
         }
 
         return $relatedEntries;
