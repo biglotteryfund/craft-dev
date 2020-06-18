@@ -521,6 +521,7 @@ function getResearchDetail($locale, $slug, $childPageSlug = null)
         'criteria' => [
             'site' => $locale,
             'section' => 'research',
+            'type' => 'research',
             'slug' => $childPageSlug ? $childPageSlug : $slug,
             'status' => EntryHelpers::getVersionStatuses(),
         ],
