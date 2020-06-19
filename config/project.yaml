@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1592552751
+dateModified: 1592556696
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5308,7 +5308,7 @@ sections:
       uid: 3e6026c1-267b-463c-96bc-d9ea45bc0b68
     type: structure
   b518ecd2-452a-47d2-a6b7-bae282712c80:
-    enableVersioning: '0'
+    enableVersioning: false
     entryTypes:
       d232fb06-26af-4f6a-88ee-b947dc5d28ed:
         fieldLayouts:
@@ -5346,20 +5346,28 @@ sections:
     name: 'Hero Images'
     previewTargets:
       -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
     propagationMethod: all
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: hero-image/_entry
-        uriFormat: 'hero-image/{slug}'
+        enabledByDefault: true
+        hasUrls: false
+        template: null
+        uriFormat: ''
       d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: hero-image/_entry
-        uriFormat: 'hero-image/{slug}'
+        enabledByDefault: true
+        hasUrls: false
+        template: null
+        uriFormat: ''
     type: channel
   f273edc9-ecad-4a33-857d-75410b9480e5:
     enableVersioning: true
