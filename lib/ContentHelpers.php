@@ -391,7 +391,7 @@ class ContentHelpers
     {
         $parent = self::getParentInfo($entry, $locale);
         return array_merge(ContentHelpers::getCommonFields($entry, $locale), [
-            'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
+            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
             'parent' => $parent ?? null,
         ]);
     }
