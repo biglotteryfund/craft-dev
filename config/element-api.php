@@ -6,7 +6,6 @@ use biglotteryfund\utils\FundingProgrammeTransformer;
 use biglotteryfund\utils\HomepageTransformer;
 use biglotteryfund\utils\Images;
 use biglotteryfund\utils\ListingTransformer;
-use biglotteryfund\utils\PeopleTransformer;
 use biglotteryfund\utils\ProjectStoriesTransformer;
 use biglotteryfund\utils\ResearchTransformer;
 use biglotteryfund\utils\ResearchDocumentTransformer;
@@ -205,25 +204,6 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
         'meta' => $meta ?? null,
         'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes)
-    ];
-}
-
-/**
- * API Endpoint: Get our people
- */
-function getOurPeople($locale)
-{
-    normaliseCacheHeaders();
-
-    return [
-        'serializer' => 'jsonApi',
-        'elementType' => Entry::class,
-        'criteria' => [
-            'site' => $locale,
-            'section' => 'people',
-            'status' => EntryHelpers::getVersionStatuses(),
-        ],
-        'transformer' => new PeopleTransformer($locale),
     ];
 }
 
@@ -854,7 +834,6 @@ return [
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
         'api/v1/<locale:en|cy>/listing' => getListing,
-        'api/v1/<locale:en|cy>/our-people' => getOurPeople,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,

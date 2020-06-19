@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1592493652
+dateModified: 1592552751
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -210,26 +210,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Number
-  0ffe78fe-8cab-4c76-a558-5dcb3cb2dd34:
-    contentColumnType: text
-    fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
-    handle: relatedContent
-    instructions: 'Content to appear alongside/below the main page content (eg. related links)'
-    name: 'Related content'
-    searchable: '1'
-    settings:
-      availableTransforms: ''
-      availableVolumes: ''
-      columnType: text
-      purifierConfig: safe-iframe-media.json
-      purifyHtml: '1'
-      redactorConfig: Basics.json
-      removeEmptyTags: '1'
-      removeInlineStyles: '1'
-      removeNbsp: '1'
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\redactor\Field
   1156c363-f08f-41a0-a3b7-4258add458bb:
     contentColumnType: text
     fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
@@ -1012,21 +992,6 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Assets
-  8c779db5-d5b9-4669-bb16-7749b921bc9b:
-    contentColumnType: string
-    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
-    handle: people
-    instructions: ''
-    name: People
-    searchable: true
-    settings:
-      contentTable: '{{%matrixcontent_people}}'
-      localizeBlocks: '1'
-      maxBlocks: ''
-      minBlocks: ''
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Matrix
   8d3adb13-80ec-4b1a-9524-7b23bafb6c60:
     contentColumnType: integer(10)
     fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
@@ -3743,111 +3708,6 @@ matrixBlockTypes:
     handle: person
     name: Person
     sortOrder: 6
-  d399fe59-317e-4880-a801-2f3f8b2764f6:
-    field: 8c779db5-d5b9-4669-bb16-7749b921bc9b
-    fieldLayouts:
-      4a55a51b-3bc9-495f-94d5-e932787c3b99:
-        tabs:
-          -
-            fields:
-              222acaa4-24a6-4cae-9452-b278a629cbfe:
-                required: '1'
-                sortOrder: 4
-              6e480c9d-1c62-4d97-9da3-53d30a26c1c5:
-                required: '0'
-                sortOrder: 2
-              781fd322-c052-4665-8ecd-9a980a71cf03:
-                required: '0'
-                sortOrder: 3
-              796a0849-2cdd-492e-8b90-4e4cf5901f70:
-                required: '1'
-                sortOrder: 1
-            name: Content
-            sortOrder: 1
-    fields:
-      222acaa4-24a6-4cae-9452-b278a629cbfe:
-        contentColumnType: text
-        fieldGroup: null
-        handle: personBio
-        instructions: ''
-        name: Bio
-        searchable: '1'
-        settings:
-          availableTransforms: ''
-          availableVolumes: ''
-          columnType: text
-          purifierConfig: safe-iframe-media.json
-          purifyHtml: '1'
-          redactorConfig: Basics.json
-          removeEmptyTags: '1'
-          removeInlineStyles: '1'
-          removeNbsp: '1'
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\redactor\Field
-      6e480c9d-1c62-4d97-9da3-53d30a26c1c5:
-        contentColumnType: text
-        fieldGroup: null
-        handle: personRole
-        instructions: ''
-        name: Role
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-      781fd322-c052-4665-8ecd-9a980a71cf03:
-        contentColumnType: string
-        fieldGroup: null
-        handle: personPhoto
-        instructions: ''
-        name: Photo
-        searchable: '1'
-        settings:
-          allowedKinds:
-            - image
-          defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          defaultUploadLocationSubpath: ''
-          limit: '1'
-          localizeRelations: ''
-          restrictFiles: '1'
-          selectionLabel: 'Add a photo'
-          singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
-          singleUploadLocationSubpath: profiles
-          source: null
-          sources: '*'
-          targetSiteId: null
-          useSingleFolder: '1'
-          viewMode: list
-        translationKeyFormat: null
-        translationMethod: site
-        type: craft\fields\Assets
-      796a0849-2cdd-492e-8b90-4e4cf5901f70:
-        contentColumnType: text
-        fieldGroup: null
-        handle: personName
-        instructions: ''
-        name: Name
-        searchable: '1'
-        settings:
-          charLimit: ''
-          code: ''
-          columnType: text
-          initialRows: '4'
-          multiline: ''
-          placeholder: ''
-        translationKeyFormat: null
-        translationMethod: language
-        type: craft\fields\PlainText
-    handle: person
-    name: Person
-    sortOrder: 1
   d745ad26-e6c1-4323-b47f-ea8112e01674:
     field: 816a3589-836c-4201-9d84-8d77a93a52a8
     fieldLayouts:
@@ -5153,76 +5013,6 @@ sections:
         template: ''
         uriFormat: '{% if grantId %}funding/grants/{grantId}{% else %}case-studies/{slug}{% endif %}'
     type: channel
-  73426a06-bcdf-471b-9984-9fe28d7e5606:
-    enableVersioning: true
-    entryTypes:
-      8f0f28b7-5dd3-4eb9-a71e-1e3f286f8085:
-        fieldLayouts:
-          711fc888-e548-493d-8917-4bea84002fee:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 1
-                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
-                    required: false
-                    sortOrder: 3
-                  8c779db5-d5b9-4669-bb16-7749b921bc9b:
-                    required: true
-                    sortOrder: 2
-                name: People
-                sortOrder: 1
-              -
-                fields:
-                  25308ee1-088a-4b07-83df-c7100eab536e:
-                    required: false
-                    sortOrder: 1
-                name: Documents
-                sortOrder: 2
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 3
-        handle: people
-        hasTitleField: true
-        name: 'Our People'
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: people
-    name: 'Our People'
-    previewTargets:
-      -
-        __assoc__:
-          -
-            - label
-            - 'Primary entry page'
-          -
-            - urlFormat
-            - '{url}'
-          -
-            - refresh
-            - '1'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: true
-        hasUrls: true
-        template: ''
-        uriFormat: 'about/our-people-old/{slug}'
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: false
-        hasUrls: true
-        template: ''
-        uriFormat: 'about/our-people-old/{slug}'
-    structure:
-      maxLevels: 1
-      uid: 06e92080-7399-4f70-9c65-004954b969d0
-    type: structure
   786c93b6-b099-4c32-b2d4-579a4b485a40:
     enableVersioning: '1'
     entryTypes:
