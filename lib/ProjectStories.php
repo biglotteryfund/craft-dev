@@ -36,7 +36,7 @@ class ProjectStoriesTransformer extends TransformerAbstract
             // @TODO: Move trailSummary and trailPhoto to getCommonFields?
             'trailSummary' => $entry->trailSummary ?? null,
             'trailPhoto' => self::getTrailPhoto($entry),
-            'content' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
+            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
             'outro' => $entry->outroText ?? null,
             'grantId' => $entry->grantId ?? null,
         ]);

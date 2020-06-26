@@ -47,7 +47,7 @@ class UpdatesTransformer extends TransformerAbstract
             'regions' => $entry->regions ? ContentHelpers::nestedCategorySummary($entry->regions->all(), $this->locale) : [],
             'tags' => ContentHelpers::getTags($entry->tags->all(), $this->locale),
             'summary' => $entry->articleSummary,
-            'content' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
+            'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $this->locale),
             'relatedFundingProgrammes' => array_map(function ($programme) {
                 return [
                     'title' => $programme->title,

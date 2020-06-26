@@ -451,7 +451,7 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
             return array_merge($common, [
                 'tags' => ContentHelpers::getTags($entry->tags->all(), $locale),
                 'authors' => ContentHelpers::getTags($entry->authors->all(), $locale),
-                'content' => ContentHelpers::extractFlexibleContent($entry, $locale),
+                'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
             ]);
         },
     ];
