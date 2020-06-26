@@ -11,7 +11,7 @@ require_once $root.'/vendor/autoload.php';
 
 // dotenv?
 if (file_exists($root.'/.env')) {
-    $dotenv = Dotenv\Dotenv::createImmutable($root);
+    $dotenv = Dotenv\Dotenv::createUnsafeImmutable($root);
     $dotenv->load();
 }
 
