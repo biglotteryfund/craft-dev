@@ -12,6 +12,7 @@ class Images
     private static function _getImgixConfig()
     {
         $config = new ConfigManager();
+        // We use getenv() here rather than $_ENV as Travis tests fail ($_ENV is not populated)
         $imgixDomain = $config->getConfig('CUSTOM_IMGIX_DOMAIN', getenv('CUSTOM_IMGIX_DOMAIN'));
         $imgixSignKey = $config->getConfig('CUSTOM_IMGIX_SIGN_KEY', getenv('CUSTOM_IMGIX_SIGN_KEY'));
 

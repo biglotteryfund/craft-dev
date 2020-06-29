@@ -27,7 +27,7 @@ return [
         // Control Panel trigger word
         'cpTrigger' => 'admin',
 
-        'securityKey' => $config->getConfig('SECURITY_KEY', getenv('SECURITY_KEY')),
+        'securityKey' => $config->getConfig('SECURITY_KEY', $_ENV['SECURITY_KEY']),
 
         'allowUpdates' => false,
         'useProjectConfigFile' => true,
@@ -47,7 +47,7 @@ return [
     // Dev environment settings
     'dev' => [
         // Base site URL
-        'siteUrl' => getenv('SITE_URL'),
+        'siteUrl' => $_ENV['SITE_URL'],
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
@@ -58,7 +58,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => $config->getConfig('BASE_CP_URL', getenv('BASE_CP_URL')),
+        'baseCpUrl' => $config->getConfig('BASE_CP_URL', $_ENV['BASE_CP_URL']),
         'allowAdminChanges' => false,
     ],
 
@@ -67,7 +67,7 @@ return [
         // Base site URL
         'siteUrl' => null,
         // avoid breaking HTTPS
-        'baseCpUrl' => $config->getConfig('BASE_CP_URL', getenv('BASE_CP_URL')),
+        'baseCpUrl' => $config->getConfig('BASE_CP_URL', $_ENV['BASE_CP_URL']),
         'allowAdminChanges' => false,
     ],
 ];
