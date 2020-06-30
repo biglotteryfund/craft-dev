@@ -3,7 +3,7 @@
 namespace biglotteryfund\utils;
 
 use Imgix\UrlBuilder;
-use League\Uri\Parser;
+use League\Uri\Http;
 use biglotteryfund\conf\ConfigManager;
 
 
@@ -29,8 +29,7 @@ class Images
         $imgixConfig = self::_getImgixConfig();
 
         if ($imgixConfig) {
-            $parser = new Parser();
-            $parsedUri = $parser($originalUrl);
+            $parsedUri = Http::createFromString($originalUrl);
 
             $builder = new UrlBuilder($imgixConfig['domain']);
             $builder->setSignKey($imgixConfig['signKey']);
@@ -38,7 +37,7 @@ class Images
 
             $defaults = array('auto' => "compress,format", 'crop' => 'entropy', 'fit' => 'crop');
             $params = array_replace_recursive($defaults, $options);
-            return $builder->createURL($parsedUri['path'], $params);
+            return $builder->createURL($parsedUri->getPath(), $params);
         } else {
             return $originalUrl;
         }
