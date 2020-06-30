@@ -27,7 +27,7 @@
     "craftcms/element-api": "2.6.0",
     "craftcms/aws-s3": "1.2.8",
     "craftcms/redactor": "2.6.1",
-    "league/uri": "^5.2",
+    "league/uri": "^6.2",
     "imgix/imgix-php": "^3.1",
     "verbb/super-table": "2.5.1",
     "ether/tags": "1.0.7",
