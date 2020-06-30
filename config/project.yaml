@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1592562846
+dateModified: 1593522509
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4894,61 +4894,6 @@ sections:
         template: ''
         uriFormat: 'funding/publications/{programme.one.slug}/{slug}'
     type: channel
-  619b3c92-f538-49a7-9d9b-ab6923cd3808:
-    enableVersioning: '1'
-    entryTypes:
-      b7d863c4-671d-492f-aba9-396925eff937:
-        fieldLayouts:
-          df332a3d-7b02-4a23-bf98-f6328b7baaa0:
-            tabs:
-              -
-                fields:
-                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
-                    required: false
-                    sortOrder: 2
-                  6c792519-1c25-4194-a0e5-60377539e790:
-                    required: false
-                    sortOrder: 5
-                  7234b38a-a7fc-4fbb-840f-c277d57f1ced:
-                    required: false
-                    sortOrder: 6
-                  7552a2c7-9bf0-408b-91a2-1a6570b3d78a:
-                    required: false
-                    sortOrder: 4
-                name: 'Content Page'
-                sortOrder: 1
-              -
-                fields:
-                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
-                    required: false
-                    sortOrder: 1
-                name: 'Social Media'
-                sortOrder: 2
-        handle: contact
-        hasTitleField: true
-        name: Contact
-        sortOrder: 1
-        titleFormat: ''
-        titleLabel: Title
-    handle: contact
-    name: Contact
-    previewTargets:
-      -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
-    propagationMethod: all
-    siteSettings:
-      81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: contact/_entry
-        uriFormat: contact
-      d0635f95-a563-4f66-9195-33da0eb644d5:
-        enabledByDefault: '1'
-        hasUrls: '1'
-        template: contact/_entry
-        uriFormat: contact
-    type: single
   6e869d59-984b-457b-a497-8f675c2e5ccb:
     enableVersioning: '1'
     entryTypes:
