@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1593522509
+dateModified: 1593700798
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -5476,23 +5476,23 @@ siteGroups:
     name: 'The National Lottery Community Fund'
 sites:
   81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
-    baseUrl: 'https://www.tnlcommunityfund.org.uk/'
+    baseUrl: $SITE_URL_EN
     handle: en
-    hasUrls: '1'
+    hasUrls: true
     language: en-GB
     name: English
-    primary: '1'
+    primary: true
     siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
-    sortOrder: '1'
+    sortOrder: 1
   d0635f95-a563-4f66-9195-33da0eb644d5:
-    baseUrl: 'https://www.tnlcommunityfund.org.uk/welsh/'
+    baseUrl: $SITE_URL_CY
     handle: cy
-    hasUrls: '1'
+    hasUrls: true
     language: cy-GB
     name: Welsh
-    primary: '0'
+    primary: false
     siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
-    sortOrder: '2'
+    sortOrder: 2
 superTableBlockTypes:
   0bae165b-b95b-4859-ad38-f059c70852be:
     field: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
