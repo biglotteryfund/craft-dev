@@ -47,7 +47,7 @@ return [
     // Dev environment settings
     'dev' => [
         // Base site URL
-        'siteUrl' => $_ENV['SITE_URL'],
+        'siteUrl' => null,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
