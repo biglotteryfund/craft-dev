@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1593700798
+dateModified: 1595239022
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4148,6 +4148,11 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: '2.0'
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey: $RETOUR_LICENSE_KEY
+    schemaVersion: 3.0.9
   ses:
     enabled: '1'
     licenseKey: null

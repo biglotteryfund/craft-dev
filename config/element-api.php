@@ -15,6 +15,7 @@ use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
 use craft\elements\GlobalSet;
+use nystudio107\retour\Retour;
 
 function normaliseCacheHeaders()
 {
@@ -578,6 +579,34 @@ function getListing($locale)
     ];
 }
 
+function getRedirect($locale)
+{
+    normaliseCacheHeaders();
+    $pagePath = \Craft::$app->request->getParam('path');
+    $redirect = Retour::$plugin->redirects->findRedirectMatch('', $pagePath);
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'one' => true,
+        'criteria' => [
+            'site' => $locale,
+        ],
+        'transformer' => function (craft\elements\Entry $entry) use ($redirect) {
+            if (!$redirect) {
+                return [
+                    'id' => null
+                ];
+            } else {
+                return [
+                    'id' => $redirect['id'],
+                    'destination' => $redirect['redirectDestUrl']
+                ];
+            }
+        },
+    ];
+}
+
+
 /**
  * Get project stories
  */
@@ -836,6 +865,7 @@ return [
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
+        'api/v1/<locale:en|cy>/redirect' => getRedirect,
         'api/v1/<locale:en|cy>/merchandise' => getMerchandise,
         'api/v1/<locale:en|cy>/updates' => getUpdates,
         'api/v1/<locale:en|cy>/updates/<type:{slug}>' => getUpdates,
