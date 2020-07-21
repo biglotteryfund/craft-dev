@@ -225,15 +225,20 @@ function getResearch($locale, $type = false)
         'type' => ($type === 'documents') ? 'researchDocument' : 'research'
     ];
 
-    $sortParam = \Craft::$app->request->getParam('sort');
     $searchQuery = \Craft::$app->request->getParam('q');
-    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
-        $criteria['orderBy'] = 'score';
+
+    if ($searchQuery) {
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
             'subRight' => true,
         ];
+    }
+
+    $sortParam = \Craft::$app->request->getParam('sort');
+
+    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
+        $criteria['orderBy'] = 'score';
     } else if ($sortParam === 'newest') {
         $criteria['orderBy'] = 'postDate desc';
     } else if ($sortParam === 'oldest') {
@@ -380,15 +385,20 @@ function getPublication($locale, $programmeSlug, $pageSlug = null)
 
     $associatedProgramme = Entry::find()->section(['fundingProgrammes', 'strategicProgrammes'])->status(['live', 'expired'])->slug($programmeSlug)->site($locale)->one();
 
-    $sortParam = \Craft::$app->request->getParam('sort');
     $searchQuery = \Craft::$app->request->getParam('q');
-    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
-        $criteria['orderBy'] = 'score';
+
+    if ($searchQuery) {
         $criteria['search'] = [
             'query' => $searchQuery,
             'subLeft' => true,
             'subRight' => true,
         ];
+    }
+
+    $sortParam = \Craft::$app->request->getParam('sort');
+
+    if ($searchQuery && ($sortParam === 'score' || !$sortParam)) {
+        $criteria['orderBy'] = 'score';
     } else if ($sortParam === 'newest') {
         $criteria['orderBy'] = 'postDate desc';
     } else if ($sortParam === 'oldest') {
