@@ -37,7 +37,8 @@
     "doublesecretagency/craft-cpjs": "2.2.1",
     "doublesecretagency/craft-cpcss": "2.2.1",
     "hassankhan/config": "^2.1",
-    "utakka/redactor-anchors": "^1.1"
+    "utakka/redactor-anchors": "^1.1",
+    "nystudio107/craft-retour": "^3.1"
   },
   "autoload" : {
     "psr-4" : {
