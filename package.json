@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/biglotteryfund/craft-dev#readme",
   "dependencies": {
-    "aws-sdk": "^2.656.0",
+    "aws-sdk": "^2.717.0",
     "lodash": "^4.17.15",
     "yargs": "^15.3.1"
   }
