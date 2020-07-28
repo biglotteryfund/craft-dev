@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1595935936
+dateModified: 1595943981
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -1391,7 +1391,7 @@ fields:
       contentTable: '{{%stc_notificationbanner}}'
       fieldLayout: row
       maxRows: '1'
-      minRows: ''
+      minRows: '0'
       propagationMethod: all
       selectionLabel: ''
       staticField: '1'
@@ -5989,10 +5989,10 @@ superTableBlockTypes:
           -
             fields:
               22745b93-ebbd-41c3-a09c-815ceb4b6cb0:
-                required: true
+                required: false
                 sortOrder: 1
               a2b1e8e7-4519-485e-b11f-6181b18b124c:
-                required: true
+                required: false
                 sortOrder: 2
             name: Content
             sortOrder: 1
