@@ -95,7 +95,11 @@ class ListingTransformer extends TransformerAbstract
                     'photo' => $segmentImage ? $segmentImage->url : null,
                 ];
             }, $entry->contentSegment->all() ?? []) : [],
-            'outro' => $entry->outroText ?? null
+            'outro' => $entry->outroText ?? null,
+            'notificationBanner' => $entry->notificationBanner && $entry->notificationBanner->notificationTitle ? [
+                'title' => $entry->notificationBanner->notificationTitle,
+                'content' => $entry->notificationBanner->notificationMessage,
+            ] : null,
         ];
 
         $ancestors = self::getRelatedEntries($entry, 'ancestors');

@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1595239022
+dateModified: 1595935936
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -1364,6 +1364,40 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\PlainText
+  d8304aea-eec1-4f58-8d23-bc6f50e2d8a3:
+    contentColumnType: string
+    fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+    handle: notificationBanner
+    instructions: 'Add some text for an announcement/notification which will appear at the top of the content'
+    name: 'Notification Banner'
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 22745b93-ebbd-41c3-a09c-815ceb4b6cb0
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - a2b1e8e7-4519-485e-b11f-6181b18b124c
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_notificationbanner}}'
+      fieldLayout: row
+      maxRows: '1'
+      minRows: ''
+      propagationMethod: all
+      selectionLabel: ''
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
   db0b8702-ef1b-409c-aa55-6de9d41d4d4a:
     contentColumnType: text
     fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
@@ -4247,16 +4281,19 @@ sections:
                 fields:
                   03ed24af-07b1-42c3-875e-98050e9560c7:
                     required: false
-                    sortOrder: 4
+                    sortOrder: 5
                   1620ec3b-4d1d-4929-bd17-68cf9f224a53:
                     required: false
                     sortOrder: 1
                   7234b38a-a7fc-4fbb-840f-c277d57f1ced:
                     required: false
-                    sortOrder: 5
+                    sortOrder: 6
                   bcbf9339-ab42-4e3f-9db7-eaf3b499d36c:
                     required: false
                     sortOrder: 3
+                  d8304aea-eec1-4f58-8d23-bc6f50e2d8a3:
+                    required: false
+                    sortOrder: 4
                   e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb:
                     required: false
                     sortOrder: 2
@@ -5438,6 +5475,9 @@ sections:
                     sortOrder: 2
                   75254713-f63e-44ac-b875-cbc61d48ca9c:
                     required: false
+                    sortOrder: 4
+                  d8304aea-eec1-4f58-8d23-bc6f50e2d8a3:
+                    required: false
                     sortOrder: 3
                 name: Content
                 sortOrder: 1
@@ -5940,6 +5980,63 @@ superTableBlockTypes:
           removeNbsp: '1'
         translationKeyFormat: null
         translationMethod: language
+        type: craft\redactor\Field
+  bb8331a2-19ed-4035-b81b-2239da04eba9:
+    field: d8304aea-eec1-4f58-8d23-bc6f50e2d8a3
+    fieldLayouts:
+      c8050c41-8ec1-46b8-9d83-5f363f842db4:
+        tabs:
+          -
+            fields:
+              22745b93-ebbd-41c3-a09c-815ceb4b6cb0:
+                required: true
+                sortOrder: 1
+              a2b1e8e7-4519-485e-b11f-6181b18b124c:
+                required: true
+                sortOrder: 2
+            name: Content
+            sortOrder: 1
+    fields:
+      22745b93-ebbd-41c3-a09c-815ceb4b6cb0:
+        contentColumnType: text
+        fieldGroup: null
+        handle: notificationTitle
+        instructions: 'A heading to appear about this announcement/notification'
+        name: 'Notification Title'
+        searchable: true
+        settings:
+          byteLimit: null
+          charLimit: null
+          code: ''
+          columnType: null
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\PlainText
+      a2b1e8e7-4519-485e-b11f-6181b18b124c:
+        contentColumnType: text
+        fieldGroup: null
+        handle: notificationMessage
+        instructions: 'The main text of this announcement/notification'
+        name: 'Notification Message'
+        searchable: true
+        settings:
+          availableTransforms: '*'
+          availableVolumes: '*'
+          cleanupHtml: true
+          columnType: text
+          purifierConfig: ''
+          purifyHtml: '1'
+          redactorConfig: Minimal.json
+          removeEmptyTags: '1'
+          removeInlineStyles: '1'
+          removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
+        translationKeyFormat: null
+        translationMethod: site
         type: craft\redactor\Field
   ca91f95e-be1d-4f9d-a486-58d486d4792c:
     field: a8c00f7c-0572-4e87-ae13-f5101114343f
