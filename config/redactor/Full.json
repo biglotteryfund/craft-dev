@@ -63,5 +63,6 @@
         "left": "image-left",
         "right": "image-right",
         "center": "image-centre"
-    }
+    },
+    "imageResizable": true
 }
