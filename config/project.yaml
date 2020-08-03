@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1595943981
+dateModified: 1596451010
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -4419,6 +4419,33 @@ sections:
   3102e285-face-4513-b17e-2d3b046fcc88:
     enableVersioning: true
     entryTypes:
+      43576092-2e5d-42f2-8efb-45f256d352b2:
+        fieldLayouts:
+          adf6caaa-e95d-447d-a527-107d3d3392b4:
+            tabs:
+              -
+                fields:
+                  1620ec3b-4d1d-4929-bd17-68cf9f224a53:
+                    required: false
+                    sortOrder: 1
+                  40755bc8-380a-49b7-9f5b-786c5e1e6bbe:
+                    required: true
+                    sortOrder: 2
+                name: Content
+                sortOrder: 1
+              -
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
+                name: 'Social Media'
+                sortOrder: 2
+        handle: contentPage
+        hasTitleField: true
+        name: 'Content Page'
+        sortOrder: 4
+        titleFormat: ''
+        titleLabel: Title
       803ebe88-78a2-4e00-8b3c-a8649ffb61ce:
         fieldLayouts:
           148090b7-1887-40f5-a00e-8d90a513eb77:
@@ -4516,20 +4543,28 @@ sections:
     name: Insights
     previewTargets:
       -
-        label: 'Primary entry page'
-        urlFormat: '{url}'
+        __assoc__:
+          -
+            - label
+            - 'Primary entry page'
+          -
+            - urlFormat
+            - '{url}'
+          -
+            - refresh
+            - '1'
     propagationMethod: all
     siteSettings:
       81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
         enabledByDefault: true
         hasUrls: true
         template: research/_entry
-        uriFormat: '{% if type.handle == ''research'' %}insights/{parent.slug}/{slug}{% else %}insights/documents/{slug}{% endif %}'
+        uriFormat: '{% if type.handle == ''researchDocument'' %}insights/documents/{slug}{% else %}insights/{parent.slug}/{slug}{% endif %}'
       d0635f95-a563-4f66-9195-33da0eb644d5:
         enabledByDefault: false
         hasUrls: true
         template: research/_entry
-        uriFormat: '{% if type.handle == ''research'' %}insights/{parent.slug}/{slug}{% else %}insights/documents/{slug}{% endif %}'
+        uriFormat: '{% if type.handle == ''researchDocument'' %}insights/documents/{slug}{% else %}insights/{parent.slug}/{slug}{% endif %}'
     structure:
       maxLevels: 2
       uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
@@ -5430,6 +5465,13 @@ sections:
                     sortOrder: 2
                 name: 'Content Page'
                 sortOrder: 1
+              -
+                fields:
+                  6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51:
+                    required: false
+                    sortOrder: 1
+                name: 'Social Media'
+                sortOrder: 2
         handle: contentPage
         hasTitleField: true
         name: 'Content Page'
