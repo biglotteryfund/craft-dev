@@ -44,7 +44,7 @@ categoryGroups:
     structure:
       maxLevels: '1'
       uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075
-dateModified: 1596451010
+dateModified: 1596717998
 email:
   fromEmail: noreply@blf.digital
   fromName: 'The National Lottery Community Fund Digital'
@@ -3069,16 +3069,21 @@ matrixBlockTypes:
         name: 'Status message'
         searchable: true
         settings:
-          byteLimit: null
-          charLimit: null
-          code: ''
-          columnType: null
-          initialRows: '4'
-          multiline: '1'
-          placeholder: ''
+          availableTransforms: '*'
+          availableVolumes: '*'
+          cleanupHtml: true
+          columnType: text
+          purifierConfig: ''
+          purifyHtml: '1'
+          redactorConfig: Full.json
+          removeEmptyTags: '1'
+          removeInlineStyles: '1'
+          removeNbsp: '1'
+          showUnpermittedFiles: false
+          showUnpermittedVolumes: false
         translationKeyFormat: null
         translationMethod: site
-        type: craft\fields\PlainText
+        type: craft\redactor\Field
       f19a371f-b0b9-4431-be2b-de822c693382:
         contentColumnType: string
         fieldGroup: null
