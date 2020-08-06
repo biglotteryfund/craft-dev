@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: funding
+name: Funding
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: ''
+    uriFormat: '{parent.uri ? parent.uri : ''funding''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: true
+    hasUrls: true
+    template: ''
+    uriFormat: '{parent.uri ? parent.uri : ''funding''}/{slug}'
+structure:
+  maxLevels: null
+  uid: e166e603-46ac-461c-8480-ffc5dd4482a1
+type: structure

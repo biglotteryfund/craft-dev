@@ -1,0 +1,55 @@
+field: 03ed24af-07b1-42c3-875e-98050e9560c7
+fieldLayouts:
+  6dd284bd-6578-49a2-85dd-a23462463fc9:
+    tabs:
+      -
+        fields:
+          70715e88-972e-4c12-abf8-c432b9d1e2f0:
+            required: '1'
+            sortOrder: 1
+          b11d5ba7-d5f9-4d87-8215-9841f126f126:
+            required: '0'
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  70715e88-972e-4c12-abf8-c432b9d1e2f0:
+    contentColumnType: text
+    fieldGroup: null
+    handle: programmeRegionTitle
+    instructions: ''
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b11d5ba7-d5f9-4d87-8215-9841f126f126:
+    contentColumnType: text
+    fieldGroup: null
+    handle: programmeRegionBody
+    instructions: ''
+    name: Content
+    searchable: '1'
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+handle: programmeRegion
+name: 'Programme Region'
+sortOrder: 1

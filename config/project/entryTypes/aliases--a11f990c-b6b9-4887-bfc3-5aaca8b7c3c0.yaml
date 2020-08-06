@@ -1,0 +1,25 @@
+fieldLayouts:
+  fda6063b-17f6-4bd4-b0eb-42fdcf0031ef:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: ''
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: adfb9aa8-ae2e-4b0e-9068-1a58c62105b0
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 02eb210a-8b09-489c-994d-009c27b6167b
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Aliases
+        sortOrder: 1
+handle: aliases
+hasTitleField: false
+name: Aliases
+section: 3ecf7fe6-7292-48f8-9a74-39c2ea37312f
+sortOrder: 1
+titleFormat: '{slug}'

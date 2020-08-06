@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: strategicProgrammeImpact
+instructions: ''
+name: 'Strategic Programme Learning'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_strategicprogrammeimpact}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

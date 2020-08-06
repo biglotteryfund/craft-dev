@@ -1,0 +1,23 @@
+enableVersioning: '1'
+handle: customerService
+name: 'Customer Service'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: '1'
+    hasUrls: '1'
+    template: customer-service/_entry
+    uriFormat: 'about/customer-service/{parent.slug}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: '1'
+    hasUrls: '1'
+    template: customer-service/_entry
+    uriFormat: 'about/customer-service/{parent.slug}/{slug}'
+structure:
+  maxLevels: null
+  uid: 3e6026c1-267b-463c-96bc-d9ea45bc0b68
+type: structure

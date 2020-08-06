@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: a9adb8e8-0825-43f9-8f1a-862323940637
+handle: socialMediaTags
+instructions: 'Add some Open Graph metadata which displays when this content is shared on social media (eg. Twitter and Facebook cards)'
+name: 'Social Media Tags'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_socialmediatags}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,15 @@
+contentColumnType: integer(10)
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: maximumFundingSize
+instructions: 'In £'
+name: 'Maximum funding size'
+searchable: '1'
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '0'
+  size: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

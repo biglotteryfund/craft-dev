@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: standfirst
+instructions: 'Supplementary text to support the title'
+name: Standfirst
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

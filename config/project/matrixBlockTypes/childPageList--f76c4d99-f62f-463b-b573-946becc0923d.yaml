@@ -1,0 +1,50 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  aa35dd33-d70e-4bca-9e52-801a628ee678:
+    tabs:
+      -
+        fields:
+          e86eb7e9-f5e2-4185-8c86-f76acce0b3ca:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  e86eb7e9-f5e2-4185-8c86-f76acce0b3ca:
+    contentColumnType: string
+    fieldGroup: null
+    handle: childPageDisplayStyle
+    instructions: 'Place this block where you''d like child pages to be displayed. Choose how they should be displayed:'
+    name: 'Child page display style'
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Text list'
+            -
+              - value
+              - list
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Photo grid'
+            -
+              - value
+              - grid
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Dropdown
+handle: childPageList
+name: 'Child Page List'
+sortOrder: 11

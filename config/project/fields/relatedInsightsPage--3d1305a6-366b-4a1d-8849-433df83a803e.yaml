@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: relatedInsightsPage
+instructions: 'If this document relates to an existing Insights page, choose it here and a link will be displayed.'
+name: 'Related Insights page'
+searchable: false
+settings:
+  limit: '1'
+  localizeRelations: ''
+  selectionLabel: ''
+  source: null
+  sources:
+    - 'section:3102e285-face-4513-b17e-2d3b046fcc88'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

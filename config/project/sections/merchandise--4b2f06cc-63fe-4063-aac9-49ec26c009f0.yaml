@@ -1,0 +1,19 @@
+enableVersioning: '1'
+handle: merchandise
+name: Merchandise
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: '1'
+    hasUrls: '0'
+    template: null
+    uriFormat: null
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: '1'
+    hasUrls: '0'
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: null
+  uid: 622fc39d-8869-457b-91c3-4f71f65eeae0
+type: structure

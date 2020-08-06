@@ -1,0 +1,14 @@
+handle: insightDocumentType
+name: 'Insight Document Type'
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    hasUrls: false
+    template: null
+    uriFormat: null
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: '1'
+  uid: a0dbb9d0-734d-4e43-a0d5-56e09ff07075

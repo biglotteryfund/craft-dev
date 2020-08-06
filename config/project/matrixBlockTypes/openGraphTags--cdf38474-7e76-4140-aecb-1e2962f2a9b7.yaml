@@ -1,0 +1,130 @@
+field: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+fieldLayouts:
+  df689c5d-a020-4ec2-971f-ca2cd8f5c1b1:
+    tabs:
+      -
+        fields:
+          10b1092c-6186-4d57-825b-29af4519292d:
+            required: '0'
+            sortOrder: 2
+          313a413e-2758-4963-8abf-7ae418034c90:
+            required: '0'
+            sortOrder: 3
+          34c79cfe-a250-4f37-9db7-09538f105c74:
+            required: '0'
+            sortOrder: 1
+          c147383b-5f6d-449c-9120-0ac3da15a85f:
+            required: '0'
+            sortOrder: 5
+          d0c63510-508c-48bf-8cf2-20b02e9682f7:
+            required: '0'
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  10b1092c-6186-4d57-825b-29af4519292d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ogDescription
+    instructions: 'A brief description of the content, usually between 2 and 4 sentences. This will displayed below the title of the post on Facebook.'
+    name: Description
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  313a413e-2758-4963-8abf-7ae418034c90:
+    contentColumnType: string
+    fieldGroup: null
+    handle: ogFacebookImage
+    instructions: "• Open Graph Stories – Images appear in a square format. Image ratios for these apps should be 600 x 600 px.\r\n• Non-open Graph Stories – Images appear in a rectangular format. You should use a 1.91:1 image ratio, such as 600 x 314 px."
+    name: 'Facebook Image'
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: social/facebook
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  34c79cfe-a250-4f37-9db7-09538f105c74:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ogTitle
+    instructions: "The title of this article without any branding (such as our site name). If left blank, the current entry title will be used.\r\n"
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  c147383b-5f6d-449c-9120-0ac3da15a85f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: ogSlug
+    instructions: 'Optional – if you specify this then only a unique URL (eg. ?social=<slug>) will show these social media assets.'
+    name: Slug
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  d0c63510-508c-48bf-8cf2-20b02e9682f7:
+    contentColumnType: string
+    fieldGroup: null
+    handle: ogTwitterImage
+    instructions: "• Images for Twitter Cards support an aspect ratio of 2:1 with minimum dimensions of 300x157 or maximum of 4096x4096 pixels.\r\n• Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported."
+    name: 'Twitter Image'
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: social/twitter
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: openGraphTags
+name: 'Open Graph Tags'
+sortOrder: 1

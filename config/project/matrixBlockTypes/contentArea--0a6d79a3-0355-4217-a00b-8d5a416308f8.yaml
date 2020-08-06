@@ -1,0 +1,55 @@
+field: 698dcade-907a-4233-8c8e-7421845e74d4
+fieldLayouts:
+  2b598c99-d3eb-42df-8016-244efa92c3a6:
+    tabs:
+      -
+        fields:
+          0b844db0-2788-421f-993c-8f1cd56846d8:
+            required: '1'
+            sortOrder: 2
+          64284b05-53d8-4968-8595-aa6e6defaf9f:
+            required: '1'
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  0b844db0-2788-421f-993c-8f1cd56846d8:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentBody
+    instructions: ''
+    name: Content
+    searchable: '1'
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field
+  64284b05-53d8-4968-8595-aa6e6defaf9f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentTitle
+    instructions: ''
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: contentArea
+name: Content
+sortOrder: 1

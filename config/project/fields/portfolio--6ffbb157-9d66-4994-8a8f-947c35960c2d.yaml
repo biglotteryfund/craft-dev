@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: portfolio
+instructions: 'Which funding portfolio location does this document relate to?'
+name: Portfolio
+searchable: false
+settings:
+  branchLimit: '1'
+  limit: null
+  localizeRelations: ''
+  selectionLabel: 'Choose a portfolio'
+  source: 'group:83f5331d-3367-4856-ab4c-acf5d2725b10'
+  sources: '*'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

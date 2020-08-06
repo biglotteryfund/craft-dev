@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
+handle: researchDocuments
+instructions: ''
+name: 'Research documents'
+searchable: '1'
+settings:
+  contentTable: '{{%matrixcontent_researchdocuments}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

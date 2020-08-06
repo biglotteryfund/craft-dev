@@ -1,0 +1,25 @@
+contentColumnType: string
+fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
+handle: photo
+instructions: 'A picture of this author'
+name: Photo
+searchable: '1'
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: '1'
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: authors
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: '1'
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

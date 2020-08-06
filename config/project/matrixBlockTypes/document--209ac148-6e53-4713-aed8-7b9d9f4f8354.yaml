@@ -1,0 +1,81 @@
+field: 585a68f7-bb7c-4d7f-9acf-10f9b2107243
+fieldLayouts:
+  d98c841e-9507-4cfa-90a8-98a806dd2e52:
+    tabs:
+      -
+        fields:
+          307142c5-2149-4974-9e9e-d1f028166aea:
+            required: '1'
+            sortOrder: '1'
+          6050690f-6cf0-4b24-9cdb-404c539799c1:
+            required: '1'
+            sortOrder: '2'
+          6f0c6972-b3f3-431e-8379-df493ac046a2:
+            required: '1'
+            sortOrder: '3'
+        name: Content
+        sortOrder: '1'
+fields:
+  307142c5-2149-4974-9e9e-d1f028166aea:
+    contentColumnType: text
+    fieldGroup: null
+    handle: documentTitle
+    instructions: ''
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  6050690f-6cf0-4b24-9cdb-404c539799c1:
+    contentColumnType: string
+    fieldGroup: null
+    handle: documentAsset
+    instructions: ''
+    name: Document
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - pdf
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: documents
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a document'
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  6f0c6972-b3f3-431e-8379-df493ac046a2:
+    contentColumnType: text
+    fieldGroup: null
+    handle: documentContents
+    instructions: 'Separate points with a line-break'
+    name: 'Contents Summary'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: document
+name: Document
+sortOrder: '1'

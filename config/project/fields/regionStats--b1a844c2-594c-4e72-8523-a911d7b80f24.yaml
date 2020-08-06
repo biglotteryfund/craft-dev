@@ -1,0 +1,38 @@
+contentColumnType: string
+fieldGroup: e3237b61-2fe0-45f7-9036-c1ff7a7975e8
+handle: regionStats
+instructions: ''
+name: 'Region stats'
+searchable: '1'
+settings:
+  columns:
+    1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
+      __assoc__:
+        -
+          - width
+          - ''
+    27a7b349-c009-41c7-9e13-51bd131b5785:
+      __assoc__:
+        -
+          - width
+          - ''
+    6814cacd-1dbf-4109-ba6b-8862c021852e:
+      __assoc__:
+        -
+          - width
+          - ''
+    cf987298-5d2c-42e4-9ae8-570e017fa92d:
+      __assoc__:
+        -
+          - width
+          - ''
+  contentTable: '{{%stc_regionstats}}'
+  fieldLayout: row
+  localizeBlocks: '1'
+  maxRows: '1'
+  minRows: '1'
+  selectionLabel: ''
+  staticField: '1'
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

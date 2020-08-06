@@ -1,0 +1,19 @@
+contentColumnType: text
+fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
+handle: outroText
+instructions: 'This will appear last on the page'
+name: 'Outro content'
+searchable: true
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  columnType: text
+  purifierConfig: safe-iframe-media.json
+  purifyHtml: '1'
+  redactorConfig: Full.json
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

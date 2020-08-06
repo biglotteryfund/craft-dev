@@ -1,0 +1,56 @@
+field: d8304aea-eec1-4f58-8d23-bc6f50e2d8a3
+fieldLayouts:
+  c8050c41-8ec1-46b8-9d83-5f363f842db4:
+    tabs:
+      -
+        fields:
+          22745b93-ebbd-41c3-a09c-815ceb4b6cb0:
+            required: false
+            sortOrder: 1
+          a2b1e8e7-4519-485e-b11f-6181b18b124c:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  22745b93-ebbd-41c3-a09c-815ceb4b6cb0:
+    contentColumnType: text
+    fieldGroup: null
+    handle: notificationTitle
+    instructions: 'A heading to appear about this announcement/notification'
+    name: 'Notification Title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  a2b1e8e7-4519-485e-b11f-6181b18b124c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: notificationMessage
+    instructions: 'The main text of this announcement/notification'
+    name: 'Notification Message'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Minimal.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field

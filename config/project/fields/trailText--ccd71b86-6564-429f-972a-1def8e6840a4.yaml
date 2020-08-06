@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: trailText
+instructions: 'Custom trail text used on listing pages. Optional, if not provided then the title will be used.'
+name: 'Trail text'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

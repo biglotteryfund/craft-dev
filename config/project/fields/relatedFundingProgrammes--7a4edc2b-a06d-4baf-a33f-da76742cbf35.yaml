@@ -1,0 +1,19 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: relatedFundingProgrammes
+instructions: 'Add related programmes which will be displayed alongside this content (and vice-versa).'
+name: 'Related funding programmes'
+searchable: '1'
+settings:
+  limit: ''
+  localizeRelations: ''
+  selectionLabel: ''
+  source: null
+  sources:
+    - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
+    - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

@@ -1,0 +1,16 @@
+handle: websiteImages
+hasUrls: true
+name: 'Website Files'
+settings:
+  autoFocalPoint: ''
+  bucket: blf-assets
+  cfDistributionId: ''
+  expires: '7 days'
+  keyId: $S3_AUTH_KEY
+  region: eu-west-1
+  secret: $S3_AUTH_SECRET
+  storageClass: ''
+  subfolder: media
+sortOrder: '2'
+type: craft\awss3\Volume
+url: 'https://www.tnlcommunityfund.org.uk/'

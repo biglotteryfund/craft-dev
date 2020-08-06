@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
+handle: researchSections
+instructions: ''
+name: 'Research sections'
+searchable: '1'
+settings:
+  columns:
+    698dcade-907a-4233-8c8e-7421845e74d4:
+      __assoc__:
+        -
+          - width
+          - ''
+    927e7ec0-904f-4a13-8fb1-83c7ee913f98:
+      __assoc__:
+        -
+          - width
+          - ''
+    f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
+      __assoc__:
+        -
+          - width
+          - ''
+  contentTable: '{{%stc_researchsections}}'
+  fieldLayout: row
+  localizeBlocks: '1'
+  maxRows: '3'
+  minRows: '1'
+  selectionLabel: 'Add a section'
+  staticField: ''
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

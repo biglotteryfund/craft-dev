@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
+handle: flexibleContent
+instructions: ''
+name: 'Flexible Content'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_flexiblecontent}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: none
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

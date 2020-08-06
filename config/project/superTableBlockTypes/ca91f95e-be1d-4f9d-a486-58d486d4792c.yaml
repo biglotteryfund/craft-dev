@@ -1,0 +1,95 @@
+field: a8c00f7c-0572-4e87-ae13-f5101114343f
+fieldLayouts:
+  e7325e08-8b81-4f32-9051-ca7d9f2ff2cc:
+    tabs:
+      -
+        fields:
+          1886c75e-22fc-4f85-aabf-58913f9b3515:
+            required: false
+            sortOrder: 4
+          a6d9429e-d666-443b-aa43-0a8a4107aa45:
+            required: true
+            sortOrder: 1
+          e0b8fb64-5f6b-46f9-8ac8-462a46591a0d:
+            required: true
+            sortOrder: 3
+          eb374601-07f9-4464-af5b-d0c315e82dde:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  1886c75e-22fc-4f85-aabf-58913f9b3515:
+    contentColumnType: text
+    fieldGroup: null
+    handle: outro
+    instructions: 'Some text to appear after the list of related content.'
+    name: Outro
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  a6d9429e-d666-443b-aa43-0a8a4107aa45:
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: 'A heading to appear above these items'
+    name: Heading
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  e0b8fb64-5f6b-46f9-8ac8-462a46591a0d:
+    contentColumnType: string
+    fieldGroup: null
+    handle: relatedItems
+    instructions: 'Choose some related content for this page'
+    name: 'Related items'
+    searchable: true
+    settings:
+      contentTable: '{{%matrixcontent_relateditems}}'
+      maxBlocks: ''
+      minBlocks: '1'
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  eb374601-07f9-4464-af5b-d0c315e82dde:
+    contentColumnType: text
+    fieldGroup: null
+    handle: introduction
+    instructions: 'Text to appear below the heading to explain what the content below is'
+    name: Introduction
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText

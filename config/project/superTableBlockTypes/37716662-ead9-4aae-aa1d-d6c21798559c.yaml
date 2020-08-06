@@ -1,0 +1,35 @@
+field: 78a83748-7862-4217-b345-e40cf81a05c4
+fieldLayouts:
+  d14482ec-6a10-4227-abce-218fac5afbf8:
+    tabs:
+      -
+        fields:
+          5643199b-c773-4d2b-97b9-18270e979de5:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  5643199b-c773-4d2b-97b9-18270e979de5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: blockContent
+    instructions: 'Add some content to appear inside this grid block'
+    name: 'Block content'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field

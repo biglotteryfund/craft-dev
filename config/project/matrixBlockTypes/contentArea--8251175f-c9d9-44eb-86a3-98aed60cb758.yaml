@@ -1,0 +1,80 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  e251d9b2-af69-4609-bf7d-83f420776325:
+    tabs:
+      -
+        fields:
+          09ec6b3b-e779-4031-a3bb-3979d8736517:
+            required: false
+            sortOrder: 1
+          6a689d57-9eee-472a-abc0-5a948b024538:
+            required: true
+            sortOrder: 3
+          dc97428e-30ce-4f6e-b4ef-39cd8939f0f8:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  09ec6b3b-e779-4031-a3bb-3979d8736517:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  6a689d57-9eee-472a-abc0-5a948b024538:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentBody
+    instructions: ''
+    name: Content
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  dc97428e-30ce-4f6e-b4ef-39cd8939f0f8:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: contentArea
+name: 'Content Area'
+sortOrder: 1

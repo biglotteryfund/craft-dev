@@ -1,0 +1,9 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: externalUrl
+instructions: 'An external webpage that this item should direct users to'
+name: 'External URL'
+searchable: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Url

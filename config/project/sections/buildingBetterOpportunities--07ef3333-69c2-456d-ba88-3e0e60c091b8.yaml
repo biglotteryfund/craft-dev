@@ -1,0 +1,18 @@
+enableVersioning: '1'
+handle: buildingBetterOpportunities
+name: 'Building Better Opportunities'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: '1'
+    hasUrls: '1'
+    template: building-better-opportunities/_entry
+    uriFormat: 'funding/programmes/building-better-opportunities/{parent.slug}/{slug}'
+structure:
+  maxLevels: null
+  uid: b8fbce60-cd00-49c5-a24a-35fc0bb208c1
+type: structure

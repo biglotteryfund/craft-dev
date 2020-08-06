@@ -1,0 +1,67 @@
+field: 3690189e-73a1-4880-aea8-8b326f364617
+fieldLayouts:
+  d8706d86-5ab5-4584-a550-945162680031:
+    tabs:
+      -
+        fields:
+          1c404c31-43dc-4852-a7d2-1e00b85db944:
+            required: '1'
+            sortOrder: '2'
+          4011843e-910e-40e4-bcbf-f216099ce078:
+            required: '1'
+            sortOrder: '1'
+          b4fea845-d1b1-417c-9c49-ea0834a65b4e:
+            required: '1'
+            sortOrder: '3'
+        name: Content
+        sortOrder: '1'
+fields:
+  1c404c31-43dc-4852-a7d2-1e00b85db944:
+    contentColumnType: string
+    fieldGroup: null
+    handle: linkUrl
+    instructions: 'The URL path this item should point to, eg: /contact or /funding/programmes. This will be automatically converted into the Welsh equivalent where applicable.'
+    name: 'Link URL'
+    searchable: '1'
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  4011843e-910e-40e4-bcbf-f216099ce078:
+    contentColumnType: string
+    fieldGroup: null
+    handle: heroImage
+    instructions: 'The image that should appear alongside the text. Use a "Mini" hero.'
+    name: 'Hero image'
+    searchable: '1'
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
+      targetSiteId: null
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  b4fea845-d1b1-417c-9c49-ea0834a65b4e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkText
+    instructions: 'The text that should appear, eg. "Talk to us"'
+    name: 'Link text'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: featuredLink
+name: 'Featured link'
+sortOrder: '1'

@@ -1,0 +1,27 @@
+contentColumnType: string
+fieldGroup: bc735265-53bc-4f46-ac71-675536695b66
+handle: publicationDocument
+instructions: 'Choose a file to be associated with this publication'
+name: 'Publication document'
+searchable: true
+settings:
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: ''
+  selectionLabel: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: ''
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

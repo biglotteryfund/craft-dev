@@ -1,0 +1,112 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  fc50cc8a-9f77-4379-b480-9ae515347575:
+    tabs:
+      -
+        fields:
+          0e47e9ca-df73-41e1-83a7-f333ec5fc1b2:
+            required: true
+            sortOrder: 3
+          adc6a5a1-620b-4256-93fd-328ce7e9988a:
+            required: true
+            sortOrder: 1
+          b5a52c7f-eb68-4dfa-aa77-646c1cfb8ff2:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  0e47e9ca-df73-41e1-83a7-f333ec5fc1b2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: relatedItems
+    instructions: 'Choose some items to appear below the heading. You can choose either an Entry to link to, or an external URL instead. If you don''t choose either then the item won''t appear.'
+    name: 'Related items'
+    searchable: false
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 9e3ed77a-cb3c-491b-b2ad-503715cbf99b
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - ab94c548-6f17-4790-b6dd-4c766143bee5
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 2184906d-f2b9-4d39-a094-bfa50ccf8271
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - 2dbee670-c961-4ea7-b503-cf23bce9541e
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_26_relateditems}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: '1'
+      propagationMethod: all
+      selectionLabel: 'Add a related item'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  adc6a5a1-620b-4256-93fd-328ce7e9988a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b5a52c7f-eb68-4dfa-aa77-646c1cfb8ff2:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: relatedContent
+name: 'Related Content'
+sortOrder: 8

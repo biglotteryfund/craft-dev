@@ -1,0 +1,19 @@
+contentColumnType: text
+fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
+handle: fullBiography
+instructions: 'A longer bio for authors who need one'
+name: 'Full biography'
+searchable: '1'
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  columnType: text
+  purifierConfig: safe-iframe-media.json
+  purifyHtml: '1'
+  redactorConfig: ''
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

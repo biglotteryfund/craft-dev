@@ -1,0 +1,47 @@
+contentColumnType: string
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: strategicProgrammeLatestContent
+instructions: 'Choose some related entries to appear on this page'
+name: 'Strategic Programme Latest Content'
+searchable: true
+settings:
+  columns:
+    __assoc__:
+      -
+        - a6d9429e-d666-443b-aa43-0a8a4107aa45
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - eb374601-07f9-4464-af5b-d0c315e82dde
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - e0b8fb64-5f6b-46f9-8ac8-462a46591a0d
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 1886c75e-22fc-4f85-aabf-58913f9b3515
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_strategicprogrammelatestcontent}}'
+  fieldLayout: row
+  maxRows: '1'
+  minRows: ''
+  propagationMethod: all
+  selectionLabel: ''
+  staticField: ''
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

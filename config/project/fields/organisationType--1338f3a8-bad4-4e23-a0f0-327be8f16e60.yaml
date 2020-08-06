@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: organisationType
+instructions: 'A description of the types of organisation this fund supports, eg. "Voluntary or community organisations, Public sector organisations"'
+name: 'Organisation type'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

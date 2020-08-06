@@ -1,0 +1,17 @@
+contentColumnType: string
+fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
+handle: authors
+instructions: 'Choose from existing authors or add a new one. You can edit their biography/photo in the "Tags" section.'
+name: Authors
+searchable: '1'
+settings:
+  limit: null
+  localizeRelations: ''
+  selectionLabel: 'Add author'
+  source: 'taggroup:351ca01f-7ccf-4bac-8674-e13f4153467e'
+  sources: '*'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Tags

@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: excludeThisPageFromChildLists
+instructions: 'Should this page be hidden from automatic lists of child pages (if it has a parent)?'
+name: 'Exclude this page from child lists?'
+searchable: false
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

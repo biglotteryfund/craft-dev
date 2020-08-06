@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: regions
+instructions: 'Add any region(s) relevant to this content.'
+name: Regions
+searchable: '1'
+settings:
+  branchLimit: ''
+  limit: null
+  localizeRelations: ''
+  selectionLabel: 'Select a region'
+  source: 'group:83f5331d-3367-4856-ab4c-acf5d2725b10'
+  sources: '*'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

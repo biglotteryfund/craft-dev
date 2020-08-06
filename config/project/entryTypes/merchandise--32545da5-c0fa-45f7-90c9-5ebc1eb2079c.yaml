@@ -1,0 +1,45 @@
+fieldLayouts:
+  caed816f-70b3-4340-b299-61181fa28f49:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: db0b8702-ef1b-409c-aa55-6de9d41d4d4a
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ce51477f-1fbc-4c51-a482-621384b56698
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 71707ffe-15d7-4cc8-ba7a-782544799347
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e2c780b8-c133-4e69-af2f-cee1076275cd
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 85937a58-39af-479b-b64b-283999b877df
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Merchandise
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 2
+handle: merchandise
+hasTitleField: true
+name: Merchandise
+section: 4b2f06cc-63fe-4063-aac9-49ec26c009f0
+sortOrder: 1
+titleFormat: ''

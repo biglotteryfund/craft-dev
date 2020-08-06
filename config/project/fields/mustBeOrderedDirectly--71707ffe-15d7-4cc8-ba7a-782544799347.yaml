@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
+handle: mustBeOrderedDirectly
+instructions: 'If customers should contact us directly to order this, tick this box (eg. it can''t be ordered via the website)'
+name: 'Must be ordered directly'
+searchable: false
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: documentLink
+instructions: 'A file/document which this item should directly link to'
+name: 'Document link'
+searchable: '1'
+settings:
+  allowedKinds:
+    - access
+    - excel
+    - html
+    - image
+    - pdf
+    - powerpoint
+    - text
+    - word
+    - xml
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: '1'
+  restrictFiles: '1'
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: 'documents/{slug}'
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: '1'
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

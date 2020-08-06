@@ -1,0 +1,109 @@
+field: 3aab45b3-a045-4267-a7b3-429e9a48266c
+fieldLayouts:
+  9f5c9ef5-40cc-42a0-84c3-d42355223061:
+    tabs:
+      -
+        fields:
+          d74420bd-5580-4ffc-84d4-957fc73f757a:
+            required: true
+            sortOrder: 2
+          f19a371f-b0b9-4431-be2b-de822c693382:
+            required: true
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  d74420bd-5580-4ffc-84d4-957fc73f757a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statusMessage
+    instructions: 'What is this country''s funding status?'
+    name: 'Status message'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  f19a371f-b0b9-4431-be2b-de822c693382:
+    contentColumnType: string
+    fieldGroup: null
+    handle: country
+    instructions: 'The country this response is for'
+    name: Country
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - England
+            -
+              - value
+              - england
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Northern Ireland'
+            -
+              - value
+              - northernIreland
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Scotland
+            -
+              - value
+              - scotland
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Wales
+            -
+              - value
+              - wales
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - UK-wide
+            -
+              - value
+              - ukWide
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: covidStatus
+name: 'Covid Status'
+sortOrder: 1

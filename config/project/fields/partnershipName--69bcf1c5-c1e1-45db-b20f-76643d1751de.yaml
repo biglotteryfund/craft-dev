@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: partnershipName
+instructions: 'Add the name of the group or programme this document was produced in partnership with'
+name: 'Partnership Name'
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

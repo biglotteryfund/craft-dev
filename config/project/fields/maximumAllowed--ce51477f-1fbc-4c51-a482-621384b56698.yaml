@@ -1,0 +1,14 @@
+contentColumnType: integer(10)
+fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
+handle: maximumAllowed
+instructions: 'The maximum number of times this product can be added to a user''s order'
+name: 'Maximum allowed'
+searchable: '1'
+settings:
+  decimals: '0'
+  max: null
+  min: null
+  size: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

@@ -30,7 +30,6 @@ return [
         'securityKey' => $config->getConfig('SECURITY_KEY', $_ENV['SECURITY_KEY']),
 
         'allowUpdates' => false,
-        'useProjectConfigFile' => true,
 
         // Disable transforms for animated gifs
         'transformGifs' => false,

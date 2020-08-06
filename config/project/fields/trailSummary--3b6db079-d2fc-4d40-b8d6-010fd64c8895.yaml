@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: trailSummary
+instructions: 'Summary paragraph used to trail the entry on listing pages'
+name: 'Trail summary'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: '1'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

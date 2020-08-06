@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
+handle: products
+instructions: 'The individual codes/variations available for this product'
+name: Products
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_products}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

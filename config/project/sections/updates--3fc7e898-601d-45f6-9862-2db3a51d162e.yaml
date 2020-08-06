@@ -1,0 +1,20 @@
+enableVersioning: '1'
+handle: updates
+name: Updates
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: '1'
+    hasUrls: '1'
+    template: updates/_entry
+    uriFormat: 'news/{type.handle|replace(''_'', ''-'')}/{postDate|date(''Y-m-d'')}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: '0'
+    hasUrls: '1'
+    template: updates/_entry
+    uriFormat: 'news/{type.handle|replace(''_'', ''-'')}/{postDate|date(''Y-m-d'')}/{slug}'
+type: channel

@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
+handle: researchSectionsPrefix
+instructions: ''
+name: 'Research sections prefix'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

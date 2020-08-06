@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: publisher
+instructions: 'The name of the publisher of this document, eg. "The National Lottery Community Fund" or "Anna Freud".'
+name: Publisher
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

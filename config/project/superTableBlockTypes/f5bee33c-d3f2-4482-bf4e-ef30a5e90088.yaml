@@ -1,0 +1,265 @@
+field: b1a844c2-594c-4e72-8523-a911d7b80f24
+fieldLayouts:
+  e105f608-bdf3-40e6-8052-6d19e15a9bc4:
+    tabs:
+      -
+        fields:
+          1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
+            required: '1'
+            sortOrder: '1'
+          27a7b349-c009-41c7-9e13-51bd131b5785:
+            required: '1'
+            sortOrder: '2'
+          6814cacd-1dbf-4109-ba6b-8862c021852e:
+            required: '1'
+            sortOrder: '3'
+          cf987298-5d2c-42e4-9ae8-570e017fa92d:
+            required: '1'
+            sortOrder: '4'
+        name: Content
+        sortOrder: '1'
+fields:
+  1a3be9d7-efb9-4fa2-8779-d10b3a4491a4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: england
+    instructions: ''
+    name: England
+    searchable: '1'
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Value
+                -
+                  - handle
+                  - value
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        __assoc__:
+          -
+            - row1
+            -
+              __assoc__:
+                -
+                  - col1
+                  - ''
+                -
+                  - col2
+                  - ''
+      maxRows: ''
+      minRows: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\Table
+  27a7b349-c009-41c7-9e13-51bd131b5785:
+    contentColumnType: text
+    fieldGroup: null
+    handle: northernIreland
+    instructions: ''
+    name: 'Northern Ireland'
+    searchable: '1'
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Value
+                -
+                  - handle
+                  - value
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        __assoc__:
+          -
+            - row1
+            -
+              __assoc__:
+                -
+                  - col1
+                  - ''
+                -
+                  - col2
+                  - ''
+      maxRows: ''
+      minRows: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\Table
+  6814cacd-1dbf-4109-ba6b-8862c021852e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: scotland
+    instructions: ''
+    name: Scotland
+    searchable: '1'
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Value
+                -
+                  - handle
+                  - value
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        __assoc__:
+          -
+            - row1
+            -
+              __assoc__:
+                -
+                  - col1
+                  - ''
+                -
+                  - col2
+                  - ''
+      maxRows: ''
+      minRows: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\Table
+  cf987298-5d2c-42e4-9ae8-570e017fa92d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: wales
+    instructions: ''
+    name: Wales
+    searchable: '1'
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Value
+                -
+                  - handle
+                  - value
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        __assoc__:
+          -
+            - row1
+            -
+              __assoc__:
+                -
+                  - col1
+                  - ''
+                -
+                  - col2
+                  - ''
+      maxRows: ''
+      minRows: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\Table

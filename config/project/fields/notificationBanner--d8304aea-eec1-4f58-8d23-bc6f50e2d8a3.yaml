@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: notificationBanner
+instructions: 'Add some text for an announcement/notification which will appear at the top of the content'
+name: 'Notification Banner'
+searchable: true
+settings:
+  columns:
+    __assoc__:
+      -
+        - 22745b93-ebbd-41c3-a09c-815ceb4b6cb0
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - a2b1e8e7-4519-485e-b11f-6181b18b124c
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_notificationbanner}}'
+  fieldLayout: row
+  maxRows: '1'
+  minRows: '0'
+  propagationMethod: all
+  selectionLabel: ''
+  staticField: '1'
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

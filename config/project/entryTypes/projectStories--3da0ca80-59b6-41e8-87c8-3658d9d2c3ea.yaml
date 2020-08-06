@@ -1,0 +1,53 @@
+fieldLayouts:
+  e69e408d-fe6c-4f2d-bf36-2fce1836fbfa:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 77ee3d71-5f00-486d-8593-1eea1a6e8cb4
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 3b6db079-d2fc-4d40-b8d6-010fd64c8895
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7234b38a-a7fc-4fbb-840f-c277d57f1ced
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 61aca7e9-75e9-4610-a0b5-39bb844a68c1
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Project story'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 2
+handle: projectStories
+hasTitleField: true
+name: 'Project Stories'
+section: 6e869d59-984b-457b-a497-8f675c2e5ccb
+sortOrder: 1
+titleFormat: ''

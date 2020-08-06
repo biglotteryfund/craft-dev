@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
+handle: articleSummary
+instructions: 'A few sentences, displayed below the title of this content.'
+name: 'Article Summary'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: '1'
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

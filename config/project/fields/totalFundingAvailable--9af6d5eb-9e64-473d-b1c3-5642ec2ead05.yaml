@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: totalFundingAvailable
+instructions: 'A description in words of the entire funding pot, eg. "£3 million"'
+name: 'Total funding available'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

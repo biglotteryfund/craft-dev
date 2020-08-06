@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 7eb54552-8c0f-4f88-b831-2cccbac8e20d
+handle: heroGrantId
+instructions: 'Enter the ID of a grant, eg. 0030101410'
+name: 'Grant ID number'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,116 @@
+field: 065e680b-ad85-42eb-a1b2-6623e8233466
+fieldLayouts:
+  15b85b83-3848-4aa9-8425-5901d6bf0273:
+    tabs:
+      -
+        fields:
+          2b9443e2-b9b5-44b7-a8d8-334d2fc14da2:
+            required: '0'
+            sortOrder: 2
+          7e3deee8-2413-4a62-83ff-48d01884e1e1:
+            required: '0'
+            sortOrder: 5
+          7f4e9ca4-fd80-4190-a75d-87c4c3e6da0c:
+            required: '1'
+            sortOrder: 1
+          8ca6d216-a374-4fd2-848e-4aad3482e15e:
+            required: '0'
+            sortOrder: 3
+          b69cd579-4363-4c5b-9514-4ef6a7c1ee35:
+            required: '0'
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  2b9443e2-b9b5-44b7-a8d8-334d2fc14da2:
+    contentColumnType: text
+    fieldGroup: null
+    handle: partnerSubtitle
+    instructions: ''
+    name: 'Partner Subtitle'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  7e3deee8-2413-4a62-83ff-48d01884e1e1:
+    contentColumnType: string
+    fieldGroup: null
+    handle: partnerUrl
+    instructions: ''
+    name: 'Partner URL'
+    searchable: '1'
+    settings:
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  7f4e9ca4-fd80-4190-a75d-87c4c3e6da0c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: partnerTitle
+    instructions: ''
+    name: 'Partner Title'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  8ca6d216-a374-4fd2-848e-4aad3482e15e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: partnerLogo
+    instructions: ''
+    name: 'Partner Logo'
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a logo'
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: partner-logos
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  b69cd579-4363-4c5b-9514-4ef6a7c1ee35:
+    contentColumnType: text
+    fieldGroup: null
+    handle: partnerDescription
+    instructions: ''
+    name: 'Partner Description'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: partner
+name: Partner
+sortOrder: 1

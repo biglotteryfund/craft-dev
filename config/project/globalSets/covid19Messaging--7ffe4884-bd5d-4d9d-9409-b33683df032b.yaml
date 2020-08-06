@@ -1,0 +1,12 @@
+fieldLayouts:
+  36364aea-ab29-4bea-b676-1c737bb12e34:
+    tabs:
+      -
+        fields:
+          3aab45b3-a045-4267-a7b3-429e9a48266c:
+            required: false
+            sortOrder: 1
+        name: Status
+        sortOrder: 1
+handle: covid19Messaging
+name: 'Covid-19 Messaging'
