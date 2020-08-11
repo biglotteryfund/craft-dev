@@ -1,0 +1,110 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  78891700-53d9-4586-a728-447de44af6e9:
+    tabs:
+      -
+        fields:
+          4a5bebba-9af5-40d0-a53a-437a491e2b8d:
+            required: false
+            sortOrder: 2
+          4a787c27-6078-43fb-a29e-8a61cf61d97c:
+            required: false
+            sortOrder: 3
+          78a83748-7862-4217-b345-e40cf81a05c4:
+            required: true
+            sortOrder: 4
+          9d18c90a-d7c7-40f9-ba89-9aa374932cf9:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  4a5bebba-9af5-40d0-a53a-437a491e2b8d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  4a787c27-6078-43fb-a29e-8a61cf61d97c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: introduction
+    instructions: 'The content you wish to appear before the grid blocks'
+    name: Introduction
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  78a83748-7862-4217-b345-e40cf81a05c4:
+    contentColumnType: string
+    fieldGroup: null
+    handle: blocks
+    instructions: 'Add as many individual content blocks as you like and you''ll get a grid of boxes in columns.'
+    name: 'Grid block items'
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - 5643199b-c773-4d2b-97b9-18270e979de5
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_25_blocks}}'
+      fieldLayout: matrix
+      maxRows: ''
+      minRows: ''
+      propagationMethod: none
+      selectionLabel: 'Add a block'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  9d18c90a-d7c7-40f9-ba89-9aa374932cf9:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: gridBlocks
+name: 'Grid Blocks'
+sortOrder: 7

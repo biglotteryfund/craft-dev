@@ -1,0 +1,131 @@
+field: 0e47e9ca-df73-41e1-83a7-f333ec5fc1b2
+fieldLayouts:
+  c352ef75-2b80-4c0e-8505-4164a11a4a65:
+    tabs:
+      -
+        fields:
+          2184906d-f2b9-4d39-a094-bfa50ccf8271:
+            required: false
+            sortOrder: 4
+          2dbee670-c961-4ea7-b503-cf23bce9541e:
+            required: false
+            sortOrder: 5
+          9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
+            required: false
+            sortOrder: 1
+          ab94c548-6f17-4790-b6dd-4c766143bee5:
+            required: false
+            sortOrder: 3
+          b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  2184906d-f2b9-4d39-a094-bfa50ccf8271:
+    contentColumnType: text
+    fieldGroup: null
+    handle: entryDescription
+    instructions: 'Add an optional description to appear below this item'
+    name: Description
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  2dbee670-c961-4ea7-b503-cf23bce9541e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: entryImage
+    instructions: 'Choose an image to appear with this content'
+    name: Image
+    searchable: false
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: content
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  9e3ed77a-cb3c-491b-b2ad-503715cbf99b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: entry
+    instructions: 'Choose the entry to link to. If you don''t choose one you must supply an External Link instead.'
+    name: Entry
+    searchable: false
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:a1f1765e-10d1-45ef-905e-1a8cf5a6458e'
+        - 'section:07ef3333-69c2-456d-ba88-3e0e60c091b8'
+        - 'section:b50d445d-1022-48a7-898a-ff03d8304412'
+        - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
+        - 'section:3102e285-face-4513-b17e-2d3b046fcc88'
+        - 'section:73426a06-bcdf-471b-9984-9fe28d7e5606'
+        - 'section:6e869d59-984b-457b-a497-8f675c2e5ccb'
+        - singles
+        - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
+        - 'section:3fc7e898-601d-45f6-9862-2db3a51d162e'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  ab94c548-6f17-4790-b6dd-4c766143bee5:
+    contentColumnType: text
+    fieldGroup: null
+    handle: entryTitle
+    instructions: 'Add a custom title (eg. to overwrite the selected entry''s title if desired)'
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b3ea3f1a-27d9-4c1e-b903-3ae96acc74b9:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: externalLink
+    instructions: 'Optional – if you supply a link then this will be used instead of the entry. Use this to add a piece of content from an external, third-party website.'
+    name: 'External Link'
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Url

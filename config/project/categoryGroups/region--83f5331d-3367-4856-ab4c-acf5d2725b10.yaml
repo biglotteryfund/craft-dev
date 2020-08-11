@@ -1,0 +1,14 @@
+handle: region
+name: Region
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    hasUrls: '0'
+    template: null
+    uriFormat: null
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    hasUrls: '0'
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: '2'
+  uid: 8e25c90a-f458-4a3c-89b8-2e044cd75c35

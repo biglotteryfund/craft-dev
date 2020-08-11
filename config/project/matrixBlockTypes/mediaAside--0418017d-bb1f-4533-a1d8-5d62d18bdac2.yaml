@@ -1,0 +1,165 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  5cc27e3b-8a78-4180-aeca-bd1d5c8e2f45:
+    tabs:
+      -
+        fields:
+          150131ea-da93-4441-8117-02f680c539b3:
+            required: true
+            sortOrder: 3
+          1587e3fa-6d82-4313-acc8-57cbb3efc205:
+            required: false
+            sortOrder: 2
+          178b8dbb-f3a2-4052-83ad-54876b558ad1:
+            required: false
+            sortOrder: 1
+          2ef35c95-9777-4c08-aaac-026610e5f493:
+            required: false
+            sortOrder: 5
+          7d71a8d0-acba-434c-beea-e249a42e2eb0:
+            required: true
+            sortOrder: 7
+          9b5752e0-417a-4630-a38d-d8660b30a7b5:
+            required: true
+            sortOrder: 6
+          d7924e5c-fe96-4f97-b9a0-fd1de63ba4df:
+            required: false
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  150131ea-da93-4441-8117-02f680c539b3:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quoteText
+    instructions: ''
+    name: 'Quote text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  1587e3fa-6d82-4313-acc8-57cbb3efc205:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  178b8dbb-f3a2-4052-83ad-54876b558ad1:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  2ef35c95-9777-4c08-aaac-026610e5f493:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: linkUrl
+    instructions: ''
+    name: 'Link URL'
+    searchable: true
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Url
+  7d71a8d0-acba-434c-beea-e249a42e2eb0:
+    contentColumnType: text
+    fieldGroup: null
+    handle: photoCaption
+    instructions: ''
+    name: 'Photo caption'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  9b5752e0-417a-4630-a38d-d8660b30a7b5:
+    contentColumnType: string
+    fieldGroup: null
+    handle: photo
+    instructions: ''
+    name: Photo
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a photo'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: media-asides
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  d7924e5c-fe96-4f97-b9a0-fd1de63ba4df:
+    contentColumnType: text
+    fieldGroup: null
+    handle: linkText
+    instructions: ''
+    name: 'Link text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: mediaAside
+name: 'Media Aside'
+sortOrder: 4

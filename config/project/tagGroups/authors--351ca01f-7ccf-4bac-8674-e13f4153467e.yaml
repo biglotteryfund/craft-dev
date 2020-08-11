@@ -1,0 +1,21 @@
+fieldLayouts:
+  896678f2-081b-4d3c-9601-4a79d8d1d10b:
+    tabs:
+      -
+        fields:
+          1156c363-f08f-41a0-a3b7-4258add458bb:
+            required: '0'
+            sortOrder: '3'
+          4263fe4c-8c91-43c5-9fd5-a3b4fadff915:
+            required: '0'
+            sortOrder: '1'
+          9f49fd47-3288-4ff7-9ed0-3b5df7f3ead0:
+            required: '0'
+            sortOrder: '2'
+          fa93051c-89ee-4c93-9f66-2cb3b22c7e53:
+            required: '0'
+            sortOrder: '4'
+        name: Content
+        sortOrder: '1'
+handle: authors
+name: Authors

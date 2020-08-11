@@ -1,0 +1,45 @@
+fieldLayouts:
+  fd8d0cb6-4172-485f-bfc5-cfaca0391801:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ccd71b86-6564-429f-972a-1def8e6840a4
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fcb9e235-f7d3-48ee-b3ad-c97db58060b7
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 5024077b-fccb-4164-8874-8fd05a936e13
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b7e76d5c-aec3-4fbd-8917-ac0907db656e
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 419ecf2d-b6f9-4754-a309-88579895b504
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Publication content'
+        sortOrder: 1
+handle: publication
+hasTitleField: true
+name: Publication
+section: 578177e6-786a-4fb0-8555-f42db7f6b729
+sortOrder: 1
+titleFormat: ''

@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: documentGroups
+instructions: 'Any documents that should be attached to this content.'
+name: 'Document Groups'
+searchable: '1'
+settings:
+  columns:
+    40a0470d-63cb-42e0-99f4-52a8feae74e4:
+      __assoc__:
+        -
+          - width
+          - ''
+    e52a337c-79e4-4687-b45f-203cefe9436a:
+      __assoc__:
+        -
+          - width
+          - ''
+    f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
+      __assoc__:
+        -
+          - width
+          - ''
+  contentTable: '{{%stc_documentgroups}}'
+  fieldLayout: row
+  localizeBlocks: '1'
+  maxRows: ''
+  minRows: '0'
+  selectionLabel: 'Add a new document group'
+  staticField: ''
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

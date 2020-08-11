@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
+handle: shortBiography
+instructions: 'A short bio for this author (eg. one line) to be displayed near their name'
+name: 'Short biography'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

@@ -1,0 +1,124 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  df9d695b-e31e-4161-8527-6123f2433360:
+    tabs:
+      -
+        fields:
+          1f9b106d-8f14-46d3-a10d-43d420b0629d:
+            required: true
+            sortOrder: 4
+          3b442650-9011-4c04-a835-6f0a22f33912:
+            required: false
+            sortOrder: 2
+          73de08ed-f8af-4970-902b-63f329c0a54e:
+            required: true
+            sortOrder: 3
+          f3fbe1e6-2f0e-4acd-a98e-25310e2079dd:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  1f9b106d-8f14-46d3-a10d-43d420b0629d:
+    contentColumnType: smallint(2)
+    fieldGroup: null
+    handle: numberOfItems
+    instructions: 'How many items should be displayed from this section?'
+    name: 'Number of items'
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: '5'
+      max: '20'
+      min: '1'
+      prefix: ''
+      size: null
+      suffix: item(s)
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  3b442650-9011-4c04-a835-6f0a22f33912:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  73de08ed-f8af-4970-902b-63f329c0a54e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sectionType
+    instructions: 'What section should entries be chosen from?'
+    name: Section
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Blogposts
+            -
+              - value
+              - blogposts
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Press Releases'
+            -
+              - value
+              - pressReleases
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Funding Programmes'
+            -
+              - value
+              - fundingProgrammes
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  f3fbe1e6-2f0e-4acd-a98e-25310e2079dd:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: automaticContentList
+name: 'Automatic Content List'
+sortOrder: 9

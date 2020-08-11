@@ -1,0 +1,107 @@
+field: 093b4dc3-16d8-439a-a963-39b9c9d7c164
+fieldLayouts:
+  2525ed73-279d-422b-8eb7-0731aa0cbe19:
+    tabs:
+      -
+        fields:
+          512adc98-a4e4-4fb0-8495-21df28915a1a:
+            required: '0'
+            sortOrder: 5
+          75a657e2-adf0-40d7-bd76-5cc59b087193:
+            required: '1'
+            sortOrder: 1
+          a5366c9c-cd5d-4204-a69a-b41c255d38f7:
+            required: '0'
+            sortOrder: 3
+          c85ac5fc-9a3f-4272-9c0d-b7b694627431:
+            required: '1'
+            sortOrder: 2
+          d1ec336b-5270-46e3-a606-d89cad97ebb4:
+            required: '0'
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  512adc98-a4e4-4fb0-8495-21df28915a1a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: suffix
+    instructions: 'Text to appear immediately after the value (but before the title)'
+    name: Suffix
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  75a657e2-adf0-40d7-bd76-5cc59b087193:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statTitle
+    instructions: 'The main text to accompany the value, displayed underneath by default'
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  a5366c9c-cd5d-4204-a69a-b41c255d38f7:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: showNumberBeforeTitle
+    instructions: 'Should the stat value be shown before its title text?'
+    name: 'Show number before title?'
+    searchable: '1'
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Lightswitch
+  c85ac5fc-9a3f-4272-9c0d-b7b694627431:
+    contentColumnType: text
+    fieldGroup: null
+    handle: statValue
+    instructions: 'eg. £29m or 12,542'
+    name: Value
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  d1ec336b-5270-46e3-a606-d89cad97ebb4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: prefix
+    instructions: 'Text to appear on a line above the value'
+    name: Prefix
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: stats
+name: Stat
+sortOrder: 1

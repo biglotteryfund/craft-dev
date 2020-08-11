@@ -1,0 +1,65 @@
+fieldLayouts:
+  148090b7-1887-40f5-a00e-8d90a513eb77:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ccd71b86-6564-429f-972a-1def8e6840a4
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7552a2c7-9bf0-408b-91a2-1a6570b3d78a
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 4b573749-5271-405a-9d27-9e086ee1f31f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 83a59f94-8342-417f-b427-11c3c162d89e
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Main content'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: d152a0b3-b09f-4b2c-a7a6-605b9a0fed17
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: f946d578-25d4-40b3-a68b-f04068f34a17
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 585a68f7-bb7c-4d7f-9acf-10f9b2107243
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a4edc2b-a06d-4baf-a33f-da76742cbf35
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Related content'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 3
+handle: research
+hasTitleField: true
+name: Research
+section: 3102e285-face-4513-b17e-2d3b046fcc88
+sortOrder: 1
+titleFormat: ''

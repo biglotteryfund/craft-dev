@@ -1,0 +1,67 @@
+field: 698dcade-907a-4233-8c8e-7421845e74d4
+fieldLayouts:
+  9d79e63b-c8fe-436d-96b3-edb69e1a3c67:
+    tabs:
+      -
+        fields:
+          44747783-2800-48fe-aa2d-014ca587d561:
+            required: '0'
+            sortOrder: 2
+          6e8e9c06-42ab-4237-a1ee-411f26f24b60:
+            required: '1'
+            sortOrder: 3
+          cad928cf-0acb-4dc2-b86f-cfd5961503cf:
+            required: '1'
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  44747783-2800-48fe-aa2d-014ca587d561:
+    contentColumnType: text
+    fieldGroup: null
+    handle: calloutCredit
+    instructions: ''
+    name: Credit
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  6e8e9c06-42ab-4237-a1ee-411f26f24b60:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: isQuote
+    instructions: ''
+    name: 'Add quote-marks?'
+    searchable: '1'
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  cad928cf-0acb-4dc2-b86f-cfd5961503cf:
+    contentColumnType: text
+    fieldGroup: null
+    handle: calloutContent
+    instructions: ''
+    name: Content
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+handle: callout
+name: Callout
+sortOrder: 2

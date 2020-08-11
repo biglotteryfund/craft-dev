@@ -1,0 +1,67 @@
+field: ccf624ab-e6d7-471d-bfa1-ff81a5811e28
+fieldLayouts:
+  dd6d6907-b080-4b38-af12-30dccd6ff83e:
+    tabs:
+      -
+        fields:
+          b12041a2-e5fa-4a46-9c59-845f38904c4d:
+            required: true
+            sortOrder: 1
+          bd4940c4-0930-4c96-afb8-76b05ad900b5:
+            required: true
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  b12041a2-e5fa-4a46-9c59-845f38904c4d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: factText
+    instructions: 'Use bold text to highlight words in colour'
+    name: 'Fact text'
+    searchable: false
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Basics.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  bd4940c4-0930-4c96-afb8-76b05ad900b5:
+    contentColumnType: string
+    fieldGroup: null
+    handle: factImage
+    instructions: 'Choose an illustration to sit alongside the fact text'
+    name: 'Fact image'
+    searchable: false
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: facts
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets

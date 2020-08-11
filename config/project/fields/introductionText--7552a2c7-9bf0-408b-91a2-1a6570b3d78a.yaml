@@ -1,0 +1,19 @@
+contentColumnType: text
+fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
+handle: introductionText
+instructions: 'The primary content section for the page.'
+name: 'Primary content'
+searchable: '1'
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  columnType: text
+  purifierConfig: safe-iframe-media.json
+  purifyHtml: '1'
+  redactorConfig: Full.json
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\redactor\Field

@@ -1,0 +1,84 @@
+field: 6c792519-1c25-4194-a0e5-60377539e790
+fieldLayouts:
+  42b920b2-a412-4e28-be01-f61ae266629c:
+    tabs:
+      -
+        fields:
+          4c6b86ee-3008-496e-89fe-a37be7208d93:
+            required: '1'
+            sortOrder: '3'
+          85e176da-2157-48a2-b641-b420f77a1bdb:
+            required: '0'
+            sortOrder: '2'
+          8f71224c-64a5-4c85-ba94-19ab9ae2d245:
+            required: '1'
+            sortOrder: '1'
+        name: Content
+        sortOrder: '1'
+fields:
+  4c6b86ee-3008-496e-89fe-a37be7208d93:
+    contentColumnType: text
+    fieldGroup: null
+    handle: segmentContent
+    instructions: ''
+    name: Content
+    searchable: '1'
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  85e176da-2157-48a2-b641-b420f77a1bdb:
+    contentColumnType: string
+    fieldGroup: null
+    handle: segmentImage
+    instructions: ''
+    name: Image
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: content-segment-images-live
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  8f71224c-64a5-4c85-ba94-19ab9ae2d245:
+    contentColumnType: text
+    fieldGroup: null
+    handle: segmentTitle
+    instructions: ''
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: segment
+name: Segment
+sortOrder: '1'

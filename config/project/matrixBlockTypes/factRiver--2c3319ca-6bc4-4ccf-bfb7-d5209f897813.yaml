@@ -1,0 +1,91 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  19de0582-9d46-445d-b771-9b93990fcdcb:
+    tabs:
+      -
+        fields:
+          77a13e88-e5dd-4e7b-8a1c-6afd6df5f16c:
+            required: false
+            sortOrder: 2
+          8134de3d-e6de-40c9-becb-401b18359723:
+            required: false
+            sortOrder: 1
+          ccf624ab-e6d7-471d-bfa1-ff81a5811e28:
+            required: false
+            sortOrder: 3
+        name: Content
+        sortOrder: 1
+fields:
+  77a13e88-e5dd-4e7b-8a1c-6afd6df5f16c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  8134de3d-e6de-40c9-becb-401b18359723:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  ccf624ab-e6d7-471d-bfa1-ff81a5811e28:
+    contentColumnType: string
+    fieldGroup: null
+    handle: facts
+    instructions: 'Add some facts and images to appear together'
+    name: Facts
+    searchable: true
+    settings:
+      columns:
+        __assoc__:
+          -
+            - b12041a2-e5fa-4a46-9c59-845f38904c4d
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+          -
+            - bd4940c4-0930-4c96-afb8-76b05ad900b5
+            -
+              __assoc__:
+                -
+                  - width
+                  - ''
+      contentTable: '{{%stc_29_facts}}'
+      fieldLayout: row
+      maxRows: ''
+      minRows: '1'
+      propagationMethod: all
+      selectionLabel: 'Add a fact'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+handle: factRiver
+name: 'Fact River'
+sortOrder: 5

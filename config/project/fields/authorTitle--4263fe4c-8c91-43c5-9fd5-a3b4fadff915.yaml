@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 2a71faea-4942-4260-b0ee-df0303fc29e9
+handle: authorTitle
+instructions: 'The person''s title, eg. "Funding officer" or "Head of Digital"'
+name: Role/title
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

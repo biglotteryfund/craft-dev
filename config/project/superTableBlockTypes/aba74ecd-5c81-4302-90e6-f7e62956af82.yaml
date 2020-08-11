@@ -1,0 +1,83 @@
+field: 25308ee1-088a-4b07-83df-c7100eab536e
+fieldLayouts:
+  a83b1683-6ddd-4b4d-9382-9a200dd5f295:
+    tabs:
+      -
+        fields:
+          40a0470d-63cb-42e0-99f4-52a8feae74e4:
+            required: '1'
+            sortOrder: '1'
+          e52a337c-79e4-4687-b45f-203cefe9436a:
+            required: '1'
+            sortOrder: '2'
+          f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
+            required: '0'
+            sortOrder: '3'
+        name: Content
+        sortOrder: '1'
+fields:
+  40a0470d-63cb-42e0-99f4-52a8feae74e4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: documentsTitle
+    instructions: 'Give this collection of documents a title e.g. "Senior Management Team expenses"'
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  e52a337c-79e4-4687-b45f-203cefe9436a:
+    contentColumnType: string
+    fieldGroup: null
+    handle: documentsFiles
+    instructions: ''
+    name: Files
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - excel
+        - pdf
+        - word
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add files'
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: documents
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f1a728d2-7a3c-4d29-b8d4-c74059fe1e8f:
+    contentColumnType: text
+    fieldGroup: null
+    handle: documentsExtra
+    instructions: ''
+    name: 'Extra content'
+    searchable: '1'
+    settings:
+      availableTransforms: ''
+      availableVolumes: ''
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Minimal.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\redactor\Field

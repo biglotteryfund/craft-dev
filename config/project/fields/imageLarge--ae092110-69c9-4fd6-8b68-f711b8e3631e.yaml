@@ -1,0 +1,25 @@
+contentColumnType: string
+fieldGroup: 7eb54552-8c0f-4f88-b831-2cccbac8e20d
+handle: imageLarge
+instructions: 'Image file for large screens'
+name: 'Image (large)'
+searchable: '1'
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: '1'
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: heroes
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: '1'
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

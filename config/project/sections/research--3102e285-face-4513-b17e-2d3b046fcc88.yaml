@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: research
+name: Insights
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: research/_entry
+    uriFormat: '{% if type.handle == ''researchDocument'' %}insights/documents/{slug}{% else %}insights/{parent.slug}/{slug}{% endif %}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: research/_entry
+    uriFormat: '{% if type.handle == ''researchDocument'' %}insights/documents/{slug}{% else %}insights/{parent.slug}/{slug}{% endif %}'
+structure:
+  maxLevels: 2
+  uid: 22f688e5-f1ba-4a56-8d90-8d86cf816043
+type: structure

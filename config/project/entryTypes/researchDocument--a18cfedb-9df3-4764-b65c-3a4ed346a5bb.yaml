@@ -1,0 +1,53 @@
+fieldLayouts:
+  4f816d29-47c9-48c0-ad4e-939e7019ffc1:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 60a339d6-ca4b-48a2-9e48-6c2bbe582b0e
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 5024077b-fccb-4164-8874-8fd05a936e13
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 6ffbb157-9d66-4994-8a8f-947c35960c2d
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 69bcf1c5-c1e1-45db-b20f-76643d1751de
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ebcd4aaf-83ff-48e4-9f0d-8a7e22313652
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 0bab8639-49a8-4bf6-aff7-5ffe60e2bab8
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: f91f1b44-ef7d-4f91-8d75-75ad6ae3a677
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 3544eb2e-dd0a-4c86-9474-692a074b6802
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 3d1305a6-366b-4a1d-8849-433df83a803e
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Insight Document'
+        sortOrder: 1
+handle: researchDocument
+hasTitleField: true
+name: 'Insight Document'
+section: 3102e285-face-4513-b17e-2d3b046fcc88
+sortOrder: 3
+titleFormat: ''

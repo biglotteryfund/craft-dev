@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: covid19Insights
+name: 'Covid-19 Insights'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: ''
+    uriFormat: '{parent.uri ? parent.uri : ''insights/covid-19-resources''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: ''
+    uriFormat: '{parent.uri ? parent.uri : ''insights/covid-19-resources''}/{slug}'
+structure:
+  maxLevels: null
+  uid: f0d3ab54-d2f5-4e2d-b417-fe353b5b46ae
+type: structure

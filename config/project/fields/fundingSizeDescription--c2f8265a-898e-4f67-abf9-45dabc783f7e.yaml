@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: fundingSizeDescription
+instructions: "Custom funding size description text, e.g., \"approx. £500,000 per project\".\r\nIf left blank the min and max funding size will be used."
+name: 'Funding size description'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

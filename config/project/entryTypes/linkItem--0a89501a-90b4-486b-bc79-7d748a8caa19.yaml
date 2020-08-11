@@ -1,0 +1,29 @@
+fieldLayouts:
+  25571995-6e06-48b9-bab5-0c6640f88109:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 2bef64b2-1bcc-462c-b819-97a7df3fb33a
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 02eb210a-8b09-489c-994d-009c27b6167b
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Link item'
+        sortOrder: '1'
+handle: linkItem
+hasTitleField: '1'
+name: 'Link item'
+section: b50d445d-1022-48a7-898a-ff03d8304412
+sortOrder: '2'
+titleFormat: null

@@ -1,0 +1,8 @@
+baseUrl: $SITE_URL_CY
+handle: cy
+hasUrls: true
+language: cy-GB
+name: Welsh
+primary: false
+siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
+sortOrder: 2

@@ -1,0 +1,14 @@
+handle: blogpost
+name: Blogpost
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    hasUrls: '1'
+    template: blogpost/_category
+    uriFormat: 'blog/{parent.slug}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    hasUrls: '1'
+    template: blogpost/_category
+    uriFormat: 'blog/{parent.slug}/{slug}'
+structure:
+  maxLevels: '1'
+  uid: e7c17c01-d06b-483b-80df-b2afbd524d5a

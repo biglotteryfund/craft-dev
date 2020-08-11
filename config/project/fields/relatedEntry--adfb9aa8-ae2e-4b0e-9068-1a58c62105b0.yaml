@@ -1,0 +1,17 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: relatedEntry
+instructions: ''
+name: 'Related Entry'
+searchable: '1'
+settings:
+  limit: '1'
+  localizeRelations: ''
+  selectionLabel: 'Link entry'
+  source: null
+  sources: '*'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

@@ -1,0 +1,15 @@
+contentColumnType: text
+fieldGroup: 7eb54552-8c0f-4f88-b831-2cccbac8e20d
+handle: captionFootnote
+instructions: 'If this caption needs clarification, add some text here'
+name: 'Caption footnote'
+searchable: '1'
+settings:
+  charLimit: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

@@ -1,0 +1,28 @@
+contentColumnType: string
+fieldGroup: 8ac2452c-d4dd-43fd-bca8-f8b24bec856f
+handle: researchMeta
+instructions: ''
+name: 'Research metadata'
+searchable: '1'
+settings:
+  columns:
+    5d97050c-8006-4a6c-b465-3649f9f25445:
+      __assoc__:
+        -
+          - width
+          - ''
+    f830e045-da35-4086-81fb-cafea2a44f22:
+      __assoc__:
+        -
+          - width
+          - ''
+  contentTable: '{{%stc_researchmeta}}'
+  fieldLayout: row
+  localizeBlocks: '1'
+  maxRows: '1'
+  minRows: '1'
+  selectionLabel: ''
+  staticField: '1'
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

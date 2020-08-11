@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: fundingProgrammes
+name: 'Funding Programmes'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: funding-programs/_entry
+    uriFormat: 'funding/programmes/{parent.slug}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: true
+    hasUrls: true
+    template: funding-programs/_entry
+    uriFormat: 'funding/programmes/{parent.slug}/{slug}'
+structure:
+  maxLevels: '2'
+  uid: 570b86f8-ad2e-487e-b501-2c14f616844a
+type: structure

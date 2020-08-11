@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 1770279d-fae8-42d7-9209-2e4e311f9e8a
+handle: displayTitle
+instructions: 'Optional custom display title for the page, used to override the main page title.'
+name: 'Display Title'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

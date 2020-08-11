@@ -1,0 +1,81 @@
+fieldLayouts:
+  8c2af0ed-5678-420f-a3a8-4c1d9a7ea622:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ccd71b86-6564-429f-972a-1def8e6840a4
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: bcbf9339-ab42-4e3f-9db7-eaf3b499d36c
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 02eb210a-8b09-489c-994d-009c27b6167b
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Common
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: dbfb641b-23fa-4110-969e-32cae11e39a9
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 607006ca-1479-43a1-9889-7ee63ef60289
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: a8c00f7c-0572-4e87-ae13-f5101114343f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Aims & Learning'
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 4d5d77c6-2596-4418-85e9-822f7d1c7f67
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 065e680b-ad85-42eb-a1b2-6623e8233466
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7d911d3c-651d-4c2c-ae62-a64b0f554bb0
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Partners
+        sortOrder: 3
+      -
+        elements:
+          -
+            fieldUid: 816a3589-836c-4201-9d84-8d77a93a52a8
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Resources
+        sortOrder: 4
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 5
+handle: strategicProgrammes
+hasTitleField: true
+name: 'Strategic Programmes'
+section: f273edc9-ecad-4a33-857d-75410b9480e5
+sortOrder: 1
+titleFormat: ''

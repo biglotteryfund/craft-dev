@@ -1,0 +1,9 @@
+contentColumnType: string
+fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
+handle: articleLink
+instructions: "URL to full article, e.g. https://www.tnlcommunityfund.org.uk/global-content/press-releases/england/171017_eng_4_5_million_support_local_social_action\r\n\r\nIf this is provided, the title will link through to this URL instead of the actual content (eg. this page)."
+name: 'Article Link'
+searchable: '1'
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\Url

@@ -1,0 +1,67 @@
+field: 83a59f94-8342-417f-b427-11c3c162d89e
+fieldLayouts:
+  4b9dd016-6f9b-492a-ab5e-b60a9c05cea6:
+    tabs:
+      -
+        fields:
+          698dcade-907a-4233-8c8e-7421845e74d4:
+            required: '1'
+            sortOrder: '3'
+          927e7ec0-904f-4a13-8fb1-83c7ee913f98:
+            required: '0'
+            sortOrder: '1'
+          f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
+            required: '0'
+            sortOrder: '2'
+        name: Content
+        sortOrder: '1'
+fields:
+  698dcade-907a-4233-8c8e-7421845e74d4:
+    contentColumnType: string
+    fieldGroup: null
+    handle: contentSections
+    instructions: ''
+    name: 'Content sections'
+    searchable: '1'
+    settings:
+      contentTable: '{{%matrixcontent_contentsections}}'
+      localizeBlocks: '1'
+      maxBlocks: ''
+      minBlocks: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  927e7ec0-904f-4a13-8fb1-83c7ee913f98:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionTitle
+    instructions: ''
+    name: Title
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f1f1c284-fe76-4b4d-8106-8dc29e69fc0a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: sectionPrefix
+    instructions: ''
+    name: Prefix
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText

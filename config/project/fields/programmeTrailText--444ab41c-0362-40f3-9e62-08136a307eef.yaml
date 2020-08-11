@@ -1,0 +1,17 @@
+contentColumnType: string(1200)
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: programmeTrailText
+instructions: 'Sum up this programme in a couple of lines. Displayed around the site as a short trail for the funding programme. Keep it brief.'
+name: 'Programme Trail Text'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: 300
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

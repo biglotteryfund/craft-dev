@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: relatedProjectStories
+instructions: ''
+name: 'Related project stories'
+searchable: '1'
+settings:
+  limit: '3'
+  localizeRelations: ''
+  selectionLabel: 'Select project stories'
+  source: null
+  sources:
+    - 'section:6e869d59-984b-457b-a497-8f675c2e5ccb'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

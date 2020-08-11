@@ -1,0 +1,8 @@
+baseUrl: $SITE_URL_EN
+handle: en
+hasUrls: true
+language: en-GB
+name: English
+primary: true
+siteGroup: ea0f6303-e72a-4088-bfb5-82489efb3267
+sortOrder: 1

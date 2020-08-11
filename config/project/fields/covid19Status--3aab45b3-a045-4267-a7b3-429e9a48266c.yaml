@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: covid19Status
+instructions: 'Enter some text to describe a country''s funding status with regard to Covid-19'
+name: 'Covid-19 Status'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_covid19status}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

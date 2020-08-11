@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: f34fff60-41cf-47f6-8fe9-3146ae2a95b1
+handle: featuredLinks
+instructions: 'Choose the images and links that should appear on the homepage'
+name: 'Featured links'
+searchable: '1'
+settings:
+  contentTable: '{{%matrixcontent_featuredlinks}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: programme
+instructions: 'Choose a funding programme that this content relates to'
+name: Programme
+searchable: false
+settings:
+  limit: ''
+  localizeRelations: '1'
+  selectionLabel: 'Choose a programme'
+  source: null
+  sources:
+    - 'section:2b1f6da1-20e9-4176-a181-7ab073fab8f9'
+    - 'section:f273edc9-ecad-4a33-857d-75410b9480e5'
+  targetSiteId: null
+  validateRelatedElements: ''
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

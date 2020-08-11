@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: about
+name: About
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: about/_entry
+    uriFormat: '{parent.uri ? parent.uri : ''about''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: true
+    hasUrls: true
+    template: about/_entry
+    uriFormat: '{parent.uri ? parent.uri : ''about''}/{slug}'
+structure:
+  maxLevels: 2
+  uid: 328de783-1cb3-4267-930d-5c830925bfe8
+type: structure

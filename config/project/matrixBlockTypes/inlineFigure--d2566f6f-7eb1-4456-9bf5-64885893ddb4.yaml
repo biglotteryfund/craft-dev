@@ -1,0 +1,107 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  7590e3cc-1c3a-40f5-80ab-18c9e90941ef:
+    tabs:
+      -
+        fields:
+          33f3bd0a-c69b-4155-a29c-0abbfec8ce0a:
+            required: false
+            sortOrder: 2
+          66ed464a-5f48-4f0a-9be4-d40c165c1307:
+            required: true
+            sortOrder: 3
+          ad9b8390-2149-43ab-9d4a-e7d7c963bf6d:
+            required: false
+            sortOrder: 1
+          c81fafb4-ee1d-48a2-9ed5-ed72e57990ae:
+            required: true
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  33f3bd0a-c69b-4155-a29c-0abbfec8ce0a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  66ed464a-5f48-4f0a-9be4-d40c165c1307:
+    contentColumnType: string
+    fieldGroup: null
+    handle: photo
+    instructions: ''
+    name: Photo
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a photo'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: inline-figures
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  ad9b8390-2149-43ab-9d4a-e7d7c963bf6d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  c81fafb4-ee1d-48a2-9ed5-ed72e57990ae:
+    contentColumnType: text
+    fieldGroup: null
+    handle: photoCaption
+    instructions: 'Used as alternate text for screen readers and displayed alongside the photo as a caption.'
+    name: 'Photo caption'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: inlineFigure
+name: Photo
+sortOrder: 2

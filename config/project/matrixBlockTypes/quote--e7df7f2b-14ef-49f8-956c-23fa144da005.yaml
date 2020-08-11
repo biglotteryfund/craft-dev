@@ -1,0 +1,96 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  32ec04be-c472-4bef-9360-185ef308f2cb:
+    tabs:
+      -
+        fields:
+          78af6e74-c2e5-4566-b114-d71a80e411e0:
+            required: false
+            sortOrder: 2
+          b828d85b-dfb9-4f21-96df-ad8e1c7da55c:
+            required: true
+            sortOrder: 3
+          d5e0411f-7cfb-4e2d-8228-f8c37e1ee003:
+            required: false
+            sortOrder: 4
+          f9c3f7a5-d574-4be1-b35a-da174c68b4b8:
+            required: false
+            sortOrder: 1
+        name: Content
+        sortOrder: 1
+fields:
+  78af6e74-c2e5-4566-b114-d71a80e411e0:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b828d85b-dfb9-4f21-96df-ad8e1c7da55c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quoteText
+    instructions: ''
+    name: 'Quote text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  d5e0411f-7cfb-4e2d-8228-f8c37e1ee003:
+    contentColumnType: text
+    fieldGroup: null
+    handle: attribution
+    instructions: ''
+    name: Attribution
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f9c3f7a5-d574-4be1-b35a-da174c68b4b8:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content'
+    name: Title
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+handle: quote
+name: Quote
+sortOrder: 3

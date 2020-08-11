@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: legacyPath
+instructions: 'The path to this page on the legacy website, eg. /global-content/programmes/wales/rural-programme-community-grants'
+name: 'Legacy path'
+searchable: '1'
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

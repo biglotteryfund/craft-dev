@@ -1,0 +1,133 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  07b0c8cb-2dd8-428d-96d7-ee156a065a60:
+    tabs:
+      -
+        fields:
+          0311af81-729c-4001-9c3e-73bd492f9084:
+            required: true
+            sortOrder: 5
+          0f219149-7f97-4cca-a923-6a13c5324028:
+            required: false
+            sortOrder: 3
+          9c8e239f-4126-4f5f-ab91-5740a5a64b34:
+            required: false
+            sortOrder: 2
+          b5469ec4-1495-419a-b68a-8ed4b8c3f133:
+            required: true
+            sortOrder: 1
+          e5b09713-810e-466c-b433-8ae80f9c2ee2:
+            required: false
+            sortOrder: 4
+        name: Content
+        sortOrder: 1
+fields:
+  0311af81-729c-4001-9c3e-73bd492f9084:
+    contentColumnType: text
+    fieldGroup: null
+    handle: personBio
+    instructions: 'Add some text about this person to appear alongside their photo'
+    name: Biography
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      purifierConfig: safe-iframe-media.json
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+  0f219149-7f97-4cca-a923-6a13c5324028:
+    contentColumnType: text
+    fieldGroup: null
+    handle: personRole
+    instructions: 'Enter this person''s job title, eg. "CEO", "Designer", etc.'
+    name: Role
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  9c8e239f-4126-4f5f-ab91-5740a5a64b34:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tocTitle
+    instructions: 'If you''re using a Table of Contents block for this page, the text you enter here will appear in the table instead of the title above.'
+    name: 'Table of Contents title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  b5469ec4-1495-419a-b68a-8ed4b8c3f133:
+    contentColumnType: text
+    fieldGroup: null
+    handle: flexTitle
+    instructions: 'A title field to distinguish this block of content - the name of this individual'
+    name: 'Person''s name'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  e5b09713-810e-466c-b433-8ae80f9c2ee2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: personPhoto
+    instructions: 'Upload a picture of this person'
+    name: Photo
+    searchable: true
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: 'Add a photo'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: profiles
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: ''
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: person
+name: Person
+sortOrder: 6

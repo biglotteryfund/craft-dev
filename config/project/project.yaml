@@ -1,0 +1,103 @@
+dateModified: 1596722544
+email:
+  fromEmail: noreply@blf.digital
+  fromName: 'The National Lottery Community Fund Digital'
+  template: ''
+  transportSettings:
+    encryptionMethod: tls
+    host: email-smtp.eu-west-1.amazonaws.com
+    password: $SES_AUTH_SECRET
+    port: '587'
+    timeout: '10'
+    useAuthentication: '1'
+    username: $SES_AUTH_KEY
+  transportType: craft\mail\transportadapters\Smtp
+plugins:
+  aws-s3:
+    enabled: true
+    licenseKey: null
+    schemaVersion: '1.2'
+    settings: null
+  cp-css:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 2.0.0
+    settings:
+      additionalCss: ''
+      cssFile: /resources/css/cp.css
+  cp-js:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 2.0.0
+    settings: null
+  element-api:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  element-map:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  expanded-singles:
+    enabled: '0'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings:
+      expandSingles: '1'
+      redirectToEntry: '1'
+  feed-me:
+    enabled: '0'
+    licenseKey: null
+    schemaVersion: 1.0.1
+    settings: null
+  field-manager:
+    enabled: '0'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  inventory:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  recentchanges:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  redactor:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 2.3.0
+    settings: null
+  redactor-anchors:
+    edition: standard
+    enabled: true
+    schemaVersion: '2.0'
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey: $RETOUR_LICENSE_KEY
+    schemaVersion: 3.0.9
+  ses:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  super-table:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 2.2.1
+    settings: null
+  tag-manager:
+    enabled: true
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+system:
+  edition: pro
+  live: true
+  name: 'The National Lottery Community Fund'
+  schemaVersion: 3.5.12
+  timeZone: Europe/London

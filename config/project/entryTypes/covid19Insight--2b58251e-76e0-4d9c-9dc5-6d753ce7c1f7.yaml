@@ -1,0 +1,37 @@
+fieldLayouts:
+  cf9cbad3-9006-4cf7-9115-0fcfd8cbf47b:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 75254713-f63e-44ac-b875-cbc61d48ca9c
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 2
+handle: covid19Insight
+hasTitleField: true
+name: 'Covid-19 Insight'
+section: 3d219965-b138-465f-b62d-5ad75c0204ec
+sortOrder: 1
+titleFormat: ''

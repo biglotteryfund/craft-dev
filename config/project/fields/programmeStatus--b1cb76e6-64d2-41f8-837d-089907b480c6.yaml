@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: programmeStatus
+instructions: 'Should this programme be shown on the list of available funding programmes to apply to? Note that this still applies to programmes which have now expired but were formerly open to aplications.'
+name: 'Programme status'
+searchable: '1'
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - default
+          - '1'
+        -
+          - label
+          - 'Open to direct applications'
+        -
+          - value
+          - open
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Closed to direct applications'
+        -
+          - value
+          - closedToDirectApplications
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

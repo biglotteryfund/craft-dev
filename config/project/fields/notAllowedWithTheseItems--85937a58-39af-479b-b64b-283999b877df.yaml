@@ -1,0 +1,18 @@
+contentColumnType: string
+fieldGroup: fe37f91c-b0e2-482c-8482-05d9b335ce86
+handle: notAllowedWithTheseItems
+instructions: 'Items this product should not be allowed in combination with'
+name: 'Not allowed with these items'
+searchable: '1'
+settings:
+  limit: ''
+  localizeRelations: ''
+  selectionLabel: ''
+  source: null
+  sources:
+    - 'section:4b2f06cc-63fe-4063-aac9-49ec26c009f0'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

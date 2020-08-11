@@ -1,0 +1,77 @@
+contentColumnType: string
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: programmeArea
+instructions: ''
+name: 'Programme Area'
+searchable: '1'
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - England
+        -
+          - value
+          - england
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - Wales
+        -
+          - value
+          - wales
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - Scotland
+        -
+          - value
+          - scotland
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Northern Ireland'
+        -
+          - value
+          - northernIreland
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - UK-wide
+        -
+          - value
+          - ukWide
+    -
+      __assoc__:
+        -
+          - default
+          - ''
+        -
+          - label
+          - 'Countries outside the UK'
+        -
+          - value
+          - countriesOutsideTheUk
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

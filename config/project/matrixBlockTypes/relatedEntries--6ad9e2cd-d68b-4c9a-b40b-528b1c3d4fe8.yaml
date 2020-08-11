@@ -1,0 +1,50 @@
+field: e0b8fb64-5f6b-46f9-8ac8-462a46591a0d
+fieldLayouts:
+  a2cc4a76-1dd9-4f38-9602-a4246891ca62:
+    tabs:
+      -
+        fields:
+          07ec6268-ea09-40f7-a0df-d409d17e31a8:
+            required: true
+            sortOrder: 1
+          c5e3e9e9-98e4-4a37-a62d-608c506b1132:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  07ec6268-ea09-40f7-a0df-d409d17e31a8:
+    contentColumnType: string
+    fieldGroup: null
+    handle: entry
+    instructions: 'Choose an entry to add to the list'
+    name: Entry
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: '1'
+      selectionLabel: ''
+      source: null
+      sources:
+        - 'section:578177e6-786a-4fb0-8555-f42db7f6b729'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  c5e3e9e9-98e4-4a37-a62d-608c506b1132:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: featureThisEntry
+    instructions: 'Should this entry be marked as "featured" (eg. larger than the others)?'
+    name: 'Feature this entry?'
+    searchable: false
+    settings:
+      default: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: relatedEntries
+name: 'Related entries'
+sortOrder: 1

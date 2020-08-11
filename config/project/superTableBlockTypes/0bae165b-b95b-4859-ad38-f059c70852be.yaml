@@ -1,0 +1,53 @@
+field: 1620ec3b-4d1d-4929-bd17-68cf9f224a53
+fieldLayouts:
+  bb3ea61d-8133-4cca-bc31-ec9396db1074:
+    tabs:
+      -
+        fields:
+          4c0e3bec-906f-4f73-a77c-e631d982dc1a:
+            required: false
+            sortOrder: 1
+          9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
+            required: false
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  4c0e3bec-906f-4f73-a77c-e631d982dc1a:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      limit: '1'
+      localizeRelations: ''
+      selectionLabel: 'Select a hero image'
+      source: null
+      sources:
+        - 'section:b518ecd2-452a-47d2-a6b7-bae282712c80'
+      targetSiteId: null
+      validateRelatedElements: ''
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  9037ebde-11ab-4047-a9ae-6b9fdb2d1cdb:
+    contentColumnType: text
+    fieldGroup: null
+    handle: credit
+    instructions: 'Use this field if you want to provide a longer custom credit for the image'
+    name: Credit
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText

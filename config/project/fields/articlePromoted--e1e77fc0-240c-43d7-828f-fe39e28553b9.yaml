@@ -1,0 +1,11 @@
+contentColumnType: boolean
+fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
+handle: articlePromoted
+instructions: 'Should this article be shown in a preview on the homepage? The newest three items with this status will appear there.'
+name: 'Promoted to the homepage?'
+searchable: '1'
+settings:
+  default: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Lightswitch

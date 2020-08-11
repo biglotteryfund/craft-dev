@@ -1,0 +1,57 @@
+fieldLayouts:
+  6ccb5707-3d48-45e4-83a9-8baed98aac34:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: ccd71b86-6564-429f-972a-1def8e6840a4
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 1b339885-ec9d-4871-852a-6ab021977805
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e212ef59-b2d5-4fc4-9f7a-ca51a236b8bb
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: e1e77fc0-240c-43d7-828f-fe39e28553b9
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: b7e76d5c-aec3-4fbd-8917-ac0907db656e
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 419ecf2d-b6f9-4754-a309-88579895b504
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 7a4edc2b-a06d-4baf-a33f-da76742cbf35
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Article content'
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 6a3270e2-2cb8-4aac-9fa6-72b5ccf0ef51
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Social Media'
+        sortOrder: 2
+handle: people_stories
+hasTitleField: true
+name: 'People Stories'
+section: 3fc7e898-601d-45f6-9862-2db3a51d162e
+sortOrder: 2
+titleFormat: ''

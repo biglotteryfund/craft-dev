@@ -1,0 +1,14 @@
+handle: blogAuthors
+name: 'Blog Authors'
+permissions:
+  - accesscp
+  - 'editsite:81de1ac6-1a0b-40e6-b99c-42b99e5dc777'
+  - 'editsite:d0635f95-a563-4f66-9195-33da0eb644d5'
+  - accesssitewhensystemisoff
+  - 'saveassetinvolume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  - 'createfoldersinvolume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  - 'viewvolume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  - 'editentries:2b255d19-d30b-4d89-8555-cddcd1eb945e'
+  - 'editcategories:270cfe63-7c88-4e11-98de-fe001c876987'
+  - 'viewpeerfilesinvolume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  - 'editpeerfilesinvolume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'

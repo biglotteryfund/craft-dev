@@ -1,0 +1,41 @@
+fieldLayouts:
+  a490f292-744b-4545-aab2-ea89a64aa60a:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: 'Hero name'
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: a276fbd1-c407-4be3-b2ba-187b6ea970ca
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: d7fe1ecc-0596-44c1-bfc5-fb28d853479f
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 89266448-9bf8-4a6f-b2be-0a06a67d8be9
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: de88932a-f149-4bf7-93da-5cafdbdcf19b
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: ae092110-69c9-4fd6-8b68-f711b8e3631e
+            required: true
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: fdc4344b-f3bc-4227-9d62-fec7e69d10f9
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: 'Hero Image'
+        sortOrder: '1'
+handle: heroImage
+hasTitleField: '1'
+name: 'Hero Image'
+section: b518ecd2-452a-47d2-a6b7-bae282712c80
+sortOrder: '1'
+titleFormat: null

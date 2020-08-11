@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: 24b26cf1-ecc7-44ee-a2d5-0f1de62055cf
+handle: document
+instructions: 'Upload the file here'
+name: Document
+searchable: false
+settings:
+  allowedKinds:
+    - compressed
+    - excel
+    - html
+    - image
+    - pdf
+    - powerpoint
+    - text
+    - video
+    - word
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: ''
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: insights/documents
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: '1'
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

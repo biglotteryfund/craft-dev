@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: strategicProgrammes
+name: 'Strategic Programmes'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: ''
+    uriFormat: 'funding/strategic-investments/{parent.slug}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: ''
+    uriFormat: 'funding/strategic-investments/{parent.slug}/{slug}'
+structure:
+  maxLevels: '2'
+  uid: b499b2f0-3599-4386-8b87-801027fab3f6
+type: structure

@@ -1,0 +1,25 @@
+contentColumnType: string
+fieldGroup: 381bc7ef-8175-4392-a114-07f68c9a1b9a
+handle: trailPhoto
+instructions: 'An optional accompanying picture which will be displayed on listing pages alongside the title/summary.'
+name: 'Trail Photo'
+searchable: '1'
+settings:
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: ''
+  restrictFiles: '1'
+  selectionLabel: ''
+  singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+  singleUploadLocationSubpath: trail-photos
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: '1'
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

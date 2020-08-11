@@ -1,0 +1,118 @@
+field: e2c780b8-c133-4e69-af2f-cee1076275cd
+fieldLayouts:
+  8b9d9e27-b62f-4118-a2e7-0669835a4c63:
+    tabs:
+      -
+        fields:
+          11bb549a-fc24-42ff-bf9f-a54afe51ea39:
+            required: '1'
+            sortOrder: 3
+          2ee49b58-245e-4124-b11a-001248ff4742:
+            required: '0'
+            sortOrder: 4
+          e4985fe2-d0f1-4a13-b080-f234c8be527a:
+            required: '1'
+            sortOrder: 1
+          fe6bef3e-a17e-4401-8429-6ed0e7f3d86b:
+            required: '1'
+            sortOrder: 2
+        name: Content
+        sortOrder: 1
+fields:
+  11bb549a-fc24-42ff-bf9f-a54afe51ea39:
+    contentColumnType: string
+    fieldGroup: null
+    handle: productPhoto
+    instructions: ''
+    name: 'Product photo'
+    searchable: '1'
+    settings:
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: ''
+      restrictFiles: '1'
+      selectionLabel: ''
+      singleUploadLocationSource: 'volume:0516f25e-8c65-48c1-9c7a-f94a6a954edf'
+      singleUploadLocationSubpath: products
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: '1'
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  2ee49b58-245e-4124-b11a-001248ff4742:
+    contentColumnType: text
+    fieldGroup: null
+    handle: productName
+    instructions: 'Will default to the overall name above if unset. Use this for variant names (eg. with an item titled "Banner", this name could be "Pink banner"'
+    name: Name
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  e4985fe2-d0f1-4a13-b080-f234c8be527a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: productCode
+    instructions: ''
+    name: Code
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  fe6bef3e-a17e-4401-8429-6ed0e7f3d86b:
+    contentColumnType: string
+    fieldGroup: null
+    handle: productLanguage
+    instructions: ''
+    name: 'Product language'
+    searchable: '1'
+    settings:
+      options:
+        -
+          __assoc__:
+            -
+              - default
+              - ''
+            -
+              - label
+              - Monolingual
+            -
+              - value
+              - monolingual
+        -
+          __assoc__:
+            -
+              - default
+              - ''
+            -
+              - label
+              - Bilingual
+            -
+              - value
+              - bilingual
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+handle: product
+name: Product
+sortOrder: 1

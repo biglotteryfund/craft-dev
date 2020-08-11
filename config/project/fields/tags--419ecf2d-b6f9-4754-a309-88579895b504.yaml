@@ -1,0 +1,17 @@
+contentColumnType: string
+fieldGroup: 550644b5-4631-4219-862a-30a2927a2521
+handle: tags
+instructions: "Add existing (or create new) content tags to summarise this content.\r\n\r\nGOOD: place-based funding, social media, digital skills\r\n\r\nBAD: The National Lottery Community Fund, Wales, Awards For All (use regions / related programme fields for this!)"
+name: Tags
+searchable: '1'
+settings:
+  limit: null
+  localizeRelations: ''
+  selectionLabel: ''
+  source: 'taggroup:7e74a4e5-2144-4421-8176-8d66e57f0a3e'
+  sources: '*'
+  targetSiteId: null
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Tags

@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: e3237b61-2fe0-45f7-9036-c1ff7a7975e8
+handle: stats
+instructions: 'Add as many stats as you like to this page'
+name: Stats
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_stats}}'
+  localizeBlocks: '1'
+  maxBlocks: ''
+  minBlocks: ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

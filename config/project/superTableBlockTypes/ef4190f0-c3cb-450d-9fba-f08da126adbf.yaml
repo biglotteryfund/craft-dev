@@ -1,0 +1,49 @@
+field: d152a0b3-b09f-4b2c-a7a6-605b9a0fed17
+fieldLayouts:
+  a73f3320-bc17-4b98-b38d-feab4088ad38:
+    tabs:
+      -
+        fields:
+          5d97050c-8006-4a6c-b465-3649f9f25445:
+            required: '0'
+            sortOrder: '1'
+          f830e045-da35-4086-81fb-cafea2a44f22:
+            required: '0'
+            sortOrder: '2'
+        name: Content
+        sortOrder: '1'
+fields:
+  5d97050c-8006-4a6c-b465-3649f9f25445:
+    contentColumnType: text
+    fieldGroup: null
+    handle: contactEmail
+    instructions: ''
+    name: 'Contact email'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  f830e045-da35-4086-81fb-cafea2a44f22:
+    contentColumnType: text
+    fieldGroup: null
+    handle: researchPartners
+    instructions: ''
+    name: 'Research partners'
+    searchable: '1'
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
