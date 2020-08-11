@@ -817,7 +817,7 @@ function getMerchandise($locale)
                 $product['id'] = (int) $block->id;
                 $product['code'] = $block->productCode;
                 $product['language'] = $block->productLanguage->value;
-                $product['image'] = Images::extractImageUrl($block->productPhoto);
+                $product['image'] = Images::buildMerchandiseImage($block->productPhoto);
                 if ($block->productName) {
                     $product['name'] = $block->productName;
                 }

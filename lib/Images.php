@@ -111,4 +111,12 @@ class Images
             return null;
         }
     }
+
+    public static function buildMerchandiseImage($imageField)
+    {
+        return self::imgixUrl(
+            self::extractImageUrl($imageField),
+            ['w' => '560', 'h' => 458, 'fit' => 'crop']
+        );
+    }
 }
