@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab6dd604866390e70f05c897e623bc58",
+    "content-hash": "9d352f23379a1ace60972204066e52e4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -184,6 +184,11 @@
                 "lib-pcre": "*",
                 "php": ">=5.4.0"
             },
+            "require-dev": {
+                "cebe/indent": "*",
+                "facebook/xhprof": "*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
             "bin": [
                 "bin/markdown"
             ],
@@ -198,6 +203,7 @@
                     "cebe\\markdown\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -804,6 +810,7 @@
                     "craft\\elementapi\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -821,13 +828,6 @@
                 "json",
                 "yii2"
             ],
-            "support": {
-                "email": "support@craftcms.com",
-                "issues": "https://github.com/craftcms/element-api/issues?state=open",
-                "source": "https://github.com/craftcms/element-api",
-                "docs": "https://github.com/craftcms/element-api/blob/v2/README.md",
-                "rss": "https://github.com/craftcms/element-api/commits/v2.atom"
-            },
             "time": "2019-08-01T22:45:15+00:00"
         },
         {
@@ -927,20 +927,20 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "835eaf0d7442acb1bc716985f9672c7cd4e8531c"
+                "reference": "068c75549bbf23d148cf0172ee4fbb3355096e7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/835eaf0d7442acb1bc716985f9672c7cd4e8531c",
-                "reference": "835eaf0d7442acb1bc716985f9672c7cd4e8531c",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/068c75549bbf23d148cf0172ee4fbb3355096e7c",
+                "reference": "068c75549bbf23d148cf0172ee4fbb3355096e7c",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^3.4.0-RC1"
+                "craftcms/cms": "^3.5.0"
             },
             "type": "craft-plugin",
             "extra": {
@@ -971,7 +971,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2020-03-18T14:47:04+00:00"
+            "time": "2020-08-09T13:55:21+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -1005,7 +1005,7 @@
                 "requirements",
                 "yii2"
             ],
-            "time": "2020-05-28T16:57:05+00:00"
+            "time": "2020-07-14T18:57:12+00:00"
         },
         {
             "name": "creocoder/yii2-nested-sets",
@@ -1777,6 +1777,10 @@
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
+            "require-dev": {
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+            },
             "suggest": {
                 "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
             },
@@ -1794,6 +1798,7 @@
                     "src/functions_include.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2473,6 +2478,15 @@
             "require": {
                 "php": ">=5.4"
             },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "^4.8.35 || ^7.5",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
             "suggest": {
                 "illuminate/pagination": "The Illuminate Pagination component.",
                 "pagerfanta/pagerfanta": "Pagerfanta Paginator",
@@ -2489,6 +2503,7 @@
                     "League\\Fractal\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3570,6 +3585,10 @@
             "require": {
                 "php": ">=5.3.2"
             },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.2.*",
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.4 || ^8.2"
+            },
             "suggest": {
                 "ext-gd": "to use the GD implementation",
                 "ext-gmagick": "to use the Gmagick implementation",
@@ -3586,6 +3605,7 @@
                     "Imagine\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3634,6 +3654,7 @@
                     "Psr\\Container\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3768,12 +3789,17 @@
             "require": {
                 "php": ">=5.6"
             },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
             "type": "library",
             "autoload": {
                 "files": [
                     "src/getallheaders.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3872,8 +3898,8 @@
                 "gregwar/rst": "<1.0.3",
                 "guzzlehttp/guzzle": ">=4-rc.2,<4.2.4|>=5,<5.3.1|>=6,<6.2.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.10",
-                "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
-                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29",
+                "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<=5.5.44|>=5.6,<5.6.30|>=6,<6.18.31|>=7,<7.22.4",
+                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29|>=5.5,<=5.5.44|>=6,<6.18.34|>=7,<7.23.2",
                 "illuminate/encryption": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.40|>=5.6,<5.6.15",
                 "illuminate/view": ">=7,<7.1.2",
                 "ivankristianto/phpwhois": "<=4.3",
@@ -3884,7 +3910,7 @@
                 "kitodo/presentation": "<3.1.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
-                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30|>=7,<7.1.2",
+                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<=5.5.49|>=5.6,<5.6.30|>=6,<6.18.34|>=7,<7.23.2",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "league/commonmark": "<0.18.3",
                 "librenms/librenms": "<1.53",
@@ -4079,7 +4105,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-05T22:02:01+00:00"
+            "time": "2020-08-08T10:05:44+00:00"
         },
         {
             "name": "seld/cli-prompt",
@@ -5843,6 +5869,7 @@
                     "vardump\\recentchanges\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5854,17 +5881,13 @@
             ],
             "description": "A Widget showing the last updated entries.",
             "keywords": [
+                "Craft",
                 "cms",
-                "craft",
                 "craft-plugin",
                 "craftcms",
                 "recentchanges",
                 "widget"
             ],
-            "support": {
-                "docs": "https://github.com/vardump-de/recentchanges/blob/master/README.md",
-                "issues": "https://github.com/vardump-de/recentchanges/issues"
-            },
             "time": "2019-03-27T17:24:41+00:00"
         },
         {
@@ -6206,6 +6229,10 @@
                 "php": ">=7.0.0",
                 "symfony/polyfill-intl-idn": "~1.10"
             },
+            "require-dev": {
+                "fzaninotto/faker": "~1.7",
+                "phpunit/phpunit": "~6.0 || ~7.0"
+            },
             "suggest": {
                 "ext-intl": "Use Intl for best performance"
             },
@@ -6215,6 +6242,7 @@
                     "voku\\helper\\": "src/voku/helper/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6419,12 +6447,16 @@
             "require": {
                 "php": ">=7.0.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "voku\\": "src/voku/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6659,6 +6691,11 @@
                 "ext-mbstring": "*",
                 "php": ">=5.6"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "psr/http-message": "^1.0",
+                "react/promise": "2.*"
+            },
             "suggest": {
                 "psr/http-message": "To use standard GraphQL server",
                 "react/promise": "To leverage async resolving on React PHP platform"
@@ -6669,6 +6706,7 @@
                     "GraphQL\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -6697,6 +6735,9 @@
             "require": {
                 "yiisoft/yii2": "~2.0.13"
             },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.27|^5.0|^6.0"
+            },
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
@@ -6708,6 +6749,7 @@
                     "yii2tech\\ar\\softdelete\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7264,6 +7306,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7310,6 +7353,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7476,6 +7520,9 @@
             "require": {
                 "php": "^7.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7487,6 +7534,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7528,6 +7576,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7753,6 +7802,9 @@
             "require": {
                 "php": "^5.6 || ^7.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7764,6 +7816,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7796,6 +7849,9 @@
                 "sebastian/diff": "^3.0",
                 "sebastian/exporter": "^3.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7807,6 +7863,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -7854,6 +7911,10 @@
             "require": {
                 "php": "^7.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5 || ^8.0",
+                "symfony/process": "^2 || ^3.3 || ^4"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7865,6 +7926,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -8081,6 +8143,9 @@
                 "sebastian/object-reflector": "^1.1.1",
                 "sebastian/recursion-context": "^3.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8092,6 +8157,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -8122,6 +8188,9 @@
             "require": {
                 "php": "^7.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8133,6 +8202,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -8163,6 +8233,9 @@
             "require": {
                 "php": "^7.0"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8174,6 +8247,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -8223,6 +8297,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -8310,6 +8385,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
