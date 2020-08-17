@@ -26,7 +26,7 @@
     "roave/security-advisories": "dev-master",
     "craftcms/element-api": "2.6.0",
     "craftcms/aws-s3": "1.2.9",
-    "craftcms/redactor": "2.7.0",
+    "craftcms/redactor": "2.7.1",
     "league/uri": "^6.2",
     "imgix/imgix-php": "^3.1",
     "verbb/super-table": "2.6.1",
