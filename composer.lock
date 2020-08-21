@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5389f8bee250be9d8ed5ed8e5ccfc3e1",
+    "content-hash": "17c738efe612b5c44f8bf4e0b5e5485e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5981,16 +5981,16 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.6.1",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/super-table.git",
-                "reference": "6cc1edb284c08ad8fe73fa279911e1b66db707bc"
+                "reference": "34a3c1a79c2956fc0c83c349fa2b303b4d9cbced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/6cc1edb284c08ad8fe73fa279911e1b66db707bc",
-                "reference": "6cc1edb284c08ad8fe73fa279911e1b66db707bc",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/34a3c1a79c2956fc0c83c349fa2b303b4d9cbced",
+                "reference": "34a3c1a79c2956fc0c83c349fa2b303b4d9cbced",
                 "shasum": ""
             },
             "require": {
@@ -6029,7 +6029,7 @@
                 "craftcms",
                 "super table"
             ],
-            "time": "2020-08-13T01:12:44+00:00"
+            "time": "2020-08-21T00:48:21+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
