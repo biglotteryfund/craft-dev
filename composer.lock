@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06500475e36a848983f3fad31b468c32",
+    "content-hash": "3ed1641384fdd89684844e0b6a677518",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -636,21 +636,21 @@
         },
         {
             "name": "craftcms/aws-s3",
-            "version": "1.2.10",
+            "version": "1.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/aws-s3.git",
-                "reference": "ebf066faff4ed6eceb68bd4773b6be6d15e0dd73"
+                "reference": "d9934e0d34c3a1617a5e120d58b7062f8d302751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/ebf066faff4ed6eceb68bd4773b6be6d15e0dd73",
-                "reference": "ebf066faff4ed6eceb68bd4773b6be6d15e0dd73",
+                "url": "https://api.github.com/repos/craftcms/aws-s3/zipball/d9934e0d34c3a1617a5e120d58b7062f8d302751",
+                "reference": "d9934e0d34c3a1617a5e120d58b7062f8d302751",
                 "shasum": ""
             },
             "require": {
                 "craftcms/cms": "^3.1.5",
-                "league/flysystem-aws-s3-v3": "^1.0.13"
+                "league/flysystem-aws-s3-v3": "^1.0.28"
             },
             "type": "craft-plugin",
             "extra": {
@@ -682,7 +682,7 @@
                 "s3",
                 "yii2"
             ],
-            "time": "2020-08-20T13:18:22+00:00"
+            "time": "2020-08-24T09:31:11+00:00"
         },
         {
             "name": "craftcms/cms",
@@ -2422,16 +2422,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.26",
+            "version": "1.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "580838fd732838c0d2e8751c403e5a415363da79"
+                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/580838fd732838c0d2e8751c403e5a415363da79",
-                "reference": "580838fd732838c0d2e8751c403e5a415363da79",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/af7384a12f7cd7d08183390d930c9d0ec629c990",
+                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990",
                 "shasum": ""
             },
             "require": {
@@ -2465,7 +2465,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2020-08-18T10:54:07+00:00"
+            "time": "2020-08-22T08:43:01+00:00"
         },
         {
             "name": "league/fractal",
