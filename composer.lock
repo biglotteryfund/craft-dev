@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91cd579947d5fc7d9263661b5494085b",
+    "content-hash": "06500475e36a848983f3fad31b468c32",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1290,16 +1290,16 @@
         },
         {
             "name": "doublesecretagency/craft-inventory",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doublesecretagency/craft-inventory.git",
-                "reference": "8ceb51a98612bcee64fd7d7b465f508c26d4f4c6"
+                "reference": "37de17aea82150a6aa114f3ae0c90179684f6a7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doublesecretagency/craft-inventory/zipball/8ceb51a98612bcee64fd7d7b465f508c26d4f4c6",
-                "reference": "8ceb51a98612bcee64fd7d7b465f508c26d4f4c6",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-inventory/zipball/37de17aea82150a6aa114f3ae0c90179684f6a7d",
+                "reference": "37de17aea82150a6aa114f3ae0c90179684f6a7d",
                 "shasum": ""
             },
             "require": {
@@ -1337,7 +1337,7 @@
                 "fields",
                 "inventory"
             ],
-            "time": "2020-04-10T14:28:11+00:00"
+            "time": "2020-08-22T05:05:07+00:00"
         },
         {
             "name": "egulias/email-validator",
