@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c00b14aed9656904bc95744a1a44526",
+    "content-hash": "5c55bb7784f197e6b98d923f462f2f94",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -932,16 +932,16 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "cff8b01a831f852ccbde5db9967f3aef26054fc8"
+                "reference": "75ac59de517bf0f4731abebeb7fd4e743c7fee9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/cff8b01a831f852ccbde5db9967f3aef26054fc8",
-                "reference": "cff8b01a831f852ccbde5db9967f3aef26054fc8",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/75ac59de517bf0f4731abebeb7fd4e743c7fee9e",
+                "reference": "75ac59de517bf0f4731abebeb7fd4e743c7fee9e",
                 "shasum": ""
             },
             "require": {
@@ -976,7 +976,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2020-08-14T14:09:12+00:00"
+            "time": "2020-08-25T11:32:19+00:00"
         },
         {
             "name": "craftcms/server-check",
