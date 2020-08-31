@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c00b14aed9656904bc95744a1a44526",
+    "content-hash": "aa6485c80fb761d768348049169d8b5b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -932,16 +932,16 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.7.1",
+            "version": "2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "cff8b01a831f852ccbde5db9967f3aef26054fc8"
+                "reference": "fe8b37c4c4978e397504a43d19aef40b4e495639"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/cff8b01a831f852ccbde5db9967f3aef26054fc8",
-                "reference": "cff8b01a831f852ccbde5db9967f3aef26054fc8",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/fe8b37c4c4978e397504a43d19aef40b4e495639",
+                "reference": "fe8b37c4c4978e397504a43d19aef40b4e495639",
                 "shasum": ""
             },
             "require": {
@@ -976,7 +976,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2020-08-14T14:09:12+00:00"
+            "time": "2020-08-28T16:11:20+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -3850,6 +3850,7 @@
                 "bagisto/bagisto": "<0.1.5",
                 "barrelstrength/sprout-base-email": "<1.2.7",
                 "barrelstrength/sprout-forms": "<3.9",
+                "baserproject/basercms": ">=4,<=4.3.6",
                 "bolt/bolt": "<3.7.1",
                 "brightlocal/phpwhois": "<=4.2.5",
                 "buddypress/buddypress": "<5.1.2",
@@ -4117,7 +4118,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-19T19:01:52+00:00"
+            "time": "2020-08-28T21:02:31+00:00"
         },
         {
             "name": "sebastian/diff",
