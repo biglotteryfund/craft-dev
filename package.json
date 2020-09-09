@@ -25,6 +25,6 @@
   "dependencies": {
     "aws-sdk": "^2.738.0",
     "lodash": "^4.17.20",
-    "yargs": "^15.4.1"
+    "yargs": "^16.0.0"
   }
 }
