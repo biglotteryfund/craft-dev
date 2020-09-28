@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db598e1a84614b3364d23c2938804f89",
+    "content-hash": "dc848f299fa8fd3f9c436982d63c2379",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -946,16 +946,16 @@
         },
         {
             "name": "craftcms/redactor",
-            "version": "2.7.4",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/redactor.git",
-                "reference": "3af61a4d192f2272774095d1a6f31d06ed374c20"
+                "reference": "ebbf50acd8f543b1e1d79c11a3727ab1489d7cbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/redactor/zipball/3af61a4d192f2272774095d1a6f31d06ed374c20",
-                "reference": "3af61a4d192f2272774095d1a6f31d06ed374c20",
+                "url": "https://api.github.com/repos/craftcms/redactor/zipball/ebbf50acd8f543b1e1d79c11a3727ab1489d7cbb",
+                "reference": "ebbf50acd8f543b1e1d79c11a3727ab1489d7cbb",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +990,7 @@
                 "html",
                 "yii2"
             ],
-            "time": "2020-09-02T16:03:10+00:00"
+            "time": "2020-09-22T13:02:23+00:00"
         },
         {
             "name": "craftcms/server-check",
@@ -3877,7 +3877,7 @@
                 "composer/composer": "<=1-alpha.11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
                 "contao/core": ">=2,<3.5.39",
-                "contao/core-bundle": ">=4,<4.4.46|>=4.5,<4.8.6",
+                "contao/core-bundle": ">=4,<4.4.52|>=4.5,<4.9.6|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
@@ -3941,6 +3941,7 @@
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "league/commonmark": "<0.18.3",
                 "librenms/librenms": "<1.53",
+                "livewire/livewire": ">2.2.4,<2.2.6",
                 "magento/community-edition": ">=2,<2.2.10|>=2.3,<2.3.3",
                 "magento/magento1ce": "<1.9.4.3",
                 "magento/magento1ee": ">=1,<1.14.4.3",
@@ -3992,6 +3993,8 @@
                 "scheb/two-factor-bundle": ">=0,<3.26|>=4,<4.11",
                 "sensiolabs/connect": "<4.2.3",
                 "serluck/phpwhois": "<=4.2.6",
+                "shopware/core": "<=6.3.1",
+                "shopware/platform": "<=6.3.1",
                 "shopware/shopware": "<5.3.7",
                 "silverstripe/admin": ">=1.0.3,<1.0.4|>=1.1,<1.1.1",
                 "silverstripe/assets": ">=1,<1.4.7|>=1.5,<1.5.2",
@@ -4136,7 +4139,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-18T13:01:53+00:00"
+            "time": "2020-09-24T17:02:11+00:00"
         },
         {
             "name": "sebastian/diff",
