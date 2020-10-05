@@ -3166,16 +3166,16 @@
         },
         {
             "name": "nystudio107/craft-retour",
-            "version": "3.1.41",
+            "version": "3.1.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nystudio107/craft-retour.git",
-                "reference": "307ae917769f2070bf1311ff508525a6efce6fd2"
+                "reference": "400542fb8f79a6c3226ff4b9c69b4e1cd6f95e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-retour/zipball/307ae917769f2070bf1311ff508525a6efce6fd2",
-                "reference": "307ae917769f2070bf1311ff508525a6efce6fd2",
+                "url": "https://api.github.com/repos/nystudio107/craft-retour/zipball/400542fb8f79a6c3226ff4b9c69b4e1cd6f95e43",
+                "reference": "400542fb8f79a6c3226ff4b9c69b4e1cd6f95e43",
                 "shasum": ""
             },
             "require": {
@@ -3223,7 +3223,7 @@
                 "retour",
                 "statistics"
             ],
-            "time": "2020-07-30T15:51:51+00:00"
+            "time": "2020-10-05T02:56:59+00:00"
         },
         {
             "name": "opis/closure",
@@ -3950,6 +3950,8 @@
                 "mittwald/typo3_forum": "<1.2.1",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
+                "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
+                "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "october/backend": ">=1.0.319,<1.0.467",
@@ -4139,7 +4141,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-24T17:02:11+00:00"
+            "time": "2020-10-02T17:02:13+00:00"
         },
         {
             "name": "sebastian/diff",
