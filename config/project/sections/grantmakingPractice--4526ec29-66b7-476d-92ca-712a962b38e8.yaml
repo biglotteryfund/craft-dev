@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: grantmakingPractice
+name: 'Grantmaking Practice'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''insights/grantmaking-practice''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''insights/grantmaking-practice''}/{slug}'
+structure:
+  maxLevels: null
+  uid: e4cc8d70-01de-465b-97fc-802c2146047e
+type: structure
