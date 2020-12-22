@@ -48,10 +48,14 @@ class FundingProgrammeTransformer extends TransformerAbstract
                     'totalAvailable' => $entry->totalFundingAvailable ?? null,
                     'description' => $entry->fundingSizeDescription ?? null,
                 ],
+                'grantLength' => [
+                    'minimum' => $entry->grantLengthMin ? (int)$entry->grantLengthMin : null,
+                    'maximum' => $entry->grantLengthMax ? (int)$entry->grantLengthMax : null,
+                    'description' => $entry->grantLengthDescription ?? null,
+                ],
                 'applicationDeadline' => $entry->applicationDeadline ?? null,
                 'organisationType' => $entry->organisationType ?? null,
                 'legacyPath' => $entry->legacyPath ?? null,
-                'grantLength' => $entry->grantLengthDescription ?? null,
                 'notificationBanner' => $entry->notificationBanner && $entry->notificationBanner->notificationTitle ? [
                     'title' => $entry->notificationBanner->notificationTitle,
                     'content' => $entry->notificationBanner->notificationMessage,
