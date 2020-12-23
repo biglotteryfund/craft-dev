@@ -1,0 +1,19 @@
+contentColumnType: integer(10)
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: grantLengthMin
+instructions: ''
+name: 'Grant length minimum'
+searchable: true
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '0'
+  prefix: ''
+  previewCurrency: ''
+  previewFormat: decimal
+  size: null
+  suffix: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

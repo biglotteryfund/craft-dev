@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 9a6de417-cda1-486f-9022-b8c5387f751e
+handle: grantLengthDescription
+instructions: "Custom grant length description text, e.g., \"1 to 5 years\".\r\nIf left blank it will not appear on the page."
+name: 'Grant length description'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: nullF
+translationMethod: site
+type: craft\fields\PlainText
