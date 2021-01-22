@@ -7,6 +7,45 @@
 // Project root path
 $root = __DIR__;
 
+if (! function_exists('env')) {
+    /**
+     * Gets the value of an environment variable. Supports boolean, empty and null.
+     *
+     * @param  string  $key
+     * @param  mixed   $default
+     * @return mixed
+     */
+    function env($key, $default = null)
+    {
+        $value = getenv($key);
+
+        if ($value === false) {
+            return value($default);
+        }
+
+        switch (strtolower($value)) {
+            case 'true':
+            case '(true)':
+                return true;
+            case 'false':
+            case '(false)':
+                return false;
+            case 'empty':
+            case '(empty)':
+                return '';
+            case 'null':
+            case '(null)':
+                return;
+        }
+
+        if (strlen($value) > 1 && Str::startsWith($value, '"') && Str::endsWith($value, '"')) {
+            return substr($value, 1, -1);
+        }
+
+        return $value;
+    }
+}
+
 // Composer autoloader
 require_once $root.'/vendor/autoload.php';
 
@@ -18,7 +57,7 @@ if (file_exists($root.'/.env')) {
 
 // Craft
 define('CRAFT_BASE_PATH', $root);
-define('CRAFT_ENVIRONMENT', getenv('CRAFT_ENVIRONMENT') ?: 'production');
+define('CRAFT_ENVIRONMENT', env('CRAFT_ENVIRONMENT') ?: 'production');
 $app = require $root.'/vendor/craftcms/cms/bootstrap/console.php';
 $exitCode = $app->run();
 exit($exitCode);
