@@ -9,7 +9,7 @@ env:
 # Defaults
 language: php
 php:
-- 7.4.14
+- 7.2.30
 
 # Cache locations
 cache:

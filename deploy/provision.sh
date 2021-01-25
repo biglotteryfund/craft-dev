@@ -11,7 +11,7 @@ set -e
 #################################################
 yum update -y
 
-amazon-linux-extras install nginx1.12 php7.4 -y
+amazon-linux-extras install nginx1.12 php7.2 -y
 
 # todo: Craft prefers ImageMagick to php-gd but struggled to install this on Amazon Linux 2
 yum install -y php-mbstring php-dom php-gd php-intl
