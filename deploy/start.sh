@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 #################################################
 # ApplicationStart script
 #################################################
@@ -21,3 +22,4 @@ su -s /bin/bash -c 'cd /var/www/craft/ && ./craft migrate/all && ./craft project
 # (craft migration runs as php-fpm user, apache, which changes ownership?)
 chown -R nginx:nginx /var/www/craft/
 cd /var/www/craft && chmod -R 777 composer.json composer.lock storage vendor web/cpresources config config/license.key
+set +x
