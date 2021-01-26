@@ -1,5 +1,5 @@
 <?php
-namespace Biglotteryfund;
+namespace biglotteryfund;
 
 use Craft;
 use craft\elements\Entry;
@@ -11,7 +11,7 @@ class Module extends \yii\base\Module
     public function init()
     {
         // Define a custom alias named after the namespace
-        Craft::setAlias('@Biglotteryfund', __DIR__);
+        Craft::setAlias('@biglotteryfund', __DIR__);
         parent::init();
 
         // https://github.com/craftcms/cms/issues/2818

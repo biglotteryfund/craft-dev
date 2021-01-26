@@ -1,6 +1,6 @@
 <?php
 
-namespace Biglotteryfund\utils;
+namespace biglotteryfund\utils;
 
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
