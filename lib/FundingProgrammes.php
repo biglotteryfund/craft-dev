@@ -1,10 +1,10 @@
 <?php
 
-namespace Biglotteryfund\utils;
+namespace biglotteryfund\utils;
 
-use Biglotteryfund\utils\ContentHelpers;
-use Biglotteryfund\utils\EntryHelpers;
-use Biglotteryfund\utils\ProjectStoriesTransformer;
+use biglotteryfund\utils\ContentHelpers;
+use biglotteryfund\utils\EntryHelpers;
+use biglotteryfund\utils\ProjectStoriesTransformer;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 

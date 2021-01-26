@@ -1,10 +1,10 @@
 <?php
 
-namespace Biglotteryfund\utils;
+namespace biglotteryfund\utils;
 
 use Imgix\UrlBuilder;
 use League\Uri\Http;
-use Biglotteryfund\conf\ConfigManager;
+use biglotteryfund\conf\ConfigManager;
 
 
 class Images
