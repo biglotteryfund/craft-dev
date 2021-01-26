@@ -2,7 +2,7 @@
 
 return [
     'modules' => [
-        'control-panel' => biglotteryfund\Module::class,
+        'control-panel' => Biglotteryfund\Module::class,
     ],
     'components' => [
         'session' => function() {
