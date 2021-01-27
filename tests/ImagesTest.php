@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-use biglotteryfund\utils\Images;
+use Biglotteryfund\Images;
 use PHPUnit\Framework\TestCase;
 
 final class ImagesTest extends TestCase

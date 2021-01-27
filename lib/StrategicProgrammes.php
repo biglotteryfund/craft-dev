@@ -1,13 +1,13 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
-use biglotteryfund\utils\EntryHelpers;
-use biglotteryfund\utils\Images;
+use Biglotteryfund\EntryHelpers;
+use Biglotteryfund\Images;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
-class StrategicProgrammeTransformer extends TransformerAbstract
+class StrategicProgrammes extends TransformerAbstract
 {
     public function __construct($locale)
     {

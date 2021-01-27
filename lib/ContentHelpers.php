@@ -1,8 +1,8 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
-use biglotteryfund\utils\Images;
+use Biglotteryfund\Images;
 use craft\elements\Entry;
 
 class ContentHelpers
@@ -244,21 +244,21 @@ class ContentHelpers
                     break;
                 case 'automaticContentList':
 
-                    $updatesTransformer = new UpdatesTransformer($locale);
-                    $fundingProgrammeTransformer = new FundingProgrammeTransformer($locale, false, false);
+                    $Updates = new Updates($locale);
+                    $FundingProgrammes = new FundingProgrammes($locale, false, false);
 
                     $items = [];
                     $section = $block->sectionType->value;
                     if ($section === 'blogposts' || $section === 'pressReleases') {
                         $typeName = $section === 'blogposts' ? 'blog' : 'press_releases';
                         $blogposts = Entry::find()->section('updates')->site($locale)->type($typeName)->limit($block->numberOfItems)->all();
-                        $items = array_map(function ($entry) use ($updatesTransformer) {
-                            return $updatesTransformer->transform($entry);
+                        $items = array_map(function ($entry) use ($Updates) {
+                            return $Updates->transform($entry);
                         }, $blogposts);
                     } else if ($section === 'fundingProgrammes') {
                         $programmes = Entry::find()->section('fundingProgrammes')->site($locale)->level(1)->limit($block->numberOfItems)->orderBy('postDate desc')->all();
-                        $items = array_map(function ($entry) use ($fundingProgrammeTransformer) {
-                            return $fundingProgrammeTransformer->transform($entry);
+                        $items = array_map(function ($entry) use ($FundingProgrammes) {
+                            return $FundingProgrammes->transform($entry);
                         }, $programmes);
                     }
 

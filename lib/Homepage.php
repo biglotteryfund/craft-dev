@@ -1,11 +1,11 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
-class HomepageTransformer extends TransformerAbstract
+class Homepage extends TransformerAbstract
 {
     public function __construct($locale)
     {
@@ -40,7 +40,7 @@ class HomepageTransformer extends TransformerAbstract
             'content' => $entry->introductionText ?? null,
             'featuredLinks' => self::buildHomepageLinks($entry->featuredLinks->all()),
             'promotedUpdates' => array_map(function ($entry) {
-                $transformer = new UpdatesTransformer($this->locale);
+                $transformer = new Updates($this->locale);
                 return $transformer->transform($entry);
             }, $promotedUpdates ? $promotedUpdates->all() : [])
         ];

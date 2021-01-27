@@ -1,12 +1,12 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
-use biglotteryfund\utils\ContentHelpers;
+use Biglotteryfund\ContentHelpers;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
-class UpdatesTransformer extends TransformerAbstract
+class Updates extends TransformerAbstract
 {
     public function __construct($locale)
     {
