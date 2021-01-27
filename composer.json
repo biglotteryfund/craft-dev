@@ -29,7 +29,7 @@
     "craftcms/redactor": "2.7.5",
     "league/uri": "^6.2",
     "imgix/imgix-php": "^3.1",
-    "verbb/super-table": "2.6.2",
+    "verbb/super-table": "2.6.6",
     "ether/tags": "1.0.7",
     "doublesecretagency/craft-inventory": "2.1.1",
     "charliedev/element-map": "^1.2",
