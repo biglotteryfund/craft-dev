@@ -1,8 +1,8 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
-use biglotteryfund\utils\Images;
+use Biglotteryfund\Images;
 use craft\elements\Entry;
 
 class EntryHelpers

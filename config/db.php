@@ -6,8 +6,8 @@
 // * list of the available settings in vendor/craftcms/cms/src/config/DbConfig.php.
 // */
 
-use Biglotteryfund\conf\ConfigManager;
-$config = new Biglotteryfund\conf\ConfigManager;
+use Biglotteryfund\ConfigManager;
+$config = new Biglotteryfund\ConfigManager;
 
 return [
     'driver' => 'mysql',

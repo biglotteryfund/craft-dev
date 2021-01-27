@@ -1,6 +1,6 @@
 <?php
 
-namespace biglotteryfund\conf;
+namespace Biglotteryfund;
 
 use Noodlehaus\Config;
 use Noodlehaus\Exception\FileNotFoundException;
