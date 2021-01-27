@@ -18,8 +18,7 @@ cache:
 
 # Build stages
 before_script:
-- whereis composer
-- composer self-update --rollback
+- /home/travis/.phpenv/shims/composer self-update --rollback
 - composer install
 - npm install
 script:
