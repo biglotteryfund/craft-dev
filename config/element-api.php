@@ -1,16 +1,16 @@
 <?php
 
-use biglotteryfund\utils\ContentHelpers;
-use biglotteryfund\utils\EntryHelpers;
-use biglotteryfund\utils\FundingProgrammeTransformer;
-use biglotteryfund\utils\HomepageTransformer;
-use biglotteryfund\utils\Images;
-use biglotteryfund\utils\ListingTransformer;
-use biglotteryfund\utils\ProjectStoriesTransformer;
-use biglotteryfund\utils\ResearchTransformer;
-use biglotteryfund\utils\ResearchDocumentTransformer;
-use biglotteryfund\utils\StrategicProgrammeTransformer;
-use biglotteryfund\utils\UpdatesTransformer;
+use Biglotteryfund\ContentHelpers;
+use Biglotteryfund\EntryHelpers;
+use Biglotteryfund\FundingProgrammes;
+use Biglotteryfund\Homepage;
+use Biglotteryfund\Images;
+use Biglotteryfund\Listing;
+use Biglotteryfund\ProjectStories;
+use Biglotteryfund\Research;
+use Biglotteryfund\ResearchDocument;
+use Biglotteryfund\StrategicProgrammes;
+use Biglotteryfund\Updates;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -149,7 +149,7 @@ function getHomepage($locale)
             'site' => $locale,
         ],
         'one' => true,
-        'transformer' => new HomepageTransformer($locale),
+        'transformer' => new Homepage($locale),
     ];
 }
 
@@ -204,7 +204,7 @@ function getFundingProgrammes($locale, $programmeSlug = null, $childPageSlug = n
         'one' => $isSingle,
         'elementsPerPage' => \Craft::$app->request->getParam('page-limit') ?: 100,
         'meta' => $meta ?? null,
-        'transformer' => new FundingProgrammeTransformer($locale, $isSingle, $showAllProgrammes)
+        'transformer' => new FundingProgrammes($locale, $isSingle, $showAllProgrammes)
     ];
 }
 
@@ -216,7 +216,7 @@ function getResearch($locale, $type = false)
 {
     normaliseCacheHeaders();
 
-    $transformer = $type === 'documents' ? new ResearchDocumentTransformer($locale) : new ResearchTransformer($locale);
+    $transformer = $type === 'documents' ? new ResearchDocument($locale) : new Research($locale);
 
     $criteria = [
         'site' => $locale,
@@ -517,7 +517,7 @@ function getResearchDetail($locale, $slug, $childPageSlug = null)
             'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
-        'transformer' => new ResearchTransformer($locale),
+        'transformer' => new Research($locale),
     ];
 }
 
@@ -537,7 +537,7 @@ function getStrategicProgrammes($locale)
             'section' => 'strategicProgrammes',
             'level' => 1
         ],
-        'transformer' => new StrategicProgrammeTransformer($locale),
+        'transformer' => new StrategicProgrammes($locale),
     ];
 }
 
@@ -560,7 +560,7 @@ function getStrategicProgramme($locale, $slug, $childPageSlug = null)
             'status' => EntryHelpers::getVersionStatuses(),
         ],
         'one' => true,
-        'transformer' => new StrategicProgrammeTransformer($locale),
+        'transformer' => new StrategicProgrammes($locale),
     ];
 }
 
@@ -585,7 +585,7 @@ function getListing($locale)
         'serializer' => 'jsonApi',
         'elementType' => Entry::class,
         'criteria' => $searchCriteria,
-        'transformer' => new ListingTransformer($locale),
+        'transformer' => new Listing($locale),
     ];
 }
 
@@ -639,7 +639,7 @@ function getProjectStories($locale, $grantId = null)
         'elementType' => Entry::class,
         'criteria' => $criteria,
         'one' => $grantId ? true : false,
-        'transformer' => new ProjectStoriesTransformer($locale),
+        'transformer' => new ProjectStories($locale),
     ];
 }
 
@@ -736,7 +736,7 @@ function getUpdates($locale, $type = null, $date = null, $slug = null)
         'elementsPerPage' => $isSinglePost ? null : $pageLimit,
         'one' => $isSinglePost,
         'meta' => $meta,
-        'transformer' => new UpdatesTransformer($locale),
+        'transformer' => new Updates($locale),
     ];
 }
 

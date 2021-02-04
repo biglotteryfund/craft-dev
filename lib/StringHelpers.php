@@ -1,6 +1,6 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
 class StringHelpers
 {

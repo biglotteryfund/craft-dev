@@ -6,8 +6,8 @@
  * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
  */
 
-use biglotteryfund\conf\ConfigManager;
-$config = new biglotteryfund\conf\ConfigManager;
+use Biglotteryfund\ConfigManager;
+$config = new Biglotteryfund\ConfigManager;
 
 return [
     // Global settings

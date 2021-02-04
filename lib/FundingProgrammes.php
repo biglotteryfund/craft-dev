@@ -1,14 +1,14 @@
 <?php
 
-namespace biglotteryfund\utils;
+namespace Biglotteryfund;
 
-use biglotteryfund\utils\ContentHelpers;
-use biglotteryfund\utils\EntryHelpers;
-use biglotteryfund\utils\ProjectStoriesTransformer;
+use Biglotteryfund\ContentHelpers;
+use Biglotteryfund\EntryHelpers;
+use Biglotteryfund\ProjectStories;
 use craft\elements\Entry;
 use League\Fractal\TransformerAbstract;
 
-class FundingProgrammeTransformer extends TransformerAbstract
+class FundingProgrammes extends TransformerAbstract
 {
     public function __construct($locale, $isSingle = false, $includeImages = false)
     {
@@ -83,7 +83,7 @@ class FundingProgrammeTransformer extends TransformerAbstract
                         ];
                     }, $entry->programmeRegions ? $entry->programmeRegions->all() : []),
                     'projectStories' => array_map(function ($entry) {
-                        $transformer = new ProjectStoriesTransformer($this->locale);
+                        $transformer = new ProjectStories($this->locale);
                         return $transformer->transform($entry);
                     }, $entry->relatedProjectStories ? $entry->relatedProjectStories->all() : [])
                 ]);

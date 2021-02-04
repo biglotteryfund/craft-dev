@@ -9,7 +9,7 @@ env:
 # Defaults
 language: php
 php:
-- 7.2.30
+- 7.4.14
 
 # Cache locations
 cache:
@@ -18,7 +18,7 @@ cache:
 
 # Build stages
 before_script:
-- composer self-update --rollback
+- composer self-update
 - composer install
 - npm install
 script:
