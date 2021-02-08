@@ -3,25 +3,13 @@ fieldLayouts:
   2b598c99-d3eb-42df-8016-244efa92c3a6:
     tabs:
       -
-        elements:
-          -
-            fieldUid: 64284b05-53d8-4968-8595-aa6e6defaf9f
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
-          -
-            fieldUid: 0b844db0-2788-421f-993c-8f1cd56846d8
-            instructions: null
-            label: null
-            required: true
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
+        fields:
+          0b844db0-2788-421f-993c-8f1cd56846d8:
+            required: '1'
+            sortOrder: 2
+          64284b05-53d8-4968-8595-aa6e6defaf9f:
+            required: '1'
+            sortOrder: 1
         name: Content
         sortOrder: 1
 fields:
@@ -31,25 +19,17 @@ fields:
     handle: contentBody
     instructions: ''
     name: Content
-    searchable: true
+    searchable: '1'
     settings:
       availableTransforms: ''
       availableVolumes: ''
-      cleanupHtml: true
       columnType: text
-      configSelectionMode: choose
-      defaultTransform: ''
-      manualConfig: ''
       purifierConfig: safe-iframe-media.json
       purifyHtml: '1'
       redactorConfig: Full.json
       removeEmptyTags: '1'
       removeInlineStyles: '1'
       removeNbsp: '1'
-      showHtmlButtonForNonAdmins: '1'
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: true
-      uiMode: enlarged
     translationKeyFormat: null
     translationMethod: language
     type: craft\redactor\Field
@@ -59,16 +39,14 @@ fields:
     handle: contentTitle
     instructions: ''
     name: Title
-    searchable: true
+    searchable: '1'
     settings:
-      byteLimit: null
-      charLimit: null
+      charLimit: ''
       code: ''
       columnType: text
       initialRows: '4'
       multiline: ''
       placeholder: ''
-      uiMode: normal
     translationKeyFormat: null
     translationMethod: language
     type: craft\fields\PlainText
