@@ -58,7 +58,7 @@ return [
         'siteUrl' => null,
         // avoid breaking HTTPS
         'baseCpUrl' => $config->getConfig('BASE_CP_URL', $_ENV['BASE_CP_URL']),
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
     ],
 
     // Production environment settings
