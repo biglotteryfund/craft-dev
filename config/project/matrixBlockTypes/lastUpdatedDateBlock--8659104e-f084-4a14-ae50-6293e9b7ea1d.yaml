@@ -1,0 +1,35 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  a4a05d7f-4202-4add-92aa-cad2e90befdd:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 4ed9655e-5100-474e-85d6-88fbfeaeb47d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  4ed9655e-5100-474e-85d6-88fbfeaeb47d:
+    contentColumnType: boolean
+    fieldGroup: null
+    handle: updatedDate
+    instructions: 'If this is enabled a "Last updated" message will be shown.'
+    name: 'Show last updated date'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+handle: lastUpdatedDateBlock
+name: 'Last Updated Date Block'
+sortOrder: 12
