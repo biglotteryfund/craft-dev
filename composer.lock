@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc848f299fa8fd3f9c436982d63c2379",
+    "content-hash": "5319871304f13b735441b6862bfcd467",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1290,16 +1290,16 @@
         },
         {
             "name": "doublesecretagency/craft-cpjs",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doublesecretagency/craft-cpjs.git",
-                "reference": "1ed12534cb090c70481181864cc1c59f47100fa6"
+                "reference": "3318e580f6be9068a469d2702018d4f427618456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doublesecretagency/craft-cpjs/zipball/1ed12534cb090c70481181864cc1c59f47100fa6",
-                "reference": "1ed12534cb090c70481181864cc1c59f47100fa6",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-cpjs/zipball/3318e580f6be9068a469d2702018d4f427618456",
+                "reference": "3318e580f6be9068a469d2702018d4f427618456",
                 "shasum": ""
             },
             "require": {
@@ -1340,9 +1340,9 @@
             "support": {
                 "docs": "https://github.com/doublesecretagency/craft-cpjs/blob/v2/README.md",
                 "issues": "https://github.com/doublesecretagency/craft-cpjs/issues",
-                "source": "https://github.com/doublesecretagency/craft-cpjs/tree/2.2.1"
+                "source": "https://github.com/doublesecretagency/craft-cpjs/tree/2.3.0"
             },
-            "time": "2020-04-04T21:54:56+00:00"
+            "time": "2020-12-18T19:32:30+00:00"
         },
         {
             "name": "doublesecretagency/craft-inventory",
