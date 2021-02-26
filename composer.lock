@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc848f299fa8fd3f9c436982d63c2379",
+    "content-hash": "da2ae25d8eff3bfc9887bfbb872dba3b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1234,16 +1234,16 @@
         },
         {
             "name": "doublesecretagency/craft-cpcss",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doublesecretagency/craft-cpcss.git",
-                "reference": "e80b0ecf49d473b0e79f0c716693bc92f3f3ad86"
+                "reference": "4c1ecb034ae1e78f688c1313819a9fc1fb7d6e40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doublesecretagency/craft-cpcss/zipball/e80b0ecf49d473b0e79f0c716693bc92f3f3ad86",
-                "reference": "e80b0ecf49d473b0e79f0c716693bc92f3f3ad86",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-cpcss/zipball/4c1ecb034ae1e78f688c1313819a9fc1fb7d6e40",
+                "reference": "4c1ecb034ae1e78f688c1313819a9fc1fb7d6e40",
                 "shasum": ""
             },
             "require": {
@@ -1284,9 +1284,9 @@
             "support": {
                 "docs": "https://github.com/doublesecretagency/craft-cpcss/blob/v2/README.md",
                 "issues": "https://github.com/doublesecretagency/craft-cpcss/issues",
-                "source": "https://github.com/doublesecretagency/craft-cpcss/tree/2.2.1"
+                "source": "https://github.com/doublesecretagency/craft-cpcss/tree/2.3.0"
             },
-            "time": "2020-04-04T21:55:05+00:00"
+            "time": "2020-12-18T19:32:34+00:00"
         },
         {
             "name": "doublesecretagency/craft-cpjs",
