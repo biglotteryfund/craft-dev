@@ -14,7 +14,7 @@ final class ImagesTest extends TestCase
         );
 
         $this->assertRegExp(
-            '/image\.jpg\?auto=compress%2Cformat&crop=entropy&fit=crop&w=100&s=.*$/',
+            '/image\.jpg\?auto=compress%2Cformat&crop=faces%2Cedge&fit=crop&w=100&s=.*$/',
             Images::imgixUrl("https://media.example.com/path/to/image.jpg", ['w' => 100])
         );
     }
