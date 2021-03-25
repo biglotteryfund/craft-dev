@@ -35,7 +35,7 @@ class Images
             $builder->setSignKey($imgixConfig['signKey']);
             $builder->setIncludeLibraryParam(false);
 
-            $defaults = array('auto' => "compress,format", 'crop' => 'entropy', 'fit' => 'crop');
+            $defaults = array('auto' => "compress,format", 'crop' => 'faces,edge', 'fit' => 'crop');
             $params = array_replace_recursive($defaults, $options);
             return $builder->createURL($parsedUri->getPath(), $params);
         } else {
