@@ -1,0 +1,49 @@
+field: 40755bc8-380a-49b7-9f5b-786c5e1e6bbe
+fieldLayouts:
+  9a6631fc-cbb2-4af2-a4b7-71e7b2cd4feb:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7e8f7fbe-620b-4dc3-a0ee-15c6e64bdc28
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  7e8f7fbe-620b-4dc3-a0ee-15c6e64bdc28:
+    contentColumnType: text
+    fieldGroup: null
+    handle: alertBoxContent
+    instructions: 'Place this box where you would like the alert box to appear. All content in this block will be enveloped in a container.'
+    name: 'Alert box content'
+    searchable: true
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: Full.json
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showHtmlButtonForNonAdmins: '1'
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+handle: alertBox
+name: 'Alert box'
+sortOrder: 12
