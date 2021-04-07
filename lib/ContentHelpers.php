@@ -274,6 +274,11 @@ class ContentHelpers
                         'content' => $block->tableOfContentsIntro ?? null,
                     ];
                     break;
+                case 'lastUpdatedDateBlock':
+                    $data = [
+                        'lastUpdatedField' => $block->updatedDate ? $entry->dateUpdated : null,
+                    ];
+                    break;
                 case 'alertBox':
                       $data = [
                           'content' => $block->alertBoxContent ??  null,
