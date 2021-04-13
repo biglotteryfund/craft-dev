@@ -279,6 +279,11 @@ class ContentHelpers
                         'lastUpdatedField' => $block->updatedDate ? $entry->dateUpdated : null,
                     ];
                     break;
+                case 'alertBox':
+                      $data = [
+                          'content' => $block->alertBoxContent ??  null,
+                      ];
+                      break;
                 case 'childPageList':
                     if (count($children) > 0) {
                         // Work out if we can display a grid of photos
