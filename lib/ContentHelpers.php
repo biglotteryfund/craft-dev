@@ -128,7 +128,7 @@ class ContentHelpers
         }, $tagField);
     }
 
-    /**
+    /*
      * Extract data for common flexible content matrix field
      * - Content area (Redactor field)
      * - Inline figure (image with a caption)
@@ -297,8 +297,6 @@ class ContentHelpers
         }
         return $parts;
     }
-
-    /**
      * Extract data for common document groups field
      */
     public static function extractDocumentGroups($documentGroupsField)

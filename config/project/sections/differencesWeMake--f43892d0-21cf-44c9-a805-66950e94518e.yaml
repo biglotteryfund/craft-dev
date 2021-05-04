@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: differencesWeMake
+name: 'Differences we make'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''insights/differences-we-make''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''insights/differences-we-make''}/{slug}'
+structure:
+  maxLevels: null
+  uid: c531d03e-e0a5-4bcb-a923-18e2e1752f2a
+type: structure
