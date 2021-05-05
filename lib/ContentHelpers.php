@@ -297,8 +297,7 @@ class ContentHelpers
         }
         return $parts;
     }
-     * Extract data for common document groups field
-     */
+     // Extract data for common document groups field
     public static function extractDocumentGroups($documentGroupsField)
     {
         return array_map(function ($group) {
