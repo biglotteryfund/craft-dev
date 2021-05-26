@@ -352,7 +352,7 @@ function getResearch($locale, $type = false)
         }
     }
 
-    $defaultPageLimit = 12;
+    $defaultPageLimit = 1000;
     $pageLimit = \Craft::$app->request->getParam('page-limit') ?: $defaultPageLimit;
 
     return [
