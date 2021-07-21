@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: climateActionFund
+name: 'Climate Action Fund'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''climate-action-fund''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: false
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''climate-action-fund''}/{slug}'
+structure:
+  maxLevels: null
+  uid: 0ade002d-f386-42af-b61e-a83b620739a2
+type: structure
