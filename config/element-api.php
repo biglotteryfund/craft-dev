@@ -11,6 +11,7 @@ use Biglotteryfund\Research;
 use Biglotteryfund\ResearchDocument;
 use Biglotteryfund\StrategicProgrammes;
 use Biglotteryfund\Updates;
+use Biglotteryfund\KeyInitiatives;
 use craft\elements\Category;
 use craft\elements\Entry;
 use craft\elements\Tag;
@@ -546,6 +547,31 @@ function getStrategicProgrammes($locale)
  * Get full details of a single strategic programme
  * or one of its children
  */
+function getKeyInitiatives($locale, $slug, $childPageSlug = null)
+{
+    normaliseCacheHeaders();
+
+    return [
+        'serializer' => 'jsonApi',
+        'elementType' => Entry::class,
+        'criteria' => [
+            'slug' => $childPageSlug ? $childPageSlug : $slug,
+            'section' => 'keyInitiatives',
+            'site' => $locale,
+            'status' => EntryHelpers::getVersionStatuses(),
+        ],
+        'one' => true,
+        'transformer' => new KeyInitiatives($locale),
+        'flexibleContent' => ContentHelpers::extractFlexibleContent($entry, $locale),
+
+    ];
+}
+
+/**
+ * API Endpoint: Get Strategic Programme
+ * Get full details of a single strategic programme
+ * or one of its children
+ */
 function getStrategicProgramme($locale, $slug, $childPageSlug = null)
 {
     normaliseCacheHeaders();
@@ -872,6 +898,7 @@ return [
         'api/v1/<locale:en|cy>/strategic-programmes/<slug:{slug}>/<childPageSlug:{slug}>' => getStrategicProgramme,
         'api/v1/<locale:en|cy>/hero-image/<slug>' => getHeroImage,
         'api/v1/<locale:en|cy>/homepage' => getHomepage,
+        'api/v1/<locale:en|cy>/key-initiatives' => getKeyInitiatives,
         'api/v1/<locale:en|cy>/listing' => getListing,
         'api/v1/<locale:en|cy>/data' => getDataPage,
         'api/v1/<locale:en|cy>/aliases' => getAliases,
