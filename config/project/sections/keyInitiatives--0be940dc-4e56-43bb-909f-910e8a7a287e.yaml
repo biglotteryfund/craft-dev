@@ -1,0 +1,31 @@
+enableVersioning: true
+handle: keyInitiatives
+name: 'Key initiatives'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  81de1ac6-1a0b-40e6-b99c-42b99e5dc777:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''key-initiatives''}/{slug}'
+  d0635f95-a563-4f66-9195-33da0eb644d5:
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: '{parent.uri ? parent.uri : ''key-initiatives''}/{slug}'
+structure:
+  maxLevels: null
+  uid: baa873bc-41df-4153-997f-cc269b6e350a
+type: structure
