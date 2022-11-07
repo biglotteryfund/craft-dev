@@ -35,7 +35,7 @@
     "charliedev/element-map": "^1.2",
     "vardump/recentchanges": "1.1.3",
     "doublesecretagency/craft-cpjs": "2.2.1",
-    "doublesecretagency/craft-cpcss": "2.2.1",
+    "doublesecretagency/craft-cpcss": "2.3.0",
     "hassankhan/config": "^2.1",
     "utakka/redactor-anchors": "^1.1",
     "nystudio107/craft-retour": "^3.1.41"
